@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CDPHE data modernization prototypes</title>
+<style>
+  :root{
+    --blue:#005980;
+    --lblue:#00A1E6;
+    --green:#00953a;
+    --orange:#ef7521;
+    --grey:#4e5758;
+    --blue-tint:#E6F1FB;
+    --blue-tint-text:#0C447C;
+    --green-tint:#EAF3DE;
+    --amber-tint:#FAEEDA;
+    --amber-tint-text:#854F0B;
+    --lblue-tint:#B5D4F4;
+    --bg:#F4F6F7;
+    --surface:#FFFFFF;
+    --border:#D8DEE1;
+    --text-primary:#1B1F20;
+    --text-secondary:#4e5758;
+    --text-muted:#6b7477;
+    --radius:10px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Trebuchet MS', var(--font-sans);
+    background:var(--bg);
+    color:var(--text-primary);
+    font-size:15px;
+    line-height:1.5;
+  }
+  a{color:var(--blue);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--lblue);
+    outline-offset:2px;
+  }
+  .sr-only{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap;
+  }
+
+  header.masthead{
+    background:var(--blue);
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .logo-mark{
+    width:26px; height:30px; background:var(--lblue);
+    border-radius:0 0 13px 13px; position:relative; flex:none;
+  }
+  .logo-mark::before{
+    content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:0; height:0; border-left:13px solid transparent; border-right:13px solid transparent;
+    border-bottom:11px solid var(--blue);
+  }
+  .wordmark{line-height:1.05;}
+  .wordmark .state{color:#fff; font-weight:500; font-size:15px; letter-spacing:0.5px;}
+  .wordmark .dept{color:var(--lblue-tint); font-size:11px;}
+  .masthead .tag{margin-left:auto; color:var(--lblue-tint); font-size:12px;}
+  .masthead .tag .dim{opacity:0.7;}
+
+  main{max-width:920px; margin:0 auto; padding:0 20px 64px;}
+
+  .hero{padding:40px 0 8px;}
+  .hero h1{font-size:26px; font-weight:500; margin:0 0 10px; color:var(--text-primary);}
+  .hero p{font-size:15.5px; color:var(--text-secondary); max-width:660px; margin:0 0 8px;}
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:500; color:var(--blue-tint-text);
+    background:var(--blue-tint); padding:3px 10px; border-radius:20px; margin-bottom:14px;
+  }
+
+  .callout{
+    background:var(--amber-tint); color:var(--amber-tint-text);
+    border-radius:var(--radius); padding:13px 16px; font-size:13.5px; line-height:1.55;
+    margin:24px 0 8px; border:0.5px solid #f0d9ad;
+  }
+  .callout strong{color:var(--amber-tint-text);}
+
+  section{margin-top:40px;}
+  section h2{font-size:18px; font-weight:500; margin:0 0 6px; color:var(--text-primary);}
+  section > p.lede{color:var(--text-secondary); font-size:14px; margin:0 0 18px; max-width:640px;}
+
+  .flow{
+    display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0;
+  }
+  .flow .step{
+    flex:1; min-width:150px; background:var(--surface); border:0.5px solid var(--border);
+    border-radius:var(--radius); padding:14px 16px;
+  }
+  .flow .step .n{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:50%; background:var(--blue); color:#fff;
+    font-size:11px; font-weight:600; margin-bottom:8px;
+  }
+  .flow .step h3{font-size:14px; margin:0 0 4px; font-weight:500; color:var(--text-primary);}
+  .flow .step p{font-size:12.5px; color:var(--text-secondary); margin:0;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:16px;}
+  .card{
+    background:var(--surface); border:0.5px solid var(--border); border-radius:12px;
+    padding:16px 18px; display:flex; flex-direction:column; gap:10px;
+  }
+  .card.available{border-color:var(--blue);}
+  .card .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:8px;}
+  .card h3{font-size:15px; font-weight:500; margin:0; color:var(--text-primary);}
+  .badge{font-size:11px; padding:2px 9px; border-radius:20px; white-space:nowrap; font-weight:500;}
+  .badge.available{background:var(--green-tint); color:#0f6b2c;}
+  .badge.planned{background:#EEF0F1; color:var(--text-secondary);}
+  .card .cohort{font-size:12px; color:var(--text-muted);}
+  .card p.desc{font-size:13px; color:var(--text-secondary); margin:0; flex:1;}
+  .card .cta{margin-top:4px;}
+  .btn{
+    display:inline-block; font-size:13px; font-weight:500; padding:8px 14px;
+    border-radius:var(--radius); text-decoration:none; border:1px solid var(--blue);
+    color:var(--blue); background:transparent;
+  }
+  .btn.primary{background:var(--blue); color:#fff; border-color:var(--blue);}
+  .btn.disabled{
+    border-color:var(--border); color:var(--text-muted); cursor:default;
+    pointer-events:none;
+  }
+
+  footer{
+    max-width:920px; margin:0 auto; padding:24px 20px 40px; color:var(--text-muted);
+    font-size:12px; border-top:0.5px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="logo-mark" aria-hidden="true"></div>
+    <div class="wordmark">
+      <div class="state">COLORADO</div>
+      <div class="dept">Department of Public Health &amp; Environment</div>
+    </div>
+    <div class="tag">Data Modernization Initiative <span class="dim">&middot; prototype</span></div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="callout">
+        These are discovery-phase prototypes for testing only, not a production system or a platform.
+        All data shown inside them is illustrative sample content.
+      </div>
+      <h1>DMI Information Services Prototypes</h1>
+      <p>
+        This site collects prototypes built for CDPHE's Data Modernization Initiative (DMI), to
+        explore how CDPHE can make data easier to find, access, and use.
+      </p>
+    </div>
+
+    <section aria-labelledby="prototypes-h">
+      <h2 id="prototypes-h">Available Prototypes</h2>
+      <div class="cards">
+
+        <div class="card available">
+          <div class="card-top">
+            <h3>Data Catalog</h3>
+            <!-- <span class="badge available">Available</span> -->
+          </div>
+          <div class="cohort">Cohort: Chronic disease</div>
+          <p class="desc">
+            Search, compare, and request access to the sources that can answer a chronic
+            disease question &mdash; using "diabetes prevalence in adults" as the running example.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="chronic_disease_data_catalog_prototype.html">Open prototype</a>
+          </div>
+        </div>
+
+        <!-- <div class="card">
+          <div class="card-top">
+            <h3>Behavioral health data catalog</h3>
+            <span class="badge planned">Planned</span>
+          </div>
+          <div class="cohort">Cohort: Behavioral health</div>
+          <p class="desc">
+            The same discover &rarr; compare &rarr; request flow, applied to the behavioral health
+            cohort of the PHDF.
+          </p>
+          <div class="cta">
+            <span class="btn disabled" aria-disabled="true">Not yet available</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <h3>Data steward view</h3>
+            <span class="badge planned">Planned</span>
+          </div>
+          <div class="cohort">Producer / publishing side of the catalog</div>
+          <p class="desc">
+            A prototype of the steward-facing side of the catalog &mdash; publishing and maintaining
+            a source's entry rather than searching for one.
+          </p>
+          <div class="cta">
+            <span class="btn disabled" aria-disabled="true">Not yet available</span>
+          </div>
+        </div> -->
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    CDPHE Data Modernization Initiative &middot; discovery-phase prototypes &middot; all data shown is illustrative, not real CDPHE data.
+  </footer>
+
+</body>
+</html>
