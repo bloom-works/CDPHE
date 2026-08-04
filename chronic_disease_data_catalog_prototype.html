@@ -1,0 +1,257 @@
+<div style="font-family: 'Trebuchet MS', var(--font-sans); color: var(--text-primary); min-height: 560px;">
+  <h2 class="sr-only">CDPHE chronic disease data catalog prototype: search for a topic, compare the sources that answer it, and request access.</h2>
+
+  <div style="background:#005980; border-radius:12px 12px 0 0; padding:14px 18px; display:flex; align-items:center; gap:12px;">
+    <div style="display:flex; align-items:center; gap:9px;">
+      <div style="width:26px; height:30px; background:#00A1E6; border-radius:0 0 13px 13px; position:relative;">
+        <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:0; height:0; border-left:13px solid transparent; border-right:13px solid transparent; border-bottom:11px solid #005980;"></div>
+      </div>
+      <div style="line-height:1.05;">
+        <div style="color:#fff; font-weight:500; font-size:15px; letter-spacing:0.5px;">COLORADO</div>
+        <div style="color:#B5D4F4; font-size:11px;">Department of Public Health &amp; Environment</div>
+      </div>
+    </div>
+    <div style="margin-left:auto; color:#B5D4F4; font-size:12px;">Public Health Data Catalog <span style="opacity:0.6;">· prototype</span></div>
+  </div>
+
+  <div style="background:var(--surface-2); border:0.5px solid var(--border); border-top:none; border-radius:0 0 12px 12px; padding:16px 18px 20px;">
+
+    <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+      <div style="flex:1; display:flex; align-items:center; gap:8px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 12px; height:42px; background:var(--surface-1);">
+        <i class="ti ti-search" style="font-size:18px; color:#005980;" aria-hidden="true"></i>
+        <input id="q" value="diabetes prevalence in adults" style="border:none; outline:none; background:transparent; flex:1; font-size:15px; height:40px; color:var(--text-primary);" aria-label="Search public health data" />
+        <span style="font-size:12px; color:var(--text-muted); white-space:nowrap;">Chronic Disease cohort</span>
+      </div>
+    </div>
+    <div style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
+      <i class="ti ti-bulb" style="font-size:15px; vertical-align:-2px; color:#ef7521;" aria-hidden="true"></i>
+      5 sources can answer this question. They differ in how current, how granular, and how you access them — compare before you request.
+    </div>
+
+    <div style="display:grid; grid-template-columns: 172px 1fr; gap:16px;">
+
+      <div>
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); text-transform:none; margin-bottom:8px;">Filter sources</div>
+        <div id="facets"></div>
+        <div style="margin-top:14px; padding-top:12px; border-top:0.5px solid var(--border);">
+          <button id="cmpBtn" style="width:100%; font-size:13px; border-color:#005980; color:#005980;" aria-label="Compare selected sources">
+            <i class="ti ti-columns" style="font-size:15px; vertical-align:-2px;" aria-hidden="true"></i> Compare (<span id="cmpN">2</span>)
+          </button>
+        </div>
+      </div>
+
+      <div id="panel"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const BLUE="#005980", LBLUE="#00A1E6", GREEN="#00953a", ORANGE="#ef7521", GREY="#4e5758";
+
+  const sources=[
+    { id:"brfss", name:"Behavioral Risk Factor Surveillance System (BRFSS)", steward:"Center for Health & Environmental Data", type:"Survey", geo:"State, region, county (multi-year)", updated:"Annual · ~6 mo lag", cur:2, curL:"Annual", access:"VISION dashboard + data request", agree:"Data use agreement for record-level", quality:"Self-reported · CI-adjusted",
+      desc:"Statewide telephone survey of adults 18+ tracking health behaviors and preventive practices tied to morbidity and mortality. ~10,000 surveys completed each year, weighted to represent Colorado adults.",
+      dash:["Diabetes (VISION)","Cardiovascular Health (VISION)","Cancer Screening (VISION)"],
+      measures:"Diabetes – Adults (%), Prediabetes – Adults (%), Diabetes self-management course participation (%)",
+      notes:"Methodology changed in 2011 — do not compare to earlier years. Estimates suppressed when fewer than 50 respondents.",
+      best:true },
+    { id:"hosp", name:"Hospital Discharge Data (CHA)", steward:"CO Hospital Association / CDPHE", type:"Administrative", geo:"Facility, county", updated:"Quarterly", cur:3, curL:"Quarterly", access:"Data request + agreement", agree:"Data sharing agreement required", quality:"Billing-coded (ICD-10)",
+      desc:"Inpatient and emergency-department billing records for diabetes-related admissions and complications. Strong for severe/managed disease and cost, not undiagnosed prevalence.",
+      dash:["Cancer Incidence Dashboard (linked)"],
+      measures:"Diabetes-related inpatient stays, ED visits, complication rates by county",
+      notes:"Captures care events, not community prevalence. Underrepresents people who never present for care." },
+    { id:"vital", name:"Vital Records — Death Certificates", steward:"Vital Records / CHED", type:"Registry", geo:"State, county, census tract", updated:"Annual (final)", cur:2, curL:"Annual", access:"Aggregate open + record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
+      desc:"Death certificate records where diabetes is an underlying or contributing cause. Used for mortality trends and disparities, not living prevalence.",
+      dash:["Cancer Incidence Dashboard (mortality)"],
+      measures:"Diabetes mortality rate, years of potential life lost, disparity ratios",
+      notes:"Mortality only. Contributing-cause coding varies by certifier." },
+    { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
+      desc:"Youth survey covering risk and protective factors. Relevant for early risk factors (nutrition, activity) rather than adult diabetes prevalence.",
+      dash:["HKCS dashboards"],
+      measures:"Youth nutrition, physical activity, weight status indicators",
+      notes:"Population is youth, not adults — adjacent to this question, not a direct answer." },
+    { id:"census", name:"Community Level Estimates (small-area)", steward:"CDPHE / modeled", type:"Modeled estimate", geo:"Census tract, neighborhood", updated:"Periodic", cur:1, curL:"Periodic", access:"Interactive maps (open)", agree:"Open", quality:"Modeled · wide CIs",
+      desc:"Model-based small-area estimates that fill geographic gaps BRFSS can't support directly. Best for local targeting, with wider uncertainty.",
+      dash:["Community Level Estimates maps"],
+      measures:"Modeled diabetes prevalence by small geography",
+      notes:"Modeled, not measured. Use for prioritization, not precise counts." }
+  ];
+
+  const facetDefs=[
+    { key:"type", label:"Source type", opts:["Survey","Administrative","Registry","Modeled estimate"] },
+    { key:"cur", label:"How current", opts:[["3","Quarterly or better"],["2","Annual"],["1","Biennial / periodic"]] }
+  ];
+  let active={type:new Set(), cur:new Set()};
+  let selected=new Set(["brfss","hosp"]);
+  let view="list";
+
+  const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const curBadge=n=>{const m={3:[GREEN,"#EAF3DE"],2:[BLUE,"#E6F1FB"],1:[ORANGE,"#FAEEDA"]}[n];return `<span style="background:${m[1]}; color:${m[0]}; font-size:11px; padding:2px 8px; border-radius:20px; white-space:nowrap;">${sources.find(s=>s.cur===n)?"":""}</span>`;};
+
+  function renderFacets(){
+    let h="";
+    facetDefs.forEach(f=>{
+      h+=`<div style="margin-bottom:12px;"><div style="font-size:12px; color:var(--text-muted); margin-bottom:5px;">${f.label}</div>`;
+      f.opts.forEach(o=>{
+        const val=Array.isArray(o)?o[0]:o, lab=Array.isArray(o)?o[1]:o;
+        const on=active[f.key].has(val);
+        h+=`<label style="display:flex; align-items:center; gap:7px; font-size:13px; padding:3px 0; cursor:pointer; color:var(--text-primary);">
+          <input type="checkbox" data-fk="${f.key}" data-fv="${esc(val)}" ${on?"checked":""} style="accent-color:${BLUE}; width:15px; height:15px;" /> ${esc(lab)}</label>`;
+      });
+      h+="</div>";
+    });
+    const el=document.getElementById("facets"); el.innerHTML=h;
+    el.querySelectorAll("input").forEach(cb=>cb.addEventListener("change",e=>{
+      const{fk,fv}=e.target.dataset; e.target.checked?active[fk].add(fv):active[fk].delete(fv); render();
+    }));
+  }
+
+  function match(s){
+    if(active.type.size&&!active.type.has(s.type))return false;
+    if(active.cur.size&&!active.cur.has(String(s.cur)))return false;
+    return true;
+  }
+
+  function card(s){
+    const on=selected.has(s.id);
+    return `<div style="border:0.5px solid ${on?BLUE:"var(--border)"}; ${on?"box-shadow:0 0 0 1px "+BLUE+";":""} border-radius:12px; padding:13px 15px; margin-bottom:10px; background:var(--surface-1);">
+      <div style="display:flex; align-items:flex-start; gap:10px;">
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="font-weight:500; font-size:14.5px; color:var(--text-primary);">${esc(s.name)}</span>
+            ${s.best?`<span style="background:#EAF3DE; color:${GREEN}; font-size:11px; padding:2px 8px; border-radius:20px;"><i class="ti ti-star" style="font-size:12px; vertical-align:-1px;" aria-hidden="true"></i> Best fit</span>`:""}
+          </div>
+          <div style="font-size:12.5px; color:var(--text-secondary); margin:2px 0 8px;">${esc(s.steward)} · ${esc(s.type)}</div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary);">
+            <span><i class="ti ti-clock" style="font-size:14px; vertical-align:-2px; color:${ORANGE};" aria-hidden="true"></i> ${esc(s.curL)}</span>
+            <span><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px; color:${BLUE};" aria-hidden="true"></i> ${esc(s.geo)}</span>
+            <span><i class="ti ti-key" style="font-size:14px; vertical-align:-2px; color:${GREY};" aria-hidden="true"></i> ${esc(s.access)}</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:11px;">
+        <button data-open="${s.id}" style="font-size:12.5px; padding:5px 12px; height:auto; border-color:${BLUE}; color:${BLUE};">View details</button>
+        <button data-sel="${s.id}" style="font-size:12.5px; padding:5px 12px; height:auto; ${on?"background:"+BLUE+"; color:#fff; border-color:"+BLUE:""}">${on?'<i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Selected':"Add to compare"}</button>
+      </div>
+    </div>`;
+  }
+
+  function detail(s){
+    return `<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden;">
+      <div style="background:${BLUE}; padding:12px 16px; display:flex; align-items:center; gap:10px;">
+        <button data-back="1" style="font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.4);"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back</button>
+        <span style="color:#fff; font-weight:500; font-size:14px;">${esc(s.name)}</span>
+      </div>
+      <div style="padding:15px 16px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:14px;">
+          ${[["Updated",s.curL,ORANGE,"ti-clock"],["Geography",s.geo,BLUE,"ti-map-pin"],["Quality note",s.quality,GREY,"ti-shield-check"],["Access path",s.access,GREEN,"ti-key"]].map(m=>`
+            <div style="background:var(--surface-2); border-radius:8px; padding:9px 11px;">
+              <div style="font-size:11px; color:var(--text-muted); margin-bottom:3px;"><i class="ti ${m[3]}" style="font-size:13px; vertical-align:-2px; color:${m[2]};" aria-hidden="true"></i> ${m[0]}</div>
+              <div style="font-size:12.5px; color:var(--text-primary); line-height:1.35;">${esc(m[1])}</div>
+            </div>`).join("")}
+        </div>
+        <div style="font-size:13.5px; line-height:1.6; color:var(--text-primary); margin-bottom:13px;">${esc(s.desc)}</div>
+
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Related dashboards</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:13px;">
+          ${s.dash.map(d=>`<span style="background:#E6F1FB; color:${BLUE}; font-size:12px; padding:4px 10px; border-radius:20px;"><i class="ti ti-chart-bar" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> ${esc(d)}</span>`).join("")}
+        </div>
+
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Example measures</div>
+        <div style="font-size:12.5px; color:var(--text-primary); line-height:1.5; margin-bottom:13px;">${esc(s.measures)}</div>
+
+        <div style="display:flex; gap:9px; padding:10px 12px; background:#FAEEDA; border-radius:8px; margin-bottom:15px;">
+          <i class="ti ti-alert-triangle" style="font-size:16px; color:${ORANGE};" aria-hidden="true"></i>
+          <div style="font-size:12.5px; color:#854F0B; line-height:1.5;"><strong style="font-weight:500;">Before you use this:</strong> ${esc(s.notes)}</div>
+        </div>
+
+        <div style="display:flex; gap:8px;">
+          <button data-req="${s.id}" style="background:${GREEN}; color:#fff; border-color:${GREEN}; font-size:13.5px;"><i class="ti ti-send" style="font-size:15px; vertical-align:-2px;" aria-hidden="true"></i> Request access</button>
+          <button data-open-dash="${s.id}" style="font-size:13.5px; border-color:${BLUE}; color:${BLUE};">Open dashboard <i class="ti ti-external-link" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function compare(){
+    const chosen=sources.filter(s=>selected.has(s.id));
+    if(chosen.length<2) return `<div style="padding:24px; text-align:center; color:var(--text-secondary); font-size:13px;">Select at least two sources to compare.</div>`;
+    const rows=[["How current","curL"],["Geography","geo"],["Source type","type"],["Quality","quality"],["Access path","access"],["Agreement","agree"]];
+    let h=`<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden;">
+      <div style="background:${BLUE}; padding:11px 15px; display:flex; align-items:center; gap:10px;">
+        <button data-back="1" style="font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.4);"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back</button>
+        <span style="color:#fff; font-weight:500; font-size:14px;">Comparing ${chosen.length} sources</span>
+      </div>
+      <div style="overflow-x:auto;"><table style="width:100%; border-collapse:collapse; font-size:12.5px; min-width:${140+chosen.length*150}px;">
+        <thead><tr><th style="text-align:left; padding:10px 12px; color:var(--text-muted); font-weight:400; border-bottom:0.5px solid var(--border);"></th>
+        ${chosen.map(s=>`<th style="text-align:left; padding:10px 12px; border-bottom:0.5px solid var(--border); min-width:150px;"><span style="font-weight:500; color:var(--text-primary);">${esc(s.name.split("(")[0].trim())}</span>${s.best?` <span style="color:${GREEN}; font-size:11px;">★</span>`:""}</th>`).join("")}</tr></thead>
+        <tbody>`;
+    rows.forEach((r,i)=>{
+      h+=`<tr style="background:${i%2?"var(--surface-2)":"transparent"};"><td style="padding:9px 12px; color:var(--text-secondary);">${r[0]}</td>${chosen.map(s=>`<td style="padding:9px 12px; color:var(--text-primary);">${esc(s[r[1]])}</td>`).join("")}</tr>`;
+    });
+    h+=`<tr><td style="padding:10px 12px;"></td>${chosen.map(s=>`<td style="padding:10px 12px;"><button data-req="${s.id}" style="font-size:12px; padding:5px 11px; height:auto; background:${GREEN}; color:#fff; border-color:${GREEN};"><i class="ti ti-send" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Request</button></td>`).join("")}</tr>`;
+    h+=`</tbody></table></div>
+      <div style="padding:10px 14px; font-size:12px; color:var(--text-secondary); border-top:0.5px solid var(--border);"><i class="ti ti-bulb" style="font-size:14px; vertical-align:-2px; color:${ORANGE};" aria-hidden="true"></i> For adult diabetes prevalence, BRFSS is the best-fit primary source; pair with Community Level Estimates for small-area targeting and Hospital Discharge for severity and cost.</div>
+    </div>`;
+    return h;
+  }
+
+  function reqForm(s){
+    return `<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden;">
+      <div style="background:${GREEN}; padding:11px 15px; display:flex; align-items:center; gap:10px;">
+        <button data-back="1" style="font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.4);"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back</button>
+        <span style="color:#fff; font-weight:500; font-size:14px;">Request access — ${esc(s.name.split("(")[0].trim())}</span>
+      </div>
+      <div style="padding:16px;">
+        <div style="font-size:12.5px; color:var(--text-secondary); margin-bottom:14px;">${esc(s.agree)}. This request routes to ${esc(s.steward)}; you'll get a tracking number and status updates.</div>
+        ${[["Program / team","Chronic Disease Epidemiology"],["What you need","Adult diabetes prevalence by county, most recent year"],["Geography","County"],["Intended use","Community health assessment refresh"]].map(f=>`
+          <div style="margin-bottom:11px;"><div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">${f[0]}</div>
+          <input value="${esc(f[1])}" style="width:100%; height:36px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 10px; font-size:13px; background:var(--surface-2); color:var(--text-primary);" /></div>`).join("")}
+        <div style="display:flex; gap:8px; margin-top:6px;">
+          <button data-submit="${s.id}" style="background:${GREEN}; color:#fff; border-color:${GREEN}; font-size:13.5px;"><i class="ti ti-send" style="font-size:15px; vertical-align:-2px;" aria-hidden="true"></i> Submit request</button>
+          <button data-back="1" style="font-size:13.5px;">Cancel</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function submitted(s){
+    return `<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); padding:26px 20px; text-align:center;">
+      <div style="width:48px; height:48px; border-radius:50%; background:#EAF3DE; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+        <i class="ti ti-check" style="font-size:26px; color:${GREEN};" aria-hidden="true"></i></div>
+      <div style="font-weight:500; font-size:16px; margin-bottom:5px;">Request submitted</div>
+      <div style="font-size:13px; color:var(--text-secondary); line-height:1.6; max-width:380px; margin:0 auto 16px;">Tracking number <strong style="color:var(--text-primary); font-weight:500;">CD-2026-0417</strong>. Routed to ${esc(s.steward)}. You'll be notified when a data steward picks it up — typically within 5 business days.</div>
+      <button data-back="1" style="font-size:13px; border-color:${BLUE}; color:${BLUE};">Back to results</button>
+    </div>`;
+  }
+
+  let mode={screen:"list", id:null};
+  function render(){
+    renderFacets();
+    document.getElementById("cmpN").textContent=selected.size;
+    const panel=document.getElementById("panel");
+    if(mode.screen==="detail"){panel.innerHTML=detail(sources.find(s=>s.id===mode.id));}
+    else if(mode.screen==="compare"){panel.innerHTML=compare();}
+    else if(mode.screen==="req"){panel.innerHTML=reqForm(sources.find(s=>s.id===mode.id));}
+    else if(mode.screen==="done"){panel.innerHTML=submitted(sources.find(s=>s.id===mode.id));}
+    else{
+      const list=sources.filter(match);
+      panel.innerHTML=`<div style="font-size:12px; color:var(--text-muted); margin-bottom:9px;">${list.length} source${list.length!==1?"s":""} · ranked by fit</div>`+list.map(card).join("")||`<div style="padding:20px; color:var(--text-secondary); font-size:13px;">No sources match those filters.</div>`;
+    }
+    bind();
+  }
+  function bind(){
+    const p=document.getElementById("panel");
+    p.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{mode={screen:"detail",id:b.dataset.open};render();});
+    p.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{const id=b.dataset.sel; selected.has(id)?selected.delete(id):selected.add(id); render();});
+    p.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{mode={screen:"list",id:null};render();});
+    p.querySelectorAll("[data-req]").forEach(b=>b.onclick=()=>{mode={screen:"req",id:b.dataset.req};render();});
+    p.querySelectorAll("[data-submit]").forEach(b=>b.onclick=()=>{mode={screen:"done",id:b.dataset.submit};render();});
+    p.querySelectorAll("[data-open-dash]").forEach(b=>b.onclick=()=>sendPrompt("Walk me through what the "+sources.find(s=>s.id===b.dataset.openDash).dash[0]+" shows and how a program analyst would read it."));
+  }
+  document.getElementById("cmpBtn").onclick=()=>{mode={screen:"compare",id:null};render();};
+  document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")sendPrompt("Search the chronic disease catalog for: "+e.target.value);});
+  render();
+})();
+</script>
