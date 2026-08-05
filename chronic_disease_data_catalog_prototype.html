@@ -77,12 +77,11 @@
       <div style="flex:1; display:flex; align-items:center; gap:8px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 12px; height:42px; background:var(--surface-1);">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#005980" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
         <input id="q" value="diabetes prevalence in adults" style="border:none; outline:none; background:transparent; flex:1; font-size:15px; height:40px; color:var(--text-primary);" aria-label="Search public health data" />
-        <span style="font-size:12px; color:var(--text-muted); white-space:nowrap;">Chronic Disease cohort</span>
       </div>
     </div>
     <div style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ef7521" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"></path></svg>
-      5 sources can answer this question. They differ in how current, how granular, and how you access them — compare before you request.
+      4 sources may fit your needs. View details and compare sources before you request.
     </div>
 
     <div style="display:grid; grid-template-columns: 172px 1fr; gap:16px;">
@@ -148,11 +147,11 @@
       dash:["Cancer Incidence Dashboard (mortality)"],
       measures:"Diabetes mortality rate, years of potential life lost, disparity ratios",
       notes:"Mortality only. Contributing-cause coding varies by certifier." },
-    { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
-      desc:"Youth survey covering risk and protective factors. Relevant for early risk factors (nutrition, activity) rather than adult diabetes prevalence.",
-      dash:["HKCS dashboards"],
-      measures:"Youth nutrition, physical activity, weight status indicators",
-      notes:"Population is youth, not adults — adjacent to this question, not a direct answer." },
+    // { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
+    //   desc:"Youth survey covering risk and protective factors. Relevant for early risk factors (nutrition, activity) rather than adult diabetes prevalence.",
+    //   dash:["HKCS dashboards"],
+    //   measures:"Youth nutrition, physical activity, weight status indicators",
+    //   notes:"Population is youth, not adults — adjacent to this question, not a direct answer." },
     { id:"census", name:"Community Level Estimates (small-area)", steward:"CDPHE / modeled", type:"Modeled estimate", geo:"Census tract, neighborhood", updated:"Periodic", cur:1, curL:"Periodic", access:"Interactive maps (open)", agree:"Open", quality:"Modeled · wide CIs",
       desc:"Model-based small-area estimates that fill geographic gaps BRFSS can't support directly. Best for local targeting, with wider uncertainty.",
       dash:["Community Level Estimates maps"],
@@ -162,7 +161,7 @@
 
   const facetDefs=[
     { key:"type", label:"Source type", opts:["Survey","Administrative","Registry","Modeled estimate"] },
-    { key:"cur", label:"How current", opts:[["3","Quarterly or better"],["2","Annual"],["1","Biennial / periodic"]] }
+    { key:"cur", label:"Update frequency", opts:[["3","Quarterly or better"],["2","Annual"],["1","Biennial / periodic"]] }
   ];
   let active={type:new Set(), cur:new Set()};
   let selected=new Set(["brfss","hosp"]);
@@ -259,7 +258,7 @@
   function compare(){
     const chosen=sources.filter(s=>selected.has(s.id));
     if(chosen.length<2) return `<div style="padding:24px; text-align:center; color:var(--text-secondary); font-size:13px;">Select at least two sources to compare.</div>`;
-    const rows=[["How current","curL"],["Geography","geo"],["Source type","type"],["Quality","quality"],["Access path","access"],["Agreement","agree"]];
+    const rows=[["Update frequency","curL"],["Geography","geo"],["Source type","type"],["Quality","quality"],["Access path","access"],["Agreement","agree"]];
     let h=`<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden;">
       <div style="background:${BLUE}; padding:11px 15px; display:flex; align-items:center; gap:10px;">
         <button data-back="1" style="font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.4);">${ic("arrow-left",13,"currentColor","-2px")} Back</button>
@@ -319,7 +318,7 @@
     else if(mode.screen==="done"){panel.innerHTML=submitted(sources.find(s=>s.id===mode.id));}
     else{
       const list=sources.filter(match);
-      panel.innerHTML=`<div style="font-size:12px; color:var(--text-muted); margin-bottom:9px;">${list.length} source${list.length!==1?"s":""} · ranked by fit</div>`+list.map(card).join("")||`<div style="padding:20px; color:var(--text-secondary); font-size:13px;">No sources match those filters.</div>`;
+      panel.innerHTML=`<div style="font-size:12px; color:var(--text-muted); margin-bottom:9px;">${list.length} source${list.length!==1?"s":""} · sorted by relevance</div>`+list.map(card).join("")||`<div style="padding:20px; color:var(--text-secondary); font-size:13px;">No sources match those filters.</div>`;
     }
     bind();
   }
