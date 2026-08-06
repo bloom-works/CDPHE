@@ -76,7 +76,7 @@
     <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
       <div style="flex:1; display:flex; align-items:center; gap:8px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 12px; height:42px; background:var(--surface-1);">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#005980" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
-        <input id="q" value="diabetes prevalence in adults" style="border:none; outline:none; background:transparent; flex:1; font-size:15px; height:40px; color:var(--text-primary);" aria-label="Search public health data" />
+        <input id="q" value="cancer prevalence by county" style="border:none; outline:none; background:transparent; flex:1; font-size:15px; height:40px; color:var(--text-primary);" aria-label="Search public health data" />
       </div>
     </div>
     <div style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
@@ -142,21 +142,16 @@
       dash:["Cancer Incidence Dashboard (linked)"],
       measures:"Diabetes-related inpatient stays, ED visits, complication rates by county",
       notes:"Captures care events, not community prevalence. Underrepresents people who never present for care." },
-    { id:"vital", name:"Vital Records — Death Certificates", steward:"Vital Records / CHED", type:"Registry", geo:"State, county, census tract", updated:"Annual (final)", cur:2, curL:"Annual", access:"Aggregate open + record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
+    { id:"vital", name:"Vital Statistics — Death Records", steward:"Vital Statistics / CHED", type:"Registry", geo:"State, county, census tract", updated:"Annual (final)", cur:2, curL:"Annual", access:"Aggregate open + record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
       desc:"Death certificate records where diabetes is an underlying or contributing cause. Used for mortality trends and disparities, not living prevalence.",
       dash:["Cancer Incidence Dashboard (mortality)"],
       measures:"Diabetes mortality rate, years of potential life lost, disparity ratios",
       notes:"Mortality only. Contributing-cause coding varies by certifier." },
-    // { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
-    //   desc:"Youth survey covering risk and protective factors. Relevant for early risk factors (nutrition, activity) rather than adult diabetes prevalence.",
-    //   dash:["HKCS dashboards"],
-    //   measures:"Youth nutrition, physical activity, weight status indicators",
-    //   notes:"Population is youth, not adults — adjacent to this question, not a direct answer." },
-    { id:"census", name:"Community Level Estimates (small-area)", steward:"CDPHE / modeled", type:"Modeled estimate", geo:"Census tract, neighborhood", updated:"Periodic", cur:1, curL:"Periodic", access:"Interactive maps (open)", agree:"Open", quality:"Modeled · wide CIs",
-      desc:"Model-based small-area estimates that fill geographic gaps BRFSS can't support directly. Best for local targeting, with wider uncertainty.",
-      dash:["Community Level Estimates maps"],
-      measures:"Modeled diabetes prevalence by small geography",
-      notes:"Modeled, not measured. Use for prioritization, not precise counts." }
+    { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
+      desc:"Youth survey covering risk and protective factors.",
+      dash:["HKCS dashboards"],
+      measures:"Youth nutrition, physical activity, weight status indicators",
+      notes:"" },
   ];
 
   const facetDefs=[
@@ -164,7 +159,7 @@
     { key:"cur", label:"Update frequency", opts:[["3","Quarterly or better"],["2","Annual"],["1","Biennial / periodic"]] }
   ];
   let active={type:new Set(), cur:new Set()};
-  let selected=new Set(["brfss","hosp"]);
+  let selected=new Set([]);
   let view="list";
 
   const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
