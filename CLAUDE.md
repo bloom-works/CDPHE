@@ -13,9 +13,12 @@ The first example is from the Chronic Disease cohort with the example search "ca
 
 - Not a production system, and not a platform build. Platform selection, procurement, and enterprise data infrastructure are explicitly out of scope for this phase.
 - Not a real backend. All data in the prototype is illustrative/sample content hard-coded in the file. There is no server, database, or live data connection.
-- Not a place for real or sensitive CDPHE data. Keep everything in the repo synthetic. Do not add real record-level data, credentials, or internal-only material.
+- Not a place for real or sensitive CDPHE data. Keep everything in the repo synthetic. Do not add real record-level data, credentials, or internal-only material. The only exception is publicly accessible links to dashboards and documentation.
 
-## Hard constraints (do not break without being asked)
+## Deployment
+This prototype is deployed to a password protected Netlify environment for easy sharing with partners. When possible it should link out to real CDPHE dashboards and sources available publicly on the internet.
+
+## Constraints
 
 1. **Single self-contained HTML file.** The deliverable is one `.html` file that runs anywhere by opening it in a browser — no build step, no bundler, no framework, no server. Keep it that way unless explicitly asked to change the architecture.
 2. **Design tokens are inlined**, not borrowed from any host environment, so it renders identically wherever it is hosted.
