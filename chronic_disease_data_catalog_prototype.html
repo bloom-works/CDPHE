@@ -143,7 +143,7 @@
   }
 
   const sources=[
-    { id:"cccr", name:"Colorado Central Cancer Registry (CCCR)", steward:"Registries & Vital Statistics / CHED", type:"Registry", geo:"State, county", updated:"Annual", cur:2, curL:"Annual", range:"2014–2023", access:"Public dashboards, Google Sheet, data request", agree:"Aggregate open; record-level requires review", quality:"Reportable cases (NPCR standards)",
+    { id:"cccr", name:"Colorado Central Cancer Registry (CCCR)", steward:"Center for Health and Environmental Data", type:"Registry", geo:"State, county", updated:"Annual", cur:2, curL:"Annual", range:"2014–2023", access:"Public dashboard, Google Sheet, data request", agree:"Aggregate open; record-level requires review", quality:"Reportable cases (NPCR standards)",
       desc:"Statewide registry of every reportable cancer diagnosed in Colorado residents, collected as part of the CDC's National Program of Cancer Registries. The authoritative source for cancer counts and age-adjusted incidence rates by county.",
       dash:[
         {label:"CoHID cancer incidence, age-adjusted rates by county", url:"https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2022CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"},
@@ -154,7 +154,7 @@
       measures:"Age-adjusted incidence rate per 100,000 by county and cancer site, stage at diagnosis, five-year relative survival",
       notes:"This measures incidence (new diagnoses), not prevalence (people living with cancer). Rates are suppressed for fewer than three cases, and the county dashboard excludes race and ethnicity — use the separate race/ethnicity dashboards for that breakdown.",
       best:true },
-    { id:"brfss", name:"Behavioral Risk Factor Surveillance System (BRFSS)", steward:"Center for Health & Environmental Data", type:"Survey", geo:"State, region, county (multi-year)", updated:"Annual · ~6 mo lag", cur:2, curL:"Annual", range:"2011–2024", access:"VISION dashboard, Google Sheet, data request", agree:"Data use agreement for record-level", quality:"Self-reported · CI-adjusted",
+    { id:"brfss", name:"Behavioral Risk Factor Surveillance System (BRFSS)", steward:"Center for Health & Environmental Data", type:"Survey", geo:"State, region, county (multi-year)", updated:"Annual · ~6 mo lag", cur:2, curL:"Annual", range:"2011–2024", access:"Public dashboard, Google Sheet, data request", agree:"Data use agreement for record-level", quality:"Self-reported · CI-adjusted",
       desc:"Statewide telephone survey of adults 18+ tracking health behaviors and preventive practices tied to morbidity and mortality. ~10,000 surveys completed each year, weighted to represent Colorado adults. For a cancer question, this is the screening-and-risk-factor companion to the registry.",
       dash:[
         {label:"VISION — chronic disease and cancer screening indicators", url:"https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CDPHEVISION/CDPHEVISION?%3AshowAppBanner=false&%3Adisplay_count=n&%3AshowVizHome=n&%3Aorigin=viz_share_link&%3AisGuestRedirectFromVizportal=y&%3Aembed=y"},
@@ -164,7 +164,7 @@
       docs:{label:"Colorado BRFSS — summary tables, questionnaires and fact sheets", url:"https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/behavioral-risk-factor-surveillance-system"},
       measures:"Mammogram within 2 years – females 50–74 (%), Pap smear within 3 years – females 21–65 (%), colorectal cancer screening meeting guidelines – adults 50–75 (%)",
       notes:"Methodology changed in 2011 — do not compare to earlier years. Estimates are suppressed when fewer than 50 people answered the question, and county estimates require combining multiple years." },
-    { id:"vital", name:"Vital Statistics — Death Records", steward:"Vital Statistics / CHED", type:"Registry", geo:"State, county", updated:"Annual (final)", cur:2, curL:"Annual", range:"2000–2025", access:"Aggregate open, record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
+    { id:"vital", name:"Vital Statistics — Death Records", steward:"Center for Health and Environmental Data", type:"Registry", geo:"State, county", updated:"Annual (final)", cur:2, curL:"Annual", range:"2000–2025", access:"Aggregate open, record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
       desc:"Death certificate records coded to an underlying cause of death, including cancer. Used for mortality trends, leading-cause rankings and disparities.",
       dash:[
         {label:"CoHID mortality statistics, full death query by county", url:"https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDFullDeathQuery_StateDemographyPopEstimates/MortalityStatistics?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y"},
@@ -195,7 +195,7 @@
   ];
 
   const facetDefs=[
-    { key:"type", label:"Source type", opts:["Survey","Administrative","Registry"] },
+    { key:"type", label:"Type", opts:["Survey","Administrative","Registry"] },
     { key:"cur", label:"Update frequency", opts:[["2","Annual"],["1","Biennial / periodic"]] }
   ];
   let active={type:new Set(), cur:new Set()};
@@ -266,7 +266,7 @@
       </div>
       <div style="padding:15px 16px;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:14px;">
-          ${[["Data covers",s.range,GREY,"calendar"],["Updated",s.curL,GREY,"clock"],["Geography",s.geo,BLUE,"map-pin"],["Quality note",s.quality,GREY,"shield-check"],["Access path",s.access,GREEN,"key"]].map(m=>`
+          ${[["Years",s.range,GREY,"calendar"],["Update frequency",s.curL,GREY,"clock"],["Geographic level",s.geo,BLUE,"map-pin"],["Quality note",s.quality,GREY,"shield-check"],["Access path",s.access,GREEN,"key"]].map(m=>`
             <div style="background:var(--surface-2); border-radius:8px; padding:9px 11px;">
               <div style="font-size:11px; color:var(--text-muted); margin-bottom:3px;">${ic(m[3],13,m[2],"-2px")} ${m[0]}</div>
               <div style="font-size:12.5px; color:var(--text-primary); line-height:1.35;">${esc(m[1])}</div>
@@ -274,7 +274,7 @@
         </div>
         <div style="font-size:13.5px; line-height:1.6; color:var(--text-primary); margin-bottom:13px;">${esc(s.desc)}</div>
 
-        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Published dashboards</div>
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Public dashboards</div>
         <ul style="list-style:none; margin:0 0 13px; padding:0; display:flex; flex-direction:column; gap:5px;">
           ${s.dash.map(d=>`<li style="font-size:12.5px; line-height:1.45;">${ic("chart-bar",13,BLUE,"-2px")} ${extLink(d.url,d.label)}</li>`).join("")}
         </ul>
