@@ -90,7 +90,7 @@
     </div>
     <div style="font-size:13px; color:var(--text-secondary); margin-bottom:14px;">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--slate)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"></path></svg>
-      4 sources may fit your needs. View details and compare sources before you request.
+      <span id="hitCount">5</span> sources may fit your needs. View details and compare sources before you request.
     </div>
 
     <div style="display:grid; grid-template-columns: 172px 1fr; gap:16px;">
@@ -129,7 +129,9 @@
     "chart-bar":'<line x1="4" y1="20" x2="4" y2="13"></line><line x1="10" y1="20" x2="10" y2="9"></line><line x1="16" y1="20" x2="16" y2="5"></line>',
     "alert-triangle":'<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
     send:'<line x1="22" y1="2" x2="11" y2="13"></line><path d="M22 2l-7 20-4-9-9-4 20-7z"></path>',
-    "external-link":'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>'
+    "external-link":'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
+    calendar:'<rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line>',
+    book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>'
   };
   function ic(name,size,color,va){
     const style=`flex-shrink:0;${va?" vertical-align:"+va+";":""}`;
@@ -141,38 +143,70 @@
   }
 
   const sources=[
-    { id:"brfss", name:"Behavioral Risk Factor Surveillance System (BRFSS)", steward:"Center for Health & Environmental Data", type:"Survey", geo:"State, region, county (multi-year)", updated:"Annual · ~6 mo lag", cur:2, curL:"Annual", access:"VISION dashboard + data request", agree:"Data use agreement for record-level", quality:"Self-reported · CI-adjusted",
-      desc:"Statewide telephone survey of adults 18+ tracking health behaviors and preventive practices tied to morbidity and mortality. ~10,000 surveys completed each year, weighted to represent Colorado adults.",
-      dash:["Diabetes (VISION)","Cardiovascular Health (VISION)","Cancer Screening (VISION)"],
-      measures:"Diabetes – Adults (%), Prediabetes – Adults (%), Diabetes self-management course participation (%)",
-      notes:"Methodology changed in 2011 — do not compare to earlier years. Estimates suppressed when fewer than 50 respondents.",
+    { id:"cccr", name:"Colorado Central Cancer Registry (CCCR)", steward:"Registries & Vital Statistics / CHED", type:"Registry", geo:"State, county", updated:"Annual", cur:2, curL:"Annual", range:"2014–2023", access:"Public dashboards, Google Sheet, data request", agree:"Aggregate open; record-level requires review", quality:"Reportable cases (NPCR standards)",
+      desc:"Statewide registry of every reportable cancer diagnosed in Colorado residents, collected as part of the CDC's National Program of Cancer Registries. The authoritative source for cancer counts and age-adjusted incidence rates by county.",
+      dash:[
+        {label:"CoHID cancer incidence, age-adjusted rates by county", url:"https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2022CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"},
+        {label:"Colorado Health Indicators — chronic disease (cancer)", url:"https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/ChronicDiseaseDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"}
+      ],
+      url:"https://docs.google.com/spreadsheets/d/1-Xo9x-gTNxyHXaExgRRrUCF9I4UmD8kp/edit?gid=1420178672#gid=1420178672",
+      docs:{label:"Colorado Central Cancer Registry — program page and data source fact sheet", url:"https://cdphe.colorado.gov/colorado-central-cancer-registry"},
+      measures:"Age-adjusted incidence rate per 100,000 by county and cancer site, stage at diagnosis, five-year relative survival",
+      notes:"This measures incidence (new diagnoses), not prevalence (people living with cancer). Rates are suppressed for fewer than three cases, and the county dashboard excludes race and ethnicity — use the separate race/ethnicity dashboards for that breakdown.",
       best:true },
-    { id:"hosp", name:"Hospital Discharge Data (CHA)", steward:"CO Hospital Association / CDPHE", type:"Administrative", geo:"Facility, county", updated:"Quarterly", cur:3, curL:"Quarterly", access:"Data request + agreement", agree:"Data sharing agreement required", quality:"Billing-coded (ICD-10)",
-      desc:"Inpatient and emergency-department billing records for diabetes-related admissions and complications. Strong for severe/managed disease and cost, not undiagnosed prevalence.",
-      dash:["Cancer Incidence Dashboard (linked)"],
-      measures:"Diabetes-related inpatient stays, ED visits, complication rates by county",
-      notes:"Captures care events, not community prevalence. Underrepresents people who never present for care." },
-    { id:"vital", name:"Vital Statistics — Death Records", steward:"Vital Statistics / CHED", type:"Registry", geo:"State, county, census tract", updated:"Annual (final)", cur:2, curL:"Annual", access:"Aggregate open + record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
-      desc:"Death certificate records where diabetes is an underlying or contributing cause. Used for mortality trends and disparities, not living prevalence.",
-      dash:["Cancer Incidence Dashboard (mortality)"],
-      measures:"Diabetes mortality rate, years of potential life lost, disparity ratios",
-      notes:"Mortality only. Contributing-cause coding varies by certifier." },
-    { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE / partners", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", access:"VISION dashboard + request", agree:"Aggregate open", quality:"Self-reported (youth)",
-      desc:"Youth survey covering risk and protective factors.",
-      dash:["HKCS dashboards"],
-      measures:"Youth nutrition, physical activity, weight status indicators",
-      notes:"By region, may not map to county level" },
+    { id:"brfss", name:"Behavioral Risk Factor Surveillance System (BRFSS)", steward:"Center for Health & Environmental Data", type:"Survey", geo:"State, region, county (multi-year)", updated:"Annual · ~6 mo lag", cur:2, curL:"Annual", range:"2011–2024", access:"VISION dashboard, Google Sheet, data request", agree:"Data use agreement for record-level", quality:"Self-reported · CI-adjusted",
+      desc:"Statewide telephone survey of adults 18+ tracking health behaviors and preventive practices tied to morbidity and mortality. ~10,000 surveys completed each year, weighted to represent Colorado adults. For a cancer question, this is the screening-and-risk-factor companion to the registry.",
+      dash:[
+        {label:"VISION — chronic disease and cancer screening indicators", url:"https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CDPHEVISION/CDPHEVISION?%3AshowAppBanner=false&%3Adisplay_count=n&%3AshowVizHome=n&%3Aorigin=viz_share_link&%3AisGuestRedirectFromVizportal=y&%3Aembed=y"},
+        {label:"Colorado Health Indicators — chronic disease dashboard", url:"https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/ChronicDiseaseDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"}
+      ],
+      url:"https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/behavioral-risk-factor-surveillance-system",
+      docs:{label:"Colorado BRFSS — summary tables, questionnaires and fact sheets", url:"https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/behavioral-risk-factor-surveillance-system"},
+      measures:"Mammogram within 2 years – females 50–74 (%), Pap smear within 3 years – females 21–65 (%), colorectal cancer screening meeting guidelines – adults 50–75 (%)",
+      notes:"Methodology changed in 2011 — do not compare to earlier years. Estimates are suppressed when fewer than 50 people answered the question, and county estimates require combining multiple years." },
+    { id:"vital", name:"Vital Statistics — Death Records", steward:"Vital Statistics / CHED", type:"Registry", geo:"State, county", updated:"Annual (final)", cur:2, curL:"Annual", range:"2000–2025", access:"Aggregate open, record-level request", agree:"Record-level requires review", quality:"Cause-of-death coded",
+      desc:"Death certificate records coded to an underlying cause of death, including cancer. Used for mortality trends, leading-cause rankings and disparities.",
+      dash:[
+        {label:"CoHID mortality statistics, full death query by county", url:"https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDFullDeathQuery_StateDemographyPopEstimates/MortalityStatistics?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y"},
+        {label:"Colorado Health Indicators — mortality dashboard", url:"https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/MortalityDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"}
+      ],
+      url:"https://cdphe.colorado.gov/registries-and-vital-statistics/vital-statistics-births-deaths-fetal-deaths-abortions-marriages",
+      docs:{label:"Colorado death statistics — data sets, definitions and methodology notes", url:"https://cdphe.colorado.gov/registries-and-vital-statistics/vital-statistics-births-deaths-fetal-deaths-abortions-marriages"},
+      measures:"Cancer mortality rate per 100,000 by county, leading causes of death, years of potential life lost",
+      notes:"Mortality only. Race and ethnicity categories changed in 2020, so 2000–2019 and 2020-forward are published as separate series and should not be trended across that break." },
+    { id:"hosp", name:"Hospital Discharge Data (CHA)", steward:"CO Hospital Association / CDPHE", type:"Administrative", geo:"County of residence", updated:"Annual", cur:2, curL:"Annual", range:"2016–present", access:"Public dashboard, data request", agree:"Data sharing agreement required", quality:"Billing-coded (ICD-10)",
+      desc:"Inpatient and emergency-department billing records from CHA member hospitals.",
+      dash:[
+        {label:"CHA Colorado hospital utilization data", url:"https://cha.com/wp-content/uploads/2025/07/Databank-Utilization-Trends_2020-2024.pdf"}
+      ],
+      url:"https://app.powerbi.com/view?r=eyJrIjoiMjZhZmQ5ZTQtZGM0Yi00MzVlLTlmZWMtYTI3YWM1MzcwN2VlIiwidCI6IjA2MmEyYjU3LTYzOTQtNGNjNy1hYjdkLWJjNDVmMmNmZTAwOSIsImMiOjZ9", 
+      docs:{label:"CHA data and reporting — utilization data documentation and ICD-10 indicator definitions", url:"https://cha.com/data-reports/"},
+      measures:"Age-adjusted hospitalization rates per 100,000 by condition and county, ED visit rates",
+      notes:"Captures care events, not community prevalence, and underrepresents people who never present for care. Only general and acute care hospitals participate, and geography is county of residence rather than hospital location." },
+    { id:"hkcs", name:"Healthy Kids Colorado Survey (HKCS)", steward:"CDPHE and partner agencies", type:"Survey", geo:"State, region", updated:"Biennial", cur:1, curL:"Biennial", range:"2013–2025 (odd years)", access:"Public dashboard, data request", agree:"Aggregate open", quality:"Self-reported (youth)",
+      desc:"The state's most comprehensive survey of youth health and well-being, covering students in grades 6–12. Unified into its current form in 2013; 134,431 students at 362 schools participated in 2025.",
+      dash:[
+        {label:"Healthy Kids Colorado Survey dashboard", url:"https://cdphe.colorado.gov/healthy-kids-colorado-survey-dashboard"}
+      ],
+      url:"https://docs.google.com/spreadsheets/d/1NcybOmCt3HA0Z5EPPrYAAmrsFV9EQBYReHWCMBk7TC4/edit?gid=1491825175#gid=1491825175",
+      docs:{label:"Healthy Kids Colorado Survey overview — methodology, weighting and FAQ", url:"https://cdphe.colorado.gov/healthy-kids-colorado-survey-overview"},
+      measures:"Youth nutrition, physical activity, weight status, tobacco and substance use, protective factors",
+      notes:"Youth risk and protective factors only — no cancer outcomes. Administered in the fall of odd-numbered years and published the following summer, at state and regional level that may not map to county." },
   ];
 
   const facetDefs=[
     { key:"type", label:"Source type", opts:["Survey","Administrative","Registry"] },
-    { key:"cur", label:"Update frequency", opts:[["3","Quarterly or better"],["2","Annual"],["1","Biennial / periodic"]] }
+    { key:"cur", label:"Update frequency", opts:[["2","Annual"],["1","Biennial / periodic"]] }
   ];
   let active={type:new Set(), cur:new Set()};
   let selected=new Set([]);
   let view="list";
 
   const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  // External links always open in a new tab, and announce that to screen readers.
+  function extLink(url,label,color){
+    return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" style="color:${color||BLUE}; text-decoration:underline;">${esc(label)}${ic("external-link",12,"currentColor","-1px")}<span class="sr-only"> (opens in a new window)</span></a>`;
+  }
   const curBadge=n=>{const m={3:[GREEN,"#E5EEE8"],2:[BLUE,"#EDEFF0"],1:[ORANGE,"#F7F1DE"]}[n];return `<span style="background:${m[1]}; color:${m[0]}; font-size:11px; padding:2px 8px; border-radius:20px; white-space:nowrap;">${sources.find(s=>s.cur===n)?"":""}</span>`;};
 
   function renderFacets(){
@@ -210,6 +244,7 @@
           </div>
           <div style="font-size:12.5px; color:var(--text-secondary); margin:2px 0 8px;">${esc(s.steward)} · ${esc(s.type)}</div>
           <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary);">
+            <span>${ic("calendar",14,GREY,"-2px")} ${esc(s.range)}</span>
             <span>${ic("clock",14,GREY,"-2px")} ${esc(s.curL)}</span>
             <span>${ic("map-pin",14,BLUE,"-2px")} ${esc(s.geo)}</span>
             <span>${ic("key",14,GREY,"-2px")} ${esc(s.access)}</span>
@@ -231,7 +266,7 @@
       </div>
       <div style="padding:15px 16px;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:14px;">
-          ${[["Updated",s.curL,GREY,"clock"],["Geography",s.geo,BLUE,"map-pin"],["Quality note",s.quality,GREY,"shield-check"],["Access path",s.access,GREEN,"key"]].map(m=>`
+          ${[["Data covers",s.range,GREY,"calendar"],["Updated",s.curL,GREY,"clock"],["Geography",s.geo,BLUE,"map-pin"],["Quality note",s.quality,GREY,"shield-check"],["Access path",s.access,GREEN,"key"]].map(m=>`
             <div style="background:var(--surface-2); border-radius:8px; padding:9px 11px;">
               <div style="font-size:11px; color:var(--text-muted); margin-bottom:3px;">${ic(m[3],13,m[2],"-2px")} ${m[0]}</div>
               <div style="font-size:12.5px; color:var(--text-primary); line-height:1.35;">${esc(m[1])}</div>
@@ -239,10 +274,13 @@
         </div>
         <div style="font-size:13.5px; line-height:1.6; color:var(--text-primary); margin-bottom:13px;">${esc(s.desc)}</div>
 
-        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Related dashboards</div>
-        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:13px;">
-          ${s.dash.map(d=>`<span style="background:#EDEFF0; color:${BLUE}; font-size:12px; padding:4px 10px; border-radius:20px;">${ic("chart-bar",13,"currentColor","-2px")} ${esc(d)}</span>`).join("")}
-        </div>
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Published dashboards</div>
+        <ul style="list-style:none; margin:0 0 13px; padding:0; display:flex; flex-direction:column; gap:5px;">
+          ${s.dash.map(d=>`<li style="font-size:12.5px; line-height:1.45;">${ic("chart-bar",13,BLUE,"-2px")} ${extLink(d.url,d.label)}</li>`).join("")}
+        </ul>
+
+        <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Documentation</div>
+        <div style="font-size:12.5px; line-height:1.45; margin-bottom:13px;">${ic("book",13,BLUE,"-2px")} ${extLink(s.docs.url,s.docs.label)}</div>
 
         <div style="font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:5px;">Example measures</div>
         <div style="font-size:12.5px; color:var(--text-primary); line-height:1.5; margin-bottom:13px;">${esc(s.measures)}</div>
@@ -254,7 +292,7 @@
 
         <div style="display:flex; gap:8px;">
           <button data-req="${s.id}" style="background:${GREEN}; color:#fff; border-color:${GREEN}; font-size:13.5px;">${ic("send",15,"currentColor","-2px")} Request access</button>
-          <button data-open-dash="${s.id}" style="font-size:13.5px; border-color:${BLUE}; color:${BLUE};">Open dashboard ${ic("external-link",14,"currentColor","-2px")}</button>
+          <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:5px; height:38px; padding:0 14px; border-radius:var(--radius); border:0.5px solid ${BLUE}; color:${BLUE}; background:var(--surface-1); font-size:13.5px; text-decoration:none;">View data ${ic("external-link",14,"currentColor","-2px")}<span class="sr-only"> (opens in a new window)</span></a>
         </div>
       </div>
     </div>`;
@@ -263,7 +301,7 @@
   function compare(){
     const chosen=sources.filter(s=>selected.has(s.id));
     if(chosen.length<2) return `<div style="padding:24px; text-align:center; color:var(--text-secondary); font-size:13px;">Select at least two sources to compare.</div>`;
-    const rows=[["Update frequency","curL"],["Geography","geo"],["Source type","type"],["Quality","quality"],["Access path","access"],["Agreement","agree"]];
+    const rows=[["Data covers","range"],["Update frequency","curL"],["Geography","geo"],["Source type","type"],["Quality","quality"],["Access path","access"],["Agreement","agree"]];
     let h=`<div style="border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden;">
       <div style="background:${BLUE}; padding:11px 15px; display:flex; align-items:center; gap:10px;">
         <button data-back="1" style="font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.4);">${ic("arrow-left",13,"currentColor","-2px")} Back</button>
@@ -276,9 +314,11 @@
     rows.forEach((r,i)=>{
       h+=`<tr style="background:${i%2?"var(--surface-2)":"transparent"};"><td style="padding:9px 12px; color:var(--text-secondary);">${r[0]}</td>${chosen.map(s=>`<td style="padding:9px 12px; color:var(--text-primary);">${esc(s[r[1]])}</td>`).join("")}</tr>`;
     });
+    h+=`<tr style="background:${rows.length%2?"var(--surface-2)":"transparent"};"><td style="padding:9px 12px; color:var(--text-secondary);">Dashboards</td>${chosen.map(s=>`<td style="padding:9px 12px;">${s.dash.map(d=>extLink(d.url,d.label)).join("<br>")}</td>`).join("")}</tr>`;
+    h+=`<tr><td style="padding:9px 12px; color:var(--text-secondary);">Documentation</td>${chosen.map(s=>`<td style="padding:9px 12px;">${extLink(s.docs.url,s.docs.label)}</td>`).join("")}</tr>`;
     h+=`<tr><td style="padding:10px 12px;"></td>${chosen.map(s=>`<td style="padding:10px 12px;"><button data-req="${s.id}" style="font-size:12px; padding:5px 11px; height:auto; background:${GREEN}; color:#fff; border-color:${GREEN};">${ic("send",13,"currentColor","-2px")} Request</button></td>`).join("")}</tr>`;
     h+=`</tbody></table></div>
-      <div style="padding:10px 14px; font-size:12px; color:var(--text-secondary); border-top:0.5px solid var(--border);">${ic("bulb",14,GREY,"-2px")} For adult diabetes prevalence, BRFSS is the best-fit primary source; pair with Community Level Estimates for small-area targeting and Hospital Discharge for severity and cost.</div>
+      <div style="padding:10px 14px; font-size:12px; color:var(--text-secondary); border-top:0.5px solid var(--border);">${ic("bulb",14,GREY,"-2px")} For cancer by county, the Cancer Registry is the best-fit primary source; pair with BRFSS for screening rates and Vital Statistics for mortality. Note that the registry reports incidence, not prevalence.</div>
     </div>`;
     return h;
   }
@@ -291,7 +331,7 @@
       </div>
       <div style="padding:16px;">
         <div style="font-size:12.5px; color:var(--text-secondary); margin-bottom:14px;">${esc(s.agree)}. This request routes to ${esc(s.steward)}; you'll get a tracking number and status updates.</div>
-        ${[["Program / team","Chronic Disease Epidemiology"],["What you need","Adult diabetes prevalence by county, most recent year"],["Geography","County"],["Intended use","Community health assessment refresh"]].map(f=>`
+        ${[["Program / team","Chronic Disease Epidemiology"],["What you need","Cancer incidence by county, most recent year"],["Geography","County"],["Intended use","Community health assessment refresh"]].map(f=>`
           <div style="margin-bottom:11px;"><div style="font-size:12px; color:var(--text-secondary); margin-bottom:4px;">${f[0]}</div>
           <input value="${esc(f[1])}" style="width:100%; height:36px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 10px; font-size:13px; background:var(--surface-2); color:var(--text-primary);" /></div>`).join("")}
         <div style="display:flex; gap:8px; margin-top:6px;">
@@ -316,6 +356,7 @@
   function render(){
     renderFacets();
     document.getElementById("cmpN").textContent=selected.size;
+    document.getElementById("hitCount").textContent=sources.filter(match).length;
     const panel=document.getElementById("panel");
     if(mode.screen==="detail"){panel.innerHTML=detail(sources.find(s=>s.id===mode.id));}
     else if(mode.screen==="compare"){panel.innerHTML=compare();}
@@ -334,10 +375,10 @@
     p.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{mode={screen:"list",id:null};render();});
     p.querySelectorAll("[data-req]").forEach(b=>b.onclick=()=>{mode={screen:"req",id:b.dataset.req};render();});
     p.querySelectorAll("[data-submit]").forEach(b=>b.onclick=()=>{mode={screen:"done",id:b.dataset.submit};render();});
-    p.querySelectorAll("[data-open-dash]").forEach(b=>b.onclick=()=>sendPrompt("Walk me through what the "+sources.find(s=>s.id===b.dataset.openDash).dash[0]+" shows and how a program analyst would read it."));
   }
   document.getElementById("cmpBtn").onclick=()=>{mode={screen:"compare",id:null};render();};
-  document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")sendPrompt("Search the chronic disease catalog for: "+e.target.value);});
+  // The search box is illustrative — the example query is fixed, so Enter just holds the current results.
+  document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")e.preventDefault();});
   render();
 })();
 </script>
