@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cdphe-dmi-prototype/schema.json",
+  "title": "CDPHE public health data catalog — schema",
+  "description": "Schema for the discovery-phase data catalog prototype. Defines the three data product types (datasets, summary reports, dashboards) and their metadata. All catalog data lives in public JSON files in the repo. The root validates a combined catalog object; to validate a single-type file (e.g. datasets.json as a bare array) reference the definition directly, e.g. { \"$ref\": \"schema.json#/$defs/dataset\" } per item.",
+  "type": "object",
+  "properties": {
+    "datasets": {
+      "type": "array",
+      "description": "All dataset records.",
+      "items": { "$ref": "#/$defs/dataset" }
+    },
+    "summary_reports": {
+      "type": "array",
+      "description": "All summary report records.",
+      "items": { "$ref": "#/$defs/summary_report" }
+    },
+    "dashboards": {
+      "type": "array",
+      "description": "All dashboard records.",
+      "items": { "$ref": "#/$defs/dashboard" }
+    }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Stable, globally unique identifier for the record (GUID/UUID, lowercase, e.g. '3f2b8c1e-6d4a-5b7e-9c0f-1a2b3c4d5e6f'), used as the target of cross-references from related_* fields. Must not change once assigned."
+    },
+    "id_ref": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "A reference to the `id` (GUID) of another record. Referential integrity (that the referenced id exists) is enforced by convention, not by this schema."
+    },
+    "name": {
+      "type": "string",
+      "description": "Full human-readable name of the product."
+    },
+    "description": {
+      "type": "string",
+      "description": "Plain-language summary of what the product contains and what questions it can help answer."
+    },
+    "topics": {
+      "type": "array",
+      "description": "Public health topics/tags this product relates to, used for search and filtering. Draw values from a controlled vocabulary so filtering stays consistent.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "population": {
+      "type": "string",
+      "description": "The population the product describes (e.g. 'Adults 18+', 'All ages', 'Children 0-17'). Single value; change to an array of strings if a product spans multiple distinct populations."
+    },
+    "geographic_granularity": {
+      "type": "string",
+      "description": "The finest geographic level available (e.g. 'state', 'county', 'census tract', 'ZIP code'). Single value; change to an array if a product is published at multiple levels. Consider constraining to an enum once the vocabulary is settled."
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the product or its underlying data was last refreshed, ISO 8601 (YYYY-MM-DD)."
+    },
+    "next_update": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Expected date of the next refresh, ISO 8601 (YYYY-MM-DD). Use null when none is scheduled or the date is unknown. To express a cadence instead (e.g. 'annual', 'as needed'), add a separate update_frequency field rather than overloading this one."
+    },
+    "years_covered": {
+      "type": "array",
+      "description": "Calendar years the product covers, as four-digit years listed individually so gaps are explicit and filtering by year works (e.g. [2018, 2019, 2020]). If your series are always contiguous, a { \"start\": 2018, \"end\": 2020 } object is a more compact alternative.",
+      "items": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+      "uniqueItems": true
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary public URL for the product (dataset landing page, report, or dashboard). Must be publicly accessible."
+    },
+    "documentation": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Public URL to data documentation, a data dictionary, or methodology. Null if none. Change to an array of URLs if multiple documents apply."
+    },
+    "dataset_type": {
+      "type": "string",
+      "description": "Sub-classification of the dataset, distinct from the top-level product type. Examples: 'survey', 'surveillance', 'registry', 'vital records', 'administrative', 'census/estimates'. Consider constraining to an enum once the taxonomy is settled."
+    },
+
+    "dataset": {
+      "type": "object",
+      "description": "Data product: a source dataset that can be discovered, understood, and accessed/requested.",
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/name" },
+        "short_name": {
+          "type": "string",
+          "description": "Abbreviated name or acronym for compact display (e.g. 'BRFSS')."
+        },
+        "description": { "$ref": "#/$defs/description" },
+        "type": { "$ref": "#/$defs/dataset_type" },
+        "topics": { "$ref": "#/$defs/topics" },
+        "population": { "$ref": "#/$defs/population" },
+        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "last_updated": { "$ref": "#/$defs/last_updated" },
+        "next_update": { "$ref": "#/$defs/next_update" },
+        "years_covered": { "$ref": "#/$defs/years_covered" },
+        "link": { "$ref": "#/$defs/link" },
+        "documentation": { "$ref": "#/$defs/documentation" },
+        "related_dashboards": {
+          "type": "array",
+          "description": "ids of dashboards built on or related to this dataset.",
+          "items": { "$ref": "#/$defs/id_ref" },
+          "uniqueItems": true
+        },
+        "related_reports": {
+          "type": "array",
+          "description": "ids of summary reports built on or related to this dataset.",
+          "items": { "$ref": "#/$defs/id_ref" },
+          "uniqueItems": true
+        }
+      },
+      "required": ["id", "name", "description", "type", "topics", "link"],
+      "additionalProperties": false
+    },
+
+    "summary_report": {
+      "type": "object",
+      "description": "Data product: a published summary or aggregate report derived from one or more datasets.",
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/name" },
+        "description": { "$ref": "#/$defs/description" },
+        "topics": { "$ref": "#/$defs/topics" },
+        "population": { "$ref": "#/$defs/population" },
+        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "last_updated": { "$ref": "#/$defs/last_updated" },
+        "next_update": { "$ref": "#/$defs/next_update" },
+        "years_covered": { "$ref": "#/$defs/years_covered" },
+        "link": { "$ref": "#/$defs/link" },
+        "related_datasets": {
+          "type": "array",
+          "description": "ids of datasets this report is based on or related to.",
+          "items": { "$ref": "#/$defs/id_ref" },
+          "uniqueItems": true
+        }
+      },
+      "required": ["id", "name", "description", "topics", "link"],
+      "additionalProperties": false
+    },
+
+    "dashboard": {
+      "type": "object",
+      "description": "Data product: an interactive dashboard (e.g. Tableau or Shiny) built on one or more datasets.",
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/name" },
+        "description": { "$ref": "#/$defs/description" },
+        "topics": { "$ref": "#/$defs/topics" },
+        "population": { "$ref": "#/$defs/population" },
+        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "last_updated": { "$ref": "#/$defs/last_updated" },
+        "next_update": { "$ref": "#/$defs/next_update" },
+        "years_covered": { "$ref": "#/$defs/years_covered" },
+        "link": { "$ref": "#/$defs/link" },
+        "related_datasets": {
+          "type": "array",
+          "description": "ids of datasets this dashboard is based on or related to.",
+          "items": { "$ref": "#/$defs/id_ref" },
+          "uniqueItems": true
+        }
+      },
+      "required": ["id", "name", "description", "topics", "link"],
+      "additionalProperties": false
+    }
+  }
+}

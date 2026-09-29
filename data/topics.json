@@ -1,0 +1,59 @@
+{
+  "Health Topics": [
+    "Alcohol",
+    "Behavioral Health",
+    "Cancer",
+    "Chronic Disease",
+    "Communicable Disease",
+    "Diabetes",
+    "EMT Data",
+    "Environment",
+    "Family Planning",
+    "Firearm safety",
+    "Health Facilities",
+    "HIV / STI",
+    "Marijuana",
+    "Public Health",
+    "Regulatory Healthcare",
+    "Tobacco",
+    "Vital Records",
+    "Body Image and Eating Disorders",
+    "Bullying",
+    "Mental Health",
+    "Nutrition",
+    "Other Drugs",
+    "Physical Activity",
+    "Prescription Pain Medication",
+    "Racism",
+    "School & Community",
+    "Sexual Health",
+    "Sexual Violence",
+    "Violence"
+  ],
+  "Population & Demographics": [
+    "School-aged child health",
+    "maternal health",
+    "Childhood Health",
+    "Family Health",
+    "LBGT"
+  ],
+  "Programs": [
+    "Women, infants, and children (WIC)",
+    "Dental Assistance",
+    "Emergency Response"
+  ],
+  "Core Services": [
+    "Communicable Disease Prevention, Investigation and Control",
+    "Environmental Public Health",
+    "Maternal, Child, Adolescent, and Family Health",
+    "Chronic Disease, Injury Prevention, and Behavioral Health Promotion",
+    "Access to and Linkage with Healthcare"
+  ],
+  "Social Determinants of Health": [
+    "Economic Stability",
+    "Education Access and Quality",
+    "Health Care Access and Quality",
+    "Neighborhood and Built Environment",
+    "Social and Community Context"
+  ]
+}

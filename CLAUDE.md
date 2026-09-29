@@ -12,13 +12,13 @@ There are two prototypes:
 
 A searchable public health data catalog that demonstrates the full **find → understand → access** flow for finding the right data source(s) to answer a public health question. The first example is from the Chronic Disease cohort with the example search "cancer prevalence by county." All data is illustrative and hard-coded in the file (see Constraints); there is no backend.
 
-### Prototype 2 — functional search + filter (Google Sheets backend)
+### Prototype 2 — functional search + filter
 
-A narrower prototype focused only on the **search and filter** experience, linked from the same index and built to the same look and feel as Prototype 1.
+A narrower prototype focused only on the **search and filter** experience, linked from the same index and built to the same look and feel as Prototype 1, branded 'CDPHE Data explorer'.
 
-- **Real read-only backend hosted in Google Sheets.** Catalog records are pulled from a published Google Sheet at runtime rather than hard-coded.
-- **Functional search.** Search queries the real records pulled from the sheet and returns actual matches; filters narrow the real result set. This is not a scripted example like Prototype 1's "cancer prevalence by county."
-- The Google Sheet acts as a lightweight, low-maintenance content store so non-engineers can edit the catalog without touching code.
+- **Real read-only backend hosted in the data folder of this repo.** Catalog records are pulled from the JSON files in the `data` folder.
+- **Functional search.** Search queries the real records pulled from the JSON and returns actual matches; filters narrow the real result set.
+- **Schema.** The data schema is in the `data/schema.json` file; it describes the metadata shown in the result cards and available filters for the search.
 
 ## What this is NOT
 
