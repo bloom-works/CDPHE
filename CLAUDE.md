@@ -18,13 +18,13 @@ A narrower prototype focused only on the **search and filter** experience, linke
 
 - **Real read-only backend hosted in the data folder of this repo.** Catalog records are pulled from the JSON files in the `data` folder.
 - **Functional search.** Search queries the real records pulled from the JSON and returns actual matches; filters narrow the real result set.
-- **Schema.** The data schema is in the `data/schema.json` file; it describes the metadata shown in the result cards and available filters for the search.
+- **Schema.** The data schema is in the `data/schema.json` file; it describes the metadata shown in the result cards.
 
 ## What this is NOT
 
 - Not a production system, and not a platform build. Platform selection, procurement, and enterprise data infrastructure are explicitly out of scope for this phase.
-- Not production data infrastructure. Prototype 1 has no backend at all. Prototype 2 reads from a Google Sheet, but that is a lightweight, illustrative content store — not a server, database, or platform build.
-- Not a place for sensitive CDPHE data — and this includes the Google Sheet. The sheet holds catalog **metadata** only (source names, descriptions, topic area, geography, update cadence, and public links) — never real record-level data, credentials, or internal-only material. We use publicly accessible links to dashboards and documentation.
+- Not production data infrastructure. Prototype 1 has no backend at all. Prototype 2 reads from local JSON files, but that is a lightweight, illustrative content store — not a server, database, or platform build.
+- Not a place for sensitive CDPHE data. The JSON files hold catalog **metadata** only (source names, descriptions, topic area, geography, update cadence, and public links) — never real record-level data, credentials, or internal-only material. We use publicly accessible links to dashboards and documentation.
 
 ## Deployment
 
@@ -66,4 +66,4 @@ This is a government-facing artifact, so accessibility is a requirement, not a n
 - Plan before large multi-part edits; make the smallest change that achieves the goal.
 - Round any displayed numbers; don't leak floating-point artifacts.
 - Ask before adding any dependency, framework, or build tooling — the single-file, low-maintenance constraint is deliberate.
-- Prototype 2: handle the network fetch gracefully. Show loading, empty, and error states so the page never sits blank if the sheet is slow or unreachable. Don't hard-code a fallback copy of the data that can drift from the sheet.
+- Prototype 2: handle the network fetch gracefully. Show loading, empty, and error states so the page never sits blank if resources are slow or unreachable. 
