@@ -1,0 +1,245 @@
+[
+  {
+    "id": "6f6c20c4-01c9-5589-ab5e-9f73f47053da",
+    "name": "Behavioral Risk Factor Surveillance System",
+    "short_name": "BRFSS",
+    "description": "An ongoing, federally funded statewide random telephone survey of Colorado adults ages 18 and older, with 12,000 to 15,000 respondents a year. It tracks how common health behaviors, chronic and infectious conditions, and preventive health practices are, and what drives the leading causes of chronic disease, infectious disease, drug use, disability, injury, and death. Annual summary tables and questionnaires are published for each survey year. Results are also shown in the VISION chronic disease dashboard.",
+    "type": "survey",
+    "topics": [
+      "Chronic Disease",
+      "Cancer",
+      "Diabetes",
+      "Tobacco",
+      "Alcohol",
+      "Nutrition",
+      "Physical Activity",
+      "Mental Health",
+      "Health Care Access and Quality",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion",
+      "Communicable Disease Prevention, Investigation and Control"
+    ],
+    "population": "Adults 18+",
+    "geographic_granularity": "county",
+    "years_covered": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/behavioral-risk-factor-surveillance-system",
+    "documentation": null,
+    "related_dashboards": [
+      "dc8147f2-5e4e-5778-962c-7510682e89d0"
+    ]
+  },
+  {
+    "id": "b48420e1-5b32-564a-ab29-c0caeed7e6f0",
+    "name": "Baby & You Survey",
+    "short_name": "Baby & You",
+    "description": "A series of four online surveys for birthing parents of children ages 0-3. CDPHE samples postpartum people each month from live birth certificates and invites them to enroll at 3-4 months postpartum, then follows up around the baby's first, second, and third birthdays. The sample intentionally oversamples American Indian/Alaska Native, Asian American/Pacific Islander, and Black/African American birthing people. Results are weighted to represent all births in Colorado. Weighted data tables are published by birth cohort, and custom estimates or de-identified datasets can be requested from the program.",
+    "type": "survey",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Birthing parents of children ages 0-3",
+    "geographic_granularity": "county",
+    "years_covered": [
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://cdphe.colorado.gov/survey-research-and-data/baby-and-you-survey/baby-you-survey-data",
+    "documentation": null,
+    "related_dashboards": [
+      "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
+    ]
+  },
+  {
+    "id": "777ef27f-9c67-5278-b25c-8752a2ab548f",
+    "name": "Colorado Central Cancer Registry",
+    "short_name": "CCCR",
+    "description": "The statewide registry of cancer diagnoses among Colorado residents. Cases are reported by hospitals, pathology labs, other state registries, death certificates, and some physicians. Records include cancer site, stage at diagnosis, treatment, payer, and demographics such as age, sex, race, and residence, covering about 25,000 invasive cases a year. Aggregate incidence data are available through CoHID dashboards. Custom data requests and de-identified research datasets are available on approval. New data are usually complete 18 to 24 months after the end of the year.",
+    "type": "registry",
+    "topics": [
+      "Cancer",
+      "Chronic Disease",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion",
+      "Environmental Public Health"
+    ],
+    "population": "Colorado residents diagnosed with cancer, all ages",
+    "geographic_granularity": "county",
+    "years_covered": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "link": "https://cdphe.colorado.gov/cccr-data",
+    "documentation": null,
+    "related_dashboards": [
+      "a5901664-eb34-569b-8e64-02d1654ee12a",
+      "b4e5efce-600c-51b9-b18f-880e4becd958",
+      "2787a127-7a33-5bd7-b198-e7fe3a319784"
+    ]
+  },
+  {
+    "id": "7eb50459-f48e-59dd-bbc7-86311c0d30fd",
+    "name": "Pregnancy Risk Assessment Monitoring System",
+    "short_name": "PRAMS",
+    "description": "A CDC-funded surveillance system that tracks the behaviors and experiences of women before, during, and after pregnancy. Each month a stratified random sample of Colorado residents with a recent live birth is surveyed at 2-4 months postpartum by mail, phone, or web. Responses are linked to birth certificate data. Topics include preconception health, prenatal and postpartum care, insurance, breastfeeding, alcohol, tobacco, and marijuana use, mental health, maternal morbidity, and experiences of discrimination. About 1,100 people respond each year, and data are released every winter.",
+    "type": "survey",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents ages 15+ with a recent live birth",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/pregnancy-risk-assessment-monitoring",
+    "documentation": null,
+    "related_dashboards": [
+      "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
+    ]
+  },
+  {
+    "id": "769f4ec8-0af9-524f-b1c0-ca918eb20a66",
+    "name": "Healthy Kids Colorado Survey",
+    "short_name": "HKCS",
+    "description": "Colorado's most comprehensive survey of youth health and well-being. It is an anonymous, voluntary survey of a random sample of public middle and high school students, given every fall of odd-numbered years. Results are weighted to represent enrollment in Colorado public schools. Topics include mental health and suicide risk, substance use, nutrition, physical activity, bullying, sexual health, and protective factors such as support from caring adults and connection to school. CDPHE publishes statewide and regional results in the summer of even-numbered years.",
+    "type": "survey",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public middle and high school students (grades 6-12)",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "years_covered": [
+      2013,
+      2015,
+      2017,
+      2019,
+      2021,
+      2023,
+      2025
+    ],
+    "link": "https://cdphe.colorado.gov/hkcs",
+    "documentation": "https://cdphe.colorado.gov/healthy-kids-colorado-survey-overview",
+    "related_dashboards": []
+  },
+  {
+    "id": "c12dd681-0d55-56f5-8e13-f915da84ddc6",
+    "name": "Newborn Hearing Screening Program data",
+    "short_name": "NBH",
+    "description": "Data on hearing screening, diagnostic evaluation, and early intervention for babies born in Colorado, tracked up to age 3. Screening results come from the electronic birth certificate. Follow-up screening, audiology evaluation, and intervention data are entered by providers in the Health Information Data Systems (HIDS) Newborn Hearing application. The data track progress toward the EHDI 1-3-6 goals: screened by 1 month, evaluated by 3 months, and receiving intervention by 6 months. Values under 5 are suppressed. Annual data appear in the Maternal and Child Health Dashboard and a yearly data overview.",
+    "type": "surveillance",
+    "topics": [
+      "Childhood Health",
+      "Vital Records",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare"
+    ],
+    "population": "Infants born in Colorado, birth to age 3",
+    "years_covered": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "link": "https://cdphe.colorado.gov/registries-and-vital-statistics/newborn-hearing-screening/colorado-newborn-hearing-data-reports",
+    "documentation": null,
+    "related_dashboards": [
+      "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
+    ]
+  },
+  {
+    "id": "50ae377a-64fe-5a49-bd5c-155b7dcbc36f",
+    "name": "State Unintentional Drug Overdose Reporting System",
+    "short_name": "SUDORS",
+    "description": "Detailed data on unintentional and undetermined-intent drug overdose deaths in Colorado. It combines death certificates, coroner and medical examiner reports, and toxicology reports to show when, where, and how overdose deaths happen and the circumstances around them. Data collection began with deaths in July 2019 and runs on a six-month cycle as part of CDC's Overdose Data to Action program. Findings are published in HealthWatch reports and the Colorado drug overdose dashboards. Data requests go to the Health Statistics office.",
+    "type": "surveillance",
+    "topics": [
+      "Other Drugs",
+      "Prescription Pain Medication",
+      "Behavioral Health",
+      "Vital Records",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "All ages",
+    "geographic_granularity": "county",
+    "years_covered": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/state-unintentional-drug",
+    "documentation": null,
+    "related_dashboards": [
+      "f95c8948-4812-5aa2-9497-35fcf2290831"
+    ]
+  }
+]

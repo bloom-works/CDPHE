@@ -270,7 +270,10 @@
       2022,
       2023
     ],
-    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2022CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
+    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2022CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "related_datasets": [
+      "777ef27f-9c67-5278-b25c-8752a2ab548f"
+    ]
   },
   {
     "id": "b4e5efce-600c-51b9-b18f-880e4becd958",
@@ -289,7 +292,10 @@
       2022,
       2023
     ],
-    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHID2020-2022CancerIncidenceRates/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
+    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHID2020-2022CancerIncidenceRates/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "related_datasets": [
+      "777ef27f-9c67-5278-b25c-8752a2ab548f"
+    ]
   },
   {
     "id": "2787a127-7a33-5bd7-b198-e7fe3a319784",
@@ -325,7 +331,10 @@
       2019,
       2020
     ],
-    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2020CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
+    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2020CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "related_datasets": [
+      "777ef27f-9c67-5278-b25c-8752a2ab548f"
+    ]
   },
   {
     "id": "dc8147f2-5e4e-5778-962c-7510682e89d0",
@@ -345,7 +354,10 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado adults",
-    "link": "https://cotracking.shinyapps.io/CDPHE_VISION/"
+    "link": "https://cotracking.shinyapps.io/CDPHE_VISION/",
+    "related_datasets": [
+      "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
+    ]
   },
   {
     "id": "05bfacc3-06c3-512b-b7b2-9654524faf61",
@@ -378,7 +390,12 @@
     ],
     "population": "Pregnant people, infants, children, and youth",
     "geographic_granularity": "state",
-    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/ColoradoMaternalandChildHealthDashboard/LandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/ColoradoMaternalandChildHealthDashboard/LandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "related_datasets": [
+      "b48420e1-5b32-564a-ab29-c0caeed7e6f0",
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd",
+      "c12dd681-0d55-56f5-8e13-f915da84ddc6"
+    ]
   },
   {
     "id": "aff55975-d90c-5a60-a45a-a8682500bdfa",
@@ -739,7 +756,10 @@
       2024,
       2025
     ],
-    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/SUDORS_Dashboard_FINAL/Story1?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y"
+    "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/SUDORS_Dashboard_FINAL/Story1?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y",
+    "related_datasets": [
+      "50ae377a-64fe-5a49-bd5c-155b7dcbc36f"
+    ]
   },
   {
     "id": "bc12b925-cd74-54e8-8b05-f8bfde5361e4",
