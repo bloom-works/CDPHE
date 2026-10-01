@@ -835,5 +835,74 @@
     ],
     "population": "All ages",
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/OHSurveillanceDashboardLandingPage/ColoradoOralHealthLandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
+  },
+  {
+    "id": "84f82452-b266-5a35-bcfe-ee39bb940c10",
+    "name": "Colorado EnviroScreen",
+    "description": "An interactive environmental justice mapping tool built by CDPHE with Colorado State University and the Colorado School of Public Health. It combines 35 indicators of environmental exposures and effects, climate vulnerability, sensitive populations (such as asthma, cancer, diabetes, and heart disease prevalence), and demographics into a score of combined environmental and health stressors for each community. Look up an address to see its scores, download the data, or generate a PDF report for an area.",
+    "topics": [
+      "Environment",
+      "Environmental Public Health",
+      "Chronic Disease",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion",
+      "Neighborhood and Built Environment"
+    ],
+    "population": "Colorado residents, all ages",
+    "geographic_granularity": "census tract",
+    "link": "https://www.cohealthmaps.dphe.state.co.us/COEnviroscreen_2/"
+  },
+  {
+    "id": "c87b296f-c2d8-51dd-943a-00dfc58d4008",
+    "name": "Private well water dashboard",
+    "description": "County-level private well water quality across Colorado for four contaminants: arsenic, nitrate, uranium, and coliform bacteria. For each, it shows the highest level measured in private wells and the percent of samples above the U.S. EPA Maximum Contaminant Level, from 2011 to 2020. It helps identify areas where groundwater quality may be a concern. These data don't show individual exposure and are not a substitute for testing a private well.",
+    "topics": [
+      "Environment",
+      "Environmental Public Health",
+      "Neighborhood and Built Environment"
+    ],
+    "population": "Private drinking water wells (test results)",
+    "geographic_granularity": "county",
+    "years_covered": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://coepht.colorado.gov/private-well-water-data"
+  },
+  {
+    "id": "61649bdf-ff24-56da-8c96-7d655b5de275",
+    "name": "Wastewater surveillance dashboard",
+    "description": "Results from CDPHE's Wastewater Surveillance Program, which works with wastewater utilities to test for infectious pathogens including COVID-19 (SARS-CoV-2), influenza, RSV, enterovirus D68 (EV-D68), mpox, measles, and West Nile virus. Pathogens can show up in wastewater before people have symptoms, and from people who are infected but never have symptoms, so this complements other disease surveillance. Data are shown by monitoring site and can be downloaded from the CDPHE Open Data Portal.",
+    "topics": [
+      "Communicable Disease",
+      "Communicable Disease Prevention, Investigation and Control",
+      "Public Health"
+    ],
+    "population": "Communities served by participating wastewater utilities",
+    "geographic_granularity": "monitoring site",
+    "last_updated": "2026-07-08",
+    "link": "https://cdphe.colorado.gov/dcphr/wastewater#dboard1"
+  },
+  {
+    "id": "8eb824a3-2a9a-552d-8047-e0e3e7aa7fe4",
+    "name": "School and childcare immunization data",
+    "description": "Immunization and exemption data for Colorado colleges and universities, schools, and licensed childcare, based on data each licensed childcare, school, or district reports to CDPHE every year. Look up a specific site's data, or view it by county and state. A dashboard user guide explains how to navigate it, and the data can be downloaded from the CDPHE Open Data Portal.",
+    "topics": [
+      "Communicable Disease",
+      "Communicable Disease Prevention, Investigation and Control",
+      "School-aged child health",
+      "Childhood Health",
+      "School & Community"
+    ],
+    "population": "Children and students in licensed childcare, K-12 schools, and colleges/universities",
+    "geographic_granularity": "school or childcare facility",
+    "link": "https://cdphe.colorado.gov/immunization/school-and-child-care-data"
   }
 ]

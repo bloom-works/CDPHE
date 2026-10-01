@@ -241,5 +241,33 @@
     "related_dashboards": [
       "f95c8948-4812-5aa2-9497-35fcf2290831"
     ]
+  },
+  {
+    "id": "d1a691dc-9c78-5e49-8aa3-6239a5cb861a",
+    "name": "Health eMoms",
+    "short_name": "Health eMoms",
+    "description": "A former CDPHE online survey program that followed postpartum people in Colorado from shortly after birth to their child's third birthday. CDPHE sampled people each month from live birth certificates and invited them by mail; from 2018 to 2021, 2,400 people joined and completed up to six brief online surveys. Topics included breastfeeding, vaccinations, maternal mental health, social connection, maternity leave and family-friendly workplaces, child care, financial and resource insecurity, health care access, marijuana and other substance use, and oral health. Weighted results are published for the 2018, 2019, and 2020 birth cohorts, plus a COVID-19 survey sent to all cohorts in early 2021. The program ended in 2021 and was succeeded by the Baby & You Survey, so no new data will be added.",
+    "type": "survey",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Health Care Access and Quality",
+      "Economic Stability",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Postpartum people with a Colorado live birth, through the child's third birthday",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "next_update": null,
+    "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/health-emoms",
+    "documentation": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/health-emoms/health-emoms-survey-data",
+    "related_dashboards": []
   }
 ]
