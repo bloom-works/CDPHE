@@ -1,0 +1,2586 @@
+[
+  {
+    "id": "5a0bbfd7-01ac-51e6-a68c-ad2d2a921a3d",
+    "name": "PRAMS summary tables, 2023",
+    "description": "Weighted statewide estimates from the 2023 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as a Google Sheet with one tab per topic. Topics include demographics, preconception health, pregnancy intention and birth control, prenatal care, WIC and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, mental health, maternal morbidity and warning signs, oral health, immunizations, marijuana, postpartum care, and discrimination. Estimates represent all live births to Colorado residents in 2023.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2023",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2023
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/18RfUUh2IUMhnhXoTMX_ZZsyjGJLIhKm6NtpPkaOxYf4/edit",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "e89d60b5-fd2d-535a-80b2-0b9e5cf6add3",
+    "name": "PRAMS summary tables, 2022",
+    "description": "Weighted statewide estimates from the 2022 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2022.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2022",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2022
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2022TableauSummaryTables_Update/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "bb2108e7-a8c1-570e-9ecd-36a2a17aba56",
+    "name": "PRAMS summary tables, 2021",
+    "description": "Weighted statewide estimates from the 2021 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2021.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2021",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2021
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2021TableauSummaryTables_Update_17198570222830/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "24fa7840-f1d4-5b09-8d30-4b7fffaab9b3",
+    "name": "PRAMS summary tables, 2020",
+    "description": "Weighted statewide estimates from the 2020 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2020.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2020TableauSummaryTables_Update_17198589314780/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "d1e27e00-4a83-55fc-b2c3-0988a65f2bb7",
+    "name": "PRAMS summary tables, 2019",
+    "description": "Weighted statewide estimates from the 2019 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2019.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2019TableauSummaryTables_Update/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "66e3ccb4-92f9-5e2e-8554-df4ab63fc693",
+    "name": "PRAMS summary tables, 2018",
+    "description": "Weighted statewide estimates from the 2018 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2018.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2018TableauSummaryTables_Update/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "c5c52ae3-e2a8-5c16-9cd9-6eb8725e2c04",
+    "name": "PRAMS summary tables, 2017",
+    "description": "Weighted statewide estimates from the 2017 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2017.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2017",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2017
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2017TableauSummaryTables_Update/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "62a0b670-75cc-55d5-a062-622eaefacc4b",
+    "name": "PRAMS summary tables, 2016",
+    "description": "Weighted statewide estimates from the 2016 Colorado Pregnancy Risk Assessment Monitoring System (PRAMS) survey, published as interactive Tableau summary tables with one page per topic. Topics include demographics, preconception health, unintended pregnancy and birth control, prenatal care, Medicaid, WIC, and insurance, breastfeeding, smoking, alcohol, infant health, abuse, stress, nutrition and maternal morbidity, oral health, immunizations, marijuana, and postpartum care. Estimates represent all live births to Colorado residents in 2016.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Alcohol",
+      "Tobacco",
+      "Marijuana",
+      "Mental Health",
+      "Racism",
+      "Health Care Access and Quality",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Access to and Linkage with Healthcare",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents with a live birth in 2016",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2016
+    ],
+    "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2016TableauSummaryTables_Update/Home",
+    "related_datasets": [
+      "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
+    ]
+  },
+  {
+    "id": "e1ccea21-e27b-5560-b7dc-674dbd535bb1",
+    "name": "Live births by facility, 2011–2025",
+    "description": "Annual counts of live births at each Colorado delivery facility (hospitals and birth centers) for Colorado occurrences, 2011–2025, with each facility's 2025 share of births and rank. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "maternal health",
+      "Family Health",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Health Facilities"
+    ],
+    "population": "Live births occurring in Colorado",
+    "geographic_granularity": "facility",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1_AfO_O9KSOK68NrK5loFqgmG0udBzuP4/edit"
+  },
+  {
+    "id": "d785a442-053d-52f0-90f5-ddb923e39f79",
+    "name": "Live births by method of delivery and maternal characteristics, 2025",
+    "description": "Counts and percentages of 2025 live births to Colorado residents by method of delivery (primary and repeat cesarean, vaginal, and vaginal birth after cesarean), broken down by mother's age and other maternal characteristics. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "maternal health",
+      "Family Health",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Live births to Colorado residents",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1VIe1oRvjamU74kURp0CNs3kbbpsf2fKc/edit"
+  },
+  {
+    "id": "1af1431a-1f69-5874-a375-ea01828965fc",
+    "name": "Live births by type of facility and attendant, 2016–2025",
+    "description": "Annual counts of live births to Colorado residents, 2016–2025, by place of delivery (hospital, freestanding birth center, clinic, planned and unplanned home births) and by birth attendant (medical doctor, doctor of osteopathy, midwife, and others). Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "maternal health",
+      "Family Health",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Health Facilities"
+    ],
+    "population": "Live births to Colorado residents",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1JiIWrmBH4NOYOAYFiwlZoTK6D4mtOLvq/edit"
+  },
+  {
+    "id": "41c491ab-6b1e-5488-81da-94f573ff2877",
+    "name": "Live births and fertility rates by maternal race and ethnicity, 2025",
+    "description": "Female population, live births, and age-specific fertility rates for Colorado residents in 2025, by mother's age group and race and ethnicity. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "maternal health",
+      "Family Health",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Female Colorado residents of childbearing age",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/13DG0ZV7iykbhqBK_BWV439JRitmO7I38/edit"
+  },
+  {
+    "id": "f59a2707-140c-592b-9eac-b61b3f1dcf8c",
+    "name": "Live births by birth order and maternal characteristics, 2025",
+    "description": "Counts and percentages of 2025 live births to Colorado residents by birth order (first, second, third, and later births), broken down by mother's age group and other maternal characteristics. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "maternal health",
+      "Family Health",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Live births to Colorado residents",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1mg9Bpfkg3fMKxp9W2RNfLcnCKCwe2NNZ/edit"
+  },
+  {
+    "id": "d7bb8a09-b2e0-5b33-b155-80133aa96219",
+    "name": "Infant deaths and mortality rates by cause, 2016–2025",
+    "description": "Annual infant deaths, live births, and infant mortality rates per 1,000 live births for Colorado residents, 2016–2025, by underlying cause of death with ICD codes. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Childhood Health",
+      "maternal health",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Infants under 1 year, Colorado residents",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/168KeqDnxfK1-5UIDeKHm8Ordtx-H-yWh/edit"
+  },
+  {
+    "id": "112271ed-e232-5558-a937-8b620d2f81cd",
+    "name": "Infant deaths and mortality rates by race and ethnicity, 2021–2025",
+    "description": "Infant deaths, live births, and infant mortality rates with 95% confidence intervals for Colorado residents, 2021–2025, by race and ethnicity and leading cause of death. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Childhood Health",
+      "maternal health",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Infants under 1 year, Colorado residents",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1xZQZrhD1vmg3nOGARP4DxaOV5QVFWEBR/edit"
+  },
+  {
+    "id": "9b46b991-dc13-5b63-9556-c28a0a5d16de",
+    "name": "Leading causes of death by county of residence, 2025",
+    "description": "The leading causes of death in 2025 for Colorado and each county of residence, ranked, with number of deaths, population, crude rates, and age-adjusted rates with 95% confidence intervals. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Chronic Disease",
+      "Public Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado residents, all ages",
+    "geographic_granularity": "county",
+    "last_updated": "2026-09-03",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1BAcjfBxu4XhfDjJvsqy6L6wM5i9EaSzF/edit"
+  },
+  {
+    "id": "16db9258-1c2b-5f61-bc2b-a17c44897bd6",
+    "name": "Deaths by autopsy status, certifier, and final disposition, 2025",
+    "description": "Deaths occurring in Colorado in 2025 by county and region of occurrence. Shows the share autopsied, whether a physician or coroner certified the death, and method of final disposition (burial, cremation, entombment, alkaline hydrolysis, natural reduction, donation, and others). Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records"
+    ],
+    "population": "Deaths occurring in Colorado",
+    "geographic_granularity": "county",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1L_S-ZGYDcj8DerAPnP3Vt3pQ91znGw2I/edit"
+  },
+  {
+    "id": "2820e89c-72a8-5583-a504-240186926756",
+    "name": "Marriage licenses by county, 2016–2025",
+    "description": "Annual number of marriages and marriage rates per 1,000 population for Colorado and each county where the license was issued, 2016–2025. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Family Health",
+      "Social and Community Context"
+    ],
+    "population": "All ages",
+    "geographic_granularity": "county",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1vjHZMbSA4erh3FAGyImSxCCDbQ0Hww01/edit"
+  },
+  {
+    "id": "2a2357e3-0621-5da8-9793-18497949bd69",
+    "name": "Divorce decrees by county, 2016–2025",
+    "description": "Annual number of marriage dissolutions (divorces) and dissolution rates per 1,000 population for Colorado and each county of occurrence, 2016–2025. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Family Health",
+      "Social and Community Context"
+    ],
+    "population": "All ages",
+    "geographic_granularity": "county",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/11pstKHoGnVmODNRgWiI0p0_Up_N7bzuS/edit"
+  },
+  {
+    "id": "27c49acd-9b00-57ba-af3c-5b24e9acf1e3",
+    "name": "Life expectancy at birth by sex and race and ethnicity, 2021–2025",
+    "description": "Life expectancy at birth for Colorado residents, 2021–2025, by sex and race and ethnicity, with deaths, population, and 95% confidence intervals. Calculated with the Chiang life table method. Source: CDPHE Vital Statistics Program.",
+    "topics": [
+      "Vital Records",
+      "Public Health"
+    ],
+    "population": "Colorado residents, all ages",
+    "geographic_granularity": "state",
+    "last_updated": "2026-08-12",
+    "years_covered": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1IzkZUhFIswyi1i5aRFOQyOQDrsi0aqMX/edit"
+  },
+  {
+    "id": "86297b76-1267-5ae3-b29a-7d903a4bb0f0",
+    "name": "Healthy Kids Colorado Survey 2025 high school state report",
+    "description": "Weighted statewide results from the 2025 Healthy Kids Colorado Survey for Colorado public high school students. Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado public high school students",
+    "geographic_granularity": "state",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1InynbZEBV5K2AomN5RZcoO6gIeN5Mp_3/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "ee09f594-6c40-512e-83a8-48b2f7825743",
+    "name": "Healthy Kids Colorado Survey 2025 high school demographics",
+    "description": "Response rates and the demographic makeup of students who took the 2025 Healthy Kids Colorado Survey in high school, including grade, sex, race and ethnicity, and other student characteristics.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado public high school students",
+    "geographic_granularity": "state",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1IEuExMTn5DtgXanGrxLkbMeftcuiD8dD/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "ead30729-8273-571f-8514-818d5784b3a4",
+    "name": "Healthy Kids Colorado Survey 2025 middle school state report",
+    "description": "Weighted statewide results from the 2025 Healthy Kids Colorado Survey for Colorado public middle school students. Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Colorado public middle school students",
+    "geographic_granularity": "state",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1qiKr_wTxPq7R5xZVI1suijM3_rMTnfYR/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "2331d093-c426-527c-ab3f-32e134dd50fb",
+    "name": "Healthy Kids Colorado Survey 2025 middle school demographics",
+    "description": "Response rates and the demographic makeup of students who took the 2025 Healthy Kids Colorado Survey in middle school, including grade, sex, race and ethnicity, and other student characteristics.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado public middle school students",
+    "geographic_granularity": "state",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/11pQatHH_W-pxbC3K05C2HV7cYslXM1o2/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "c3f31500-535a-5779-86a4-2b79c960a90f",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 2",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 2 (Larimer County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 2",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1P5B6o4FEiu4jz4JSCOReaNqTcevC8gP2/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "86d6fa5f-985c-5863-bef7-2edcc53773cc",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 3",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 3 (Douglas County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 3",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1XIffCskw3BW4X_IMuf4uRvG3YsOruKrm/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "6a274827-9b50-5251-a9d6-e57c669a80be",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 5",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 5 (Cheyenne, Elbert, Kit Carson, and Lincoln counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 5",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1oCPyiptq4blkmX5K2ov_pO0A0W2grA8I/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "f874c817-a502-5935-a3ec-b4503f7f6f75",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 6",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 6 (Baca, Bent, Crowley, Huerfano, Kiowa, Las Animas, Otero, and Prowers counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 6",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1pu4o0THhMjnOWUI910BuwTPY_kcjoghk/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "293d044d-1c08-5345-a44c-1624413161f6",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 7",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 7 (Pueblo County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 7",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1pfGqCrILhojHnVfnZurjG1gJugkiNXKm/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "cbe95fa4-1d55-5084-9eeb-a198f721d409",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 8",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 8 (Alamosa, Conejos, Costilla, Mineral, Rio Grande, and Saguache counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 8",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1MNMeBKX200JHp7qS4lr9dEtI24O32I8_/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "d769c257-4778-5d2d-8eb5-57e84d83a53d",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 9",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 9 (Archuleta, Dolores, La Plata, Montezuma, and San Juan counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 9",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/11Q1abpTDFg2QuLOevzQObspB6sKHUS7r/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "9d074d9e-681a-5799-9f52-a116befa2cfb",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 10",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 10 (Delta, Gunnison, Hinsdale, Montrose, Ouray, and San Miguel counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 10",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1pjNV5m1Y8700clVEmRwb36Cf3yN0xk6A/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "4623a369-e426-566e-b9eb-3288f4384c44",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 11",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 11 (Jackson, Moffat, Rio Blanco, and Routt counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 11",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1Z5ClOznbukKrsoCWEfq_VDOcOjXFg6nP/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "e15a9af9-c9f0-53ce-873f-e99fb631098e",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 12",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 12 (Eagle, Garfield, Grand, Pitkin, and Summit counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 12",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1aGOuGieKE1Me-rh78sn0wkeW2EoDvlPc/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "146904ea-1085-5353-9240-bb625330d793",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 13",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 13 (Chaffee, Custer, Fremont, and Lake counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 13",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1bxicjf0Cu1Pd176nhbLkeMtbcIiJfpxU/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "aaee14bc-9f6d-5a59-94dc-1b51fc73248d",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 14",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 14 (Adams County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 14",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1FLOzISCMhoRIrVnkKmhJe9sin_ugzkcW/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "9655c74c-457b-5041-872b-8ccec3015d26",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 15",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 15 (Arapahoe County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 15",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1ncS6KTiwXVNGSPnV6M0MJ9bSIdFTWHle/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "a5019a0c-a8d7-515f-a326-00d5c4f8eaf6",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 16",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 16 (Boulder and Broomfield counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 16",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1BSP180OuRRvpiw99D3Fu84twyOEUAnNJ/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "76fd63ee-841a-5e4b-9156-20bd952e4110",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 17",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 17 (Clear Creek, Gilpin, Park, and Teller counties). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 17",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1gbq9GqKzr0BUPcgkgGBdDPdKNUT85uOp/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "76081429-1cae-5303-a19c-d54680a38786",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 18",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 18 (Weld County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 18",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1-QM0guLW0fNxZ9Y7qm4eWr1GuuJOiiBM/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "3232400c-f151-529f-8f2b-a9402eb6ef52",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 19",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 19 (Mesa County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 19",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1E1Ai2ff3nX__ACNt0v5MgnERh4yepans/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "373a759f-8bdb-5052-8416-15275fe939a7",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 20",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 20 (Denver County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 20",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1naImxQ5HXaIXUmYgpHmeuUkAzZ2vDFhU/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "136fe185-eb4d-596d-95c3-eb4428f0eb43",
+    "name": "Healthy Kids Colorado Survey 2025 high school report, region 21",
+    "description": "Weighted 2025 Healthy Kids Colorado Survey results for public high school students in Health Statistics Region 21 (Jefferson County). Topics include unintentional injuries and violence, mental health, school safety, substance use, physical activity and nutrition, sexual behavior, and risk and protective factors. Results are weighted, and small cells are suppressed to protect student confidentiality.",
+    "topics": [
+      "School-aged child health",
+      "School & Community",
+      "Mental Health",
+      "Alcohol",
+      "Marijuana",
+      "Tobacco",
+      "Prescription Pain Medication",
+      "Other Drugs",
+      "Bullying",
+      "Nutrition",
+      "Physical Activity",
+      "Sexual Health",
+      "Violence",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
+    ],
+    "population": "Public high school students in Health Statistics Region 21",
+    "geographic_granularity": "Health Statistics Region (HSR)",
+    "last_updated": "2026-05-26",
+    "years_covered": [
+      2025
+    ],
+    "link": "https://drive.google.com/file/d/1PxM87Koyxnof76K2fbqfIj4FdWMPsQNx/view",
+    "related_datasets": [
+      "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
+    ]
+  },
+  {
+    "id": "a19c9558-bb4a-5d58-99cd-b5b5b06169b8",
+    "name": "Health eMoms COVID-19 survey estimates, overall",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1KPilMamTykEZywIM0JRSJmfwG5dn80gz/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "36127274-9a1e-59bc-a5ab-1a2177361b0a",
+    "name": "Health eMoms COVID-19 survey estimates by mother's age",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by mother's age.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1tO1__2hXkXboKHMJBmqRv64yDjDhUBnv/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "6ddd6762-b0ce-5d78-a630-989e9b47a960",
+    "name": "Health eMoms COVID-19 survey estimates by education",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by education.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1LH8FSarxMaL0DqYNiBmo5Y96DepEs_Zb/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "0e59697d-8b95-54cf-87ed-22164aa0fb67",
+    "name": "Health eMoms COVID-19 survey estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/17hRcmjJ9syarPA6U38Bjma9IujC5Dqwq/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "532422a5-f626-5d6a-a563-e05b25458c09",
+    "name": "Health eMoms COVID-19 survey estimates by Medicaid status",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1lV84SNLuBuIYGElISWuDjZVhrGMW7wj1/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "a9af5ea8-41f0-539b-8839-578b4cb34b43",
+    "name": "Health eMoms COVID-19 survey estimates by race and ethnicity",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1bAQBcpYuLBr_0UAFQWK8Su1SGnnis-BA/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "edba4e4e-d690-5808-9637-41481a0753be",
+    "name": "Health eMoms COVID-19 survey estimates by pregnancy and postpartum status",
+    "description": "Weighted estimates from the Health eMoms COVID-19 survey, sent in January–February 2021 to all enrolled parents of children born 2018–2020 (1,844 respondents). Covers household and employment changes, financial and food insecurity, child care, maternal and child mental health, well-child care and immunizations, vaccine attitudes, and prenatal and postpartum care during the pandemic. Results are broken down by pregnancy and postpartum status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease",
+      "Emergency Response"
+    ],
+    "population": "Parents of children born in Colorado, 2018–2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018,
+      2019,
+      2020
+    ],
+    "link": "https://drive.google.com/file/d/1yh18TnNZBPb99SMzr2EdVRxJXngBzZgS/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "8b6e69ea-9596-56c0-a4ae-03bbe6619718",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1NeyBiSHNvG5_g6nDJ9PG3YB3p--AWlJc/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "ad88ed68-c9a8-50d8-bce6-9b5d84601779",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1jPwja6n_jx1_Zkyh8IDrUmoZTud6zyHT/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "6a51c55b-9a67-57a4-a8bd-2d54859d2d0a",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1iJjRRGyqPV5ZIfTanf9mEpotZuk0QkkW/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "febdc508-343c-5a26-b112-ba62f769662f",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1pO62GGiMpGB-Fi0JHVBSOIsBBZY9XQmT/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "24279481-e668-5862-95de-06a36f6e0406",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1nQ8sebCSiRXxMtB39_ErXB3rUsaVK90-/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "7dc51947-0350-53a9-aba2-a9d2ce4b7299",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1wl7lbZUtrSzigoCH3XV4QhoMxtEgZ1zW/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "0a9e8dc5-8a9b-5afd-8d94-101b6cd89109",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 estimates by WIC participation",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by WIC participation.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1DLxLXf_M2w6nvun0HqMc_bCxhIY-3UeR/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "e0a3180b-08ae-56ee-9bf7-31cfc83205f9",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1abKA_zM6ZgSvIZyQelIK-rCQo8GTW5-e/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "be6980d2-f56a-5591-87bf-261e3c1712b0",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1MngoSgKWpha_jJxeaOMlY3aRjmeP7ut7/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "b2df555a-4a24-5a57-8006-d12744c97221",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/16k7k2nGZQoUDEF9oFBmpvG9JOMS6UPcm/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "7360c0ed-7511-5ad6-a7d2-a4e71a69b5d0",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1CWrPQW60mofQnd_vUAwuziRGHlVTEXjN/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "21ae8f24-18af-54a0-8c1e-127fed851159",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1cwt-nIHiFIj7RBxa4PGnX9ZD2_XlqaTC/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "0af0fd39-ee44-5bd0-a9ce-a796d0207772",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1Kehwu9id6TT9Bs4GvlD17_sRKoQiGkNY/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "e0bade8a-1c9f-5174-91a3-0473c54705fe",
+    "name": "Health eMoms 2020 birth cohort, survey 1.1 COVID-19 supplement estimates by WIC participation",
+    "description": "Weighted estimates from Health eMoms survey 1.1, completed 3-6 months postpartum by people who gave birth in Colorado in 2020. This optional COVID-19 supplement (for July 2020 births onward) asked how the pandemic affected prenatal and postpartum care, precautions, pregnancy and delivery experiences, and breastfeeding. Results are broken down by WIC participation.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2020",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2020
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1v3zD6a9a3uHqAnC-Z-nPNZt7fKvqBznp/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "df95e047-a7f1-5095-b765-1174c0397993",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1V7C0MBgfyIlNrUHUo-z9zMUX8zhZ2KTo/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "1170a059-9412-56e0-b921-a1c12f700860",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1OIvSrFJYSytG2Pk37x_DOaV0eVZh7UG4/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "270ea387-f754-5563-bdd2-b6b43ff68dda",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1-RtnpJPDeaRUse5A_a8wy9xSozHVfN4P/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "45a8e130-a53c-5493-96ed-acb74f2f1dc4",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1q3GdT9a3GNKMukK58kbT0VHeEJHJ_HKs/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "6e195d0c-7105-5fd4-bf6f-93087fbd1996",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1n32PwH52EdR0nnOQ1CWz1j-CX7oJQg1A/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "5c6fa626-cfe4-5cb6-843b-47055e36edb2",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1JWcOCIFdCWFvneMNdnqpqOmkgxIxvATu/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "910132bd-cec9-5aaf-8054-bd8523eb406e",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 estimates by WIC participation",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by WIC participation.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/143K-nOlzrndDomThm39VC7KpxK2b0VX0/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "07a177d2-190b-5101-bd03-1d4cde788750",
+    "name": "Health eMoms 2019 birth cohort, survey 1.2 COVID-19 pandemic estimates",
+    "description": "Weighted estimates from Health eMoms survey 1.2, completed 12-14 months postpartum by people who gave birth in Colorado in 2019. These tables cover the survey's questions about the COVID-19 pandemic.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://drive.google.com/file/d/1xuRZ6OPvBYAIHmya1IOO-ZTecdNC03LD/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "cfd837ee-d793-55d4-9397-4783a6a85f31",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1Ij9TZhZhk87FUbhrv3oWYMrD6Y52REL2/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "e8632315-a88f-55f3-ae09-25da416879a3",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/18u47SLESWSSVrng3C9NYTMayIWY4vCuY/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "6bd7a94e-dd67-59c5-a6d9-4d0dc201b437",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1MwMngqHs69JaCR1P_EWR1OpIJ4OI2vSG/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "e69b38a3-61e8-51f7-9111-8fd73282fa97",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/197Hwp4ICUVaTVHQIv0-XlZ_SndzrRFjv/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "6c455a93-0fb5-5486-be54-faff00c21a98",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/16qZ-7mPX737nkGt80hPG654LJ7PiJ8vR/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "1761b5e5-347f-576d-a1b3-2a87436685ca",
+    "name": "Health eMoms 2019 birth cohort, survey 2.1 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 2.1, completed 18-20 months postpartum by people who gave birth in Colorado in 2019. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2019",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2019
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1WnsDiLG1KxjIk-PDhLgNutxXViqFVlkU/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "d5ae6123-a6dc-5eaa-936a-a32d5199bd1c",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1ooTc1HJ_uaQJifh6RKZ1bX8WtvhUsXEj/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "fa720879-f321-5ee3-b055-03fdf3cdba4b",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1WUzxC5dD2rUzoqHJUvbhux1xXEEehebe/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "d91be0cd-6231-515a-8717-c6bbfc9b1150",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/16cfiYmqbgblaJw5KOop7Vkh7OeCBhesm/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "33e15515-1e9a-5b58-acdc-52d0a6e9b63c",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1EEJJKQT9wp8_k6sd07H2AkdMfPbj4b-W/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "b8dc1b18-e49e-53d6-9e64-e76e078a6143",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1McfTLKbi2eaR8AIT2mPuywaGRPivfC3D/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "41de7dc7-8e3e-5f25-92c3-bd95e0c4fcfb",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1MRSMKZMPMnuf6Io4ZnaRSLMN_MLblCMc/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "c2bc2782-a998-5c16-88b0-60b3351578ed",
+    "name": "Health eMoms 2018 birth cohort, survey 2.2 COVID-19 pandemic estimates",
+    "description": "Weighted estimates from Health eMoms survey 2.2, completed 24-26 months postpartum by people who gave birth in Colorado in 2018. These tables cover the survey's questions about the COVID-19 pandemic.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health",
+      "Communicable Disease"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://drive.google.com/file/d/1qxwYxNI_41kQFb8-JCPveg5IVLiiWJXu/view",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "59875946-da73-5051-911a-146dcc61681f",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1w_zFxFNknwHO_c1Atm7kebV3H3odVOa_/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "c6b44b1f-7510-5626-ab2d-6179d7fc1a56",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1W9hXkHXiQFp662jPWHRoGDn7x-f-ANBy/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "102ad8a2-84d8-55f4-a7ca-e8c871d1aae1",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1vd6BoSkEYwB8it0eBo96YscjustLyfa3/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "a6abb7f0-69aa-5d68-8394-c5ca5ea21c0d",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1Hb4lkj9dzN0u_fF5WRY2UMSfcSc0X6ur/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "a9b82c7d-bc97-58f8-a69a-84a9ec902cf7",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1Dku_NOBGQK7Lp7iRUw5ry6S4y5CWwdM0/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "bc50b016-dcf7-51da-9782-99e449a71cd8",
+    "name": "Health eMoms 2018 birth cohort, survey 3.1 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 3.1, completed 30-32 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1oBZUaFlChDXCjAejmYC4zvwSYllXtyRa/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "a41050f1-c19e-5ff0-bc6b-a313997db895",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates, overall",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1OJ60pIJV3reYme3ELPajV1OwPQVTtY_Z/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "55a49f1e-61f0-5c49-8ec4-51c322f732d5",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates by mother's age at survey",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by mother's age at survey.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1LANi7Y_frzTzrB-R_2whNO4y_L82H0g9/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "0e362361-72f7-51d7-bddd-da2e83fb8cb2",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates by education at the time of birth",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by education at the time of birth.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1IBDWwSNQqUII4TTiN06fsGxieLVnegx4/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "700ba750-cc30-55ae-8487-56459b5f0513",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates by region of residence (Denver metro, other metro, rural)",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by region of residence (Denver metro, other metro, rural).",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "region",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1UmhL4wBfVkqhyHvxpOy-o33HDby6sl4T/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "c10b16be-22d3-593a-8be8-5831df144432",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates by Medicaid status",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by Medicaid status.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1kUua97VtszE311IIGBtRWrHf_40P5To4/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  },
+  {
+    "id": "f0a5c11b-684a-5cdf-9985-d00e051befa2",
+    "name": "Health eMoms 2018 birth cohort, survey 3.2 estimates by race and ethnicity",
+    "description": "Weighted estimates from Health eMoms survey 3.2, completed 36-38 months postpartum by people who gave birth in Colorado in 2018. Topics include breastfeeding, vaccinations, maternal mental health, social connection, parental leave, employment, child care, financial and resource insecurity, health care access, substance use, and oral health. Results are broken down by race and ethnicity.",
+    "topics": [
+      "maternal health",
+      "Family Health",
+      "Childhood Health",
+      "Mental Health",
+      "Marijuana",
+      "Economic Stability",
+      "Health Care Access and Quality",
+      "Social and Community Context",
+      "Maternal, Child, Adolescent, and Family Health"
+    ],
+    "population": "Colorado residents who gave birth in 2018",
+    "geographic_granularity": "state",
+    "years_covered": [
+      2018
+    ],
+    "link": "https://docs.google.com/spreadsheets/d/1o8J8YCqQuUaUcJ8_JmdG6W2WaIqEn5Kv/edit",
+    "related_datasets": [
+      "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
+    ]
+  }
+]
