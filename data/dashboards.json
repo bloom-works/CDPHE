@@ -904,5 +904,19 @@
     "population": "Children and students in licensed childcare, K-12 schools, and colleges/universities",
     "geographic_granularity": "school or childcare facility",
     "link": "https://cdphe.colorado.gov/immunization/school-and-child-care-data"
+  },
+  {
+    "id": "f885cec3-0cae-57e8-ac63-0d94486d69e4",
+    "name": "Health facility search site",
+    "description": "Find and compare licensed health facilities in Colorado and see their survey inspection results and occurrence reports. Search by facility name and address, facility ID, facility type (such as critical access hospitals, short-term hospitals, and other licensed facility types), county, city, or payor source (Medicare, Medicaid, private pay). For each facility, view its contact details and operating status, its list of inspections and occurrences, the text and regulation behind each citation, the facility's plan of correction, and descriptions of reported occurrences.",
+    "topics": [
+      "Health Facilities",
+      "Regulatory Healthcare",
+      "Health Care Access and Quality",
+      "Access to and Linkage with Healthcare"
+    ],
+    "population": "Licensed health facilities in Colorado",
+    "geographic_granularity": "facility",
+    "link": "https://cohealthviz.dphe.state.co.us/t/HealthFacilitiesPublic/views/HealthFacilitySearchSite/1_HealthFacilitySearchSite?%3Aembed=y&%3AisGuestRedirectFromVizportal=y"
   }
 ]

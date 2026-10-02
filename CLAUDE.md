@@ -36,7 +36,7 @@ Prototype 2 additionally fetches its catalog data at runtime from a published Go
 
 1. **Single HTML file, no build step.** Each prototype is one `.html` file that runs by opening it in a browser — no build step, no bundler, no framework, no server-side code. Keep it that way unless explicitly asked to change the architecture.
    - Prototype 1 is fully **self-contained**: all data is hard-coded in the file.
-   - Prototype 2 is one HTML file but **not fully self-contained**: markup, styles, and logic all live in the one file, but catalog data is fetched at runtime from the published Google Sheet. That sheet is its only external dependency.
+   - Prototype 2 is one HTML file but **not fully self-contained**: markup, styles, and logic all live in the one file, but catalog data is fetched from the JSON files in the `data` folder.
 2. **Design tokens are inlined**, not borrowed from any host environment, so each renders identically wherever it is hosted.
 3. **Demonstrative, not comprehensive.** Scope features small and testable. When in doubt, do the simplest thing that makes the flow legible to a stakeholder.
 
