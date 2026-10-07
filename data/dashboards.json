@@ -783,7 +783,6 @@
       "Other Drugs",
       "Prescription Pain Medication",
       "Behavioral Health",
-      "Emergency Response",
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
@@ -826,7 +825,6 @@
     "name": "Colorado oral health surveillance dashboard",
     "description": "A range of oral health indicators for tracking oral disease and risk factors, spotting emerging issues, and planning oral health programs. It has three sections: maternal and child oral health (ages 0-18 and pregnant people), adult oral health (including older adults and oral cancers), and oral health care access (dental provider shortages and why Coloradans do or don't get dental care).",
     "topics": [
-      "Dental Assistance",
       "Childhood Health",
       "maternal health",
       "Cancer",
