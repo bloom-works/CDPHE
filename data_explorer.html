@@ -1,738 +1,1309 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CDPHE data explorer · prototype</title>
-<style>
-  :root{
-    --surface-1:#ffffff;
-    --surface-2:#F4F6F7;
-    --text-primary:#1C1F20;
-    --text-secondary:#4e5758;
-    --text-muted:#5a6366;
-    --border:#DDE1E2;
-    --border-strong:#B7BEC0;
-    --charcoal:#33383A;
-    --slate:#6B7477;
-    --on-charcoal-muted:#C7CBCD;
-    --neutral-tint:#EDEFF0;
-    --success:#2F6B45;
-    --success-tint:#E5EEE8;
-    --warning:#8A6D23;
-    --warning-tint:#F7F1DE;
-    --danger:#A03E3E;
-    --danger-tint:#F5E7E7;
-    --radius:8px;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  *{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; }
-  body{
-    background:var(--surface-2);
-    font-family:'Trebuchet MS', var(--font-sans);
-    font-size:13px;
-    color:var(--text-primary);
-    -webkit-font-smoothing:antialiased;
-  }
-  button{
-    font-family:inherit;
-    font-size:13px;
-    height:38px;
-    padding:0 14px;
-    border-radius:var(--radius);
-    border:0.5px solid var(--border-strong);
-    background:var(--surface-1);
-    color:var(--text-primary);
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-  }
-  button:hover{ background:var(--surface-2); }
-  input{ font-family:inherit; color:var(--text-primary); }
-  a{ color:var(--charcoal); }
-  button:focus-visible, input:focus-visible, a:focus-visible, [tabindex="-1"]:focus-visible{
-    outline:2px solid var(--charcoal);
-    outline-offset:2px;
-  }
-  .sr-only{
-    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDPHE data explorer · prototype</title>
+  <style>
+    :root {
+      --surface-1: #ffffff;
+      --surface-2: #F4F6F7;
+      --text-primary: #1C1F20;
+      --text-secondary: #4e5758;
+      --text-muted: #5a6366;
+      --border: #DDE1E2;
+      --border-strong: #B7BEC0;
+      --charcoal: #33383A;
+      --slate: #6B7477;
+      --on-charcoal-muted: #C7CBCD;
+      --neutral-tint: #EDEFF0;
+      --success: #2F6B45;
+      --success-tint: #E5EEE8;
+      --warning: #8A6D23;
+      --warning-tint: #F7F1DE;
+      --danger: #A03E3E;
+      --danger-tint: #F5E7E7;
+      --radius: 8px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-  .page{ max-width:960px; margin:24px auto; padding:0 16px 40px; }
-  .back-link{ display:inline-block; font-size:12.5px; color:var(--text-secondary); margin-bottom:10px; }
+    * {
+      box-sizing: border-box;
+    }
 
-  /* Masthead — matches Prototype 1 */
-  .masthead{ background:var(--charcoal); border-radius:12px 12px 0 0; padding:14px 18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-  .logo{ display:flex; align-items:center; gap:9px; }
-  .logo-mark{ width:26px; height:30px; background:var(--slate); border-radius:0 0 13px 13px; position:relative; flex:none; }
-  .logo-mark::before{
-    content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:0; height:0; border-left:13px solid transparent; border-right:13px solid transparent;
-    border-bottom:11px solid var(--charcoal);
-  }
-  .wordmark{ line-height:1.05; }
-  .wordmark .state{ color:#fff; font-weight:500; font-size:15px; letter-spacing:0.5px; }
-  .wordmark .dept{ color:var(--on-charcoal-muted); font-size:11px; }
-  .masthead .tag{ margin-left:auto; color:var(--on-charcoal-muted); font-size:12px; }
-  .masthead .tag .dim{ opacity:0.7; }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-  .shell{ background:var(--surface-2); border:0.5px solid var(--border); border-top:none; border-radius:0 0 12px 12px; padding:16px 18px 20px; }
+    body {
+      background: var(--surface-2);
+      font-family: 'Trebuchet MS', var(--font-sans);
+      font-size: 13px;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* Search */
-  .searchbar{ display:flex; align-items:center; gap:8px; border:0.5px solid var(--border-strong); border-radius:var(--radius); padding:0 12px; height:42px; background:var(--surface-1); margin-bottom:6px; }
-  .searchbar:focus-within{ outline:2px solid var(--charcoal); outline-offset:2px; }
-  .searchbar input{ border:none; outline:none; background:transparent; flex:1; font-size:15px; height:40px; min-width:0; }
-  .hint{ font-size:13px; color:var(--text-secondary); margin-bottom:14px; }
+    button {
+      font-family: inherit;
+      font-size: 13px;
+      height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 0.5px solid var(--border-strong);
+      background: var(--surface-1);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-  .layout{ display:grid; grid-template-columns:200px 1fr; gap:18px; }
-  @media (max-width:680px){ .layout{ grid-template-columns:1fr; } .masthead .tag{ margin-left:0; } }
+    button:hover {
+      background: var(--surface-2);
+    }
 
-  /* Filters */
-  .filters-title{ font-size:12px; font-weight:500; color:var(--text-secondary); margin:0 0 8px; }
-  fieldset.facet{ border:none; margin:0 0 14px; padding:0; min-width:0; }
-  fieldset.facet legend{ font-size:12px; color:var(--text-muted); margin-bottom:5px; padding:0; }
-  .facet label{ display:flex; align-items:flex-start; gap:7px; font-size:13px; padding:3px 0; cursor:pointer; line-height:1.3; }
-  .facet label.zero{ color:var(--text-muted); }
-  .facet input[type=checkbox]{ accent-color:var(--charcoal); width:15px; height:15px; margin:0; flex:none; }
-  .facet .count{ margin-left:auto; color:var(--text-muted); font-size:12px; padding-left:6px; }
-  fieldset.facet-group{ border:none; border-left:2px solid var(--border); margin:0 0 10px; padding:0 0 0 9px; min-width:0; }
-  fieldset.facet-group legend{ font-size:12px; font-weight:500; color:var(--text-secondary); margin-bottom:3px; padding:0; }
-  .link-btn{ height:auto; padding:3px 0; border:none; background:none; color:var(--charcoal); text-decoration:underline; font-size:12.5px; }
-  .link-btn:hover{ background:none; }
+    input {
+      font-family: inherit;
+      color: var(--text-primary);
+    }
 
-  /* Results */
-  .results-meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:12px; color:var(--text-muted); margin-bottom:9px; }
-  .chip{ display:inline-flex; align-items:center; gap:4px; height:auto; font-size:12px; padding:2px 8px; border-radius:20px; background:var(--neutral-tint); border:none; color:var(--text-primary); }
-  .chip:hover{ background:#E1E4E5; }
-  ul.results{ list-style:none; margin:0; padding:0; }
-  .result{ border:0.5px solid var(--border); border-radius:12px; padding:13px 15px; margin-bottom:10px; background:var(--surface-1); }
-  .result-top{ display:flex; align-items:flex-start; gap:8px; justify-content:space-between; }
-  .result h3{ font-weight:500; font-size:14.5px; margin:0; }
-  .result .desc{ font-size:12.5px; color:var(--text-secondary); margin:4px 0 8px; line-height:1.5;
-    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-  .badge{ font-size:11px; padding:2px 8px; border-radius:20px; white-space:nowrap; background:var(--neutral-tint); color:var(--text-primary); flex:none; }
-  .meta-row{ display:flex; gap:6px 16px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary); }
-  .meta-row > span{ display:inline-flex; align-items:center; gap:4px; }
-  .tags{ display:flex; gap:5px; flex-wrap:wrap; margin-top:8px; }
-  .tag-pill{ font-size:11px; padding:2px 8px; border-radius:20px; border:0.5px solid var(--border-strong); color:var(--text-secondary); background:var(--surface-1); }
-  .actions{ display:flex; gap:8px; margin-top:11px; flex-wrap:wrap; align-items:center; }
-  .btn-sm{ font-size:12.5px; padding:5px 12px; height:auto; border-color:var(--charcoal); color:var(--charcoal); }
-  .btn-link{ display:inline-flex; align-items:center; gap:5px; border-radius:var(--radius); border:0.5px solid var(--charcoal); color:var(--charcoal); background:var(--surface-1); text-decoration:none; }
-  .btn-link.sm{ font-size:12.5px; padding:5px 12px; }
-  .btn-link.md{ height:38px; padding:0 14px; font-size:13.5px; }
-  .btn-link.primary{ background:var(--charcoal); color:#fff; }
-  .btn-link.disabled{ border-color:var(--border); border-style:dashed; color:var(--text-muted); background:transparent; cursor:default; }
+    a {
+      color: var(--charcoal);
+    }
 
-  /* Page footer */
-  .page-footer{ display:flex; justify-content:space-between; align-items:center; gap:10px 20px; flex-wrap:wrap; margin-top:14px; padding-top:14px; border-top:0.5px solid var(--border); font-size:12px; color:var(--text-muted); }
-  .page-footer .link-btn{ font-size:12px; }
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible,
+    [tabindex="-1"]:focus-visible {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 2px;
+    }
 
-  /* Request-data modal */
-  .modal-overlay{ position:fixed; inset:0; background:rgba(28,31,32,0.6); display:flex; align-items:center; justify-content:center; padding:16px; z-index:1000; }
-  .modal-overlay[hidden]{ display:none; }
-  .modal{ background:var(--surface-1); border-radius:12px; width:100%; max-width:380px; padding:20px 22px 22px; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
-  .modal h2{ font-size:15px; font-weight:500; margin:0 0 8px; }
-  .modal p{ font-size:12.5px; line-height:1.55; color:var(--text-secondary); margin:0 0 18px; }
-  .modal-actions{ display:flex; justify-content:flex-end; }
-  .btn-primary{ background:var(--charcoal); color:#fff; border-color:var(--charcoal); }
-  .btn-primary:hover{ background:#262a2b; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-  /* Missing metadata — grayed, but still AA contrast */
-  .unknown{ color:var(--text-muted); font-style:italic; }
+    .page {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+    }
 
-  /* Detail view */
-  .detail{ border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); overflow:hidden; }
-  .detail-head{ background:var(--charcoal); padding:12px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .detail-head button{ font-size:12px; padding:3px 9px; height:auto; background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.4); }
-  .detail-head h2{ color:#fff; font-weight:500; font-size:14px; margin:0; flex:1; min-width:200px; }
-  .detail-head h2:focus-visible{ outline-color:#fff; }
-  .detail-head .badge{ background:rgba(255,255,255,0.14); color:#fff; }
-  .detail-body{ padding:15px 16px; }
-  .tiles{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:0 0 14px; }
-  .tile{ background:var(--surface-2); border-radius:8px; padding:9px 11px; border:0.5px solid transparent; margin:0; }
-  .tile.is-unknown{ background:transparent; border:0.5px dashed var(--border-strong); }
-  .tile dt{ font-size:11px; color:var(--text-muted); margin-bottom:3px; display:flex; align-items:center; gap:4px; }
-  .tile dd{ font-size:12.5px; line-height:1.35; margin:0; }
-  .detail .description{ font-size:13.5px; line-height:1.6; margin:0 0 14px; }
-  .section-label{ font-size:12px; font-weight:500; color:var(--text-secondary); margin:0 0 5px; }
-  .section{ margin-bottom:14px; font-size:12.5px; line-height:1.45; }
-  .section ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
-  .section .link-btn{ padding:0; text-align:left; }
+    .back-link {
+      display: inline-block;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
 
-  /* States */
-  .msg{ border:0.5px solid var(--border); border-radius:12px; background:var(--surface-1); padding:26px 20px; text-align:center; color:var(--text-secondary); font-size:13px; line-height:1.6; }
-  .msg strong{ color:var(--text-primary); font-weight:500; display:block; font-size:14px; margin-bottom:4px; }
-  .callout{ display:flex; gap:9px; padding:10px 12px; border-radius:8px; font-size:12.5px; line-height:1.5; margin-bottom:12px; text-align:left; }
-  .callout.warning{ background:var(--warning-tint); color:var(--warning); }
-  .callout.danger{ background:var(--danger-tint); color:var(--danger); }
-  .skeleton{ height:92px; border-radius:12px; background:linear-gradient(90deg,#EDEFF0 0%,#F7F8F8 50%,#EDEFF0 100%); background-size:200% 100%; animation:shimmer 1.4s infinite; margin-bottom:10px; }
-  @keyframes shimmer{ from{background-position:200% 0;} to{background-position:-200% 0;} }
-  @media (prefers-reduced-motion:reduce){ .skeleton{ animation:none; } }
-  code{ font-size:12px; background:var(--neutral-tint); padding:1px 5px; border-radius:4px; }
-</style>
+    /* Masthead — matches Prototype 1 */
+    .masthead {
+      background: var(--charcoal);
+      border-radius: 12px 12px 0 0;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 30px;
+      background: var(--slate);
+      border-radius: 0 0 13px 13px;
+      position: relative;
+      flex: none;
+    }
+
+    .logo-mark::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom: 11px solid var(--charcoal);
+    }
+
+    .wordmark {
+      line-height: 1.05;
+    }
+
+    .wordmark .state {
+      color: #fff;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .wordmark .dept {
+      color: var(--on-charcoal-muted);
+      font-size: 11px;
+    }
+
+    .masthead .tag {
+      margin-left: auto;
+      color: var(--on-charcoal-muted);
+      font-size: 12px;
+    }
+
+    .masthead .tag .dim {
+      opacity: 0.7;
+    }
+
+    .shell {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 16px 18px 20px;
+    }
+
+    /* Search */
+    .searchbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      height: 42px;
+      background: var(--surface-1);
+      margin-bottom: 6px;
+    }
+
+    .searchbar:focus-within {
+      outline: 2px solid var(--charcoal);
+      outline-offset: 2px;
+    }
+
+    .searchbar input {
+      border: none;
+      outline: none;
+      background: transparent;
+      flex: 1;
+      font-size: 15px;
+      height: 40px;
+      min-width: 0;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width:680px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .masthead .tag {
+        margin-left: 0;
+      }
+    }
+
+    /* Filters */
+    .filters-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin: 0 0 8px;
+    }
+
+    fieldset.facet {
+      border: none;
+      margin: 0 0 14px;
+      padding: 0;
+      min-width: 0;
+    }
+
+    fieldset.facet legend {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      padding: 0;
+    }
+
+    .facet label {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 13px;
+      padding: 3px 0;
+      cursor: pointer;
+      line-height: 1.3;
+    }
+
+    .facet label.zero {
+      color: var(--text-muted);
+    }
+
+    .facet input[type=checkbox] {
+      accent-color: var(--charcoal);
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      flex: none;
+    }
+
+    .facet .count {
+      margin-left: auto;
+      color: var(--text-muted);
+      font-size: 12px;
+      padding-left: 6px;
+    }
+
+    fieldset.facet-group {
+      border: none;
+      border-left: 2px solid var(--border);
+      margin: 0 0 10px;
+      padding: 0 0 0 9px;
+      min-width: 0;
+    }
+
+    fieldset.facet-group legend {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 3px;
+      padding: 0;
+    }
+
+    .link-btn {
+      height: auto;
+      padding: 3px 0;
+      border: none;
+      background: none;
+      color: var(--charcoal);
+      text-decoration: underline;
+      font-size: 12.5px;
+    }
+
+    .link-btn:hover {
+      background: none;
+    }
+
+    /* Results */
+    .results-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: auto;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: var(--neutral-tint);
+      border: none;
+      color: var(--text-primary);
+    }
+
+    .chip:hover {
+      background: #E1E4E5;
+    }
+
+    ul.results {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .result {
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      margin-bottom: 10px;
+      background: var(--surface-1);
+    }
+
+    .result-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .result h3 {
+      font-weight: 500;
+      font-size: 14.5px;
+      margin: 0;
+    }
+
+    .result .desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin: 4px 0 8px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      background: var(--neutral-tint);
+      color: var(--text-primary);
+      flex: none;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 6px 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .meta-row>span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .tag-pill {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border-strong);
+      color: var(--text-secondary);
+      background: var(--surface-1);
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 11px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-sm {
+      font-size: 12.5px;
+      padding: 5px 12px;
+      height: auto;
+      border-color: var(--charcoal);
+      color: var(--charcoal);
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: var(--radius);
+      border: 0.5px solid var(--charcoal);
+      color: var(--charcoal);
+      background: var(--surface-1);
+      text-decoration: none;
+    }
+
+    .btn-link.sm {
+      font-size: 12.5px;
+      padding: 5px 12px;
+    }
+
+    .btn-link.md {
+      height: 38px;
+      padding: 0 14px;
+      font-size: 13.5px;
+    }
+
+    .btn-link.primary {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .btn-link.disabled {
+      border-color: var(--border);
+      border-style: dashed;
+      color: var(--text-muted);
+      background: transparent;
+      cursor: default;
+    }
+
+    /* Page footer */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px 20px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 0.5px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .page-footer .link-btn {
+      font-size: 12px;
+    }
+
+    /* Request-data modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28, 31, 32, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+
+    .modal-overlay[hidden] {
+      display: none;
+    }
+
+    .modal {
+      background: var(--surface-1);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 380px;
+      padding: 20px 22px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal h2 {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+
+    .modal p {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin: 0 0 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: #fff;
+      border-color: var(--charcoal);
+    }
+
+    .btn-primary:hover {
+      background: #262a2b;
+    }
+
+    /* Missing metadata — grayed, but still AA contrast */
+    .unknown {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Detail view */
+    .detail {
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-1);
+      overflow: hidden;
+    }
+
+    .detail-head {
+      background: var(--charcoal);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .detail-head button {
+      font-size: 12px;
+      padding: 3px 9px;
+      height: auto;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .detail-head h2 {
+      color: #fff;
+      font-weight: 500;
+      font-size: 14px;
+      margin: 0;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .detail-head h2:focus-visible {
+      outline-color: #fff;
+    }
+
+    .detail-head .badge {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+    }
+
+    .detail-body {
+      padding: 15px 16px;
+    }
+
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 0 0 14px;
+    }
+
+    .tile {
+      background: var(--surface-2);
+      border-radius: 8px;
+      padding: 9px 11px;
+      border: 0.5px solid transparent;
+      margin: 0;
+    }
+
+    .tile.is-unknown {
+      background: transparent;
+      border: 0.5px dashed var(--border-strong);
+    }
+
+    .tile dt {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tile dd {
+      font-size: 12.5px;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .detail .description {
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin: 0 0 5px;
+    }
+
+    .section {
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .section ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .section .link-btn {
+      padding: 0;
+      text-align: left;
+    }
+
+    /* States */
+    .msg {
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-1);
+      padding: 26px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .msg strong {
+      color: var(--text-primary);
+      font-weight: 500;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      display: flex;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .callout.warning {
+      background: var(--warning-tint);
+      color: var(--warning);
+    }
+
+    .callout.danger {
+      background: var(--danger-tint);
+      color: var(--danger);
+    }
+
+    .skeleton {
+      height: 92px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #EDEFF0 0%, #F7F8F8 50%, #EDEFF0 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: 200% 0;
+      }
+
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .skeleton {
+        animation: none;
+      }
+    }
+
+    code {
+      font-size: 12px;
+      background: var(--neutral-tint);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="page">
-  <a class="back-link" href="index.html">&larr; All prototypes</a>
-  <h1 class="sr-only">CDPHE data explorer prototype: search and filter CDPHE datasets, dashboards, and summary reports.</h1>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; All prototypes</a>
+    <h1 class="sr-only">CDPHE data explorer prototype: search and filter CDPHE datasets, dashboards, and summary
+      reports.</h1>
 
-  <header class="masthead">
-    <div class="logo">
-      <div class="logo-mark" aria-hidden="true"></div>
-      <div class="wordmark">
-        <div class="state">COLORADO</div>
-        <div class="dept">Department of Public Health &amp; Environment</div>
+    <header class="masthead">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="wordmark">
+          <div class="state">COLORADO</div>
+          <div class="dept">Department of Public Health &amp; Environment</div>
+        </div>
       </div>
-    </div>
-    <div class="tag">CDPHE Data explorer <span class="dim">· prototype</span></div>
-  </header>
+      <div class="tag">CDPHE Data explorer <span class="dim">· prototype</span></div>
+    </header>
 
-  <main class="shell">
-    <form role="search" id="searchForm" onsubmit="return false;">
-      <div class="searchbar">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
-        <label for="q" class="sr-only">Search public health data</label>
-        <input id="q" type="search" autocomplete="off" placeholder="Try “cancer by county” or “overdose”" aria-describedby="hint" disabled />
+    <main class="shell">
+      <form role="search" id="searchForm" onsubmit="return false;">
+        <div class="searchbar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true">
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+          <label for="q" class="sr-only">Search public health data</label>
+          <input id="q" type="search" autocomplete="off" placeholder="Try “cancer by county” or “overdose”"
+            aria-describedby="hint" disabled />
+        </div>
+      </form>
+      <div class="hint" id="hint">Search names, descriptions, topics, and more. Results update as you type.</div>
+
+      <div class="layout">
+        <aside aria-labelledby="filters-h">
+          <h2 class="filters-title" id="filters-h">Filter results</h2>
+          <div id="facets"></div>
+        </aside>
+        <section aria-labelledby="results-h">
+          <h2 class="sr-only" id="results-h">Results</h2>
+          <div id="warnings"></div>
+          <div id="panel"></div>
+        </section>
       </div>
-    </form>
-    <div class="hint" id="hint">Search names, descriptions, topics, and more. Results update as you type.</div>
+      <!-- Announces match counts to assistive tech. Kept separate from the visible count to avoid double reads. -->
+      <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+    </main>
 
-    <div class="layout">
-      <aside aria-labelledby="filters-h">
-        <h2 class="filters-title" id="filters-h">Filter results</h2>
-        <div id="facets"></div>
-      </aside>
-      <section aria-labelledby="results-h">
-        <h2 class="sr-only" id="results-h">Results</h2>
-        <div id="warnings"></div>
-        <div id="panel"></div>
-      </section>
-    </div>
-    <!-- Announces match counts to assistive tech. Kept separate from the visible count to avoid double reads. -->
-    <div id="live" class="sr-only" role="status" aria-live="polite"></div>
-  </main>
+    <footer class="page-footer">
+      <div>Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more
+          data</button></div>
+    </footer>
+  </div>
 
-  <footer class="page-footer">
-    <div>Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more data</button></div>
-    <div>Prototype for testing with CDPHE staff.</div>
-  </footer>
-</div>
-
-<div class="modal-overlay" id="requestModal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle" aria-describedby="requestModalDesc" tabindex="-1">
-    <h2 id="requestModalTitle">Requesting data is coming soon</h2>
-    <p id="requestModalDesc">You&rsquo;ll be able to ask for data that isn&rsquo;t published here. This isn&rsquo;t available yet.</p>
-    <div class="modal-actions">
-      <button type="button" class="btn-primary" id="requestModalClose">Close</button>
+  <div class="modal-overlay" id="requestModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle"
+      aria-describedby="requestModalDesc" tabindex="-1">
+      <h2 id="requestModalTitle">Requesting data is coming soon</h2>
+      <p id="requestModalDesc">You&rsquo;ll be able to ask for data that isn&rsquo;t published here. This isn&rsquo;t
+        available yet.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn-primary" id="requestModalClose">Close</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.js"
-        integrity="sha384-KuHy7eg9MqWBVrMXJC0WN6q4d3+KBquZ3Htgex79A4REptrDvGOXfAgZ0VOJ1Mdx"
-        crossorigin="anonymous"></script>
-<script>
-(function(){
-  /* ------------------------------------------------------------------
-     Configuration — edit here to change sources, search, and filters.
-     ------------------------------------------------------------------ */
-  const CONFIG = {
-    schemaFile: "data/schema.json",
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.js"
+    integrity="sha384-KuHy7eg9MqWBVrMXJC0WN6q4d3+KBquZ3Htgex79A4REptrDvGOXfAgZ0VOJ1Mdx"
+    crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      /* ------------------------------------------------------------------
+         Configuration — edit here to change sources, search, and filters.
+         ------------------------------------------------------------------ */
+      const CONFIG = {
+        schemaFile: "data/schema.json",
 
-    // Each data product: where its records live and which schema definition describes them.
-    // A file may be a bare array of records, or an object with the `collection` key (as in schema.json).
-    products: [
-      { key:"dataset",        label:"Dataset",        file:"data/datasets.json",        collection:"datasets",        schemaDef:"dataset",        linkLabel:"View data" },
-      { key:"dashboard",      label:"Dashboard",      file:"data/dashboards.json",      collection:"dashboards",      schemaDef:"dashboard",      linkLabel:"Open dashboard" },
-      { key:"summary_report", label:"Summary report", file:"data/summary_reports.json", collection:"summary_reports", schemaDef:"summary_report", linkLabel:"Open report" }
-    ],
+        // Each data product: where its records live and which schema definition describes them.
+        // A file may be a bare array of records, or an object with the `collection` key (as in schema.json).
+        products: [
+          { key: "dataset", label: "Dataset", file: "data/datasets.json", collection: "datasets", schemaDef: "dataset", linkLabel: "View data" },
+          { key: "dashboard", label: "Dashboard", file: "data/dashboards.json", collection: "dashboards", schemaDef: "dashboard", linkLabel: "Open dashboard" },
+          { key: "summary_report", label: "Summary report", file: "data/summary_reports.json", collection: "summary_reports", schemaDef: "summary_report", linkLabel: "Open report" }
+        ],
 
-    // MiniSearch options. See https://lucaong.github.io/minisearch/
-    search: {
-      fields: ["name","short_name","topics","description","population","geographic_granularity","product"],
-      boost: { name:3, short_name:3, topics:2 },
-      prefix: true,                               // "diab" matches "diabetes"
-      fuzzy: term => term.length > 4 ? 0.2 : false, // tolerate small typos on longer words
-      combineWith: "AND",                         // every meaningful word must match
-      stopWords: ["a","an","and","the","of","for","in","on","by","to","with","or","data","about","what","is","are","how","colorado"]
-    },
+        // MiniSearch options. See https://lucaong.github.io/minisearch/
+        search: {
+          fields: ["name", "short_name", "topics", "description", "population", "geographic_granularity", "product"],
+          boost: { name: 3, short_name: 3, topics: 2 },
+          prefix: true,                               // "diab" matches "diabetes"
+          fuzzy: term => term.length > 4 ? 0.2 : false, // tolerate small typos on longer words
+          combineWith: "AND",                         // every meaningful word must match
+          stopWords: ["a", "an", "and", "the", "of", "for", "in", "on", "by", "to", "with", "or", "data", "about", "what", "is", "are", "how", "colorado"]
+        },
 
-    // Filters, in display order. `field` is a schema field (or "product" for the data product type).
-    // Within a filter, options combine with OR; across filters, with AND.
-    // `limit` shows the top N options with a "show all" toggle.
-    // `groupsFile` points to a JSON object of { "Group name": [values] }; options are shown under
-    // those subheadings (each with its own `limit`), and values not in any group go under "Other".
-    filters: [
-      { field:"product",                label:"Data product" },
-      { field:"geographic_granularity", label:"Geographic granularity" },
-      { field:"topics",                 label:"Topic", limit:5, groupsFile:"data/topics.json" }
-    ],
+        // Filters, in display order. `field` is a schema field (or "product" for the data product type).
+        // Within a filter, options combine with OR; across filters, with AND.
+        // `limit` shows the top N options with a "show all" toggle.
+        // `groupsFile` points to a JSON object of { "Group name": [values] }; options are shown under
+        // those subheadings (each with its own `limit`), and values not in any group go under "Other".
+        filters: [
+          { field: "product", label: "Data product" },
+          { field: "geographic_granularity", label: "Geographic granularity" },
+          { field: "topics", label: "Topic", limit: 5, groupsFile: "data/topics.json" }
+        ],
 
-    // How schema fields are labelled and formatted. Only fields that appear in a product's
-    // schema definition are shown for that product; anything else in the JSON is ignored.
-    fields: {
-      short_name:             { label:"Short name" },
-      population:             { label:"Population",             icon:"users" },
-      geographic_granularity: { label:"Geographic granularity", icon:"map-pin", format:"cap" },
-      years_covered:          { label:"Years covered",          icon:"calendar", format:"years" },
-      last_updated:           { label:"Last updated",           icon:"clock", format:"date" },
-      next_update:            { label:"Next update",            icon:"clock", format:"date" },
-      topics:                 { label:"Topics" },
-      documentation:          { label:"Documentation" },
-      contact:                { label:"Program contact", icon:"mail" },
-      link:                   { label:"Link" },
-      related_datasets:       { label:"Related datasets",  target:"dataset" },
-      related_dashboards:     { label:"Related dashboards", target:"dashboard" },
-      related_reports:        { label:"Related summary reports", target:"summary_report" }
-    },
-    cardFields:   ["geographic_granularity","years_covered","last_updated"],
-    detailTiles:  ["population","geographic_granularity","years_covered","last_updated","next_update","contact"],
-    relatedFields:["related_datasets","related_dashboards","related_reports"],
+        // How schema fields are labelled and formatted. Only fields that appear in a product's
+        // schema definition are shown for that product; anything else in the JSON is ignored.
+        fields: {
+          short_name: { label: "Short name" },
+          population: { label: "Population", icon: "users" },
+          geographic_granularity: { label: "Geographic granularity", icon: "map-pin", format: "cap" },
+          years_covered: { label: "Years covered", icon: "calendar", format: "years" },
+          last_updated: { label: "Last updated", icon: "clock", format: "date" },
+          next_update: { label: "Next update", icon: "clock", format: "date" },
+          topics: { label: "Topics" },
+          documentation: { label: "Documentation" },
+          contact: { label: "Program contact", icon: "mail" },
+          link: { label: "Link" },
+          related_datasets: { label: "Related datasets", target: "dataset" },
+          related_dashboards: { label: "Related dashboards", target: "dashboard" },
+          related_reports: { label: "Related summary reports", target: "summary_report" }
+        },
+        cardFields: ["geographic_granularity", "years_covered", "last_updated"],
+        detailTiles: ["population", "geographic_granularity", "years_covered", "last_updated", "next_update", "contact"],
+        relatedFields: ["related_datasets", "related_dashboards", "related_reports"],
 
-    fetchTimeoutMs: 15000
-  };
+        fetchTimeoutMs: 15000
+      };
 
-  const UNKNOWN = "Unknown";
+      const UNKNOWN = "Unknown";
 
-  /* ---------- Icons (same set and style as Prototype 1) ---------- */
-  const ICON_PATHS={
-    clock:'<circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 16 14"></polyline>',
-    "map-pin":'<path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle>',
-    calendar:'<rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line>',
-    users:'<circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14a6.5 6.5 0 0 1 3.5 6"></path>',
-    book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
-    "arrow-left":'<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
-    "external-link":'<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
-    "alert-triangle":'<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
-    x:'<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
-    link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
-    mail:'<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path>'
-  };
-  function ic(name,size,va){
-    return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;${va?" vertical-align:"+va+";":""}" aria-hidden="true">${ICON_PATHS[name]}</svg>`;
-  }
-
-  /* ---------- Helpers ---------- */
-  const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const cap=s=>{ s=String(s); return s.charAt(0).toUpperCase()+s.slice(1); };
-  const isBlank=v=>v==null || (typeof v==="string" && !v.trim()) || (Array.isArray(v) && v.length===0);
-  const safeUrl=u=>typeof u==="string" && /^https?:\/\//i.test(u.trim()) ? u.trim() : null;
-  const plural=(n,word)=>`${n} ${word}${n===1?"":"s"}`;
-  const productByKey=Object.fromEntries(CONFIG.products.map(p=>[p.key,p]));
-  const fieldLabel=f=>(CONFIG.fields[f] && CONFIG.fields[f].label) || cap(f.replace(/_/g," "));
-  const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-
-  function fmtDate(v){
-    if(!/^\d{4}-\d{2}-\d{2}$/.test(v)) return String(v);
-    const d=new Date(v+"T00:00:00Z");
-    return isNaN(d) ? String(v) : d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric",timeZone:"UTC"});
-  }
-  // [2007,2008,2009,2012] → "2007–2009, 2012" so gaps stay visible.
-  function fmtYears(arr){
-    const ys=[...new Set(arr.map(Number).filter(Number.isInteger))].sort((a,b)=>a-b);
-    const runs=[];
-    ys.forEach(y=>{ const r=runs[runs.length-1]; if(r && y===r[1]+1) r[1]=y; else runs.push([y,y]); });
-    return runs.map(([a,b])=>a===b?String(a):`${a}–${b}`).join(", ");
-  }
-  // Returns display text for a field, or null when the value is missing.
-  function fmt(rec,field){
-    const v=rec[field], f=CONFIG.fields[field]||{};
-    if(isBlank(v)) return null;
-    if(f.format==="date") return fmtDate(v);
-    if(f.format==="years") return Array.isArray(v) ? (fmtYears(v)||null) : String(v);
-    if(f.format==="cap") return cap(v);
-    return Array.isArray(v) ? v.map(cap).join(", ") : String(v);
-  }
-  const valueHtml=(text)=> text==null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);
-  function extLink(url,label){
-    return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ${ic("external-link",12,"-1px")}<span class="sr-only"> (opens in a new window)</span></a>`;
-  }
-
-  /* ---------- State ---------- */
-  const state={
-    schema:null, records:[], byKey:new Map(), mini:null, warnings:[],
-    q:"", active:Object.fromEntries(CONFIG.filters.map(f=>[f.field,new Set()])),
-    expanded:{}, groups:{}, view:{screen:"loading"}, returnFocus:null
-  };
-  const STOP=new Set(CONFIG.search.stopWords);
-  const $=id=>document.getElementById(id);
-
-  // Fields this record's product is allowed to show, per schema.json.
-  function schemaFields(rec){
-    const def=state.schema && state.schema.$defs && state.schema.$defs[rec._product.schemaDef];
-    return new Set(def && def.properties ? Object.keys(def.properties) : []);
-  }
-  function valuesOf(rec,field){
-    if(field==="product") return [rec._product.label];
-    const v=rec[field];
-    if(isBlank(v)) return [UNKNOWN];
-    return Array.isArray(v) ? v.map(String) : [String(v)];
-  }
-  const displayValue=v=>v===UNKNOWN ? v : cap(v);
-
-  /* ---------- Loading ---------- */
-  async function fetchJSON(url){
-    const ctrl=new AbortController(), t=setTimeout(()=>ctrl.abort(),CONFIG.fetchTimeoutMs);
-    try{
-      const res=await fetch(url,{cache:"no-cache",signal:ctrl.signal});
-      if(!res.ok) throw new Error(`${url} returned HTTP ${res.status}`);
-      const text=await res.text();
-      return text.trim() ? JSON.parse(text) : null; // an empty file just means no records yet
-    }catch(e){
-      if(e.name==="AbortError") throw new Error(`${url} took too long to respond`);
-      throw e;
-    }finally{ clearTimeout(t); }
-  }
-
-  async function load(){
-    state.view={screen:"loading"}; state.warnings=[]; render();
-    if(typeof MiniSearch==="undefined"){
-      return fail("The search library couldn't be loaded. Check your network connection and try again.");
-    }
-    try{ state.schema=await fetchJSON(CONFIG.schemaFile); }
-    catch(e){ return fail(`The catalog schema couldn't be loaded (${e.message}).`); }
-    if(!state.schema || !state.schema.$defs) return fail(`${CONFIG.schemaFile} is empty or has no $defs.`);
-
-    const grouped=CONFIG.filters.filter(f=>f.groupsFile);
-    const [settled, groupFiles]=await Promise.all([
-      Promise.allSettled(CONFIG.products.map(p=>fetchJSON(p.file))),
-      Promise.allSettled(grouped.map(f=>fetchJSON(f.groupsFile)))
-    ]);
-    // Groups are a display nicety: if the file is missing, the filter falls back to a flat list.
-    state.groups={};
-    groupFiles.forEach((r,i)=>{
-      const f=grouped[i], data=r.status==="fulfilled" ? r.value : null;
-      if(data && typeof data==="object" && !Array.isArray(data)) state.groups[f.field]=data;
-      else state.warnings.push(`${f.label} groupings couldn't be loaded from ${f.groupsFile}, so ${f.label.toLowerCase()} options are shown as one list.`);
-    });
-    const records=[];
-    settled.forEach((r,i)=>{
-      const p=CONFIG.products[i];
-      if(r.status==="rejected"){ state.warnings.push(`${p.label} records couldn't be loaded from ${p.file}. Results below don't include them.`); return; }
-      const data=r.value;
-      const list=Array.isArray(data) ? data : (data && Array.isArray(data[p.collection]) ? data[p.collection] : []);
-      if(data && !Array.isArray(data) && !Array.isArray(data[p.collection])) state.warnings.push(`${p.file} isn't in a recognized format, so no ${p.label.toLowerCase()} records were loaded.`);
-      list.forEach((rec,j)=>{
-        if(!rec || typeof rec!=="object") return;
-        records.push({...rec, _product:p, _key:`${p.key}:${rec.id || "row-"+j}`});
-      });
-    });
-    if(settled.every(r=>r.status==="rejected")) return fail("None of the catalog files could be loaded.");
-
-    state.records=records;
-    state.byKey=new Map(records.map(r=>[r._key,r]));
-    state.mini=new MiniSearch({
-      idField:"_key",
-      fields:CONFIG.search.fields,
-      extractField:(doc,f)=>{ const v=f==="product" ? doc._product.label : doc[f]; return Array.isArray(v) ? v.join(" ") : v; },
-      processTerm:term=>{ const t=term.toLowerCase(); return STOP.has(t) ? null : t; },
-      searchOptions:{ boost:CONFIG.search.boost, prefix:CONFIG.search.prefix, fuzzy:CONFIG.search.fuzzy, combineWith:CONFIG.search.combineWith }
-    });
-    // MiniSearch requires unique ids; drop duplicates rather than failing the whole load.
-    const seen=new Set();
-    state.mini.addAll(records.filter(r=>!seen.has(r._key) && seen.add(r._key)));
-
-    $("q").disabled=false;
-    state.view={screen:"list"};
-    render(); announce();
-  }
-
-  function fail(message){
-    const fileHint=location.protocol==="file:"
-      ? ` <br>This page reads JSON files, which browsers block when a page is opened directly from disk. Run <code>python3 -m http.server</code> in the project folder and open <code>http://localhost:8000/data_explorer.html</code>.`
-      : "";
-    state.view={screen:"error", message, fileHint};
-    render();
-    $("live").textContent="The catalog couldn't be loaded.";
-  }
-
-  /* ---------- Search + filter ---------- */
-  function searched(){
-    const terms=state.q.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(t=>t && !STOP.has(t));
-    if(!terms.length) return { list:[...state.records].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""))), ranked:false };
-    const hits=state.mini.search(state.q);
-    return { list:hits.map(h=>state.byKey.get(h.id)).filter(Boolean), ranked:true };
-  }
-  function passes(rec,exceptField){
-    return CONFIG.filters.every(f=>{
-      if(f.field===exceptField) return true;
-      const sel=state.active[f.field];
-      return !sel.size || valuesOf(rec,f.field).some(v=>sel.has(v));
-    });
-  }
-  // Counts for each filter reflect the search plus every *other* filter, so options show
-  // how many results you'd get by adding them.
-  function facetCounts(base){
-    const out={};
-    CONFIG.filters.forEach(f=>{
-      const counts=new Map();
-      if(f.field==="product") CONFIG.products.forEach(p=>counts.set(p.label,0));
-      base.filter(r=>passes(r,f.field)).forEach(r=>valuesOf(r,f.field).forEach(v=>counts.set(v,(counts.get(v)||0)+1)));
-      state.records.forEach(r=>valuesOf(r,f.field).forEach(v=>{ if(!counts.has(v)) counts.set(v,0); }));
-      state.active[f.field].forEach(v=>{ if(!counts.has(v)) counts.set(v,0); });
-      let opts=[...counts.entries()];
-      if(f.field!=="product"){
-        opts.sort((a,b)=> (a[0]===UNKNOWN)-(b[0]===UNKNOWN) || b[1]-a[1] || a[0].localeCompare(b[0]));
+      /* ---------- Icons (same set and style as Prototype 1) ---------- */
+      const ICON_PATHS = {
+        clock: '<circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 16 14"></polyline>',
+        "map-pin": '<path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle>',
+        calendar: '<rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line>',
+        users: '<circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14a6.5 6.5 0 0 1 3.5 6"></path>',
+        book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
+        "arrow-left": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
+        "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
+        "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
+        x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
+        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
+        mail: '<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path>'
+      };
+      function ic(name, size, va) {
+        return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;${va ? " vertical-align:" + va + ";" : ""}" aria-hidden="true">${ICON_PATHS[name]}</svg>`;
       }
-      out[f.field]=opts;
-    });
-    return out;
-  }
 
-  /* ---------- Rendering ---------- */
-  function renderFacets(base){
-    const el=$("facets");
-    if(state.view.screen==="loading" || state.view.screen==="error"){ el.innerHTML=state.view.screen==="loading" ? `<div class="unknown">Loading filters…</div>` : ""; return; }
-    const focusedId=document.activeElement && el.contains(document.activeElement) ? document.activeElement.id : null;
-    const counts=facetCounts(base);
-    // A list of checkbox options with an optional "show all" toggle. `key` identifies the list
-    // for expand state; `name` is what the toggle announces (e.g. "health topics options").
-    function optionList(f,opts,key,name){
-      const limit=f.limit && !state.expanded[key] ? f.limit : Infinity;
-      // Always keep checked options visible, even past the limit.
-      const shown=opts.filter((o,i)=>i<limit || state.active[f.field].has(o[0]));
-      const items=shown.map(([v,n])=>{
-        const id=`f-${slug(f.field)}-${slug(v)||"x"}`;
-        const on=state.active[f.field].has(v);
-        return `<label for="${id}" class="${n===0&&!on?"zero":""}">
-          <input type="checkbox" id="${id}" data-fk="${esc(f.field)}" data-fv="${esc(v)}" ${on?"checked":""} />
-          <span>${esc(displayValue(v))}</span><span class="count" aria-hidden="true">${n}</span><span class="sr-only">, ${plural(n,"result")}</span></label>`;
-      }).join("");
-      const toggle=f.limit && opts.length>f.limit
-        ? `<button type="button" class="link-btn" id="more-${slug(key)}" data-more="${esc(key)}" aria-expanded="${!!state.expanded[key]}">${state.expanded[key]?"Show fewer":`Show all ${opts.length}`}<span class="sr-only"> ${esc(name)} options</span></button>`
-        : "";
-      return items+toggle;
-    }
-    // Splits options into the configured groups, keeping each group's count-sorted order.
-    // Values not listed in any group (including Unknown) collect under "Other".
-    function groupOptions(f,opts){
-      const groupOf=new Map();
-      Object.entries(state.groups[f.field]).forEach(([g,vals])=>{
-        if(Array.isArray(vals)) vals.forEach(v=>{ const k=String(v).toLowerCase(); if(!groupOf.has(k)) groupOf.set(k,g); });
-      });
-      const out=new Map(Object.keys(state.groups[f.field]).map(g=>[g,[]]));
-      out.set("Other",out.get("Other")||[]);
-      opts.forEach(o=>out.get(groupOf.get(o[0].toLowerCase())||"Other").push(o));
-      return [...out.entries()].filter(([,list])=>list.length);
-    }
-    // Group names in the JSON may be Title Case; display them in sentence case.
-    const sentence=s=>{ s=String(s); return s.charAt(0).toUpperCase()+s.slice(1).toLowerCase(); };
+      /* ---------- Helpers ---------- */
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      const cap = s => { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
+      const isBlank = v => v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
+      const safeUrl = u => typeof u === "string" && /^https?:\/\//i.test(u.trim()) ? u.trim() : null;
+      const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+      const productByKey = Object.fromEntries(CONFIG.products.map(p => [p.key, p]));
+      const fieldLabel = f => (CONFIG.fields[f] && CONFIG.fields[f].label) || cap(f.replace(/_/g, " "));
+      const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-    el.innerHTML=CONFIG.filters.map(f=>{
-      const opts=counts[f.field];
-      let body;
-      if(state.groups[f.field]){
-        body=groupOptions(f,opts).map(([g,list])=>
-          `<fieldset class="facet-group"><legend>${esc(sentence(g))}</legend>${optionList(f,list,`${f.field}:${g}`,sentence(g).toLowerCase())}</fieldset>`).join("");
-      }else{
-        body=optionList(f,opts,f.field,f.label.toLowerCase());
+      function fmtDate(v) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return String(v);
+        const d = new Date(v + "T00:00:00Z");
+        return isNaN(d) ? String(v) : d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
       }
-      return `<fieldset class="facet"><legend>${esc(f.label)}</legend>${body || `<div class="unknown">No values</div>`}</fieldset>`;
-    }).join("");
-    el.querySelectorAll("input[type=checkbox]").forEach(cb=>cb.addEventListener("change",e=>{
-      const {fk,fv}=e.target.dataset;
-      e.target.checked ? state.active[fk].add(fv) : state.active[fk].delete(fv);
-      if(state.view.screen!=="list") state.view={screen:"list"};
-      render(); announce();
-    }));
-    el.querySelectorAll("[data-more]").forEach(b=>b.addEventListener("click",()=>{
-      state.expanded[b.dataset.more]=!state.expanded[b.dataset.more]; render();
-    }));
-    if(focusedId && $(focusedId)) $(focusedId).focus();
-  }
+      // [2007,2008,2009,2012] → "2007–2009, 2012" so gaps stay visible.
+      function fmtYears(arr) {
+        const ys = [...new Set(arr.map(Number).filter(Number.isInteger))].sort((a, b) => a - b);
+        const runs = [];
+        ys.forEach(y => { const r = runs[runs.length - 1]; if (r && y === r[1] + 1) r[1] = y; else runs.push([y, y]); });
+        return runs.map(([a, b]) => a === b ? String(a) : `${a}–${b}`).join(", ");
+      }
+      // Returns display text for a field, or null when the value is missing.
+      function fmt(rec, field) {
+        const v = rec[field], f = CONFIG.fields[field] || {};
+        if (isBlank(v)) return null;
+        if (f.format === "date") return fmtDate(v);
+        if (f.format === "years") return Array.isArray(v) ? (fmtYears(v) || null) : String(v);
+        if (f.format === "cap") return cap(v);
+        return Array.isArray(v) ? v.map(cap).join(", ") : String(v);
+      }
+      const valueHtml = (text) => text == null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);
+      function extLink(url, label) {
+        return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ${ic("external-link", 12, "-1px")}<span class="sr-only"> (opens in a new window)</span></a>`;
+      }
 
-  function metaItem(rec,field){
-    const f=CONFIG.fields[field]||{}, text=fmt(rec,field);
-    return `<span>${f.icon?ic(f.icon,14):""}<span class="sr-only">${esc(fieldLabel(field))}: </span>${valueHtml(text)}</span>`;
-  }
+      /* ---------- State ---------- */
+      const state = {
+        schema: null, records: [], byKey: new Map(), mini: null, warnings: [],
+        q: "", active: Object.fromEntries(CONFIG.filters.map(f => [f.field, new Set()])),
+        expanded: {}, groups: {}, view: { screen: "loading" }, returnFocus: null
+      };
+      const STOP = new Set(CONFIG.search.stopWords);
+      const $ = id => document.getElementById(id);
 
-  function card(rec){
-    const allowed=schemaFields(rec);
-    const topics=Array.isArray(rec.topics) ? rec.topics : [];
-    const url=safeUrl(rec.link);
-    const name=rec.name || UNKNOWN;
-    return `<li class="result">
+      // Fields this record's product is allowed to show, per schema.json.
+      function schemaFields(rec) {
+        const def = state.schema && state.schema.$defs && state.schema.$defs[rec._product.schemaDef];
+        return new Set(def && def.properties ? Object.keys(def.properties) : []);
+      }
+      function valuesOf(rec, field) {
+        if (field === "product") return [rec._product.label];
+        const v = rec[field];
+        if (isBlank(v)) return [UNKNOWN];
+        return Array.isArray(v) ? v.map(String) : [String(v)];
+      }
+      const displayValue = v => v === UNKNOWN ? v : cap(v);
+
+      /* ---------- Loading ---------- */
+      async function fetchJSON(url) {
+        const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), CONFIG.fetchTimeoutMs);
+        try {
+          const res = await fetch(url, { cache: "no-cache", signal: ctrl.signal });
+          if (!res.ok) throw new Error(`${url} returned HTTP ${res.status}`);
+          const text = await res.text();
+          return text.trim() ? JSON.parse(text) : null; // an empty file just means no records yet
+        } catch (e) {
+          if (e.name === "AbortError") throw new Error(`${url} took too long to respond`);
+          throw e;
+        } finally { clearTimeout(t); }
+      }
+
+      async function load() {
+        state.view = { screen: "loading" }; state.warnings = []; render();
+        if (typeof MiniSearch === "undefined") {
+          return fail("The search library couldn't be loaded. Check your network connection and try again.");
+        }
+        try { state.schema = await fetchJSON(CONFIG.schemaFile); }
+        catch (e) { return fail(`The catalog schema couldn't be loaded (${e.message}).`); }
+        if (!state.schema || !state.schema.$defs) return fail(`${CONFIG.schemaFile} is empty or has no $defs.`);
+
+        const grouped = CONFIG.filters.filter(f => f.groupsFile);
+        const [settled, groupFiles] = await Promise.all([
+          Promise.allSettled(CONFIG.products.map(p => fetchJSON(p.file))),
+          Promise.allSettled(grouped.map(f => fetchJSON(f.groupsFile)))
+        ]);
+        // Groups are a display nicety: if the file is missing, the filter falls back to a flat list.
+        state.groups = {};
+        groupFiles.forEach((r, i) => {
+          const f = grouped[i], data = r.status === "fulfilled" ? r.value : null;
+          if (data && typeof data === "object" && !Array.isArray(data)) state.groups[f.field] = data;
+          else state.warnings.push(`${f.label} groupings couldn't be loaded from ${f.groupsFile}, so ${f.label.toLowerCase()} options are shown as one list.`);
+        });
+        const records = [];
+        settled.forEach((r, i) => {
+          const p = CONFIG.products[i];
+          if (r.status === "rejected") { state.warnings.push(`${p.label} records couldn't be loaded from ${p.file}. Results below don't include them.`); return; }
+          const data = r.value;
+          const list = Array.isArray(data) ? data : (data && Array.isArray(data[p.collection]) ? data[p.collection] : []);
+          if (data && !Array.isArray(data) && !Array.isArray(data[p.collection])) state.warnings.push(`${p.file} isn't in a recognized format, so no ${p.label.toLowerCase()} records were loaded.`);
+          list.forEach((rec, j) => {
+            if (!rec || typeof rec !== "object") return;
+            records.push({ ...rec, _product: p, _key: `${p.key}:${rec.id || "row-" + j}` });
+          });
+        });
+        if (settled.every(r => r.status === "rejected")) return fail("None of the catalog files could be loaded.");
+
+        state.records = records;
+        state.byKey = new Map(records.map(r => [r._key, r]));
+        state.mini = new MiniSearch({
+          idField: "_key",
+          fields: CONFIG.search.fields,
+          extractField: (doc, f) => { const v = f === "product" ? doc._product.label : doc[f]; return Array.isArray(v) ? v.join(" ") : v; },
+          processTerm: term => { const t = term.toLowerCase(); return STOP.has(t) ? null : t; },
+          searchOptions: { boost: CONFIG.search.boost, prefix: CONFIG.search.prefix, fuzzy: CONFIG.search.fuzzy, combineWith: CONFIG.search.combineWith }
+        });
+        // MiniSearch requires unique ids; drop duplicates rather than failing the whole load.
+        const seen = new Set();
+        state.mini.addAll(records.filter(r => !seen.has(r._key) && seen.add(r._key)));
+
+        $("q").disabled = false;
+        state.view = { screen: "list" };
+        render(); announce();
+      }
+
+      function fail(message) {
+        const fileHint = location.protocol === "file:"
+          ? ` <br>This page reads JSON files, which browsers block when a page is opened directly from disk. Run <code>python3 -m http.server</code> in the project folder and open <code>http://localhost:8000/data_explorer.html</code>.`
+          : "";
+        state.view = { screen: "error", message, fileHint };
+        render();
+        $("live").textContent = "The catalog couldn't be loaded.";
+      }
+
+      /* ---------- Search + filter ---------- */
+      function searched() {
+        const terms = state.q.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(t => t && !STOP.has(t));
+        if (!terms.length) return { list: [...state.records].sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""))), ranked: false };
+        const hits = state.mini.search(state.q);
+        return { list: hits.map(h => state.byKey.get(h.id)).filter(Boolean), ranked: true };
+      }
+      function passes(rec, exceptField) {
+        return CONFIG.filters.every(f => {
+          if (f.field === exceptField) return true;
+          const sel = state.active[f.field];
+          return !sel.size || valuesOf(rec, f.field).some(v => sel.has(v));
+        });
+      }
+      // Counts for each filter reflect the search plus every *other* filter, so options show
+      // how many results you'd get by adding them.
+      function facetCounts(base) {
+        const out = {};
+        CONFIG.filters.forEach(f => {
+          const counts = new Map();
+          if (f.field === "product") CONFIG.products.forEach(p => counts.set(p.label, 0));
+          base.filter(r => passes(r, f.field)).forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
+          state.records.forEach(r => valuesOf(r, f.field).forEach(v => { if (!counts.has(v)) counts.set(v, 0); }));
+          state.active[f.field].forEach(v => { if (!counts.has(v)) counts.set(v, 0); });
+          let opts = [...counts.entries()];
+          if (f.field !== "product") {
+            opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || b[1] - a[1] || a[0].localeCompare(b[0]));
+          }
+          out[f.field] = opts;
+        });
+        return out;
+      }
+
+      /* ---------- Rendering ---------- */
+      function renderFacets(base) {
+        const el = $("facets");
+        if (state.view.screen === "loading" || state.view.screen === "error") { el.innerHTML = state.view.screen === "loading" ? `<div class="unknown">Loading filters…</div>` : ""; return; }
+        const focusedId = document.activeElement && el.contains(document.activeElement) ? document.activeElement.id : null;
+        const counts = facetCounts(base);
+        // A list of checkbox options with an optional "show all" toggle. `key` identifies the list
+        // for expand state; `name` is what the toggle announces (e.g. "health topics options").
+        function optionList(f, opts, key, name) {
+          const limit = f.limit && !state.expanded[key] ? f.limit : Infinity;
+          // Always keep checked options visible, even past the limit.
+          const shown = opts.filter((o, i) => i < limit || state.active[f.field].has(o[0]));
+          const items = shown.map(([v, n]) => {
+            const id = `f-${slug(f.field)}-${slug(v) || "x"}`;
+            const on = state.active[f.field].has(v);
+            return `<label for="${id}" class="${n === 0 && !on ? "zero" : ""}">
+          <input type="checkbox" id="${id}" data-fk="${esc(f.field)}" data-fv="${esc(v)}" ${on ? "checked" : ""} />
+          <span>${esc(displayValue(v))}</span><span class="count" aria-hidden="true">${n}</span><span class="sr-only">, ${plural(n, "result")}</span></label>`;
+          }).join("");
+          const toggle = f.limit && opts.length > f.limit
+            ? `<button type="button" class="link-btn" id="more-${slug(key)}" data-more="${esc(key)}" aria-expanded="${!!state.expanded[key]}">${state.expanded[key] ? "Show fewer" : `Show all ${opts.length}`}<span class="sr-only"> ${esc(name)} options</span></button>`
+            : "";
+          return items + toggle;
+        }
+        // Splits options into the configured groups, keeping each group's count-sorted order.
+        // Values not listed in any group (including Unknown) collect under "Other".
+        function groupOptions(f, opts) {
+          const groupOf = new Map();
+          Object.entries(state.groups[f.field]).forEach(([g, vals]) => {
+            if (Array.isArray(vals)) vals.forEach(v => { const k = String(v).toLowerCase(); if (!groupOf.has(k)) groupOf.set(k, g); });
+          });
+          const out = new Map(Object.keys(state.groups[f.field]).map(g => [g, []]));
+          out.set("Other", out.get("Other") || []);
+          opts.forEach(o => out.get(groupOf.get(o[0].toLowerCase()) || "Other").push(o));
+          return [...out.entries()].filter(([, list]) => list.length);
+        }
+        // Group names in the JSON may be Title Case; display them in sentence case.
+        const sentence = s => { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); };
+
+        el.innerHTML = CONFIG.filters.map(f => {
+          const opts = counts[f.field];
+          let body;
+          if (state.groups[f.field]) {
+            body = groupOptions(f, opts).map(([g, list]) =>
+              `<fieldset class="facet-group"><legend>${esc(sentence(g))}</legend>${optionList(f, list, `${f.field}:${g}`, sentence(g).toLowerCase())}</fieldset>`).join("");
+          } else {
+            body = optionList(f, opts, f.field, f.label.toLowerCase());
+          }
+          return `<fieldset class="facet"><legend>${esc(f.label)}</legend>${body || `<div class="unknown">No values</div>`}</fieldset>`;
+        }).join("");
+        el.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", e => {
+          const { fk, fv } = e.target.dataset;
+          e.target.checked ? state.active[fk].add(fv) : state.active[fk].delete(fv);
+          if (state.view.screen !== "list") state.view = { screen: "list" };
+          render(); announce();
+        }));
+        el.querySelectorAll("[data-more]").forEach(b => b.addEventListener("click", () => {
+          state.expanded[b.dataset.more] = !state.expanded[b.dataset.more]; render();
+        }));
+        if (focusedId && $(focusedId)) $(focusedId).focus();
+      }
+
+      function metaItem(rec, field) {
+        const f = CONFIG.fields[field] || {}, text = fmt(rec, field);
+        return `<span>${f.icon ? ic(f.icon, 14) : ""}<span class="sr-only">${esc(fieldLabel(field))}: </span>${valueHtml(text)}</span>`;
+      }
+
+      function card(rec) {
+        const allowed = schemaFields(rec);
+        const topics = Array.isArray(rec.topics) ? rec.topics : [];
+        const url = safeUrl(rec.link);
+        const name = rec.name || UNKNOWN;
+        return `<li class="result">
       <div class="result-top">
-        <h3>${rec.name?esc(rec.name):`<span class="unknown">Untitled</span>`}${rec.short_name&&allowed.has("short_name")?` <span style="color:var(--text-muted); font-weight:400;">(${esc(rec.short_name)})</span>`:""}</h3>
+        <h3>${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}${rec.short_name && allowed.has("short_name") ? ` <span style="color:var(--text-muted); font-weight:400;">(${esc(rec.short_name)})</span>` : ""}</h3>
         <span class="badge">${esc(rec._product.label)}</span>
       </div>
-      <p class="desc">${rec.description?esc(rec.description):`<span class="unknown">No description</span>`}</p>
-      <div class="meta-row">${CONFIG.cardFields.filter(f=>allowed.has(f)).map(f=>metaItem(rec,f)).join("")}</div>
-      ${topics.length?`<div class="tags"><span class="sr-only">Topics: </span>${topics.slice(0,3).map(t=>`<span class="tag-pill">${esc(cap(t))}</span>`).join("")}${topics.length>3?`<span class="tag-pill">+${topics.length-3} more</span>`:""}</div>`:""}
+      <p class="desc">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p>
+      <div class="meta-row">${CONFIG.cardFields.filter(f => allowed.has(f)).map(f => metaItem(rec, f)).join("")}</div>
+      ${topics.length ? `<div class="tags"><span class="sr-only">Topics: </span>${topics.slice(0, 3).map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}${topics.length > 3 ? `<span class="tag-pill">+${topics.length - 3} more</span>` : ""}</div>` : ""}
       <div class="actions">
         <button type="button" class="btn-sm" data-open="${esc(rec._key)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
-        ${url?`<a class="btn-link sm" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link",13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>`:""}
+        ${url ? `<a class="btn-link sm" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>` : ""}
       </div>
     </li>`;
-  }
+      }
 
-  function detail(rec){
-    const allowed=schemaFields(rec);
-    const url=safeUrl(rec.link), docUrl=safeUrl(rec.documentation);
-    const tiles=CONFIG.detailTiles.filter(f=>allowed.has(f)).map(f=>{
-      const text=fmt(rec,f), meta=CONFIG.fields[f]||{};
-      const value=(f==="contact" && text!=null) ? `<a href="#">${esc(text)}</a>` : valueHtml(text);
-      return `<div class="tile${text==null?" is-unknown":""}"><dt>${meta.icon?ic(meta.icon,13):""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
-    }).join("");
-    const topics=Array.isArray(rec.topics)?rec.topics:[];
+      function detail(rec) {
+        const allowed = schemaFields(rec);
+        const url = safeUrl(rec.link), docUrl = safeUrl(rec.documentation);
+        const tiles = CONFIG.detailTiles.filter(f => allowed.has(f)).map(f => {
+          const text = fmt(rec, f), meta = CONFIG.fields[f] || {};
+          const value = (f === "contact" && text != null) ? `<a href="#">${esc(text)}</a>` : valueHtml(text);
+          return `<div class="tile${text == null ? " is-unknown" : ""}"><dt>${meta.icon ? ic(meta.icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
+        }).join("");
+        const topics = Array.isArray(rec.topics) ? rec.topics : [];
 
-    const sections=[];
-    if(allowed.has("topics")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("topics"))}</h3>${topics.length?`<div class="tags" style="margin-top:0;">${topics.map(t=>`<span class="tag-pill">${esc(cap(t))}</span>`).join("")}</div>`:`<span class="unknown">${UNKNOWN}</span>`}</div>`);
-    if(allowed.has("documentation")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("documentation"))}</h3>${docUrl?`${ic("book",13,"-2px")} ${extLink(docUrl,"Documentation and methodology")}`:`<span class="unknown">${UNKNOWN}</span>`}</div>`);
-    CONFIG.relatedFields.filter(f=>allowed.has(f)).forEach(f=>{
-      const ids=Array.isArray(rec[f])?rec[f]:[];
-      const target=productByKey[(CONFIG.fields[f]||{}).target];
-      const items=ids.map(id=>{
-        const other=target && state.byKey.get(`${target.key}:${id}`);
-        return other
-          ? `<li><button type="button" class="link-btn" data-open="${esc(other._key)}">${esc(other.name||id)}</button></li>`
-          : `<li><span class="unknown">${esc(id)} (not in this catalog)</span></li>`;
-      }).join("");
-      sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel(f))}</h3>${items?`<ul>${items}</ul>`:`<span class="unknown">None listed</span>`}</div>`);
-    });
+        const sections = [];
+        if (allowed.has("topics")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("topics"))}</h3>${topics.length ? `<div class="tags" style="margin-top:0;">${topics.map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}</div>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        if (allowed.has("documentation")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("documentation"))}</h3>${docUrl ? `${ic("book", 13, "-2px")} ${extLink(docUrl, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        CONFIG.relatedFields.filter(f => allowed.has(f)).forEach(f => {
+          const ids = Array.isArray(rec[f]) ? rec[f] : [];
+          const target = productByKey[(CONFIG.fields[f] || {}).target];
+          const items = ids.map(id => {
+            const other = target && state.byKey.get(`${target.key}:${id}`);
+            return other
+              ? `<li><button type="button" class="link-btn" data-open="${esc(other._key)}">${esc(other.name || id)}</button></li>`
+              : `<li><span class="unknown">${esc(id)} (not in this catalog)</span></li>`;
+          }).join("");
+          sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel(f))}</h3>${items ? `<ul>${items}</ul>` : `<span class="unknown">None listed</span>`}</div>`);
+        });
 
-    return `<article class="detail" aria-labelledby="detail-h">
+        return `<article class="detail" aria-labelledby="detail-h">
       <div class="detail-head">
-        <button type="button" data-back="1">${ic("arrow-left",13,"-2px")} Back to results</button>
-        <h2 id="detail-h" tabindex="-1">${rec.name?esc(rec.name):"Untitled"}${rec.short_name&&allowed.has("short_name")?` (${esc(rec.short_name)})`:""}</h2>
+        <button type="button" data-back="1">${ic("arrow-left", 13, "-2px")} Back to results</button>
+        <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}${rec.short_name && allowed.has("short_name") ? ` (${esc(rec.short_name)})` : ""}</h2>
         <span class="badge">${esc(rec._product.label)}</span>
       </div>
       <div class="detail-body">
         <dl class="tiles">${tiles}</dl>
-        <p class="description">${rec.description?esc(rec.description):`<span class="unknown">No description</span>`}</p>
+        <p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p>
         ${sections.join("")}
         <div class="actions">
           ${url
-            ? `<a class="btn-link md primary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link",14)}<span class="sr-only"> (opens in a new window)</span></a>`
-            : `<span class="btn-link md disabled" aria-disabled="true">${ic("link",14)} Link unknown</span>`}
+            ? `<a class="btn-link md primary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}<span class="sr-only"> (opens in a new window)</span></a>`
+            : `<span class="btn-link md disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
           <button type="button" class="link-btn" data-request="1" style="margin-left:auto;">Request more data</button>
         </div>
       </div>
     </article>`;
-  }
+      }
 
-  function activeChips(){
-    const chips=[];
-    CONFIG.filters.forEach(f=>state.active[f.field].forEach(v=>chips.push(
-      `<button type="button" class="chip" data-unset="${esc(f.field)}" data-val="${esc(v)}"><span class="sr-only">Remove filter </span>${esc(f.label)}: ${esc(displayValue(v))} ${ic("x",11)}</button>`)));
-    return chips.length ? chips.join("")+`<button type="button" class="link-btn" data-clear="1">Clear all filters</button>` : "";
-  }
+      function activeChips() {
+        const chips = [];
+        CONFIG.filters.forEach(f => state.active[f.field].forEach(v => chips.push(
+          `<button type="button" class="chip" data-unset="${esc(f.field)}" data-val="${esc(v)}"><span class="sr-only">Remove filter </span>${esc(f.label)}: ${esc(displayValue(v))} ${ic("x", 11)}</button>`)));
+        return chips.length ? chips.join("") + `<button type="button" class="link-btn" data-clear="1">Clear all filters</button>` : "";
+      }
 
-  function render(){
-    const panel=$("panel");
-    $("warnings").innerHTML=state.warnings.map(w=>`<div class="callout warning">${ic("alert-triangle",16)}<div>${esc(w)}</div></div>`).join("");
+      function render() {
+        const panel = $("panel");
+        $("warnings").innerHTML = state.warnings.map(w => `<div class="callout warning">${ic("alert-triangle", 16)}<div>${esc(w)}</div></div>`).join("");
 
-    if(state.view.screen==="loading"){
-      renderFacets([]);
-      panel.innerHTML=`<div role="status"><span class="sr-only">Loading the catalog…</span><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div></div>`;
-      return;
-    }
-    if(state.view.screen==="error"){
-      renderFacets([]);
-      panel.innerHTML=`<div class="msg" role="alert">
-        <div class="callout danger">${ic("alert-triangle",16)}<div><strong style="color:inherit; display:inline; font-size:inherit;">The catalog couldn't be loaded.</strong> ${esc(state.view.message)}${state.view.fileHint}</div></div>
+        if (state.view.screen === "loading") {
+          renderFacets([]);
+          panel.innerHTML = `<div role="status"><span class="sr-only">Loading the catalog…</span><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div></div>`;
+          return;
+        }
+        if (state.view.screen === "error") {
+          renderFacets([]);
+          panel.innerHTML = `<div class="msg" role="alert">
+        <div class="callout danger">${ic("alert-triangle", 16)}<div><strong style="color:inherit; display:inline; font-size:inherit;">The catalog couldn't be loaded.</strong> ${esc(state.view.message)}${state.view.fileHint}</div></div>
         <button type="button" data-retry="1" class="btn-sm">Try again</button></div>`;
-      panel.querySelector("[data-retry]").onclick=load;
-      return;
-    }
+          panel.querySelector("[data-retry]").onclick = load;
+          return;
+        }
 
-    const {list:base, ranked}=searched();
-    renderFacets(base);
-    const list=base.filter(r=>passes(r));
-    state.lastCount=list.length;
+        const { list: base, ranked } = searched();
+        renderFacets(base);
+        const list = base.filter(r => passes(r));
+        state.lastCount = list.length;
 
-    if(state.view.screen==="detail"){
-      const rec=state.byKey.get(state.view.key);
-      panel.innerHTML=rec ? detail(rec) : `<div class="msg">That record is no longer in the catalog.</div>`;
-    }else{
-      const chips=activeChips();
-      const body=list.length
-        ? `<ul class="results">${list.map(card).join("")}</ul>`
-        : `<div class="msg"><strong>No results</strong>${state.records.length ? "Try fewer words, check spelling, or remove a filter." : "The catalog has no records yet."}</div>`;
-      panel.innerHTML=`<div class="results-meta"><span>${plural(list.length,"result")} · ${ranked?"sorted by relevance":"sorted by name"}</span>${chips}</div>${body}`;
-    }
-    bind();
-  }
+        if (state.view.screen === "detail") {
+          const rec = state.byKey.get(state.view.key);
+          panel.innerHTML = rec ? detail(rec) : `<div class="msg">That record is no longer in the catalog.</div>`;
+        } else {
+          const chips = activeChips();
+          const body = list.length
+            ? `<ul class="results">${list.map(card).join("")}</ul>`
+            : `<div class="msg"><strong>No results</strong>${state.records.length ? "Try fewer words, check spelling, or remove a filter." : "The catalog has no records yet."}</div>`;
+          panel.innerHTML = `<div class="results-meta"><span>${plural(list.length, "result")} · ${ranked ? "sorted by relevance" : "sorted by name"}</span>${chips}</div>${body}`;
+        }
+        bind();
+      }
 
-  function bind(){
-    const p=$("panel");
-    p.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{
-      if(state.view.screen==="list") state.returnFocus=b.dataset.open;
-      state.view={screen:"detail",key:b.dataset.open};
-      render();
-      $("detail-h").focus();
-      window.scrollTo({top:p.getBoundingClientRect().top+window.scrollY-24});
-    });
-    p.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{
-      state.view={screen:"list"}; render();
-      const back=state.returnFocus && p.querySelector(`[data-open="${CSS.escape(state.returnFocus)}"]`);
-      (back || $("q")).focus();
-    });
-    p.querySelectorAll("[data-unset]").forEach(b=>b.onclick=()=>{
-      state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); $("q").focus();
-    });
-    p.querySelectorAll("[data-clear]").forEach(b=>b.onclick=()=>{
-      Object.values(state.active).forEach(s=>s.clear()); render(); announce(); $("q").focus();
-    });
-    p.querySelectorAll("[data-request]").forEach(b=>b.onclick=()=>openRequestModal(b));
-  }
+      function bind() {
+        const p = $("panel");
+        p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+          if (state.view.screen === "list") state.returnFocus = b.dataset.open;
+          state.view = { screen: "detail", key: b.dataset.open };
+          render();
+          $("detail-h").focus();
+          window.scrollTo({ top: p.getBoundingClientRect().top + window.scrollY - 24 });
+        });
+        p.querySelectorAll("[data-back]").forEach(b => b.onclick = () => {
+          state.view = { screen: "list" }; render();
+          const back = state.returnFocus && p.querySelector(`[data-open="${CSS.escape(state.returnFocus)}"]`);
+          (back || $("q")).focus();
+        });
+        p.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
+          state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); $("q").focus();
+        });
+        p.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => {
+          Object.values(state.active).forEach(s => s.clear()); render(); announce(); $("q").focus();
+        });
+        p.querySelectorAll("[data-request]").forEach(b => b.onclick = () => openRequestModal(b));
+      }
 
-  /* ---------- Request-data modal (standardized, same everywhere) ---------- */
-  function focusableIn(el){
-    return [...el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
-      .filter(e=>!e.disabled && e.offsetParent!==null);
-  }
-  function modalKeydown(e){
-    if(e.key==="Escape"){ e.preventDefault(); closeRequestModal(); return; }
-    if(e.key!=="Tab") return;
-    const items=focusableIn($("requestModal"));
-    if(!items.length) return;
-    const first=items[0], last=items[items.length-1];
-    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-  }
-  function openRequestModal(trigger){
-    state.modalReturnFocus=trigger;
-    $("requestModal").hidden=false;
-    document.addEventListener("keydown",modalKeydown,true);
-    $("requestModalClose").focus();
-  }
-  function closeRequestModal(){
-    $("requestModal").hidden=true;
-    document.removeEventListener("keydown",modalKeydown,true);
-    if(state.modalReturnFocus && document.contains(state.modalReturnFocus)) state.modalReturnFocus.focus();
-    state.modalReturnFocus=null;
-  }
-  $("requestModalClose").addEventListener("click",closeRequestModal);
-  $("requestModal").addEventListener("click",e=>{ if(e.target===e.currentTarget) closeRequestModal(); });
-  $("footerRequest").addEventListener("click",()=>openRequestModal($("footerRequest")));
+      /* ---------- Request-data modal (standardized, same everywhere) ---------- */
+      function focusableIn(el) {
+        return [...el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+          .filter(e => !e.disabled && e.offsetParent !== null);
+      }
+      function modalKeydown(e) {
+        if (e.key === "Escape") { e.preventDefault(); closeRequestModal(); return; }
+        if (e.key !== "Tab") return;
+        const items = focusableIn($("requestModal"));
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      function openRequestModal(trigger) {
+        state.modalReturnFocus = trigger;
+        $("requestModal").hidden = false;
+        document.addEventListener("keydown", modalKeydown, true);
+        $("requestModalClose").focus();
+      }
+      function closeRequestModal() {
+        $("requestModal").hidden = true;
+        document.removeEventListener("keydown", modalKeydown, true);
+        if (state.modalReturnFocus && document.contains(state.modalReturnFocus)) state.modalReturnFocus.focus();
+        state.modalReturnFocus = null;
+      }
+      $("requestModalClose").addEventListener("click", closeRequestModal);
+      $("requestModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeRequestModal(); });
+      $("footerRequest").addEventListener("click", () => openRequestModal($("footerRequest")));
 
-  // Debounced so screen readers hear the settled count, not every keystroke.
-  let liveTimer;
-  function announce(){
-    clearTimeout(liveTimer);
-    liveTimer=setTimeout(()=>{
-      const n=state.lastCount||0;
-      const nFilters=Object.values(state.active).reduce((a,s)=>a+s.size,0);
-      $("live").textContent=`${plural(n,"result")}${state.q.trim()?` for “${state.q.trim()}”`:""}${nFilters?`, ${plural(nFilters,"filter")} applied`:""}.`;
-    },600);
-  }
+      // Debounced so screen readers hear the settled count, not every keystroke.
+      let liveTimer;
+      function announce() {
+        clearTimeout(liveTimer);
+        liveTimer = setTimeout(() => {
+          const n = state.lastCount || 0;
+          const nFilters = Object.values(state.active).reduce((a, s) => a + s.size, 0);
+          $("live").textContent = `${plural(n, "result")}${state.q.trim() ? ` for “${state.q.trim()}”` : ""}${nFilters ? `, ${plural(nFilters, "filter")} applied` : ""}.`;
+        }, 600);
+      }
 
-  let typeTimer;
-  $("q").addEventListener("input",e=>{
-    clearTimeout(typeTimer);
-    typeTimer=setTimeout(()=>{
-      state.q=e.target.value;
-      state.view={screen:"list"};
-      render(); announce();
-    },120);
-  });
+      let typeTimer;
+      $("q").addEventListener("input", e => {
+        clearTimeout(typeTimer);
+        typeTimer = setTimeout(() => {
+          state.q = e.target.value;
+          state.view = { screen: "list" };
+          render(); announce();
+        }, 120);
+      });
 
-  load();
-})();
-</script>
+      load();
+    })();
+  </script>
 </body>
+
 </html>
