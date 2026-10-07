@@ -57,6 +57,7 @@
     ],
     "link": "https://cdphe.colorado.gov/survey-research-and-data/baby-and-you-survey/baby-you-survey-data",
     "documentation": null,
+    "contact": "contact@example.com",
     "related_dashboards": [
       "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
     ]
@@ -102,6 +103,7 @@
     ],
     "link": "https://cdphe.colorado.gov/cccr-data",
     "documentation": null,
+    "contact": "contact@example.com",
     "related_dashboards": [
       "a5901664-eb34-569b-8e64-02d1654ee12a",
       "b4e5efce-600c-51b9-b18f-880e4becd958",
@@ -189,6 +191,7 @@
     ],
     "link": "https://cdphe.colorado.gov/hkcs",
     "documentation": "https://cdphe.colorado.gov/healthy-kids-colorado-survey-overview",
+    "contact": "contact@example.com",
     "related_dashboards": [],
     "related_reports": [
       "86297b76-1267-5ae3-b29a-7d903a4bb0f0",
@@ -266,6 +269,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/state-unintentional-drug",
     "documentation": null,
+    "contact": "contact@example.com",
     "related_dashboards": [
       "f95c8948-4812-5aa2-9497-35fcf2290831"
     ]
