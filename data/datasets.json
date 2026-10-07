@@ -4,7 +4,6 @@
     "name": "Behavioral Risk Factor Surveillance System",
     "short_name": "BRFSS",
     "description": "An ongoing, federally funded statewide random telephone survey of Colorado adults ages 18 and older, with 12,000 to 15,000 respondents a year. It tracks how common health behaviors, chronic and infectious conditions, and preventive health practices are, and what drives the leading causes of chronic disease, infectious disease, drug use, disability, injury, and death. Annual summary tables and questionnaires are published for each survey year. Results are also shown in the VISION chronic disease dashboard.",
-    "type": "survey",
     "topics": [
       "Chronic Disease",
       "Cancer",
@@ -41,7 +40,6 @@
     "name": "Baby & You Survey",
     "short_name": "Baby & You",
     "description": "A series of four online surveys for birthing parents of children ages 0-3. CDPHE samples postpartum people each month from live birth certificates and invites them to enroll at 3-4 months postpartum, then follows up around the baby's first, second, and third birthdays. The sample intentionally oversamples American Indian/Alaska Native, Asian American/Pacific Islander, and Black/African American birthing people. Results are weighted to represent all births in Colorado. Weighted data tables are published by birth cohort, and custom estimates or de-identified datasets can be requested from the program.",
-    "type": "survey",
     "topics": [
       "maternal health",
       "Family Health",
@@ -68,7 +66,6 @@
     "name": "Colorado Central Cancer Registry",
     "short_name": "CCCR",
     "description": "The statewide registry of cancer diagnoses among Colorado residents. Cases are reported by hospitals, pathology labs, other state registries, death certificates, and some physicians. Records include cancer site, stage at diagnosis, treatment, payer, and demographics such as age, sex, race, and residence, covering about 25,000 invasive cases a year. Aggregate incidence data are available through CoHID dashboards. Custom data requests and de-identified research datasets are available on approval. New data are usually complete 18 to 24 months after the end of the year.",
-    "type": "registry",
     "topics": [
       "Cancer",
       "Chronic Disease",
@@ -116,7 +113,6 @@
     "name": "Pregnancy Risk Assessment Monitoring System",
     "short_name": "PRAMS",
     "description": "A CDC-funded surveillance system that tracks the behaviors and experiences of women before, during, and after pregnancy. Each month a stratified random sample of Colorado residents with a recent live birth is surveyed at 2-4 months postpartum by mail, phone, or web. Responses are linked to birth certificate data. Topics include preconception health, prenatal and postpartum care, insurance, breastfeeding, alcohol, tobacco, and marijuana use, mental health, maternal morbidity, and experiences of discrimination. About 1,100 people respond each year, and data are released every winter.",
-    "type": "survey",
     "topics": [
       "maternal health",
       "Family Health",
@@ -163,7 +159,6 @@
     "name": "Healthy Kids Colorado Survey",
     "short_name": "HKCS",
     "description": "Colorado's most comprehensive survey of youth health and well-being. It is an anonymous, voluntary survey of a random sample of public middle and high school students, given every fall of odd-numbered years. Results are weighted to represent enrollment in Colorado public schools. Topics include mental health and suicide risk, substance use, nutrition, physical activity, bullying, sexual health, and protective factors such as support from caring adults and connection to school. CDPHE publishes statewide and regional results in the summer of even-numbered years.",
-    "type": "survey",
     "topics": [
       "School-aged child health",
       "School & Community",
@@ -226,7 +221,6 @@
     "name": "Newborn Hearing Screening Program data",
     "short_name": "NBH",
     "description": "Data on hearing screening, diagnostic evaluation, and early intervention for babies born in Colorado, tracked up to age 3. Screening results come from the electronic birth certificate. Follow-up screening, audiology evaluation, and intervention data are entered by providers in the Health Information Data Systems (HIDS) Newborn Hearing application. The data track progress toward the EHDI 1-3-6 goals: screened by 1 month, evaluated by 3 months, and receiving intervention by 6 months. Values under 5 are suppressed. Annual data appear in the Maternal and Child Health Dashboard and a yearly data overview.",
-    "type": "surveillance",
     "topics": [
       "Childhood Health",
       "Vital Records",
@@ -252,7 +246,6 @@
     "name": "State Unintentional Drug Overdose Reporting System",
     "short_name": "SUDORS",
     "description": "Detailed data on unintentional and undetermined-intent drug overdose deaths in Colorado. It combines death certificates, coroner and medical examiner reports, and toxicology reports to show when, where, and how overdose deaths happen and the circumstances around them. Data collection began with deaths in July 2019 and runs on a six-month cycle as part of CDC's Overdose Data to Action program. Findings are published in HealthWatch reports and the Colorado drug overdose dashboards. Data requests go to the Health Statistics office.",
-    "type": "surveillance",
     "topics": [
       "Other Drugs",
       "Prescription Pain Medication",
@@ -282,7 +275,6 @@
     "name": "Health eMoms",
     "short_name": "Health eMoms",
     "description": "A former CDPHE online survey program that followed postpartum people in Colorado from shortly after birth to their child's third birthday. CDPHE sampled people each month from live birth certificates and invited them by mail; from 2018 to 2021, 2,400 people joined and completed up to six brief online surveys. Topics included breastfeeding, vaccinations, maternal mental health, social connection, maternity leave and family-friendly workplaces, child care, financial and resource insecurity, health care access, marijuana and other substance use, and oral health. Weighted results are published for the 2018, 2019, and 2020 birth cohorts, plus a COVID-19 survey sent to all cohorts in early 2021. The program ended in 2021 and was succeeded by the Baby & You Survey, so no new data will be added.",
-    "type": "survey",
     "topics": [
       "maternal health",
       "Family Health",

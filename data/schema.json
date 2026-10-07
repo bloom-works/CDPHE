@@ -84,11 +84,6 @@
       "format": "uri",
       "description": "Public URL to data documentation, a data dictionary, or methodology. Null if none. Change to an array of URLs if multiple documents apply."
     },
-    "dataset_type": {
-      "type": "string",
-      "description": "Sub-classification of the dataset, distinct from the top-level product type. Examples: 'survey', 'surveillance', 'registry', 'vital records', 'administrative', 'census/estimates'. Consider constraining to an enum once the taxonomy is settled."
-    },
-
     "dataset": {
       "type": "object",
       "description": "Data product: a source dataset that can be discovered, understood, and accessed/requested.",
@@ -100,7 +95,6 @@
           "description": "Abbreviated name or acronym for compact display (e.g. 'BRFSS')."
         },
         "description": { "$ref": "#/$defs/description" },
-        "type": { "$ref": "#/$defs/dataset_type" },
         "topics": { "$ref": "#/$defs/topics" },
         "population": { "$ref": "#/$defs/population" },
         "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
@@ -122,7 +116,7 @@
           "uniqueItems": true
         }
       },
-      "required": ["id", "name", "description", "type", "topics", "link"],
+      "required": ["id", "name", "description", "topics", "link"],
       "additionalProperties": false
     },
 
