@@ -869,7 +869,7 @@
           next_update: { label: "Next update", icon: "clock", format: "date" },
           topics: { label: "Topics" },
           documentation: { label: "Documentation" },
-          contact: { label: "Program contact", icon: "mail" },
+          contact: { label: "Contact", icon: "mail" },
           link: { label: "Link" },
           related_datasets: { label: "Related datasets", target: "dataset" },
           related_dashboards: { label: "Related dashboards", target: "dashboard" },
@@ -1283,12 +1283,14 @@
       }
       function openRequestModal(trigger) {
         state.modalReturnFocus = trigger;
+        document.body.style.overflow = "hidden";
         $("requestModal").hidden = false;
         document.addEventListener("keydown", modalKeydown, true);
         $("requestModalClose").focus();
       }
       function closeRequestModal() {
         $("requestModal").hidden = true;
+        document.body.style.overflow = "";
         document.removeEventListener("keydown", modalKeydown, true);
         if (state.modalReturnFocus && document.contains(state.modalReturnFocus)) state.modalReturnFocus.focus();
         state.modalReturnFocus = null;
