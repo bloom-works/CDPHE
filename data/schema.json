@@ -84,6 +84,11 @@
       "format": "uri",
       "description": "Public URL to data documentation, a data dictionary, or methodology. Null if none. Change to an array of URLs if multiple documents apply."
     },
+    "contact": {
+      "type": ["string", "null"],
+      "format": "email",
+      "description": "Public contact email address for questions about this product. Null if none is available yet; the UI still shows a contact control in that case so staff can see none is available."
+    },
     "dataset": {
       "type": "object",
       "description": "Data product: a source dataset that can be discovered, understood, and accessed/requested.",
@@ -103,6 +108,7 @@
         "years_covered": { "$ref": "#/$defs/years_covered" },
         "link": { "$ref": "#/$defs/link" },
         "documentation": { "$ref": "#/$defs/documentation" },
+        "contact": { "$ref": "#/$defs/contact" },
         "related_dashboards": {
           "type": "array",
           "description": "ids of dashboards built on or related to this dataset.",
@@ -134,6 +140,7 @@
         "next_update": { "$ref": "#/$defs/next_update" },
         "years_covered": { "$ref": "#/$defs/years_covered" },
         "link": { "$ref": "#/$defs/link" },
+        "contact": { "$ref": "#/$defs/contact" },
         "related_datasets": {
           "type": "array",
           "description": "ids of datasets this report is based on or related to.",
@@ -159,6 +166,7 @@
         "next_update": { "$ref": "#/$defs/next_update" },
         "years_covered": { "$ref": "#/$defs/years_covered" },
         "link": { "$ref": "#/$defs/link" },
+        "contact": { "$ref": "#/$defs/contact" },
         "related_datasets": {
           "type": "array",
           "description": "ids of datasets this dashboard is based on or related to.",
