@@ -53,10 +53,15 @@
       "type": "string",
       "description": "The population the product describes (e.g. 'Adults 18+', 'All ages', 'Children 0-17'). Single value; change to an array of strings if a product spans multiple distinct populations."
     },
-    "geographic_granularity": {
-      "type": "string",
-      "enum": ["state", "Health Statistics Region (HSR)", "region", "county", "census tract", "ZIP code", "school district", "facility"],
-      "description": "The finest geographic level available. 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). Single value; change to an array if a product is published at multiple levels."
+    "geographic_level": {
+      "type": "array",
+      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). 'neighborhood' covers census tracts. The explorer shows 'health_statistics_region' as 'Region'.",
+      "items": {
+        "type": "string",
+        "enum": ["state", "region", "health_statistics_region", "county", "neighborhood", "facility"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "last_updated": {
       "type": "string",
@@ -104,7 +109,7 @@
         "description": { "$ref": "#/$defs/description" },
         "topics": { "$ref": "#/$defs/topics" },
         "population": { "$ref": "#/$defs/population" },
-        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "geographic_level": { "$ref": "#/$defs/geographic_level" },
         "last_updated": { "$ref": "#/$defs/last_updated" },
         "next_update": { "$ref": "#/$defs/next_update" },
         "years_covered": { "$ref": "#/$defs/years_covered" },
@@ -125,7 +130,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     },
 
@@ -139,7 +144,7 @@
         "description": { "$ref": "#/$defs/description" },
         "topics": { "$ref": "#/$defs/topics" },
         "population": { "$ref": "#/$defs/population" },
-        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "geographic_level": { "$ref": "#/$defs/geographic_level" },
         "last_updated": { "$ref": "#/$defs/last_updated" },
         "next_update": { "$ref": "#/$defs/next_update" },
         "years_covered": { "$ref": "#/$defs/years_covered" },
@@ -153,7 +158,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     },
 
@@ -167,7 +172,7 @@
         "description": { "$ref": "#/$defs/description" },
         "topics": { "$ref": "#/$defs/topics" },
         "population": { "$ref": "#/$defs/population" },
-        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "geographic_level": { "$ref": "#/$defs/geographic_level" },
         "last_updated": { "$ref": "#/$defs/last_updated" },
         "next_update": { "$ref": "#/$defs/next_update" },
         "years_covered": { "$ref": "#/$defs/years_covered" },
@@ -181,7 +186,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     }
   }
