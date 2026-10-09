@@ -55,10 +55,10 @@
     },
     "geographic_level": {
       "type": "array",
-      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural).",
+      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). 'neighborhood' covers census tracts. The explorer shows 'health_statistics_region' as 'Region'.",
       "items": {
         "type": "string",
-        "enum": ["state", "Health Statistics Region (HSR)", "region", "county", "census tract", "ZIP code", "school district", "facility"]
+        "enum": ["state", "region", "health_statistics_region", "county", "neighborhood", "facility"]
       },
       "minItems": 1,
       "uniqueItems": true
@@ -130,7 +130,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     },
 
@@ -158,7 +158,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     },
 
@@ -186,7 +186,7 @@
         },
         "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "required": ["type", "id", "name", "description", "topics", "geographic_level", "link", "publisher"],
       "additionalProperties": false
     }
   }

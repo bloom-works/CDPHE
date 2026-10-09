@@ -864,10 +864,11 @@
 
         // How schema fields are labelled and formatted. Only fields that appear in a product's
         // schema definition are shown for that product; anything else in the JSON is ignored.
+        // `values` maps stored values to the value shown (and filtered on) in the UI.
         fields: {
           short_name: { label: "Short name" },
           population: { label: "Population", icon: "users" },
-          geographic_level: { label: "Geographic level", icon: "map-pin", format: "cap" },
+          geographic_level: { label: "Geographic level", icon: "map-pin", format: "cap", values: { health_statistics_region: "region" } },
           years_covered: { label: "Years covered", icon: "calendar", format: "years" },
           last_updated: { label: "Last updated", icon: "clock", format: "date" },
           next_update: { label: "Next update", icon: "clock", format: "date" },
@@ -928,9 +929,14 @@
         ys.forEach(y => { const r = runs[runs.length - 1]; if (r && y === r[1] + 1) r[1] = y; else runs.push([y, y]); });
         return runs.map(([a, b]) => a === b ? String(a) : `${a}–${b}`).join(", ");
       }
+      // Stored values as the UI shows them: mapped through the field's `values`, duplicates removed.
+      function shownValues(field, v) {
+        const map = (CONFIG.fields[field] || {}).values || {};
+        return [...new Set((Array.isArray(v) ? v : [v]).map(x => map[x] || x))];
+      }
       // Returns display text for a field, or null when the value is missing.
       function fmt(rec, field) {
-        const v = rec[field], f = CONFIG.fields[field] || {};
+        const f = CONFIG.fields[field] || {}, v = f.values && !isBlank(rec[field]) ? shownValues(field, rec[field]) : rec[field];
         if (isBlank(v)) return null;
         if (f.format === "date") return fmtDate(v);
         if (f.format === "years") return Array.isArray(v) ? (fmtYears(v) || null) : String(v);
@@ -960,7 +966,7 @@
         if (field === "product") return [rec._product.label];
         const v = rec[field];
         if (isBlank(v)) return [UNKNOWN];
-        return Array.isArray(v) ? v.map(String) : [String(v)];
+        return shownValues(field, v).map(String);
       }
       const displayValue = v => v === UNKNOWN ? v : cap(v);
 
