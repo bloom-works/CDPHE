@@ -852,13 +852,15 @@
         },
 
         // Filters, in display order. `field` is a schema field (or "product" for the data product type).
-        // Within a filter, options combine with OR; across filters, with AND.
+        // Within a filter, options combine with OR (or with AND when `matchAll` is set); across filters, with AND.
         // `limit` shows the top N options with a "show all" toggle.
+        // `newestFirst` lists options by year, newest first, instead of by count; `maxYear` hides later years.
         // `groupsFile` points to a JSON object of { "Group name": [values] }; options are shown under
         // those subheadings (each with its own `limit`), and values not in any group go under "Other".
         filters: [
           { field: "product", label: "Data product" },
           { field: "geographic_level", label: "Geographic level" },
+          { field: "years_covered", label: "Years covered", limit: 5, matchAll: true, newestFirst: true, maxYear: new Date().getFullYear() },
           { field: "topics", label: "Topic", limit: 5, groupsFile: "data/topics.json" }
         ],
 
@@ -1058,21 +1060,27 @@
         return CONFIG.filters.every(f => {
           if (f.field === exceptField) return true;
           const sel = state.active[f.field];
-          return !sel.size || valuesOf(rec, f.field).some(v => sel.has(v));
+          if (!sel.size) return true;
+          const vals = valuesOf(rec, f.field);
+          return f.matchAll ? [...sel].every(v => vals.includes(v)) : vals.some(v => sel.has(v));
         });
       }
       // Counts for each filter reflect the search plus every *other* filter, so options show
-      // how many results you'd get by adding them.
+      // how many results you'd get by adding them. A `matchAll` filter also counts its own
+      // selections, since adding an option there narrows the results.
       function facetCounts(base) {
         const out = {};
         CONFIG.filters.forEach(f => {
           const counts = new Map();
           if (f.field === "product") CONFIG.products.forEach(p => counts.set(p.label, 0));
-          base.filter(r => passes(r, f.field)).forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
+          base.filter(r => passes(r, f.matchAll ? null : f.field)).forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
           state.records.forEach(r => valuesOf(r, f.field).forEach(v => { if (!counts.has(v)) counts.set(v, 0); }));
           state.active[f.field].forEach(v => { if (!counts.has(v)) counts.set(v, 0); });
           let opts = [...counts.entries()];
-          if (f.field !== "product") {
+          if (f.maxYear) opts = opts.filter(([v]) => v === UNKNOWN || Number(v) <= f.maxYear);
+          if (f.newestFirst) {
+            opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || Number(b[0]) - Number(a[0]));
+          } else if (f.field !== "product") {
             opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || b[1] - a[1] || a[0].localeCompare(b[0]));
           }
           out[f.field] = opts;
