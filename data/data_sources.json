@@ -1052,36 +1052,6 @@
   },
   {
     "type": "dataset",
-    "id": "3742cf38-eb9d-50ce-900c-058ae71f240a",
-    "name": "Healthcare-associated infection data",
-    "short_name": "HAI",
-    "description": "Data on infections people get while receiving health care, such as in hospitals, dialysis centers and nursing homes. CDPHE's healthcare-associated infections (HAI) program publishes reports, data pages and a dashboard. Record-level data are not available.",
-    "topics": [
-      "Communicable Disease",
-      "Communicable Disease Prevention, Investigation and Control"
-    ],
-    "population": "Patients in Colorado health care settings",
-    "geographic_level": [
-      "facility"
-    ],
-    "link": "https://cdphe.colorado.gov/healthcare-associated-infections-hais/hai-data",
-    "documentation": "https://drive.google.com/file/d/1gPAnQvCVQaA2C-GBw6eQtdqpxEORCYcP/view?usp=drive_web",
-    "related_dashboards": [
-      "92557d7b-cade-552c-8290-ea12575d5464"
-    ],
-    "related_reports": [
-      "ef5a5201-c473-5fe8-9eea-1adb39976f33",
-      "05c4b99e-8eaf-5f16-9164-1a2724275328",
-      "530e926f-a5fc-5b15-8fc9-9fc11b482671",
-      "370ddeb4-3039-572c-adca-e9d98512bf71",
-      "ef9d47ff-83d0-5b03-91c2-c71390f716d2",
-      "24d0cbe3-914f-5ed5-bb8c-d702cefc1300",
-      "70c74e9e-4562-58ac-850b-013397a61800"
-    ],
-    "publisher": "CDPHE"
-  },
-  {
-    "type": "dataset",
     "id": "769f4ec8-0af9-524f-b1c0-ca918eb20a66",
     "name": "Healthy Kids Colorado Survey",
     "short_name": "HKCS",
@@ -1758,9 +1728,6 @@
       2026
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/DCEED_Public/views/C_aurisdashboard/C_aurisdashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -2143,7 +2110,7 @@
     "type": "dashboard",
     "id": "05bfacc3-06c3-512b-b7b2-9654524faf61",
     "name": "Colorado health indicators (CHI) dashboard",
-    "description": "A set of public health indicators at the county, regional, and state level that together describe the overall health of a community. Indicators are grouped into social and institutional equity, living conditions, health behaviors, disease and injury, and mortality. The dashboard supports Colorado's Health Assessment and Planning System (CHAPS) and includes data source information sheets and archived data downloads. The dashboard doesn't say which years the data cover. Data source sheets that give a date mostly say 2020.",
+    "description": "A set of public health indicators at the county, regional, and state level that together describe the overall health of a community. Indicators are grouped into social and institutional equity, living conditions, health behaviors, disease and injury, and mortality. The dashboard supports Colorado's Health Assessment and Planning System (CHAPS) and includes data source information sheets and archived data downloads. Years vary by indicator. Together they cover 2017 to 2023.",
     "topics": [
       "Public Health",
       "Chronic Disease",
@@ -2158,7 +2125,17 @@
     "geographic_level": [
       "county"
     ],
+    "years_covered": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/CHILandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -3739,9 +3716,6 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1yd0Wmmu5T4gc-HfEApfBTU8mmG0eWZ4R/view",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -5641,9 +5615,6 @@
       2022
     ],
     "link": "https://cdphe.colorado.gov/hai/candidemia",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -5705,6 +5676,7 @@
     ],
     "population": "Denver metro area residents with C. diff, and patients in Colorado hospitals",
     "geographic_level": [
+      "region",
       "facility"
     ],
     "years_covered": [
@@ -5720,11 +5692,9 @@
       2023,
       2024
     ],
+    "last_updated": "2025-12-01",
     "link": "https://cdphe.colorado.gov/communicable-diseases/healthcare-associated-infections-hais/hai-data/c-difficile-data",
     "contact": "cdphe_hai_ar@state.co.us",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -5892,9 +5862,6 @@
       2016
     ],
     "link": "https://drive.google.com/file/d/1-GIqz28tE30HD-cmVFkU3kyVcHd0tR9d/view",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -6392,7 +6359,7 @@
     "type": "summary_report",
     "id": "24d0cbe3-914f-5ed5-bb8c-d702cefc1300",
     "name": "Health care facility infection data",
-    "description": "Infection rates reported by Colorado health care facilities, such as hospitals, surgery centers and dialysis centers, shown for each facility. The current dashboard and annual report show 2024 data compared with 2023. Earlier years are in past annual reports linked from the page.",
+    "description": "Infection rates reported by Colorado health care facilities, such as hospitals, surgery centers and dialysis centers, shown for each facility. The 2026 annual report, published September 2026, shows 2025 data compared with 2024. It's the first report to use the 2022 national baseline for risk adjustment, so its rates can't be compared directly with earlier reports. The dashboard on the page still shows the 2025 report (2024 compared with 2023) and is being updated to cover 2022 to 2025. Earlier years are in past annual reports linked from the page.",
     "topics": [
       "Communicable Disease",
       "Communicable Disease Prevention, Investigation and Control"
@@ -6403,12 +6370,11 @@
     ],
     "years_covered": [
       2023,
-      2024
+      2024,
+      2025
     ],
+    "last_updated": "2026-09-11",
     "link": "https://cdphe.colorado.gov/health-care-facility-infection-data",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -8024,9 +7990,6 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1gOgkbEc8F10CopYYZnM951PyYFJdqZOl/view",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
@@ -9596,13 +9559,14 @@
     "type": "summary_report",
     "id": "370ddeb4-3039-572c-adca-e9d98512bf71",
     "name": "Multidrug-resistant gram-negative bacteria data",
-    "description": "A CDPHE page with data on infections caused by gram-negative bacteria that resist several antibiotics. Carbapenem-resistant bacteria are tracked for the five-county Denver metro area combined (2013 to 2023), and ESBL-producing bacteria for Boulder County only (2019 to 2023). Boulder is the only county shown on its own.",
+    "description": "A CDPHE page with data on infections caused by gram-negative bacteria. A dashboard shows yearly rates from 2013 to 2024: carbapenem-resistant bacteria for the five-county Denver metro area combined, and ESBL-producing bacteria and invasive E. coli for Boulder County. Boulder is the only county shown on its own. Archived files give Denver metro carbapenem-resistant cases for 2013 to 2023 and Boulder County ESBL cases for 2019 to 2023.",
     "topics": [
       "Communicable Disease",
       "Communicable Disease Prevention, Investigation and Control"
     ],
-    "population": "Denver metro area and Boulder County residents with drug-resistant gram-negative infections",
+    "population": "Denver metro area and Boulder County residents with drug-resistant gram-negative or invasive E. coli infections",
     "geographic_level": [
+      "region",
       "county"
     ],
     "years_covered": [
@@ -9616,13 +9580,11 @@
       2020,
       2021,
       2022,
-      2023
+      2023,
+      2024
     ],
     "link": "https://cdphe.colorado.gov/hai/multidrug-resistant-gram-negative-bacteria",
     "contact": "cdphe_hai_ar@state.co.us",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
     "publisher": "CDPHE"
   },
   {
