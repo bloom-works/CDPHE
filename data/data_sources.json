@@ -1027,7 +1027,6 @@
       "ef5a5201-c473-5fe8-9eea-1adb39976f33",
       "05c4b99e-8eaf-5f16-9164-1a2724275328",
       "530e926f-a5fc-5b15-8fc9-9fc11b482671",
-      "0bcf69a9-92be-5809-8b7f-dfb87e1b991b",
       "370ddeb4-3039-572c-adca-e9d98512bf71",
       "ef9d47ff-83d0-5b03-91c2-c71390f716d2",
       "24d0cbe3-914f-5ed5-bb8c-d702cefc1300",
@@ -1258,7 +1257,7 @@
     "id": "c12dd681-0d55-56f5-8e13-f915da84ddc6",
     "name": "Newborn Hearing Screening Program data",
     "short_name": "NBH",
-    "description": "Data on hearing screening, diagnostic evaluation, and early intervention for babies born in Colorado, tracked up to age 3. Screening results come from the electronic birth certificate. Follow-up screening, audiology evaluation, and intervention data are entered by providers in the Health Information Data Systems (HIDS) Newborn Hearing application. The data track progress toward the EHDI 1-3-6 goals: screened by 1 month, evaluated by 3 months, and receiving intervention by 6 months. Values under 5 are suppressed. Annual data appear in the Maternal and Child Health Dashboard and a yearly data overview.",
+    "description": "Data on hearing screening, diagnostic evaluation, and early intervention for babies born in Colorado, tracked up to age 3. Screening results come from the electronic birth certificate. Follow-up screening, audiology evaluation, and intervention data are entered by providers in the Health Information Data Systems (HIDS) Newborn Hearing application. The data track progress toward the EHDI 1-3-6 goals: screened by 1 month, evaluated by 3 months, and receiving intervention by 6 months. Values under 5 are suppressed. Data for 2025 and later are provisional and may change. Annual data appear in the Maternal and Child Health Dashboard and a yearly data overview.",
     "topics": [
       "Childhood Health",
       "Vital Records",
@@ -1266,15 +1265,20 @@
       "Access to and Linkage with Healthcare"
     ],
     "population": "Infants born in Colorado, birth to age 3",
+    "geographic_granularity": "state",
     "years_covered": [
       2020,
       2021,
       2022,
       2023,
-      2024
+      2024,
+      2025,
+      2026
     ],
     "link": "https://cdphe.colorado.gov/registries-and-vital-statistics/newborn-hearing-screening/colorado-newborn-hearing-data-reports",
     "documentation": null,
+    "contact": "leanne.glenn@state.co.us",
+    "last_updated": "2026-10-09",
     "related_dashboards": [
       "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
     ],
@@ -8959,22 +8963,6 @@
   },
   {
     "type": "summary_report",
-    "id": "0bcf69a9-92be-5809-8b7f-dfb87e1b991b",
-    "name": "MRSA infection data",
-    "description": "A CDPHE page about methicillin-resistant Staphylococcus aureus (MRSA) infections in Colorado. It describes how MRSA was tracked in the Denver metro area (2008 to 2014) and through hospital reporting, and links to national reports. It doesn't show Colorado data itself.",
-    "topics": [
-      "Communicable Disease",
-      "Communicable Disease Prevention, Investigation and Control"
-    ],
-    "population": "Denver metro area residents with MRSA, and patients in Colorado health care facilities",
-    "link": "https://cdphe.colorado.gov/mrsa-data",
-    "related_datasets": [
-      "3742cf38-eb9d-50ce-900c-058ae71f240a"
-    ],
-    "publisher": "CDPHE"
-  },
-  {
-    "type": "summary_report",
     "id": "370ddeb4-3039-572c-adca-e9d98512bf71",
     "name": "Multidrug-resistant gram-negative bacteria data",
     "description": "A CDPHE page with data on infections caused by gram-negative bacteria that resist several antibiotics. Carbapenem-resistant bacteria are tracked for the five-county Denver metro area combined (2013 to 2023), and ESBL-producing bacteria for Boulder County only (2019 to 2023). Boulder is the only county shown on its own.",
@@ -9075,7 +9063,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1Kp2ixDIAiGPty7MN8j4XHJF9G439AGmb/view",
-    "contact": "Erika.iisa@state.co.us",
+    "contact": "erika.iisa@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a",
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
@@ -10079,17 +10067,19 @@
     "type": "summary_report",
     "id": "2607c374-c696-50aa-9e46-aecd1cb2179d",
     "name": "WIC participant survey, 2019",
-    "description": "A 2019 survey of Colorado WIC participants, taken before the COVID-19 pandemic. It asked about food security, shopping for WIC foods and satisfaction with the program.",
+    "description": "A 2019 survey of Colorado WIC participants, taken before the COVID-19 pandemic. It asked about food security, shopping for WIC foods and satisfaction with the program. Results are shown statewide and by local WIC agency, and can be filtered by language, age and education. The report includes 1,549 online responses; paper surveys are not included, and results are unweighted.",
     "topics": [
       "Nutrition",
       "Economic Stability",
       "Family Health"
     ],
     "population": "WIC participants in Colorado",
+    "geographic_granularity": "region",
     "years_covered": [
       2019
     ],
     "link": "https://www.coloradowic.gov/wic-participant-survey",
+    "contact": "cdphe_nsbdata@state.co.us",
     "related_datasets": [
       "91baabbb-6632-5f24-9157-617e2acb34de"
     ],
