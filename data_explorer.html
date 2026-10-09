@@ -843,7 +843,7 @@
 
         // MiniSearch options. See https://lucaong.github.io/minisearch/
         search: {
-          fields: ["name", "short_name", "topics", "description", "population", "geographic_granularity", "product"],
+          fields: ["name", "short_name", "topics", "description", "population", "geographic_level", "product"],
           boost: { name: 3, short_name: 3, topics: 2 },
           prefix: true,                               // "diab" matches "diabetes"
           fuzzy: term => term.length > 4 ? 0.2 : false, // tolerate small typos on longer words
@@ -858,7 +858,7 @@
         // those subheadings (each with its own `limit`), and values not in any group go under "Other".
         filters: [
           { field: "product", label: "Data product" },
-          { field: "geographic_granularity", label: "Geographic granularity" },
+          { field: "geographic_level", label: "Geographic level" },
           { field: "topics", label: "Topic", limit: 5, groupsFile: "data/topics.json" }
         ],
 
@@ -867,7 +867,7 @@
         fields: {
           short_name: { label: "Short name" },
           population: { label: "Population", icon: "users" },
-          geographic_granularity: { label: "Geographic granularity", icon: "map-pin", format: "cap" },
+          geographic_level: { label: "Geographic level", icon: "map-pin", format: "cap" },
           years_covered: { label: "Years covered", icon: "calendar", format: "years" },
           last_updated: { label: "Last updated", icon: "clock", format: "date" },
           next_update: { label: "Next update", icon: "clock", format: "date" },
@@ -879,8 +879,8 @@
           related_dashboards: { label: "Related dashboards", target: "dashboard" },
           related_reports: { label: "Related summary reports", target: "summary_report" }
         },
-        cardFields: ["geographic_granularity", "years_covered", "last_updated"],
-        detailTiles: ["population", "geographic_granularity", "years_covered", "last_updated", "next_update", "contact"],
+        cardFields: ["geographic_level", "years_covered", "last_updated"],
+        detailTiles: ["population", "geographic_level", "years_covered", "last_updated", "next_update", "contact"],
         relatedFields: ["related_datasets", "related_dashboards", "related_reports"],
 
         fetchTimeoutMs: 15000
