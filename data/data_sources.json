@@ -9,7 +9,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -57,7 +59,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Birthing parents of children ages 0-3",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2023,
       2024,
@@ -154,7 +158,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Adults 18+",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -196,7 +202,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -243,7 +251,9 @@
       "Environmental Public Health"
     ],
     "population": "Children and teens under 19 in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -283,7 +293,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Children in the seven-county Denver metro area",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2014,
       2016
@@ -308,7 +320,9 @@
       "School-aged child health"
     ],
     "population": "Kindergarten and third-grade students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2003,
       2004,
@@ -344,7 +358,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents diagnosed with cancer, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -391,7 +407,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -428,7 +446,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -466,7 +486,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -497,7 +519,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with HIV or an STI in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2006,
       2007,
@@ -546,7 +570,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -592,7 +618,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Violent deaths in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -667,7 +695,9 @@
       "Family Health"
     ],
     "population": "Births, deaths and other vital events in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -740,7 +770,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "WIC participants in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -784,7 +816,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -827,7 +861,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2023
     ],
@@ -849,7 +885,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2023
     ],
@@ -870,7 +908,9 @@
       "Social and Community Context"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -896,7 +936,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -928,7 +970,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Postpartum people with a Colorado live birth, through the child's third birthday",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -1017,7 +1061,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Patients in Colorado health care settings",
-    "geographic_level": "facility",
+    "geographic_level": [
+      "facility"
+    ],
     "link": "https://cdphe.colorado.gov/healthcare-associated-infections-hais/hai-data",
     "documentation": "https://drive.google.com/file/d/1gPAnQvCVQaA2C-GBw6eQtdqpxEORCYcP/view?usp=drive_web",
     "related_dashboards": [
@@ -1058,7 +1104,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public middle and high school students (grades 6-12)",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2013,
       2015,
@@ -1112,7 +1160,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -1156,7 +1206,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1181,7 +1233,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -1209,7 +1263,9 @@
       "Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2010,
       2011,
@@ -1236,7 +1292,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Single live births to Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1265,7 +1323,9 @@
       "Access to and Linkage with Healthcare"
     ],
     "population": "Infants born in Colorado, birth to age 3",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1307,7 +1367,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents ages 15+ with a recent live birth",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -1349,7 +1411,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents in the immunization registry",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2024,
       2025,
@@ -1377,7 +1441,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -1410,7 +1476,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1437,7 +1505,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Females ages 15 to 17",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1463,7 +1533,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2024
     ],
@@ -1483,7 +1555,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -1527,7 +1601,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Infants born to Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -1554,7 +1630,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -1595,7 +1673,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -1639,7 +1719,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -1662,7 +1744,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Patients in Colorado health care settings",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -1689,7 +1773,9 @@
       "Childhood Health"
     ],
     "population": "People with a reported cannabis exposure",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -1732,7 +1818,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People with a recent live birth",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -1760,7 +1848,9 @@
       "Marijuana"
     ],
     "population": "Patients at participating Colorado hospitals",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -1797,7 +1887,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -1850,7 +1942,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "census tract",
+    "geographic_level": [
+      "census tract"
+    ],
     "years_covered": [
       2010,
       2011,
@@ -1893,7 +1987,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Children and youth ages 0-17",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2009,
       2010,
@@ -1921,7 +2017,9 @@
       "Environmental Public Health"
     ],
     "population": "Children and teens under 19 in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -1961,7 +2059,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2012,
       2014,
@@ -1988,7 +2088,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Kindergarten and third-grade students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2003,
       2004,
@@ -2019,7 +2121,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -2051,7 +2155,9 @@
       "Social and Community Context"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/CHILandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
     "publisher": "CDPHE"
   },
@@ -2069,7 +2175,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Colorado residents, with views for priority populations",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2022,
       2023,
@@ -2094,7 +2202,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Pregnant people, infants, children, and youth",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -2123,7 +2233,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents in the immunization registry",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2024,
       2025,
@@ -2145,7 +2257,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2021,
       2022,
@@ -2167,7 +2281,9 @@
       "Public Health"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -2209,7 +2325,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -2238,7 +2356,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       1992,
       1993,
@@ -2293,7 +2413,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "WIC participants in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -2321,7 +2443,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -2363,7 +2487,9 @@
       "Public Health"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -2402,7 +2528,9 @@
       "Public Health"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -2447,7 +2575,9 @@
       "Public Health"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -2475,7 +2605,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Children ages 0-2",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -2494,7 +2626,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -2535,7 +2669,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2000,
       2001,
@@ -2582,7 +2718,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -2608,7 +2746,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Public middle and high school students",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2013,
       2015,
@@ -2633,7 +2773,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -2674,7 +2816,9 @@
       "Environmental Public Health"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -2703,7 +2847,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with HIV and people using PrEP in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -2734,7 +2880,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -2771,7 +2919,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -2814,7 +2964,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -2839,7 +2991,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -2864,7 +3018,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -2898,7 +3054,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -2938,7 +3096,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -2965,7 +3125,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025,
       2026
@@ -2985,7 +3147,9 @@
       "Vital Records"
     ],
     "population": "Colorado residents under 25",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2010,
       2011,
@@ -3020,7 +3184,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents in the immunization registry",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025,
       2026,
@@ -3045,7 +3211,9 @@
       "School & Community"
     ],
     "population": "Children and students in licensed childcare, K-12 schools, and colleges/universities",
-    "geographic_level": "facility",
+    "geographic_level": [
+      "facility"
+    ],
     "years_covered": [
       2010,
       2011,
@@ -3081,7 +3249,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2010,
       2011,
@@ -3108,7 +3278,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with an STI in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2021,
       2022,
@@ -3134,7 +3306,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -3163,7 +3337,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -3202,7 +3378,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -3247,7 +3425,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -3274,7 +3454,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults, people with a recent live birth, and high school students",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2015,
       2016,
@@ -3302,7 +3484,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025,
@@ -3331,7 +3515,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado adults",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2012,
       2013,
@@ -3363,7 +3549,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2003,
       2004,
@@ -3403,7 +3591,9 @@
       "School-aged child health"
     ],
     "population": "Middle and high school students",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2013,
       2015,
@@ -3431,7 +3621,9 @@
       "Family Health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -3452,7 +3644,9 @@
       "Mental Health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2021,
@@ -3476,7 +3670,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2011,
       2012,
@@ -3501,7 +3697,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Pregnant, breastfeeding and postpartum women, infants under 1, and children ages 1–4 enrolled in Colorado WIC",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -3524,7 +3722,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with drug-resistant infections or C. diff",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2009,
       2010,
@@ -3554,7 +3754,9 @@
       "maternal health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -3579,7 +3781,9 @@
       "maternal health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -3609,7 +3813,9 @@
       "Family Health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -3633,7 +3839,9 @@
       "Family Health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -3658,7 +3866,9 @@
       "Family Health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -3682,7 +3892,9 @@
       "maternal health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -3706,7 +3918,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Children in the seven-county Denver metro area",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2014
     ],
@@ -3726,7 +3940,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Children in the seven-county Denver metro area",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2016
     ],
@@ -3746,7 +3962,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "8-year-old children in the seven-county Denver metro area",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2014
     ],
@@ -3767,7 +3985,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2023
     ],
@@ -3788,7 +4008,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3809,7 +4031,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3830,7 +4054,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3851,7 +4077,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3872,7 +4100,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3893,7 +4123,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3914,7 +4146,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3935,7 +4169,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3956,7 +4192,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3977,7 +4215,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -3998,7 +4238,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4021,7 +4263,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4043,7 +4287,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4065,7 +4311,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4087,7 +4335,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4109,7 +4359,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4131,7 +4383,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4153,7 +4407,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4175,7 +4431,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4197,7 +4455,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4219,7 +4479,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2024
@@ -4241,7 +4503,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4264,7 +4528,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4286,7 +4552,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4308,7 +4576,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4330,7 +4600,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4352,7 +4624,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4374,7 +4648,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4396,7 +4672,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4418,7 +4696,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023,
       2025
@@ -4440,7 +4720,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2024
     ],
@@ -4462,7 +4744,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4483,7 +4767,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4504,7 +4790,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4525,7 +4813,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4546,7 +4836,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4567,7 +4859,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4588,7 +4882,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4609,7 +4905,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4630,7 +4928,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4651,7 +4951,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -4672,7 +4974,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4695,7 +4999,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4717,7 +5023,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4739,7 +5047,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4761,7 +5071,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4783,7 +5095,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4805,7 +5119,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4827,7 +5143,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4849,7 +5167,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4871,7 +5191,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2024",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024,
       2025
@@ -4893,7 +5215,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2025
     ],
@@ -4915,7 +5239,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -4936,7 +5262,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -4957,7 +5285,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -4978,7 +5308,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -4999,7 +5331,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5020,7 +5354,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5041,7 +5377,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5062,7 +5400,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5083,7 +5423,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "People who gave birth in Colorado in 2025",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5104,7 +5446,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -5125,7 +5469,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -5146,7 +5492,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -5167,7 +5515,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2021
     ],
@@ -5188,7 +5538,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2022
     ],
@@ -5209,7 +5561,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -5230,7 +5584,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2024
     ],
@@ -5251,7 +5607,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Adults 18+",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -5271,7 +5629,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Denver metro area residents with candidemia",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -5296,7 +5656,9 @@
       "Economic Stability"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -5320,7 +5682,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Children ages 1–14",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -5340,7 +5704,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Denver metro area residents with C. diff, and patients in Colorado hospitals",
-    "geographic_level": "facility",
+    "geographic_level": [
+      "facility"
+    ],
     "years_covered": [
       2013,
       2014,
@@ -5370,7 +5736,9 @@
       "Childhood Health"
     ],
     "population": "Kindergarten and third-grade students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2022,
       2023
@@ -5392,7 +5760,9 @@
       "Public Health"
     ],
     "population": "Colorado residents (some measures cover adults only)",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2015,
       2016,
@@ -5416,7 +5786,9 @@
       "Vital Records"
     ],
     "population": "Deaths occurring in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025
     ],
@@ -5437,7 +5809,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -5476,7 +5850,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -5506,7 +5882,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Patients getting outpatient dialysis in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2013,
       2014,
@@ -5530,7 +5908,9 @@
       "Social and Community Context"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -5561,7 +5941,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -5587,7 +5969,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -5612,7 +5996,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014
     ],
@@ -5632,7 +6018,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015
     ],
@@ -5652,7 +6040,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -5672,7 +6062,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -5692,7 +6084,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014
     ],
@@ -5712,7 +6106,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015
     ],
@@ -5732,7 +6128,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -5752,7 +6150,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -5772,7 +6172,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014
     ],
@@ -5792,7 +6194,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015
     ],
@@ -5812,7 +6216,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -5832,7 +6238,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -5852,7 +6260,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014
     ],
@@ -5872,7 +6282,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015
     ],
@@ -5892,7 +6304,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -5912,7 +6326,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People in Colorado with a reported foodborne illness",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -5932,7 +6348,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       1993,
       1994,
@@ -5980,7 +6398,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Patients in Colorado health care facilities",
-    "geographic_level": "facility",
+    "geographic_level": [
+      "facility"
+    ],
     "years_covered": [
       2023,
       2024
@@ -6009,7 +6429,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6036,7 +6458,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6063,7 +6487,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6090,7 +6516,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6117,7 +6545,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6144,7 +6574,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2018
     ],
@@ -6171,7 +6603,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6198,7 +6632,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6225,7 +6661,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6252,7 +6690,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6279,7 +6719,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6306,7 +6748,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2018
     ],
@@ -6333,7 +6777,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6360,7 +6806,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6387,7 +6835,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6414,7 +6864,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6441,7 +6893,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6468,7 +6922,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2018
     ],
@@ -6495,7 +6951,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -6523,7 +6981,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6550,7 +7010,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6577,7 +7039,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6604,7 +7068,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6631,7 +7097,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6658,7 +7126,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2019
     ],
@@ -6685,7 +7155,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6712,7 +7184,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6739,7 +7213,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6766,7 +7242,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6793,7 +7271,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6820,7 +7300,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6847,7 +7329,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2019
     ],
@@ -6874,7 +7358,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -6902,7 +7388,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -6930,7 +7418,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -6958,7 +7448,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -6986,7 +7478,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7014,7 +7508,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2020
     ],
@@ -7042,7 +7538,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7070,7 +7568,9 @@
       "Communicable Disease"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7097,7 +7597,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7124,7 +7626,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7151,7 +7655,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7178,7 +7684,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7205,7 +7713,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2020
     ],
@@ -7232,7 +7742,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7259,7 +7771,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado residents who gave birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -7287,7 +7801,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7317,7 +7833,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7347,7 +7865,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7377,7 +7897,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7407,7 +7929,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7437,7 +7961,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7467,7 +7993,9 @@
       "Communicable Disease"
     ],
     "population": "Parents of children born in Colorado, 2018–2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -7489,7 +8017,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Residents of 19 nursing homes in the Denver metro area",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017
     ],
@@ -7510,7 +8040,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado public high school students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -7544,7 +8076,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 10",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7578,7 +8112,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 11",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7612,7 +8148,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 12",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7646,7 +8184,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 13",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7680,7 +8220,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 14",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7714,7 +8256,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 15",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7748,7 +8292,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 16",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7782,7 +8328,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 17",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7816,7 +8364,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 18",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7850,7 +8400,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 19",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7884,7 +8436,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 2",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7918,7 +8472,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 20",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7952,7 +8508,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 21",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -7986,7 +8544,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 3",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8020,7 +8580,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 5",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8054,7 +8616,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 6",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8088,7 +8652,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 7",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8122,7 +8688,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 8",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8156,7 +8724,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Public high school students in Health Statistics Region 9",
-    "geographic_level": "Health Statistics Region (HSR)",
+    "geographic_level": [
+      "Health Statistics Region (HSR)"
+    ],
     "years_covered": [
       2025
     ],
@@ -8190,7 +8760,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado public high school students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8212,7 +8784,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Colorado public middle school students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8246,7 +8820,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado public middle school students",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8268,7 +8844,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2006,
       2007,
@@ -8292,7 +8870,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2007,
       2008,
@@ -8318,7 +8898,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2012,
       2013,
@@ -8342,7 +8924,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People newly diagnosed with HIV in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2006,
       2007,
@@ -8366,7 +8950,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -8397,7 +8983,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -8423,7 +9011,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Infants under 1 year, Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -8455,7 +9045,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Infants under 1 year, Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2021,
       2022,
@@ -8482,7 +9074,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025
     ],
@@ -8503,7 +9097,9 @@
       "Public Health"
     ],
     "population": "Colorado residents, all ages",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2021,
       2022,
@@ -8530,7 +9126,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Female Colorado residents of childbearing age",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8553,7 +9151,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8577,7 +9177,9 @@
       "Health Facilities"
     ],
     "population": "Live births occurring in Colorado",
-    "geographic_level": "facility",
+    "geographic_level": [
+      "facility"
+    ],
     "years_covered": [
       2011,
       2012,
@@ -8614,7 +9216,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2025
     ],
@@ -8638,7 +9242,9 @@
       "Health Facilities"
     ],
     "population": "Live births to Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -8669,7 +9275,9 @@
       "Social and Community Context"
     ],
     "population": "All ages",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -8699,7 +9307,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Colorado residents",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2026
     ],
@@ -8717,7 +9327,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017
     ],
@@ -8738,7 +9350,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2018
     ],
@@ -8759,7 +9373,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8782,7 +9398,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8806,7 +9424,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8831,7 +9451,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8857,7 +9479,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8884,7 +9508,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8912,7 +9538,9 @@
       "Health Care Access and Quality"
     ],
     "population": "Terminally ill patients prescribed aid-in-dying medication in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "region"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -8941,7 +9569,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -8972,7 +9602,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "Denver metro area and Boulder County residents with drug-resistant gram-negative infections",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2013,
       2014,
@@ -9003,7 +9635,9 @@
       "Maternal, Child, Adolescent, and Family Health"
     ],
     "population": "Babies born in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020,
       2021,
@@ -9027,7 +9661,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2013,
       2014,
@@ -9052,7 +9688,9 @@
       "maternal health"
     ],
     "population": "People who gave birth in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2012,
       2013,
@@ -9090,7 +9728,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2016",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -9119,7 +9759,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2017",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -9148,7 +9790,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2018",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -9177,7 +9821,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2019",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -9206,7 +9852,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2020",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -9235,7 +9883,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2021",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2021
     ],
@@ -9264,7 +9914,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2022",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2022
     ],
@@ -9293,7 +9945,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents with a live birth in 2023",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -9314,7 +9968,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -9348,7 +10004,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -9384,7 +10042,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -9414,7 +10074,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017,
       2018,
@@ -9438,7 +10100,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -9464,7 +10128,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2013,
       2014,
@@ -9488,7 +10154,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2011,
       2012,
@@ -9512,7 +10180,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014,
       2015,
@@ -9536,7 +10206,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -9560,7 +10232,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018,
       2019,
@@ -9585,7 +10259,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -9616,7 +10292,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2014
     ],
@@ -9636,7 +10314,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015
     ],
@@ -9656,7 +10336,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2016
     ],
@@ -9676,7 +10358,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2017
     ],
@@ -9696,7 +10380,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2018
     ],
@@ -9716,7 +10402,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019
     ],
@@ -9736,7 +10424,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2020
     ],
@@ -9756,7 +10446,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2023
     ],
@@ -9776,7 +10468,9 @@
       "Communicable Disease Prevention, Investigation and Control"
     ],
     "population": "People diagnosed with TB in Colorado",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2016,
       2017,
@@ -9806,7 +10500,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2019,
       2020,
@@ -9829,7 +10525,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2015,
       2016,
@@ -9854,7 +10552,9 @@
       "Chronic Disease, Injury Prevention, and Behavioral Health Promotion"
     ],
     "population": "Colorado residents",
-    "geographic_level": "state",
+    "geographic_level": [
+      "state"
+    ],
     "years_covered": [
       2004,
       2005,
@@ -9886,7 +10586,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on Medicaid",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2021
     ],
@@ -9908,7 +10610,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on Medicaid",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2022
     ],
@@ -9930,7 +10634,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on Medicaid",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2023
     ],
@@ -9952,7 +10658,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on Medicaid",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2024
     ],
@@ -9974,7 +10682,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on Medicaid",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025
     ],
@@ -9996,7 +10706,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on SNAP",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2022
     ],
@@ -10018,7 +10730,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on SNAP",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2023
     ],
@@ -10040,7 +10754,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on SNAP",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2024
     ],
@@ -10062,7 +10778,9 @@
       "Childhood Health"
     ],
     "population": "Infants and children on SNAP",
-    "geographic_level": "county",
+    "geographic_level": [
+      "county"
+    ],
     "years_covered": [
       2025
     ],
@@ -10084,7 +10802,10 @@
       "Family Health"
     ],
     "population": "WIC participants in Colorado",
-    "geographic_level": "region",
+    "geographic_level": [
+      "state",
+      "region"
+    ],
     "years_covered": [
       2019
     ],

@@ -934,7 +934,7 @@
         if (isBlank(v)) return null;
         if (f.format === "date") return fmtDate(v);
         if (f.format === "years") return Array.isArray(v) ? (fmtYears(v) || null) : String(v);
-        if (f.format === "cap") return cap(v);
+        if (f.format === "cap") return Array.isArray(v) ? v.map(cap).join(", ") : cap(v);
         return Array.isArray(v) ? v.map(cap).join(", ") : String(v);
       }
       const valueHtml = (text) => text == null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);

@@ -54,9 +54,14 @@
       "description": "The population the product describes (e.g. 'Adults 18+', 'All ages', 'Children 0-17'). Single value; change to an array of strings if a product spans multiple distinct populations."
     },
     "geographic_level": {
-      "type": "string",
-      "enum": ["state", "Health Statistics Region (HSR)", "region", "county", "census tract", "ZIP code", "school district", "facility"],
-      "description": "The finest geographic level available. 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). Single value; change to an array if a product is published at multiple levels."
+      "type": "array",
+      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural).",
+      "items": {
+        "type": "string",
+        "enum": ["state", "Health Statistics Region (HSR)", "region", "county", "census tract", "ZIP code", "school district", "facility"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "last_updated": {
       "type": "string",
