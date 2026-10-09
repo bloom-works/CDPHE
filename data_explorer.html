@@ -1170,7 +1170,7 @@
       ${topics.length ? `<div class="tags"><span class="sr-only">Topics: </span>${topics.slice(0, 3).map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}${topics.length > 3 ? `<span class="tag-pill">+${topics.length - 3} more</span>` : ""}</div>` : ""}
       <div class="actions">
         <button type="button" class="btn-sm" data-open="${esc(rec._key)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
-        ${url ? `<a class="btn-link sm" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>` : ""}
+        ${url ? `<a class="btn-link sm" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)}</span></a>` : ""}
       </div>
     </li>`;
       }
@@ -1212,7 +1212,7 @@
         ${sections.join("")}
         <div class="actions">
           ${url
-            ? `<a class="btn-link md primary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}<span class="sr-only"> (opens in a new window)</span></a>`
+            ? `<a class="btn-link md primary" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}</a>`
             : `<span class="btn-link md disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
           <button type="button" class="link-btn" data-request="1" style="margin-left:auto;">Request more data</button>
         </div>
