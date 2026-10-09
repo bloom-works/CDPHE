@@ -2,28 +2,19 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://cdphe-dmi-prototype/schema.json",
   "title": "CDPHE public health data catalog — schema",
-  "description": "Schema for the discovery-phase data catalog prototype. Defines the three data product types (datasets, summary reports, dashboards) and their metadata. All catalog data lives in public JSON files in the repo. The root validates a combined catalog object; to validate a single-type file (e.g. datasets.json as a bare array) reference the definition directly, e.g. { \"$ref\": \"schema.json#/$defs/dataset\" } per item.",
-  "type": "object",
-  "properties": {
-    "datasets": {
-      "type": "array",
-      "description": "All dataset records.",
-      "items": { "$ref": "#/$defs/dataset" }
-    },
-    "summary_reports": {
-      "type": "array",
-      "description": "All summary report records.",
-      "items": { "$ref": "#/$defs/summary_report" }
-    },
-    "dashboards": {
-      "type": "array",
-      "description": "All dashboard records.",
-      "items": { "$ref": "#/$defs/dashboard" }
-    }
-  },
-  "additionalProperties": false,
+  "description": "Schema for the discovery-phase data catalog prototype. All catalog data lives in one public JSON file, data_sources.json, whose root is an array of records. Each record is one of three data product types (dataset, dashboard, summary_report), identified by its `type` field. Records are ordered by type (datasets, then dashboards, then summary reports) and alphabetically by name within each type; that order is a convention, not enforced here.",
+  "type": "array",
+  "items": { "$ref": "#/$defs/record" },
 
   "$defs": {
+    "record": {
+      "description": "One catalog record. The `type` field decides which definition applies, and exactly one must match.",
+      "oneOf": [
+        { "$ref": "#/$defs/dataset" },
+        { "$ref": "#/$defs/dashboard" },
+        { "$ref": "#/$defs/summary_report" }
+      ]
+    },
     "id": {
       "type": "string",
       "format": "uuid",
@@ -34,20 +25,28 @@
       "type": "string",
       "format": "uuid",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-      "description": "A reference to the `id` (GUID) of another record. Referential integrity (that the referenced id exists) is enforced by convention, not by this schema."
+      "description": "A reference to the `id` (GUID) of another record. Referential integrity (that the referenced id exists, and that links point both ways) is enforced by convention, not by this schema."
     },
     "name": {
       "type": "string",
-      "description": "Full human-readable name of the product."
+      "minLength": 1,
+      "description": "Plain-language name in sentence case. Includes the years for time-bound outputs, e.g. 'Suicide deaths, 2004–2025 (excludes race)'."
     },
     "description": {
       "type": "string",
+      "minLength": 1,
       "description": "Plain-language summary of what the product contains and what questions it can help answer."
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The organization that publishes the product: 'CDPHE', or the name of an outside organization."
     },
     "topics": {
       "type": "array",
-      "description": "Public health topics/tags this product relates to, used for search and filtering. Draw values from a controlled vocabulary so filtering stays consistent.",
+      "description": "Public health topics/tags this product relates to, used for search and filtering. Values must come from topics.json; that is enforced by convention, not by this schema.",
       "items": { "type": "string" },
+      "minItems": 1,
       "uniqueItems": true
     },
     "population": {
@@ -56,12 +55,13 @@
     },
     "geographic_granularity": {
       "type": "string",
-      "description": "The finest geographic level available (e.g. 'state', 'county', 'census tract', 'ZIP code'). Single value; change to an array if a product is published at multiple levels. Consider constraining to an enum once the vocabulary is settled."
+      "enum": ["state", "Health Statistics Region (HSR)", "region", "county", "census tract", "ZIP code", "school district", "facility"],
+      "description": "The finest geographic level available. 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). Single value; change to an array if a product is published at multiple levels."
     },
     "last_updated": {
       "type": "string",
       "format": "date",
-      "description": "Date the product or its underlying data was last refreshed, ISO 8601 (YYYY-MM-DD)."
+      "description": "Date the product or its underlying data was last refreshed, ISO 8601 (YYYY-MM-DD). Only set when the source states it."
     },
     "next_update": {
       "type": ["string", "null"],
@@ -70,7 +70,7 @@
     },
     "years_covered": {
       "type": "array",
-      "description": "Calendar years the product covers, as four-digit years listed individually so gaps are explicit and filtering by year works (e.g. [2018, 2019, 2020]). If your series are always contiguous, a { \"start\": 2018, \"end\": 2020 } object is a more compact alternative.",
+      "description": "Calendar years the product covers, as four-digit years listed individually so gaps are explicit and filtering by year works (e.g. [2018, 2019, 2020]). School years and seasons (e.g. 2023–24) list both calendar years.",
       "items": { "type": "integer", "minimum": 1900, "maximum": 2100 },
       "uniqueItems": true
     },
@@ -89,10 +89,12 @@
       "format": "email",
       "description": "Public contact email address for questions about this product. Null if none is available yet; the UI still shows a contact control in that case so staff can see none is available."
     },
+
     "dataset": {
       "type": "object",
-      "description": "Data product: a source dataset that can be discovered, understood, and accessed/requested.",
+      "description": "Data product: a source data program (survey, registry, surveillance system) or a downloadable, analysis-ready data file, data portal layer, or query tool.",
       "properties": {
+        "type": { "const": "dataset" },
         "id": { "$ref": "#/$defs/id" },
         "name": { "$ref": "#/$defs/name" },
         "short_name": {
@@ -120,42 +122,18 @@
           "description": "ids of summary reports built on or related to this dataset.",
           "items": { "$ref": "#/$defs/id_ref" },
           "uniqueItems": true
-        }
+        },
+        "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["id", "name", "description", "topics", "link"],
-      "additionalProperties": false
-    },
-
-    "summary_report": {
-      "type": "object",
-      "description": "Data product: a published summary or aggregate report derived from one or more datasets.",
-      "properties": {
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/name" },
-        "description": { "$ref": "#/$defs/description" },
-        "topics": { "$ref": "#/$defs/topics" },
-        "population": { "$ref": "#/$defs/population" },
-        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
-        "last_updated": { "$ref": "#/$defs/last_updated" },
-        "next_update": { "$ref": "#/$defs/next_update" },
-        "years_covered": { "$ref": "#/$defs/years_covered" },
-        "link": { "$ref": "#/$defs/link" },
-        "contact": { "$ref": "#/$defs/contact" },
-        "related_datasets": {
-          "type": "array",
-          "description": "ids of datasets this report is based on or related to.",
-          "items": { "$ref": "#/$defs/id_ref" },
-          "uniqueItems": true
-        }
-      },
-      "required": ["id", "name", "description", "topics", "link"],
+      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
       "additionalProperties": false
     },
 
     "dashboard": {
       "type": "object",
-      "description": "Data product: an interactive dashboard (e.g. Tableau or Shiny) built on one or more datasets.",
+      "description": "Data product: an interactive dashboard (e.g. Tableau, Shiny or ArcGIS) built on one or more datasets.",
       "properties": {
+        "type": { "const": "dashboard" },
         "id": { "$ref": "#/$defs/id" },
         "name": { "$ref": "#/$defs/name" },
         "description": { "$ref": "#/$defs/description" },
@@ -172,9 +150,38 @@
           "description": "ids of datasets this dashboard is based on or related to.",
           "items": { "$ref": "#/$defs/id_ref" },
           "uniqueItems": true
-        }
+        },
+        "publisher": { "$ref": "#/$defs/publisher" }
       },
-      "required": ["id", "name", "description", "topics", "link"],
+      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
+      "additionalProperties": false
+    },
+
+    "summary_report": {
+      "type": "object",
+      "description": "Data product: aggregate data published as a fixed file or page, such as a spreadsheet of summary tables, a PDF report, or tables on a web page.",
+      "properties": {
+        "type": { "const": "summary_report" },
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/name" },
+        "description": { "$ref": "#/$defs/description" },
+        "topics": { "$ref": "#/$defs/topics" },
+        "population": { "$ref": "#/$defs/population" },
+        "geographic_granularity": { "$ref": "#/$defs/geographic_granularity" },
+        "last_updated": { "$ref": "#/$defs/last_updated" },
+        "next_update": { "$ref": "#/$defs/next_update" },
+        "years_covered": { "$ref": "#/$defs/years_covered" },
+        "link": { "$ref": "#/$defs/link" },
+        "contact": { "$ref": "#/$defs/contact" },
+        "related_datasets": {
+          "type": "array",
+          "description": "ids of datasets this report is based on or related to.",
+          "items": { "$ref": "#/$defs/id_ref" },
+          "uniqueItems": true
+        },
+        "publisher": { "$ref": "#/$defs/publisher" }
+      },
+      "required": ["type", "id", "name", "description", "topics", "link", "publisher"],
       "additionalProperties": false
     }
   }

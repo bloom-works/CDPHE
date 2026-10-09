@@ -831,12 +831,14 @@
       const CONFIG = {
         schemaFile: "data/schema.json",
 
-        // Each data product: where its records live and which schema definition describes them.
-        // A file may be a bare array of records, or an object with the `collection` key (as in schema.json).
+        // All records live in one file whose root is an array (see schema.json).
+        dataFile: "data/data_sources.json",
+
+        // Each data product: the record `type` value it matches and which schema definition describes it.
         products: [
-          { key: "dataset", label: "Dataset", file: "data/datasets.json", collection: "datasets", schemaDef: "dataset", linkLabel: "View data" },
-          { key: "dashboard", label: "Dashboard", file: "data/dashboards.json", collection: "dashboards", schemaDef: "dashboard", linkLabel: "Open dashboard" },
-          { key: "summary_report", label: "Summary report", file: "data/summary_reports.json", collection: "summary_reports", schemaDef: "summary_report", linkLabel: "Open report" }
+          { key: "dataset", label: "Dataset", schemaDef: "dataset", linkLabel: "View data" },
+          { key: "dashboard", label: "Dashboard", schemaDef: "dashboard", linkLabel: "Open dashboard" },
+          { key: "summary_report", label: "Summary report", schemaDef: "summary_report", linkLabel: "Open report" }
         ],
 
         // MiniSearch options. See https://lucaong.github.io/minisearch/
@@ -987,7 +989,7 @@
 
         const grouped = CONFIG.filters.filter(f => f.groupsFile);
         const [settled, groupFiles] = await Promise.all([
-          Promise.allSettled(CONFIG.products.map(p => fetchJSON(p.file))),
+          fetchJSON(CONFIG.dataFile).then(v => ({ status: "fulfilled", value: v }), e => ({ status: "rejected", reason: e })),
           Promise.allSettled(grouped.map(f => fetchJSON(f.groupsFile)))
         ]);
         // Groups are a display nicety: if the file is missing, the filter falls back to a flat list.
@@ -997,19 +999,20 @@
           if (data && typeof data === "object" && !Array.isArray(data)) state.groups[f.field] = data;
           else state.warnings.push(`${f.label} groupings couldn't be loaded from ${f.groupsFile}, so ${f.label.toLowerCase()} options are shown as one list.`);
         });
+        if (settled.status === "rejected") return fail(`The catalog couldn't be loaded (${settled.reason.message}).`);
+        const data = settled.value;
+        if (data != null && !Array.isArray(data)) return fail(`${CONFIG.dataFile} isn't in a recognized format. Its root should be an array of records.`);
+
+        // Each record's `type` picks its data product; skip (and count) any we don't recognize.
         const records = [];
-        settled.forEach((r, i) => {
-          const p = CONFIG.products[i];
-          if (r.status === "rejected") { state.warnings.push(`${p.label} records couldn't be loaded from ${p.file}. Results below don't include them.`); return; }
-          const data = r.value;
-          const list = Array.isArray(data) ? data : (data && Array.isArray(data[p.collection]) ? data[p.collection] : []);
-          if (data && !Array.isArray(data) && !Array.isArray(data[p.collection])) state.warnings.push(`${p.file} isn't in a recognized format, so no ${p.label.toLowerCase()} records were loaded.`);
-          list.forEach((rec, j) => {
-            if (!rec || typeof rec !== "object") return;
-            records.push({ ...rec, _product: p, _key: `${p.key}:${rec.id || "row-" + j}` });
-          });
+        let skipped = 0;
+        (data || []).forEach((rec, j) => {
+          if (!rec || typeof rec !== "object") return;
+          const p = productByKey[rec.type];
+          if (!p) { skipped++; return; }
+          records.push({ ...rec, _product: p, _key: `${p.key}:${rec.id || "row-" + j}` });
         });
-        if (settled.every(r => r.status === "rejected")) return fail("None of the catalog files could be loaded.");
+        if (skipped) state.warnings.push(`${plural(skipped, "record")} in ${CONFIG.dataFile} had a missing or unrecognized type and ${skipped === 1 ? "isn't" : "aren't"} shown.`);
 
         state.records = records;
         state.byKey = new Map(records.map(r => [r._key, r]));
