@@ -635,6 +635,34 @@
       margin: 0;
     }
 
+    /* The contact tile spans two columns and has a copy button on the right. */
+    .tile.wide {
+      grid-column: span 2;
+    }
+
+    .tile.has-copy {
+      position: relative;
+      padding-right: 80px;
+    }
+
+    .tile.wide dd {
+      overflow-wrap: anywhere;
+    }
+
+    .tile .copy-btn {
+      position: absolute;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--surface-1);
+    }
+
+    @media (max-width:340px) {
+      .tile.wide {
+        grid-column: 1 / -1;
+      }
+    }
+
     .tile.is-unknown {
       background: transparent;
       border: 0.5px dashed var(--border-strong);
@@ -1190,8 +1218,11 @@
         const url = safeUrl(rec.link), docUrl = safeUrl(rec.documentation);
         const tiles = CONFIG.detailTiles.filter(f => allowed.has(f)).map(f => {
           const text = fmt(rec, f), meta = CONFIG.fields[f] || {};
-          const value = (f === "contact" && text != null) ? `<a href="#">${esc(text)}</a>` : valueHtml(text);
-          return `<div class="tile${text == null ? " is-unknown" : ""}"><dt>${meta.icon ? ic(meta.icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
+          const isContact = f === "contact" && text != null;
+          const value = isContact
+            ? `<a href="#">${esc(text)}</a><button type="button" class="btn-sm copy-btn" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`
+            : valueHtml(text);
+          return `<div class="tile${text == null ? " is-unknown" : ""}${f === "contact" ? " wide" : ""}${isContact ? " has-copy" : ""}"><dt>${meta.icon ? ic(meta.icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
         }).join("");
         const topics = Array.isArray(rec.topics) ? rec.topics : [];
 
@@ -1294,6 +1325,28 @@
           Object.values(state.active).forEach(s => s.clear()); render(); announce(); $("q").focus();
         });
         p.querySelectorAll("[data-request]").forEach(b => b.onclick = () => openRequestModal(b));
+        p.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => copyText(b));
+      }
+
+      // Copies a button's `data-copy` value, briefly shows "Copied", and tells screen readers.
+      async function copyText(btn) {
+        let ok = false;
+        try {
+          // Time out so a stalled clipboard request falls back instead of doing nothing.
+          await Promise.race([navigator.clipboard.writeText(btn.dataset.copy), new Promise((_, no) => setTimeout(no, 1000))]);
+          ok = true;
+        } catch (e) {
+          // Fallback for browsers that block or stall the async clipboard API (e.g. some file:// pages).
+          const ta = document.createElement("textarea");
+          ta.value = btn.dataset.copy; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+          ta.remove(); btn.focus();
+        }
+        btn.textContent = ok ? "Copied" : "Couldn't copy";
+        $("live").textContent = ok ? "Email address copied." : "Couldn't copy the email address. Select it and copy it instead.";
+        clearTimeout(btn._reset);
+        btn._reset = setTimeout(() => { btn.textContent = "Copy"; }, 2000);
       }
 
       /* ---------- Request-data modal (standardized, same everywhere) ---------- */
