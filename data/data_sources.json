@@ -38,7 +38,7 @@
     ],
     "link": "https://drive.google.com/file/d/1ZV5pK9MGgnI4BbU2Kinx3Pt2edvCRuWY/view",
     "documentation": "https://coepht.colorado.gov/asthma-dataset-details",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_dashboards": [
       "eb61cf5b-d66f-5851-8766-25850fc9910f"
     ],
@@ -69,6 +69,7 @@
     ],
     "link": "https://cdphe.colorado.gov/survey-research-and-data/baby-and-you-survey/baby-you-survey-data",
     "documentation": "https://docs.google.com/spreadsheets/d/1bzKtvCGchifORk3MM1E7q1h7dTMdXEmrsALb7bdfBIk/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_dashboards": [
       "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539"
     ],
@@ -173,6 +174,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/behavioral-risk-factor-surveillance-system",
     "documentation": "https://drive.google.com/open?id=1eNT9S99Yd13enBIj208W4DFPZ1_ljtBR",
+    "contact": "alison.bui@state.co.us",
     "related_dashboards": [
       "dc8147f2-5e4e-5778-962c-7510682e89d0",
       "63f18471-2be0-55fa-9ac9-001539f86009",
@@ -235,7 +237,7 @@
     ],
     "link": "https://drive.google.com/file/d/12IyG9HtMrbF7evD_vgHtIzvl43mtNmfL/view",
     "documentation": "https://coepht.colorado.gov/carbon-monoxide-poisoning-dataset-details",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_dashboards": [
       "a19c86e0-bbdf-5260-bf36-7b36856bdef4"
     ],
@@ -277,7 +279,7 @@
     ],
     "link": "https://docs.google.com/spreadsheets/d/1ryFcI5DxDjZyq1fj5KbDYR3UtPaDq6YV/edit",
     "documentation": "https://drive.google.com/file/d/1wf3KF_h6XkNKqdIcKk1nQ3bevohy6knc/view",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "megan.snow@state.co.us",
     "related_dashboards": [
       "0e2a9758-9611-5f4b-895a-8dd878bfa2e8"
     ],
@@ -647,7 +649,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/colorado-violent-death-reporting-system",
     "documentation": "https://drive.google.com/file/d/1P1BgLz4L4jucbQaxS5s_dwAGA1ihYDsK/view?usp=share_link",
-    "contact": "cdphe.healthstatistics@state.co.us",
+    "contact": "christine.demont@state.co.us",
     "related_dashboards": [
       "a85bcbb0-1dd6-5508-8278-f8c196f4e3e2",
       "d2a577f7-dbf7-584a-92cc-18970550e222",
@@ -728,7 +730,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/vital-statistics-program",
     "documentation": "https://drive.google.com/open?id=1GqFYL473YSJp-gwj9bE5arvNzoQg3O9K",
-    "contact": "cdphe.healthstatistics@state.co.us",
+    "contact": "maria.jamison@state.co.us",
     "related_dashboards": [
       "f4424e7f-2fca-5340-9490-84c38a7b83c2",
       "a9249f1a-9baa-55d0-9d12-abf95f0b50f5",
@@ -845,7 +847,7 @@
     ],
     "link": "https://docs.google.com/spreadsheets/d/1hMNKwcTC88UzXxWdFcMi8njmQVGs1L3j/edit",
     "documentation": "https://coepht.colorado.gov/COPD-data-details",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_dashboards": [
       "b2f46ff3-2279-5119-a4c7-266679ae60d3"
     ],
@@ -1088,6 +1090,7 @@
     ],
     "link": "https://cdphe.colorado.gov/hkcs",
     "documentation": "https://cdphe.colorado.gov/healthy-kids-colorado-survey-overview",
+    "contact": "emily.fine@state.co.us",
     "related_dashboards": [
       "89855a92-4536-5c68-8e1d-937f3824137a",
       "b8e4e957-86ff-5ca6-89a3-a46b04cc7292",
@@ -1159,7 +1162,7 @@
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Xh9IHWWI_vzyJOpuelf6rzijzGF3EkWq/edit",
     "documentation": "https://coepht.colorado.gov/heart-attack-dataset-details",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_dashboards": [
       "4206485b-50e2-503b-8d46-ce4f3075a04a"
     ],
@@ -1217,7 +1220,7 @@
       2026
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Sp1PWxJCzXIJOMm2-twezejvTwQMW0sEYSGRRLdhU7k/edit?gid=1735991997",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_dashboards": [
       "3c91a9ff-135b-59ad-a874-aafdf48bc49d"
     ],
@@ -1352,7 +1355,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/survey-research/pregnancy-risk-assessment-monitoring",
     "documentation": "https://drive.google.com/file/d/1WvWRD4PKRQePjaiU_jkyhMlOeSOF6Z0r/view?usp=sharing",
-    "contact": "cdphe.healthstatistics@state.co.us",
+    "contact": "erika.iisa@state.co.us",
     "related_dashboards": [
       "1c4bfc41-ee0f-5b2d-9406-cd66e70cb539",
       "0b151408-2182-56b1-b98a-75cdf47140d3",
@@ -1425,7 +1428,7 @@
     ],
     "link": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/state-unintentional-drug",
     "documentation": "https://drive.google.com/file/d/1BhNsXg5mIFCM3IyjOMlvzGUCeNsreRpz/view?usp=drive_link",
-    "contact": "cdphe.healthstatistics@state.co.us",
+    "contact": "christine.demont@state.co.us",
     "related_dashboards": [
       "f95c8948-4812-5aa2-9497-35fcf2290831",
       "5b70a10d-f1d7-516e-b116-0ff62f639f77"
@@ -1553,7 +1556,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/Asthmahospitalizationsandemergencydepartmentvisits/AsthmaHospitalizationED?:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link&:isGuestRedirectFromVizportal=y&:embed=y",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_datasets": [
       "ffe4aa1e-3d4f-595f-a7c3-346e5047d7b4"
     ],
@@ -1627,6 +1630,7 @@
       2020
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2020CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "cdphe.pscaregistry@state.co.us",
     "related_datasets": [
       "777ef27f-9c67-5278-b25c-8752a2ab548f"
     ],
@@ -1673,6 +1677,7 @@
       2023
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/CCCR2000-2022CancerIncidenceRates-CoHID/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "cdphe.pscaregistry@state.co.us",
     "related_datasets": [
       "777ef27f-9c67-5278-b25c-8752a2ab548f"
     ],
@@ -1699,6 +1704,7 @@
       2023
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHID2020-2022CancerIncidenceRates/AgeAdjustedRatesDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "cdphe.pscaregistry@state.co.us",
     "related_datasets": [
       "777ef27f-9c67-5278-b25c-8752a2ab548f"
     ],
@@ -1886,7 +1892,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/Carbonmonoxidepoisoninghospitalizations/CMPHospitalization?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_datasets": [
       "b3705c98-0ef7-56b6-b955-8cb16fa947cb"
     ],
@@ -1926,6 +1932,7 @@
       2024
     ],
     "link": "https://experience.arcgis.com/experience/4fde427ff55e420d98afefb6674e152e",
+    "contact": "vishnu.panicker@state.co.us",
     "related_datasets": [
       "fd8234c6-80de-599d-b7a0-c748a3131cbe",
       "b6741494-2a61-5134-b2c5-b9899245d60e",
@@ -1972,6 +1979,7 @@
       2020
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/PSDVIP-MHPPUBLIC/views/CFPSDashboardFinalLocal/Story1?iframeSizedToWindow=true&%3Aembed=y&%3AshowAppBanner=false&%3Adisplay_count=no&%3AshowVizHome=no",
+    "contact": "cdphe_prevent_childfatality@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -2009,7 +2017,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/Childhoodleadpoisoning2/Story1",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "megan.snow@state.co.us",
     "related_datasets": [
       "e2f548fc-a563-53a1-aa13-3231c498a5a1"
     ],
@@ -2039,6 +2047,7 @@
       2024
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/BRFSSAdultOralHealhDashboard/AbouttheBRFSSDashboard?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "brett.lipshetz@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -2071,6 +2080,7 @@
       2023
     ],
     "link": "https://coloradooralhealth.org/initiatives/surveillance/colorado-basic-screening-survey-dashboard/",
+    "contact": "brett.lipshetz@state.co.us",
     "related_datasets": [
       "f894ce14-0c98-5238-8003-92661a216e6a"
     ],
@@ -2135,7 +2145,7 @@
       2023
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/CHIDashboard_2024Redesign/CHILandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
-    "contact": "cdphe.healthstatistics@state.co.us",
+    "contact": "alison.bui@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -2194,6 +2204,7 @@
       2024
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/ColoradoMaternalandChildHealthDashboard/LandingPage?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "erika.iisa@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0",
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd",
@@ -2290,6 +2301,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/ColoradoPopulationEstimates/PopulationEstimates?iframeSizedToWindow=true&%3Aembed=y&%3AshowAppBanner=false&%3Adisplay_count=no&%3AshowVizHome=no",
+    "contact": "maria.jamison@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -2373,6 +2385,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/DCEED_Public/views/TuberculosisDashboard/Overview?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "leslie.smith1@state.co.us",
     "related_datasets": [
       "4f42f9c7-33f2-585d-b668-39ec34f216e3"
     ],
@@ -2404,7 +2417,7 @@
       2026
     ],
     "link": "https://www.coloradowic.gov/colorado-wic-data-dashboard",
-    "contact": "askwic@state.co.us",
+    "contact": "cdphe_nsbdata@state.co.us",
     "related_datasets": [
       "91baabbb-6632-5f24-9157-617e2acb34de"
     ],
@@ -2448,7 +2461,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/COPDhospitalizationsandEDvisits/COPDHospitalizationED?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_datasets": [
       "eb6dc80a-7c03-5b49-b95c-6df243a7a043"
     ],
@@ -2490,6 +2503,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDDeathDashboardHistoricalRaceCategories/DeathDashboardHistoricalRaceCategories?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2537,6 +2551,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDDeathsDashboardAllYearsExcludesRace/DeathDashboardAllYearsexcludesrace?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2564,6 +2579,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDFullDeathQuery_StateDemographyPopEstimates/MortalityStatistics?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2629,6 +2645,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/DrugOverdoseDashboardHistoricalRace/Story1?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2678,6 +2695,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/Drug_Overdose_Dashboard_All_Years_No_Race_FINAL/Story1?%3Aembed=y&%3Aiid=3&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2707,6 +2725,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/Drug_Overdose_Dashboard_Race_alone_and_Multiple_Race_FINAL/Story1?%3Aembed=y&%3Aiid=4&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -2735,6 +2754,7 @@
       2023
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/PSD_HKCS_2013_2023_MSandHS/Landing?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -2778,7 +2798,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/Heartattackhospitalizations/Heartattackhospitalization",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_datasets": [
       "dfb945f5-95d6-5894-af06-d994d85b770c"
     ],
@@ -2807,7 +2827,7 @@
       2026
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/EnvironmentalEpidemiologyPublic/views/Heat-RelatedIllnessDashboard/HRIinCO",
-    "contact": "cdphe_coloradotracking@state.co.us",
+    "contact": "molly.middleton@state.co.us",
     "related_datasets": [
       "ee23668e-2ffd-5913-aa6d-2926063da4fa"
     ],
@@ -2879,6 +2899,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSHomicideDashboardHistoricalRace/COVDRSHomicide?%3Aiid=3&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -2924,6 +2945,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSHomicideDashboardAllYearsExcludesRace/COVDRSHomicide?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -2953,6 +2975,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSHomicideDashboardSingleRaceandMultipleRace/COVDRSHomicide?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -3014,6 +3037,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDBirthsDashboardHistoricalRace/BirthsDashboardHistoricalRace?%3Aiid=4&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -3056,6 +3080,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDBirthsDashboardAllYearsExcludesRace/BirthsAllYearsExcludesRace?%3Aiid=&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -3085,6 +3110,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COHIDLiveBirthsDashboard/LiveBirthStatistics?%3Aiid=2&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "maria.jamison@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -3111,6 +3137,7 @@
     ],
     "last_updated": "2026-08-07",
     "link": "https://cohealthviz.dphe.state.co.us/t/PSDVIP-MHPPUBLIC/views/SyndromicSurveillancePublicOverdoseDashboard/SySDashboard/69337155-be67-4301-88d3-ff9518d4f509/5cd75b2c-265f-4cea-bb29-712573c63953?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "cdphe_sys@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -3295,6 +3322,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/SUDORS_Dashboard_FINAL/Story1?%3Aembed=y&%3Aiid=1&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "50ae377a-64fe-5a49-bd5c-155b7dcbc36f"
     ],
@@ -3336,6 +3364,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSSuicideDashboardHistoricalRace/Story1?%3Aiid=&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -3383,6 +3412,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSSuicideDashboardAllYearsExcludesRace/Story1?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -3414,6 +3444,7 @@
       2025
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HealthInformaticsPublic/views/COVDRSSuicideDashboardSingleRaceandMultipleRace/Story1?%3Aiid=1&%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -3444,6 +3475,7 @@
       2021
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/TFCATool/Dashboard1?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+    "contact": "daniel.simon@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da",
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd",
@@ -3511,6 +3543,7 @@
       2024
     ],
     "link": "https://cotracking.shinyapps.io/CDPHE_VISION/",
+    "contact": "alison.bui@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -3605,6 +3638,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1FmVUiAPMqkmErFu67VFfrMXg6eWOkU5C/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -3658,6 +3692,7 @@
       2015
     ],
     "link": "https://drive.google.com/file/d/1W9wW49RJ84trGacpGq3Cz2ovLzyoumR-/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -3716,6 +3751,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1yd0Wmmu5T4gc-HfEApfBTU8mmG0eWZ4R/view",
+    "contact": "cdphe_hai_ar@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -3899,6 +3935,7 @@
       2014
     ],
     "link": "https://drive.google.com/file/d/1K7wr9oCGG-bK3Cc_2jk9CnN5ufNVCPC6/view",
+    "contact": "tiffany.white@state.co.us",
     "related_datasets": [
       "8ef5b438-ccff-561e-816c-937ca5e48f41"
     ],
@@ -3921,6 +3958,7 @@
       2016
     ],
     "link": "https://drive.google.com/file/d/1B4Nppf7vY4BQVSq8IZB8e3dW-TQKF0js/view",
+    "contact": "tiffany.white@state.co.us",
     "related_datasets": [
       "8ef5b438-ccff-561e-816c-937ca5e48f41"
     ],
@@ -3943,6 +3981,7 @@
       2014
     ],
     "link": "https://drive.google.com/file/d/1Q9Xh27UQ2WVu8JxJdLHwipKSWcttrBDK/view",
+    "contact": "tiffany.white@state.co.us",
     "related_datasets": [
       "8ef5b438-ccff-561e-816c-937ca5e48f41"
     ],
@@ -3966,6 +4005,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1lxWiZPkhxlgOAOyXXmm2nl2SY5iIEQSp/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -3989,6 +4029,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1uTw5tM_7eFEvR_m6ELmbD_ieNwvzM5l2/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4012,6 +4053,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/11gYwp6Bebnhj9dK0hUpPVT6aO-khzzxx/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4035,6 +4077,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1FeNQunRYIpKJklDoMJBWFqI-gy9Ln1n_/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4058,6 +4101,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1st-vIRJIZkwb6GHoiGsiVia3OV4eX_84/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4081,6 +4125,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1l-j0nudNupuSpyWvFWHod00eplgYkPzr/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4104,6 +4149,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1ntasNxUIOEzykQ8--uqvdL0P1Q2HeCBe/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4127,6 +4173,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/18ZLhX2v6Ub55St_VfPJJ2jcIh6CgJndd/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4150,6 +4197,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1TpoD_xVWOqblxeLCnfNJfdOGDwGrx08w/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4173,6 +4221,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1CQ18_-bfIS4nzgJqw_vxvx9z60c5h63v/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4196,6 +4245,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/13rRwCxVpNMSYQXj9sIEIg6b5r-qzS_92/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4245,6 +4295,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/13qid-iXOKBCF8-WDGhf2NSMlB5GB8Aqv/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4269,6 +4320,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1yADuGLGjtYgjtSkU3_aukyH9fm4i2WG9/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4293,6 +4345,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1-uXAmRcExhb3dnpAV8Ib5la4hzaWOUPM/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4317,6 +4370,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Z_Ad0bTbgqAsVj-JVRZBLE-Npo8iCtKx/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4341,6 +4395,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1hmE-5nB1PmfVAod4PID2rLtNeXbhJQpeqiqGxRR6HZ0/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4365,6 +4420,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1zn3qo9WHn94elUvTkGq9hPiAaMAr6RVo/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4389,6 +4445,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1CZa_mf0hGshXFhviIM6xqRp15D32_XhH/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4413,6 +4470,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/16JZFXT7dwDNwgvFFntq1G41kEnIgyMik/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4437,6 +4495,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1VHgfYHzpDJNQpszPkPbSb8vhgQexdORh/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4461,6 +4520,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1m_Ij5g9LnlWE8u5bLacTyxLSshT_CHxr/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4510,6 +4570,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Toysmla2yVy2PlPdpZGS41wfhJdkBC5l/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4534,6 +4595,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1UwZ2oecTz8_nHlH9OgcHV1wQFKjHjp9w/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4558,6 +4620,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1u13u07O9v6jFaV5KJaN4t7nGRDAw9bpS/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4582,6 +4645,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1A_WezQENkAdFWIKiOnbvx7WRKS7qopOJ/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4606,6 +4670,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1TPDZbm0hsdRjLC0TCYwz_XrVvSpuHsaP/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4630,6 +4695,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1167mz3ecUw8sbBPAfVZTkmPz-rGfBFNQ/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4654,6 +4720,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1aDnyORHr7EeQF5W5ZmgQnQphk6VwUpyW/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4678,6 +4745,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1uPIC2jpvDTqCmK188HAxkjJlVGMuWhgf/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4725,6 +4793,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1uTedflIpeg4LTO92t42_iWxtZZ8M7hlW/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4748,6 +4817,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1u3oIratYLZufT8gW3_mTcnOnqsyepDP5/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4771,6 +4841,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Y2gsl8cLm__C9JACpG1w7sJGcl593BC9/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4794,6 +4865,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/153LQeUAurbdYRVnnM4leNb731hEdbXE6/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4817,6 +4889,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1fAHZfinzyxcargDnpxeCheURapXjaiyh/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4840,6 +4913,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1n1YdLgpyzDy1gU6b0KI_RUFdC3s3-Xny/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4863,6 +4937,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1q7xlzTaFU3PfwVhbARZGpquo0Syp5tds/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4886,6 +4961,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/176GOBZ4k_IZfUR8cGd28MgBu8BG96fPb/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4909,6 +4985,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Ome939WwEdYq4HavaTHYZOWRkHyLLodB/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4932,6 +5009,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1yTijHLnun2bX_Q5pDtr9tIDKC0sUf6FZ/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -4981,6 +5059,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/14trKZvxow0v65mgWkjQdYLLg1ZUg0Jam/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5005,6 +5084,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1lGHMzu9zVtc24NsZHITlJV2vSGisO3Cd/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5029,6 +5109,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/11qQ4n98uSwvtKtYUEqWD-rO_oM-PGPZS/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5053,6 +5134,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1W7qefAHlLLS0H5-E73PTxVxCoAPw06DU/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5077,6 +5159,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1jbotEY__3KTnhIGBrXgRwt_N-uopmDVd/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5101,6 +5184,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1jFNv1rULmOSESKft8ZQNB7ARY_W0n8zH/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5125,6 +5209,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1-_LMr9YIzh8LJ0ZEfYU7zPI-r0PNCALc/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5149,6 +5234,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/18w3HFYVIcdZyvKPNxeyJsBgJrahBYYH0/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5173,6 +5259,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1aSjRgwPnpygYNNS2dNfkPjiTu3m-_DCf/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5220,6 +5307,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/114diG-VyZ2hIbf-wBQsU5RTM16RyfbW-hCk30TudUuo/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5243,6 +5331,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1lIMJzHKNiOStJqsVnQq32BCgOI_WOOcymKlXao-Pk7Y/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5266,6 +5355,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/14ZCAr8bS5Orx0O6UlXHZ4Jwjy_GX00Khbnu0U9vmnvw/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5289,6 +5379,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1fagBDStRQz70qArM2LFRMcfeA6m7ZpOk8RdFVJLnUc0/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5312,6 +5403,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1D8t3yxPPe7NSfEtBXrhPvxJrjirF-Mfcn33cmkE-W9Q/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5335,6 +5427,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1j3817tQw-4cTFdZAkSM30tRwdvjOd970sDTwduqgby0/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5358,6 +5451,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1kqkNCI3rcOPZT23L4xNPkj2-1xk0WRME5gpIu-ZM-Eg/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5381,6 +5475,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1GUYw9_hguYkLCgDgBfla2Fmm9ytPAp_rcTLkErik0fQ/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5404,6 +5499,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1XFBci86Wl_22UewU2Q1_NhgQBT1P3wR6Gs83kc5qDg8/edit",
+    "contact": "sarah.blackwell@state.co.us",
     "related_datasets": [
       "b48420e1-5b32-564a-ab29-c0caeed7e6f0"
     ],
@@ -5427,6 +5523,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1sBj5BZCNWWBdEOmAPu3c65XAg99Zh3da/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5450,6 +5547,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1uimVB49TVrtS1n1eldupJCHBIwTj4Wo9/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5473,6 +5571,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1VksAra6M2Frd2qyYvnctJNvS1BIMedLn/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5496,6 +5595,7 @@
       2021
     ],
     "link": "https://drive.google.com/file/d/1h40sngvrhGVQB5jFUWk5RL3PU5M1vNGo/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5519,6 +5619,7 @@
       2022
     ],
     "link": "https://drive.google.com/file/d/10DYzPsrT69gzEXgCmWGwyzoZ9BvK10IY/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5542,6 +5643,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/1nLVuo4catqQS5nDSwc3IKVfQL5ohu2aXrtmQiHbxg3A/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5565,6 +5667,7 @@
       2024
     ],
     "link": "https://docs.google.com/spreadsheets/d/1NcybOmCt3HA0Z5EPPrYAAmrsFV9EQBYReHWCMBk7TC4/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5588,6 +5691,7 @@
       2025
     ],
     "link": "https://docs.google.com/spreadsheets/d/1LbhRElz1kiiGVSjf8u3uz5dnLJP7sJXHs_P95QmAj1w/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5615,6 +5719,7 @@
       2022
     ],
     "link": "https://cdphe.colorado.gov/hai/candidemia",
+    "contact": "cdphe_hai_ar@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -5660,6 +5765,7 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1GWQbvAlFk9E0hQcdFCzj_uy51YmCJmr3/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5714,6 +5820,7 @@
       2023
     ],
     "link": "https://coloradooralhealth.org/resources/2022-23-colorado-basic-screening-survey-report/",
+    "contact": "cdphe_oral_health_unit@state.co.us",
     "related_datasets": [
       "f894ce14-0c98-5238-8003-92661a216e6a"
     ],
@@ -5742,6 +5849,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/17QAfeVnHUXfb9sXLDMV4G7nskFFKekdF/edit?gid=277366762",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "6f6c20c4-01c9-5589-ab5e-9f73f47053da"
     ],
@@ -5764,6 +5872,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1L_S-ZGYDcj8DerAPnP3Vt3pQ91znGw2I/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -5805,6 +5914,7 @@
       2023
     ],
     "link": "https://drive.google.com/file/d/1EEgiXUI3x7L4_p-zhcimYqSv_9p0nC2k/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -5837,6 +5947,7 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1Q1aHrifyBsD0gJVY0DYGFZojSaeX7Dm9/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -5862,6 +5973,7 @@
       2016
     ],
     "link": "https://drive.google.com/file/d/1-GIqz28tE30HD-cmVFkU3kyVcHd0tR9d/view",
+    "contact": "cdphe_hai_ar@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -5892,6 +6004,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/11pstKHoGnVmODNRgWiI0p0_Up_N7bzuS/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -5920,6 +6033,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1_2njAcRMUtDcLqrv4QkKCbuEWZwO3uQu/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -5948,6 +6062,7 @@
       2021
     ],
     "link": "https://cdphe.colorado.gov/sites/cdphe/files/documents/Firearm%20Deaths%20Fact%20Sheet%202016-2021%20FINAL.pdf",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -6375,6 +6490,7 @@
     ],
     "last_updated": "2026-09-11",
     "link": "https://cdphe.colorado.gov/health-care-facility-infection-data",
+    "contact": "cdphe_hai_ar@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -6402,6 +6518,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1qxwYxNI_41kQFb8-JCPveg5IVLiiWJXu/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6431,6 +6548,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/16cfiYmqbgblaJw5KOop7Vkh7OeCBhesm/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6460,6 +6578,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1McfTLKbi2eaR8AIT2mPuywaGRPivfC3D/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6489,6 +6608,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1WUzxC5dD2rUzoqHJUvbhux1xXEEehebe/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6518,6 +6638,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1MRSMKZMPMnuf6Io4ZnaRSLMN_MLblCMc/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6547,6 +6668,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1EEJJKQT9wp8_k6sd07H2AkdMfPbj4b-W/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6576,6 +6698,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1ooTc1HJ_uaQJifh6RKZ1bX8WtvhUsXEj/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6605,6 +6728,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1vd6BoSkEYwB8it0eBo96YscjustLyfa3/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6634,6 +6758,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Dku_NOBGQK7Lp7iRUw5ry6S4y5CWwdM0/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6663,6 +6788,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1W9hXkHXiQFp662jPWHRoGDn7x-f-ANBy/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6692,6 +6818,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1oBZUaFlChDXCjAejmYC4zvwSYllXtyRa/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6721,6 +6848,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Hb4lkj9dzN0u_fF5WRY2UMSfcSc0X6ur/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6750,6 +6878,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1w_zFxFNknwHO_c1Atm7kebV3H3odVOa_/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6779,6 +6908,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1IBDWwSNQqUII4TTiN06fsGxieLVnegx4/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6808,6 +6938,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1kUua97VtszE311IIGBtRWrHf_40P5To4/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6837,6 +6968,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1LANi7Y_frzTzrB-R_2whNO4y_L82H0g9/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6866,6 +6998,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1o8J8YCqQuUaUcJ8_JmdG6W2WaIqEn5Kv/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6895,6 +7028,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1UmhL4wBfVkqhyHvxpOy-o33HDby6sl4T/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6924,6 +7058,7 @@
       2018
     ],
     "link": "https://docs.google.com/spreadsheets/d/1OJ60pIJV3reYme3ELPajV1OwPQVTtY_Z/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6954,6 +7089,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1xuRZ6OPvBYAIHmya1IOO-ZTecdNC03LD/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -6983,6 +7119,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1-RtnpJPDeaRUse5A_a8wy9xSozHVfN4P/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7012,6 +7149,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1n32PwH52EdR0nnOQ1CWz1j-CX7oJQg1A/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7041,6 +7179,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1OIvSrFJYSytG2Pk37x_DOaV0eVZh7UG4/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7070,6 +7209,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1JWcOCIFdCWFvneMNdnqpqOmkgxIxvATu/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7099,6 +7239,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1q3GdT9a3GNKMukK58kbT0VHeEJHJ_HKs/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7128,6 +7269,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/143K-nOlzrndDomThm39VC7KpxK2b0VX0/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7157,6 +7299,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1V7C0MBgfyIlNrUHUo-z9zMUX8zhZ2KTo/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7186,6 +7329,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/1MwMngqHs69JaCR1P_EWR1OpIJ4OI2vSG/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7215,6 +7359,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/16qZ-7mPX737nkGt80hPG654LJ7PiJ8vR/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7244,6 +7389,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/18u47SLESWSSVrng3C9NYTMayIWY4vCuY/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7273,6 +7419,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/1WnsDiLG1KxjIk-PDhLgNutxXViqFVlkU/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7302,6 +7449,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/197Hwp4ICUVaTVHQIv0-XlZ_SndzrRFjv/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7331,6 +7479,7 @@
       2019
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Ij9TZhZhk87FUbhrv3oWYMrD6Y52REL2/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7361,6 +7510,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/16k7k2nGZQoUDEF9oFBmpvG9JOMS6UPcm/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7391,6 +7541,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1cwt-nIHiFIj7RBxa4PGnX9ZD2_XlqaTC/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7421,6 +7572,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1MngoSgKWpha_jJxeaOMlY3aRjmeP7ut7/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7451,6 +7603,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1Kehwu9id6TT9Bs4GvlD17_sRKoQiGkNY/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7481,6 +7634,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1CWrPQW60mofQnd_vUAwuziRGHlVTEXjN/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7511,6 +7665,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1v3zD6a9a3uHqAnC-Z-nPNZt7fKvqBznp/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7541,6 +7696,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1abKA_zM6ZgSvIZyQelIK-rCQo8GTW5-e/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7570,6 +7726,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1iJjRRGyqPV5ZIfTanf9mEpotZuk0QkkW/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7599,6 +7756,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1nQ8sebCSiRXxMtB39_ErXB3rUsaVK90-/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7628,6 +7786,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1jPwja6n_jx1_Zkyh8IDrUmoZTud6zyHT/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7657,6 +7816,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1wl7lbZUtrSzigoCH3XV4QhoMxtEgZ1zW/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7686,6 +7846,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1pO62GGiMpGB-Fi0JHVBSOIsBBZY9XQmT/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7715,6 +7876,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1DLxLXf_M2w6nvun0HqMc_bCxhIY-3UeR/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7744,6 +7906,7 @@
       2020
     ],
     "link": "https://docs.google.com/spreadsheets/d/1NeyBiSHNvG5_g6nDJ9PG3YB3p--AWlJc/edit",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7776,6 +7939,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1LH8FSarxMaL0DqYNiBmo5Y96DepEs_Zb/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7808,6 +7972,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1lV84SNLuBuIYGElISWuDjZVhrGMW7wj1/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7840,6 +8005,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1tO1__2hXkXboKHMJBmqRv64yDjDhUBnv/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7872,6 +8038,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1yh18TnNZBPb99SMzr2EdVRxJXngBzZgS/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7904,6 +8071,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1bAQBcpYuLBr_0UAFQWK8Su1SGnnis-BA/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7936,6 +8104,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/17hRcmjJ9syarPA6U38Bjma9IujC5Dqwq/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7968,6 +8137,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1KPilMamTykEZywIM0JRSJmfwG5dn80gz/view",
+    "contact": "juan.vazquezjr@state.co.us",
     "related_datasets": [
       "d1a691dc-9c78-5e49-8aa3-6239a5cb861a"
     ],
@@ -7990,6 +8160,7 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1gOgkbEc8F10CopYYZnM951PyYFJdqZOl/view",
+    "contact": "cdphe_hai_ar@state.co.us",
     "publisher": "CDPHE"
   },
   {
@@ -8011,6 +8182,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1IEuExMTn5DtgXanGrxLkbMeftcuiD8dD/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8047,6 +8219,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1pjNV5m1Y8700clVEmRwb36Cf3yN0xk6A/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8083,6 +8256,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1Z5ClOznbukKrsoCWEfq_VDOcOjXFg6nP/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8119,6 +8293,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1aGOuGieKE1Me-rh78sn0wkeW2EoDvlPc/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8155,6 +8330,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1bxicjf0Cu1Pd176nhbLkeMtbcIiJfpxU/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8191,6 +8367,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1FLOzISCMhoRIrVnkKmhJe9sin_ugzkcW/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8227,6 +8404,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1ncS6KTiwXVNGSPnV6M0MJ9bSIdFTWHle/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8263,6 +8441,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1BSP180OuRRvpiw99D3Fu84twyOEUAnNJ/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8299,6 +8478,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1gbq9GqKzr0BUPcgkgGBdDPdKNUT85uOp/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8335,6 +8515,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1-QM0guLW0fNxZ9Y7qm4eWr1GuuJOiiBM/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8371,6 +8552,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1E1Ai2ff3nX__ACNt0v5MgnERh4yepans/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8407,6 +8589,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1P5B6o4FEiu4jz4JSCOReaNqTcevC8gP2/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8443,6 +8626,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1naImxQ5HXaIXUmYgpHmeuUkAzZ2vDFhU/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8479,6 +8663,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1PxM87Koyxnof76K2fbqfIj4FdWMPsQNx/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8515,6 +8700,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1XIffCskw3BW4X_IMuf4uRvG3YsOruKrm/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8551,6 +8737,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1oCPyiptq4blkmX5K2ov_pO0A0W2grA8I/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8587,6 +8774,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1pu4o0THhMjnOWUI910BuwTPY_kcjoghk/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8623,6 +8811,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1pfGqCrILhojHnVfnZurjG1gJugkiNXKm/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8659,6 +8848,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1MNMeBKX200JHp7qS4lr9dEtI24O32I8_/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8695,6 +8885,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/11Q1abpTDFg2QuLOevzQObspB6sKHUS7r/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8731,6 +8922,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1InynbZEBV5K2AomN5RZcoO6gIeN5Mp_3/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8755,6 +8947,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/11pQatHH_W-pxbC3K05C2HV7cYslXM1o2/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8791,6 +8984,7 @@
     ],
     "last_updated": "2026-05-26",
     "link": "https://drive.google.com/file/d/1qiKr_wTxPq7R5xZVI1suijM3_rMTnfYR/view",
+    "contact": "emily.fine@state.co.us",
     "related_datasets": [
       "769f4ec8-0af9-524f-b1c0-ca918eb20a66"
     ],
@@ -8817,6 +9011,7 @@
       2009
     ],
     "link": "https://drive.google.com/open?id=1o9xRecHe8G-qHgAvl057tgHjepwRufM-",
+    "contact": "CDPHE_stihivdatarequest@state.co.us",
     "related_datasets": [
       "ab2d651e-2598-5826-8ec8-b61b1ea60b06"
     ],
@@ -8845,6 +9040,7 @@
       2012
     ],
     "link": "https://drive.google.com/open?id=1l5OXQFB-l_44FI1DiT3pZWgwWAIlJZ5t",
+    "contact": "CDPHE_stihivdatarequest@state.co.us",
     "related_datasets": [
       "ab2d651e-2598-5826-8ec8-b61b1ea60b06"
     ],
@@ -8871,6 +9067,7 @@
       2015
     ],
     "link": "https://drive.google.com/open?id=19nkexg-IfzwQKLhacUI0U9GIrKLmR95b",
+    "contact": "CDPHE_stihivdatarequest@state.co.us",
     "related_datasets": [
       "ab2d651e-2598-5826-8ec8-b61b1ea60b06"
     ],
@@ -8898,6 +9095,7 @@
       2010
     ],
     "link": "https://drive.google.com/open?id=187dSlANpeeu-lzFzNBX84CWf6YfdFBcY",
+    "contact": "CDPHE_stihivdatarequest@state.co.us",
     "related_datasets": [
       "ab2d651e-2598-5826-8ec8-b61b1ea60b06"
     ],
@@ -8930,6 +9128,7 @@
       2014
     ],
     "link": "https://drive.google.com/file/d/1gBmTD3D1WSq-0tNXunlN478FQgeoxru7/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -8957,6 +9156,7 @@
       2023
     ],
     "link": "https://drive.google.com/file/d/1Ydyi2-qRv0sIUJDz8lGT2paBcu_gnxRW/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -8991,6 +9191,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/168KeqDnxfK1-5UIDeKHm8Ordtx-H-yWh/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9020,6 +9221,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1xZQZrhD1vmg3nOGARP4DxaOV5QVFWEBR/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9045,6 +9247,7 @@
     ],
     "last_updated": "2026-09-03",
     "link": "https://docs.google.com/spreadsheets/d/1BAcjfBxu4XhfDjJvsqy6L6wM5i9EaSzF/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9072,6 +9275,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1IzkZUhFIswyi1i5aRFOQyOQDrsi0aqMX/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9097,6 +9301,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/13DG0ZV7iykbhqBK_BWV439JRitmO7I38/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9122,6 +9327,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1mg9Bpfkg3fMKxp9W2RNfLcnCKCwe2NNZ/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9162,6 +9368,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1_AfO_O9KSOK68NrK5loFqgmG0udBzuP4/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9187,6 +9394,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1VIe1oRvjamU74kURp0CNs3kbbpsf2fKc/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9222,6 +9430,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1JiIWrmBH4NOYOAYFiwlZoTK6D4mtOLvq/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9255,6 +9464,7 @@
     ],
     "last_updated": "2026-08-12",
     "link": "https://docs.google.com/spreadsheets/d/1vjHZMbSA4erh3FAGyImSxCCDbQ0Hww01/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "4f39a115-b0ff-5682-9888-240a4bb98743"
     ],
@@ -9550,6 +9760,7 @@
       2015
     ],
     "link": "https://drive.google.com/file/d/1aTF-DdkfpWpT5I--R7nGMKOvytRG2ZLu/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -9608,6 +9819,7 @@
       2024
     ],
     "link": "https://drive.google.com/file/d/1AYlLEywbbNrlf_XspWylBAoYii24Ct73/view",
+    "contact": "leanne.glenn@state.co.us",
     "related_datasets": [
       "c12dd681-0d55-56f5-8e13-f915da84ddc6"
     ],
@@ -9634,6 +9846,7 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1mFhP2zlbjVHy0ju2cXkSlFVkyBGducrn/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -9697,6 +9910,7 @@
       2016
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2016TableauSummaryTables_Update/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9728,6 +9942,7 @@
       2017
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2017TableauSummaryTables_Update/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9759,6 +9974,7 @@
       2018
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2018TableauSummaryTables_Update/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9790,6 +10006,7 @@
       2019
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2019TableauSummaryTables_Update/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9821,6 +10038,7 @@
       2020
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2020TableauSummaryTables_Update_17198589314780/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9852,6 +10070,7 @@
       2021
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2021TableauSummaryTables_Update_17198570222830/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9883,6 +10102,7 @@
       2022
     ],
     "link": "https://cohealthviz.dphe.state.co.us/t/HSEBPublic/views/2022TableauSummaryTables_Update/Home",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9914,6 +10134,7 @@
       2023
     ],
     "link": "https://docs.google.com/spreadsheets/d/18RfUUh2IUMhnhXoTMX_ZZsyjGJLIhKm6NtpPkaOxYf4/edit",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "7eb50459-f48e-59dd-bbc7-86311c0d30fd"
     ],
@@ -9951,6 +10172,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1T38Ulu2sa_OmzNgJx-u8OUv6wzK-9kou/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -9989,6 +10211,7 @@
       2020
     ],
     "link": "https://drive.google.com/file/d/1g8MtQqYwcxUn_P6b_O8LP_NkRsuDo1z_/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10021,6 +10244,7 @@
       2014
     ],
     "link": "https://drive.google.com/file/d/17xRvXEXvavlSY-_zcW0Mjvr4afPV1eCK/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10047,6 +10271,7 @@
       2021
     ],
     "link": "https://drive.google.com/file/d/1ERk_0H84RpGo9jgSLlJ_nWlW28QrnSAC/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10074,6 +10299,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1UCeyOEY6XALOaeFo2HU3q2NE0LHEjNMX/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10101,6 +10327,7 @@
       2017
     ],
     "link": "https://drive.google.com/file/d/1fPpGOpl3Rcje0hFHVz1m7lkRrvu1pt3a/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10127,6 +10354,7 @@
       2015
     ],
     "link": "https://drive.google.com/file/d/1fA9i6jUH7Q3B2ka6ukxaoGpx7ToYraSO/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10153,6 +10381,7 @@
       2018
     ],
     "link": "https://drive.google.com/file/d/1Y6RIr439tG5xeKaogeEvDrjID1aE3yc2/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10179,6 +10408,7 @@
       2020
     ],
     "link": "https://cdphe.colorado.gov/sites/cdphe/files/documents/Suicide%20in%20Colorado%202016-2020%20HealthWatch_FINAL.pdf",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10205,6 +10435,7 @@
       2022
     ],
     "link": "https://drive.google.com/file/d/1nqsyRwpjJiJWvXBdEAGWJ_DSiFuzzQun/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10239,6 +10470,7 @@
       2015
     ],
     "link": "https://drive.google.com/file/d/1EDRt4-g1gv-a-ni6SWwyinnRq2aFkQot/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10471,6 +10703,7 @@
       2021
     ],
     "link": "https://drive.google.com/file/d/15sE-IfOIFc8wRA6m7XfQM8b6tfVe7DIo/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6",
       "50ae377a-64fe-5a49-bd5c-155b7dcbc36f"
@@ -10498,6 +10731,7 @@
       2019
     ],
     "link": "https://drive.google.com/file/d/1B4CwgtXSUbyoot7htheM846Ged0sg-iA/view",
+    "contact": "christine.demont@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
@@ -10532,6 +10766,7 @@
       2015
     ],
     "link": "https://drive.google.com/file/d/1PL8HD9XQauQ1TWcv2mXqXuR__zDnvy_F/view",
+    "contact": "cdphe.healthstatistics@state.co.us",
     "related_datasets": [
       "a8d6e498-8105-54ff-bf62-ae0d8a23a3a6"
     ],
