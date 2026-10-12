@@ -51,11 +51,29 @@
     },
     "topics": {
       "type": "array",
-      "description": "Public health topics/tags this product relates to, used for search and filtering. Values must come from topics.json; that is enforced by convention, not by this schema.",
+      "description": "Public health topics this product is primarily about, used for search and filtering. Tag the product's main subjects, not everything it mentions: a survey that asks one question about vaccines is not tagged 'Vaccines'. Overlapping topics are fine when both apply (e.g. HIV data gets 'Sexual health' and 'Communicable disease'). By convention, list the most relevant topic first. Files that are one slice of a larger survey (one year, region or breakdown) get only the survey's main topic; the survey's own record carries its full set.",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "Births and deaths",
+          "Cancer",
+          "Chronic disease",
+          "Communicable disease",
+          "Demographics",
+          "Environmental health",
+          "Health facilities",
+          "Injury and violence",
+          "Maternal and child health",
+          "Mental health",
+          "Sexual health",
+          "Social determinants of health",
+          "Substance use",
+          "Suicide",
+          "Vaccines"
+        ]
       },
       "minItems": 1,
+      "maxItems": 5,
       "uniqueItems": true
     },
     "population": {
