@@ -917,6 +917,7 @@
         // `limit` shows the top N options with a "show all" toggle.
         // `newestFirst` lists options by year, newest first, instead of by count; `maxYear` hides later years.
         // `fixedOrder` lists options in the order of the field's `values` map instead of by count.
+        // `alphabetical` lists options A to Z instead of by count.
         // `groupsFile` points to a JSON object of { "Group name": [values] }; options are shown under
         // those subheadings (each with its own `limit`), and values not in any group go under "Other".
         filters: [
@@ -924,7 +925,7 @@
           { field: "geographic_level", label: "Geographic level" },
           { field: "years_covered", label: "Years covered", limit: 5, matchAll: true, newestFirst: true, maxYear: new Date().getFullYear() },
           { field: "population", label: "Populations covered", matchAll: true, fixedOrder: true },
-          { field: "topics", label: "Topic", limit: 8 }
+          { field: "topics", label: "Topic", limit: 8, alphabetical: true }
         ],
 
         // How schema fields are labelled and formatted. Only fields that appear in a product's
@@ -1159,6 +1160,8 @@
           } else if (f.fixedOrder) {
             const order = Object.values(CONFIG.fields[f.field].values), rank = v => order.includes(v) ? order.indexOf(v) : order.length;
             opts.sort((a, b) => rank(a[0]) - rank(b[0]));
+          } else if (f.alphabetical) {
+            opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || a[0].localeCompare(b[0], undefined, { sensitivity: "base" }));
           } else if (f.field !== "product") {
             opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || b[1] - a[1] || a[0].localeCompare(b[0]));
           }
