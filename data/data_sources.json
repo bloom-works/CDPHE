@@ -2,7 +2,7 @@
   {
     "type": "dataset",
     "id": "ffe4aa1e-3d4f-595f-a7c3-346e5047d7b4",
-    "name": "Asthma data (download)",
+    "name": "Asthma data",
     "description": "A downloadable file of asthma emergency department visits and hospital stays among Colorado residents, by county. It's the data behind the asthma dashboard on the Colorado Environmental Public Health Tracking site.",
     "topics": [
       "Chronic Disease",
@@ -53,7 +53,6 @@
     "type": "dataset",
     "id": "b48420e1-5b32-564a-ab29-c0caeed7e6f0",
     "name": "Baby & You Survey",
-    "short_name": "Baby & You",
     "description": "A series of four online surveys for birthing parents of children ages 0-3. CDPHE samples postpartum people each month from live birth certificates and invites them to enroll at 3-4 months postpartum, then follows up around the baby's first, second, and third birthdays. The sample intentionally oversamples American Indian/Alaska Native, Asian American/Pacific Islander, and Black/African American birthing people. Results are weighted to represent all births in Colorado. Weighted data tables are published by birth cohort, and custom estimates or de-identified datasets can be requested from the program.",
     "topics": [
       "maternal health",
@@ -210,7 +209,7 @@
   {
     "type": "dataset",
     "id": "b3705c98-0ef7-56b6-b955-8cb16fa947cb",
-    "name": "Carbon monoxide poisoning data (download)",
+    "name": "Carbon monoxide poisoning data",
     "description": "A downloadable file of carbon monoxide poisoning among Colorado residents: emergency department visits, hospital stays and deaths. It's the data behind the carbon monoxide dashboard on the Colorado Environmental Public Health Tracking site.",
     "topics": [
       "Environmental Public Health"
@@ -263,7 +262,7 @@
   {
     "type": "dataset",
     "id": "e2f548fc-a563-53a1-aa13-3231c498a5a1",
-    "name": "Childhood lead poisoning data (download)",
+    "name": "Childhood lead poisoning data",
     "description": "A downloadable spreadsheet of blood lead testing among Colorado children, by county. It's the data behind the childhood lead poisoning dashboard on the Colorado Environmental Public Health Tracking site. A data dictionary explains each field.",
     "topics": [
       "Childhood Health",
@@ -337,8 +336,7 @@
   {
     "type": "dataset",
     "id": "f894ce14-0c98-5238-8003-92661a216e6a",
-    "name": "Colorado Basic Screening Survey data (download)",
-    "short_name": "BSS",
+    "name": "Colorado Basic Screening Survey data",
     "description": "A downloadable spreadsheet of results from the Colorado Basic Screening Survey (BSS), a dental check of kindergarten and third-grade students at school. It covers five school years from 2003–04 to 2022–23, statewide, with breakdowns by race and ethnicity, school free or reduced-price lunch level, and urban or rural location.",
     "topics": [
       "Childhood Health",
@@ -376,7 +374,6 @@
     "type": "dataset",
     "id": "777ef27f-9c67-5278-b25c-8752a2ab548f",
     "name": "Colorado Central Cancer Registry",
-    "short_name": "CCCR",
     "description": "The statewide registry of cancer diagnoses among Colorado residents. Cases are reported by hospitals, pathology labs, other state registries, death certificates, and some physicians. Records include cancer site, stage at diagnosis, treatment, payer, and demographics such as age, sex, race, and residence, covering about 25,000 invasive cases a year. Aggregate incidence data are available through CoHID dashboards. Custom data requests and de-identified research datasets are available on approval. New data are usually complete 18 to 24 months after the end of the year.",
     "topics": [
       "Cancer",
@@ -748,7 +745,6 @@
     "type": "dataset",
     "id": "4f39a115-b0ff-5682-9888-240a4bb98743",
     "name": "Colorado vital statistics",
-    "short_name": "Vital statistics",
     "description": "Official counts of births, deaths, fetal deaths, abortions, marriages and divorces in Colorado. You can see the data in the birth and death dashboards and in downloadable summary tables. More detailed data are only available by request.",
     "topics": [
       "Vital Records",
@@ -826,7 +822,6 @@
     "type": "dataset",
     "id": "91baabbb-6632-5f24-9157-617e2acb34de",
     "name": "Colorado WIC program data",
-    "short_name": "WIC",
     "description": "Data from Colorado's Special Supplemental Nutrition Program for Women, Infants, and Children (WIC). WIC provides healthy food, nutrition advice and referrals to pregnant and postpartum people, infants and young children. You can see the data in a dashboard and in yearly reports. Data with personal details are not shared.",
     "topics": [
       "Nutrition",
@@ -878,7 +873,7 @@
   {
     "type": "dataset",
     "id": "eb6dc80a-7c03-5b49-b95c-6df243a7a043",
-    "name": "COPD data (download)",
+    "name": "Chronic obstructive pulmonary disease (COPD) data",
     "description": "A downloadable spreadsheet of chronic obstructive pulmonary disease (COPD) emergency department visits and hospital stays among Colorado residents, by county. It's the data behind the COPD dashboard on the Colorado Environmental Public Health Tracking site.",
     "topics": [
       "Chronic Disease",
@@ -1045,8 +1040,7 @@
   {
     "type": "dataset",
     "id": "d1a691dc-9c78-5e49-8aa3-6239a5cb861a",
-    "name": "Health eMoms",
-    "short_name": "Health eMoms",
+    "name": "Health eMoms survey",
     "description": "A former CDPHE online survey program that followed postpartum people in Colorado from shortly after birth to their child's third birthday. CDPHE sampled people each month from live birth certificates and invited them by mail; from 2018 to 2021, 2,400 people joined and completed up to six brief online surveys. Topics included breastfeeding, vaccinations, maternal mental health, social connection, maternity leave and family-friendly workplaces, child care, financial and resource insecurity, health care access, marijuana and other substance use, and oral health. Weighted results are published for the 2018, 2019, and 2020 birth cohorts, plus a COVID-19 survey sent to all cohorts in early 2021. The program ended in 2021 and was succeeded by the Baby & You Survey, so no new data will be added.",
     "topics": [
       "maternal health",
@@ -1146,7 +1140,6 @@
     "type": "dataset",
     "id": "769f4ec8-0af9-524f-b1c0-ca918eb20a66",
     "name": "Healthy Kids Colorado Survey",
-    "short_name": "HKCS",
     "description": "Colorado's most comprehensive survey of youth health and well-being. It is an anonymous, voluntary survey of a random sample of public middle and high school students, given every fall of odd-numbered years. Results are weighted to represent enrollment in Colorado public schools. Topics include mental health and suicide risk, substance use, nutrition, physical activity, bullying, sexual health, and protective factors such as support from caring adults and connection to school. CDPHE publishes statewide and regional results in the summer of even-numbered years.",
     "topics": [
       "School-aged child health",
@@ -1218,7 +1211,7 @@
   {
     "type": "dataset",
     "id": "dfb945f5-95d6-5894-af06-d994d85b770c",
-    "name": "Heart attack data (download)",
+    "name": "Heart attack data",
     "description": "A downloadable spreadsheet of heart attack hospital stays among Colorado residents, by county. It's the data behind the heart attack dashboard on the Colorado Environmental Public Health Tracking site.",
     "topics": [
       "Chronic Disease",
@@ -1300,7 +1293,7 @@
   {
     "type": "dataset",
     "id": "ee23668e-2ffd-5913-aa6d-2926063da4fa",
-    "name": "Heat-related illness data (download)",
+    "name": "Heat-related illness data",
     "description": "A downloadable spreadsheet of the data behind the heat-related illness dashboard: rates of heat-related illness per 10,000 health care visits in Colorado, by county, year and setting.",
     "topics": [
       "Environmental Public Health"
@@ -1497,7 +1490,7 @@
   {
     "type": "dataset",
     "id": "8d99e3d9-80c7-5c44-a932-546fb5baf95f",
-    "name": "Respiratory virus immunization data (download)",
+    "name": "Respiratory virus immunization data",
     "description": "A downloadable version of the data behind the respiratory virus immunization dashboard. It shows how many Colorado residents have received seasonal flu, COVID-19 and other respiratory virus vaccines. The numbers come from the Colorado Immunization Information System (CIIS).",
     "topics": [
       "Communicable Disease Prevention, Investigation and Control"
