@@ -20,7 +20,7 @@
       --neutral-tint: #EDEFF0;
       --success: #2F6B45;
       --success-tint: #E5EEE8;
-      --warning: #8A6D23;
+      --warning: #6E561A;
       --warning-tint: #F7F1DE;
       --danger: #A03E3E;
       --danger-tint: #F5E7E7;
@@ -663,6 +663,17 @@
       }
     }
 
+    /* "No longer updated" stands out from the other tiles. */
+    .tile.is-warning {
+      background: var(--warning-tint);
+      border-color: var(--warning);
+    }
+
+    .tile.is-warning dt,
+    .tile.is-warning dd {
+      color: var(--warning);
+    }
+
     .tile.is-unknown {
       background: transparent;
       border: 0.5px dashed var(--border-strong);
@@ -750,6 +761,18 @@
     .callout.warning {
       background: var(--warning-tint);
       color: var(--warning);
+    }
+
+    .callout.info {
+      background: var(--neutral-tint);
+      color: var(--text-primary);
+      border-left: 3px solid var(--charcoal);
+    }
+
+    .callout .link-btn {
+      padding: 0;
+      font-size: inherit;
+      text-align: left;
     }
 
     .callout.danger {
@@ -913,7 +936,11 @@
           geographic_level: { label: "Geographic level", icon: "map-pin", format: "cap", values: { health_statistics_region: "region", census_tract: "census tract" } },
           years_covered: { label: "Years covered", icon: "calendar", format: "years" },
           last_updated: { label: "Last updated", icon: "clock", format: "date" },
-          next_update: { label: "Next update", icon: "clock", format: "date" },
+          update_frequency: {
+            label: "Update frequency", icon: "clock",
+            values: { weekly: "Weekly", monthly: "Monthly", quarterly: "Quarterly", semiannual: "Twice a year", annual: "Every year", biennial: "Every 2 years", irregular: "No fixed schedule", one_time: "One-time release", discontinued: "No longer updated" }
+          },
+          successor_id: { label: "Newer data" },
           topics: { label: "Topics" },
           documentation: { label: "Documentation" },
           contact: { label: "Contact", icon: "mail" },
@@ -922,8 +949,8 @@
           related_dashboards: { label: "Related dashboards", target: "dashboard" },
           related_reports: { label: "Related summary reports", target: "summary_report" }
         },
-        cardFields: ["geographic_level", "years_covered", "last_updated"],
-        detailTiles: ["population", "geographic_level", "years_covered", "last_updated", "next_update", "contact"],
+        cardFields: ["geographic_level", "years_covered", "update_frequency"],
+        detailTiles: ["population", "geographic_level", "years_covered", "last_updated", "update_frequency", "contact"],
         relatedFields: ["related_datasets", "related_dashboards", "related_reports"],
 
         fetchTimeoutMs: 15000
@@ -939,6 +966,7 @@
         users: '<circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14a6.5 6.5 0 0 1 3.5 6"></path>',
         book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
         "arrow-left": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
+        "arrow-right": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline>',
         "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
         "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
         x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
@@ -992,7 +1020,7 @@
 
       /* ---------- State ---------- */
       const state = {
-        schema: null, records: [], byKey: new Map(), mini: null, warnings: [],
+        schema: null, records: [], byKey: new Map(), byId: new Map(), mini: null, warnings: [],
         q: "", active: Object.fromEntries(CONFIG.filters.map(f => [f.field, new Set()])),
         expanded: {}, groups: {}, view: { screen: "loading" }, returnFocus: null
       };
@@ -1064,6 +1092,7 @@
 
         state.records = records;
         state.byKey = new Map(records.map(r => [r._key, r]));
+        state.byId = new Map(records.filter(r => r.id).map(r => [r.id, r]));
         state.mini = new MiniSearch({
           idField: "_key",
           fields: CONFIG.search.fields,
@@ -1231,16 +1260,27 @@
         const tiles = CONFIG.detailTiles.filter(f => allowed.has(f)).map(f => {
           const text = fmt(rec, f), meta = CONFIG.fields[f] || {};
           const isContact = f === "contact" && text != null;
+          const isWarning = f === "update_frequency" && rec.update_frequency === "discontinued";
           const value = isContact
             ? `<a href="#">${esc(text)}</a><button type="button" class="btn-sm copy-btn" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`
             : valueHtml(text);
-          return `<div class="tile${text == null ? " is-unknown" : ""}${f === "contact" ? " wide" : ""}${isContact ? " has-copy" : ""}"><dt>${meta.icon ? ic(meta.icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
+          const icon = isWarning ? "alert-triangle" : meta.icon;
+          return `<div class="tile${text == null ? " is-unknown" : ""}${isWarning ? " is-warning" : ""}${f === "contact" ? " wide" : ""}${isContact ? " has-copy" : ""}"><dt>${icon ? ic(icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
         }).join("");
+
+        // Newer data: successor_id points to the next edition or a replacement, of any product type.
+        const succId = allowed.has("successor_id") && !isBlank(rec.successor_id) ? rec.successor_id : null;
+        const succ = succId ? state.byId.get(succId) : null;
+        const succLink = succ ? `<button type="button" class="link-btn" data-open="${esc(succ._key)}">${esc(succ.name || succId)}</button>` : "";
+        const banner = succ
+          ? `<div class="callout info">${ic("arrow-right", 16)}<div>${esc(fieldLabel("successor_id"))} is available: ${succLink}</div></div>`
+          : "";
         const topics = Array.isArray(rec.topics) ? rec.topics : [];
 
         const sections = [];
         if (allowed.has("topics")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("topics"))}</h3>${topics.length ? `<div class="tags" style="margin-top:0;">${topics.map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}</div>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
         if (allowed.has("documentation")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("documentation"))}</h3>${docUrl ? `${ic("book", 13, "-2px")} ${extLink(docUrl, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        if (succId) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("successor_id"))}</h3><ul><li>${succLink || `<span class="unknown">${esc(succId)} (not in this catalog)</span>`}</li></ul></div>`);
         CONFIG.relatedFields.filter(f => allowed.has(f)).forEach(f => {
           const ids = Array.isArray(rec[f]) ? rec[f] : [];
           const target = productByKey[(CONFIG.fields[f] || {}).target];
@@ -1260,6 +1300,7 @@
         <span class="badge">${esc(rec._product.label)}</span>
       </div>
       <div class="detail-body">
+        ${banner}
         <dl class="tiles">${tiles}</dl>
         <p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p>
         ${sections.join("")}
@@ -1461,3 +1502,4 @@
 </body>
 
 </html>
+
