@@ -893,12 +893,14 @@
         // Within a filter, options combine with OR (or with AND when `matchAll` is set); across filters, with AND.
         // `limit` shows the top N options with a "show all" toggle.
         // `newestFirst` lists options by year, newest first, instead of by count; `maxYear` hides later years.
+        // `fixedOrder` lists options in the order of the field's `values` map instead of by count.
         // `groupsFile` points to a JSON object of { "Group name": [values] }; options are shown under
         // those subheadings (each with its own `limit`), and values not in any group go under "Other".
         filters: [
           { field: "product", label: "Data product" },
           { field: "geographic_level", label: "Geographic level" },
           { field: "years_covered", label: "Years covered", limit: 5, matchAll: true, newestFirst: true, maxYear: new Date().getFullYear() },
+          { field: "population", label: "Populations covered", matchAll: true, fixedOrder: true },
           { field: "topics", label: "Topic", limit: 5, groupsFile: "data/topics.json" }
         ],
 
@@ -907,7 +909,7 @@
         // `values` maps stored values to the value shown (and filtered on) in the UI.
         fields: {
           short_name: { label: "Short name" },
-          population: { label: "Population", icon: "users" },
+          population: { label: "Population", icon: "users", values: { "<1": "<1 year", "1-17": "1–17 years", "18-64": "18–64 years", "65+": "65+ years" } },
           geographic_level: { label: "Geographic level", icon: "map-pin", format: "cap", values: { health_statistics_region: "region" } },
           years_covered: { label: "Years covered", icon: "calendar", format: "years" },
           last_updated: { label: "Last updated", icon: "clock", format: "date" },
@@ -1118,6 +1120,9 @@
           if (f.maxYear) opts = opts.filter(([v]) => v === UNKNOWN || Number(v) <= f.maxYear);
           if (f.newestFirst) {
             opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || Number(b[0]) - Number(a[0]));
+          } else if (f.fixedOrder) {
+            const order = Object.values(CONFIG.fields[f.field].values), rank = v => order.includes(v) ? order.indexOf(v) : order.length;
+            opts.sort((a, b) => rank(a[0]) - rank(b[0]));
           } else if (f.field !== "product") {
             opts.sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || b[1] - a[1] || a[0].localeCompare(b[0]));
           }

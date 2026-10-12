@@ -4,15 +4,22 @@
   "title": "CDPHE public health data catalog — schema",
   "description": "Schema for the discovery-phase data catalog prototype. All catalog data lives in one public JSON file, data_sources.json, whose root is an array of records. Each record is one of three data product types (dataset, dashboard, summary_report), identified by its `type` field. Records are ordered by type (datasets, then dashboards, then summary reports) and alphabetically by name within each type; that order is a convention, not enforced here.",
   "type": "array",
-  "items": { "$ref": "#/$defs/record" },
-
+  "items": {
+    "$ref": "#/$defs/record"
+  },
   "$defs": {
     "record": {
       "description": "One catalog record. The `type` field decides which definition applies, and exactly one must match.",
       "oneOf": [
-        { "$ref": "#/$defs/dataset" },
-        { "$ref": "#/$defs/dashboard" },
-        { "$ref": "#/$defs/summary_report" }
+        {
+          "$ref": "#/$defs/dataset"
+        },
+        {
+          "$ref": "#/$defs/dashboard"
+        },
+        {
+          "$ref": "#/$defs/summary_report"
+        }
       ]
     },
     "id": {
@@ -45,20 +52,40 @@
     "topics": {
       "type": "array",
       "description": "Public health topics/tags this product relates to, used for search and filtering. Values must come from topics.json; that is enforced by convention, not by this schema.",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1,
       "uniqueItems": true
     },
     "population": {
-      "type": "string",
-      "description": "The population the product describes (e.g. 'Adults 18+', 'All ages', 'Children 0-17'). Single value; change to an array of strings if a product spans multiple distinct populations."
+      "type": "array",
+      "description": "Every age group the product covers, used by the Population filter. Values are age ranges in years: '<1' (infants), '1-17' (children), '18-64' (adults) and '65+' (older adults). Tag a group when any part of the product's age range falls in it: for example, ages 15–19 gets both '1-17' and '18-64'. A product covering all ages lists all four. By convention, list values youngest to oldest.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "<1",
+          "1-17",
+          "18-64",
+          "65+"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "geographic_level": {
       "type": "array",
       "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). 'neighborhood' covers census tracts. The explorer shows 'health_statistics_region' as 'Region'.",
       "items": {
         "type": "string",
-        "enum": ["state", "region", "health_statistics_region", "county", "neighborhood", "facility"]
+        "enum": [
+          "state",
+          "region",
+          "health_statistics_region",
+          "county",
+          "neighborhood",
+          "facility"
+        ]
       },
       "minItems": 1,
       "uniqueItems": true
@@ -69,14 +96,21 @@
       "description": "Date the product or its underlying data was last refreshed, ISO 8601 (YYYY-MM-DD). Only set when the source states it."
     },
     "next_update": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date",
       "description": "Expected date of the next refresh, ISO 8601 (YYYY-MM-DD). Use null when none is scheduled or the date is unknown. To express a cadence instead (e.g. 'annual', 'as needed'), add a separate update_frequency field rather than overloading this one."
     },
     "years_covered": {
       "type": "array",
       "description": "Calendar years the product covers, as four-digit years listed individually so gaps are explicit and filtering by year works (e.g. [2018, 2019, 2020]). School years and seasons (e.g. 2023–24) list both calendar years.",
-      "items": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+      "items": {
+        "type": "integer",
+        "minimum": 1900,
+        "maximum": 2100
+      },
       "minItems": 1,
       "uniqueItems": true
     },
@@ -86,108 +120,232 @@
       "description": "Primary public URL for the product (dataset landing page, report, or dashboard). Must be publicly accessible."
     },
     "documentation": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "uri",
       "description": "Public URL to data documentation, a data dictionary, or methodology. Null if none. Change to an array of URLs if multiple documents apply."
     },
     "contact": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "email",
       "description": "Public contact email address for questions about this product. Null if none is available yet; the UI still shows a contact control in that case so staff can see none is available."
     },
-
     "dataset": {
       "type": "object",
       "description": "Data product: a source data program (survey, registry, surveillance system) or a downloadable, analysis-ready data file, data portal layer, or query tool.",
       "properties": {
-        "type": { "const": "dataset" },
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/name" },
+        "type": {
+          "const": "dataset"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
         "short_name": {
           "type": "string",
           "description": "Abbreviated name or acronym for compact display (e.g. 'BRFSS')."
         },
-        "description": { "$ref": "#/$defs/description" },
-        "topics": { "$ref": "#/$defs/topics" },
-        "population": { "$ref": "#/$defs/population" },
-        "geographic_level": { "$ref": "#/$defs/geographic_level" },
-        "last_updated": { "$ref": "#/$defs/last_updated" },
-        "next_update": { "$ref": "#/$defs/next_update" },
-        "years_covered": { "$ref": "#/$defs/years_covered" },
-        "link": { "$ref": "#/$defs/link" },
-        "documentation": { "$ref": "#/$defs/documentation" },
-        "contact": { "$ref": "#/$defs/contact" },
+        "description": {
+          "$ref": "#/$defs/description"
+        },
+        "topics": {
+          "$ref": "#/$defs/topics"
+        },
+        "population": {
+          "$ref": "#/$defs/population"
+        },
+        "geographic_level": {
+          "$ref": "#/$defs/geographic_level"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/last_updated"
+        },
+        "next_update": {
+          "$ref": "#/$defs/next_update"
+        },
+        "years_covered": {
+          "$ref": "#/$defs/years_covered"
+        },
+        "link": {
+          "$ref": "#/$defs/link"
+        },
+        "documentation": {
+          "$ref": "#/$defs/documentation"
+        },
+        "contact": {
+          "$ref": "#/$defs/contact"
+        },
         "related_dashboards": {
           "type": "array",
           "description": "ids of dashboards built on or related to this dataset.",
-          "items": { "$ref": "#/$defs/id_ref" },
+          "items": {
+            "$ref": "#/$defs/id_ref"
+          },
           "uniqueItems": true
         },
         "related_reports": {
           "type": "array",
           "description": "ids of summary reports built on or related to this dataset.",
-          "items": { "$ref": "#/$defs/id_ref" },
+          "items": {
+            "$ref": "#/$defs/id_ref"
+          },
           "uniqueItems": true
         },
-        "publisher": { "$ref": "#/$defs/publisher" }
+        "publisher": {
+          "$ref": "#/$defs/publisher"
+        }
       },
-      "required": ["type", "id", "name", "description", "topics", "geographic_level", "years_covered", "link", "publisher"],
+      "required": [
+        "type",
+        "id",
+        "name",
+        "description",
+        "topics",
+        "population",
+        "geographic_level",
+        "years_covered",
+        "link",
+        "publisher"
+      ],
       "additionalProperties": false
     },
-
     "dashboard": {
       "type": "object",
       "description": "Data product: an interactive dashboard (e.g. Tableau, Shiny or ArcGIS) built on one or more datasets.",
       "properties": {
-        "type": { "const": "dashboard" },
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/name" },
-        "description": { "$ref": "#/$defs/description" },
-        "topics": { "$ref": "#/$defs/topics" },
-        "population": { "$ref": "#/$defs/population" },
-        "geographic_level": { "$ref": "#/$defs/geographic_level" },
-        "last_updated": { "$ref": "#/$defs/last_updated" },
-        "next_update": { "$ref": "#/$defs/next_update" },
-        "years_covered": { "$ref": "#/$defs/years_covered" },
-        "link": { "$ref": "#/$defs/link" },
-        "contact": { "$ref": "#/$defs/contact" },
+        "type": {
+          "const": "dashboard"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "description": {
+          "$ref": "#/$defs/description"
+        },
+        "topics": {
+          "$ref": "#/$defs/topics"
+        },
+        "population": {
+          "$ref": "#/$defs/population"
+        },
+        "geographic_level": {
+          "$ref": "#/$defs/geographic_level"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/last_updated"
+        },
+        "next_update": {
+          "$ref": "#/$defs/next_update"
+        },
+        "years_covered": {
+          "$ref": "#/$defs/years_covered"
+        },
+        "link": {
+          "$ref": "#/$defs/link"
+        },
+        "contact": {
+          "$ref": "#/$defs/contact"
+        },
         "related_datasets": {
           "type": "array",
           "description": "ids of datasets this dashboard is based on or related to.",
-          "items": { "$ref": "#/$defs/id_ref" },
+          "items": {
+            "$ref": "#/$defs/id_ref"
+          },
           "uniqueItems": true
         },
-        "publisher": { "$ref": "#/$defs/publisher" }
+        "publisher": {
+          "$ref": "#/$defs/publisher"
+        }
       },
-      "required": ["type", "id", "name", "description", "topics", "geographic_level", "years_covered", "link", "publisher"],
+      "required": [
+        "type",
+        "id",
+        "name",
+        "description",
+        "topics",
+        "population",
+        "geographic_level",
+        "years_covered",
+        "link",
+        "publisher"
+      ],
       "additionalProperties": false
     },
-
     "summary_report": {
       "type": "object",
       "description": "Data product: aggregate data published as a fixed file or page, such as a spreadsheet of summary tables, a PDF report, or tables on a web page.",
       "properties": {
-        "type": { "const": "summary_report" },
-        "id": { "$ref": "#/$defs/id" },
-        "name": { "$ref": "#/$defs/name" },
-        "description": { "$ref": "#/$defs/description" },
-        "topics": { "$ref": "#/$defs/topics" },
-        "population": { "$ref": "#/$defs/population" },
-        "geographic_level": { "$ref": "#/$defs/geographic_level" },
-        "last_updated": { "$ref": "#/$defs/last_updated" },
-        "next_update": { "$ref": "#/$defs/next_update" },
-        "years_covered": { "$ref": "#/$defs/years_covered" },
-        "link": { "$ref": "#/$defs/link" },
-        "contact": { "$ref": "#/$defs/contact" },
+        "type": {
+          "const": "summary_report"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "description": {
+          "$ref": "#/$defs/description"
+        },
+        "topics": {
+          "$ref": "#/$defs/topics"
+        },
+        "population": {
+          "$ref": "#/$defs/population"
+        },
+        "geographic_level": {
+          "$ref": "#/$defs/geographic_level"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/last_updated"
+        },
+        "next_update": {
+          "$ref": "#/$defs/next_update"
+        },
+        "years_covered": {
+          "$ref": "#/$defs/years_covered"
+        },
+        "link": {
+          "$ref": "#/$defs/link"
+        },
+        "contact": {
+          "$ref": "#/$defs/contact"
+        },
         "related_datasets": {
           "type": "array",
           "description": "ids of datasets this report is based on or related to.",
-          "items": { "$ref": "#/$defs/id_ref" },
+          "items": {
+            "$ref": "#/$defs/id_ref"
+          },
           "uniqueItems": true
         },
-        "publisher": { "$ref": "#/$defs/publisher" }
+        "publisher": {
+          "$ref": "#/$defs/publisher"
+        }
       },
-      "required": ["type", "id", "name", "description", "topics", "geographic_level", "years_covered", "link", "publisher"],
+      "required": [
+        "type",
+        "id",
+        "name",
+        "description",
+        "topics",
+        "population",
+        "geographic_level",
+        "years_covered",
+        "link",
+        "publisher"
+      ],
       "additionalProperties": false
     }
   }
