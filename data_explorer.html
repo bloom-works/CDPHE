@@ -923,8 +923,8 @@
         filters: [
           { field: "product", label: "Data product" },
           { field: "geographic_level", label: "Geographic level" },
+          { field: "population", label: "Population", matchAll: true, fixedOrder: true },
           { field: "years_covered", label: "Years covered", limit: 5, matchAll: true, newestFirst: true, maxYear: new Date().getFullYear() },
-          { field: "population", label: "Populations covered", matchAll: true, fixedOrder: true },
           { field: "topics", label: "Topic", limit: 8, alphabetical: true }
         ],
 
