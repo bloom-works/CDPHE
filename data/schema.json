@@ -95,13 +95,35 @@
       "format": "date",
       "description": "Date the product or its underlying data was last refreshed, ISO 8601 (YYYY-MM-DD). Only set when the source states it."
     },
-    "next_update": {
+    "update_frequency": {
       "type": [
         "string",
         "null"
       ],
-      "format": "date",
-      "description": "Expected date of the next refresh, ISO 8601 (YYYY-MM-DD). Use null when none is scheduled or the date is unknown. To express a cadence instead (e.g. 'annual', 'as needed'), add a separate update_frequency field rather than overloading this one."
+      "enum": [
+        "weekly",
+        "monthly",
+        "quarterly",
+        "semiannual",
+        "annual",
+        "biennial",
+        "irregular",
+        "one_time",
+        "discontinued",
+        null
+      ],
+      "description": "How often newer data of this kind appears. It describes the data, not the product: a dashboard that refreshes monthly but shows yearly data is 'annual'. For one edition of a recurring series (an annual report, a birth cohort file), use the series' cadence while the series is running, even though that edition won't change. 'weekly', 'monthly', 'quarterly', 'semiannual' (twice a year), 'annual' and 'biennial' (every two years) are regular schedules. Data collected only during part of the year uses its cadence during that period; say when collection happens in the description (e.g. 'Collected weekly from May 1 to September 30'). 'irregular': updated, but on no fixed schedule. 'one_time': a standalone publication that was never part of a series and won't be updated. 'discontinued': the series or program used to produce this data and has stopped. null: unknown. Use null rather than a guess."
+    },
+    "successor_id": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/id_ref"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "id of the record that supersedes this one: the next edition in the same series (the 2024 report for the 2023 report), or a different product that replaced a discontinued one, when a source says so. Points to the immediate next edition, not the latest; follow the chain to reach the newest. Null or omitted when no successor is in the catalog, including when the next edition is expected but not yet published. If a newer edition is published but missing from the catalog, add it as a record and link it. By convention, not enforced here: the target exists and covers later years, a record can't be its own successor, no record is the successor of more than one record, and chains don't loop. The reverse link (what this record replaced) is derived, not stored."
     },
     "years_covered": {
       "type": "array",
@@ -167,8 +189,8 @@
         "last_updated": {
           "$ref": "#/$defs/last_updated"
         },
-        "next_update": {
-          "$ref": "#/$defs/next_update"
+        "update_frequency": {
+          "$ref": "#/$defs/update_frequency"
         },
         "years_covered": {
           "$ref": "#/$defs/years_covered"
@@ -198,6 +220,9 @@
           },
           "uniqueItems": true
         },
+        "successor_id": {
+          "$ref": "#/$defs/successor_id"
+        },
         "publisher": {
           "$ref": "#/$defs/publisher"
         }
@@ -211,6 +236,7 @@
         "population",
         "geographic_level",
         "years_covered",
+        "update_frequency",
         "link",
         "publisher"
       ],
@@ -244,8 +270,8 @@
         "last_updated": {
           "$ref": "#/$defs/last_updated"
         },
-        "next_update": {
-          "$ref": "#/$defs/next_update"
+        "update_frequency": {
+          "$ref": "#/$defs/update_frequency"
         },
         "years_covered": {
           "$ref": "#/$defs/years_covered"
@@ -264,6 +290,9 @@
           },
           "uniqueItems": true
         },
+        "successor_id": {
+          "$ref": "#/$defs/successor_id"
+        },
         "publisher": {
           "$ref": "#/$defs/publisher"
         }
@@ -277,6 +306,7 @@
         "population",
         "geographic_level",
         "years_covered",
+        "update_frequency",
         "link",
         "publisher"
       ],
@@ -310,8 +340,8 @@
         "last_updated": {
           "$ref": "#/$defs/last_updated"
         },
-        "next_update": {
-          "$ref": "#/$defs/next_update"
+        "update_frequency": {
+          "$ref": "#/$defs/update_frequency"
         },
         "years_covered": {
           "$ref": "#/$defs/years_covered"
@@ -330,6 +360,9 @@
           },
           "uniqueItems": true
         },
+        "successor_id": {
+          "$ref": "#/$defs/successor_id"
+        },
         "publisher": {
           "$ref": "#/$defs/publisher"
         }
@@ -343,6 +376,7 @@
         "population",
         "geographic_level",
         "years_covered",
+        "update_frequency",
         "link",
         "publisher"
       ],
