@@ -75,7 +75,7 @@
     },
     "geographic_level": {
       "type": "array",
-      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). 'neighborhood' covers census tracts. The explorer shows 'health_statistics_region' as 'Region'.",
+      "description": "Every geographic level the product is published at (e.g. ['state', 'county']). 'region' is only for groupings that are not Health Statistics Regions (for example, Denver metro / other metro / rural). The explorer shows 'health_statistics_region' as 'Region' and 'census_tract' as 'Census tract'.",
       "items": {
         "type": "string",
         "enum": [
@@ -83,7 +83,7 @@
           "region",
           "health_statistics_region",
           "county",
-          "neighborhood",
+          "census_tract",
           "facility"
         ]
       },
