@@ -1076,8 +1076,15 @@
         state.mini.addAll(records.filter(r => !seen.has(r._key) && seen.add(r._key)));
 
         $("q").disabled = false;
-        state.view = { screen: "list" };
+        // A pasted or bookmarked detail link gets a results entry behind it, so "Back to results" stays in the app.
+        if (keyFromHash() && !(history.state && history.state.depth)) {
+          const hash = location.hash;
+          history.replaceState(null, "", location.pathname + location.search);
+          history.pushState({ depth: 1 }, "", hash);
+        }
+        state.view = viewFromUrl();
         render(); announce();
+        if (state.view.screen === "detail") focusView();
       }
 
       function fail(message) {
@@ -1184,7 +1191,7 @@
         el.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", e => {
           const { fk, fv } = e.target.dataset;
           e.target.checked ? state.active[fk].add(fv) : state.active[fk].delete(fv);
-          if (state.view.screen !== "list") state.view = { screen: "list" };
+          leaveDetail();
           render(); announce();
         }));
         el.querySelectorAll("[data-more]").forEach(b => b.addEventListener("click", () => {
@@ -1248,7 +1255,7 @@
 
         return `<article class="detail" aria-labelledby="detail-h">
       <div class="detail-head">
-        <button type="button" data-back="1">${ic("arrow-left", 13, "-2px")} Back to results</button>
+        ${backButton()}
         <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}${rec.short_name && allowed.has("short_name") ? ` (${esc(rec.short_name)})` : ""}</h2>
         <span class="badge">${esc(rec._product.label)}</span>
       </div>
@@ -1264,6 +1271,44 @@
         </div>
       </div>
     </article>`;
+      }
+
+      // Each detail page gets its own history entry at #/<type>/<id>, so the browser back button
+      // steps through them. `depth` counts detail pages since the results list, which sets the back label.
+      function hashFor(key) {
+        const i = key.indexOf(":");
+        return `#/${key.slice(0, i)}/${encodeURIComponent(key.slice(i + 1))}`;
+      }
+
+      function keyFromHash() {
+        const m = location.hash.match(/^#\/([^/]+)\/(.+)$/);
+        return m ? `${m[1]}:${decodeURIComponent(m[2])}` : null;
+      }
+
+      function viewFromUrl() {
+        const key = keyFromHash();
+        return key ? { screen: "detail", key, depth: (history.state && history.state.depth) || 1 } : { screen: "list" };
+      }
+
+      function backButton(cls) {
+        return `<button type="button" data-back="1"${cls ? ` class="${cls}"` : ""}>${ic("arrow-left", 13, "-2px")} ${state.view.depth > 1 ? "Back" : "Back to results"}</button>`;
+      }
+
+      // Leaving a detail page by searching or filtering adds a results entry, so back returns to the detail page.
+      function leaveDetail() {
+        if (state.view.screen === "detail") history.pushState(null, "", location.pathname + location.search);
+        state.view = { screen: "list" };
+      }
+
+      function focusView() {
+        if (state.view.screen === "detail") {
+          const h = $("detail-h");
+          if (h) h.focus();
+          window.scrollTo({ top: $("panel").getBoundingClientRect().top + window.scrollY - 24 });
+        } else {
+          const card = state.returnFocus && $("panel").querySelector(`[data-open="${CSS.escape(state.returnFocus)}"]`);
+          (card || $("q")).focus();
+        }
       }
 
       function activeChips() {
@@ -1298,7 +1343,7 @@
 
         if (state.view.screen === "detail") {
           const rec = state.byKey.get(state.view.key);
-          panel.innerHTML = rec ? detail(rec) : `<div class="msg">That record is no longer in the catalog.</div>`;
+          panel.innerHTML = rec ? detail(rec) : `<div class="msg"><strong>That record is no longer in the catalog.</strong>${backButton("btn-sm")}</div>`;
         } else {
           const chips = activeChips();
           const body = list.length
@@ -1313,16 +1358,12 @@
         const p = $("panel");
         p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
           if (state.view.screen === "list") state.returnFocus = b.dataset.open;
-          state.view = { screen: "detail", key: b.dataset.open };
-          render();
-          $("detail-h").focus();
-          window.scrollTo({ top: p.getBoundingClientRect().top + window.scrollY - 24 });
+          const depth = state.view.screen === "detail" ? state.view.depth + 1 : 1;
+          history.pushState({ depth }, "", hashFor(b.dataset.open));
+          state.view = { screen: "detail", key: b.dataset.open, depth };
+          render(); focusView();
         });
-        p.querySelectorAll("[data-back]").forEach(b => b.onclick = () => {
-          state.view = { screen: "list" }; render();
-          const back = state.returnFocus && p.querySelector(`[data-open="${CSS.escape(state.returnFocus)}"]`);
-          (back || $("q")).focus();
-        });
+        p.querySelectorAll("[data-back]").forEach(b => b.onclick = () => history.back());
         p.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
           state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); $("q").focus();
         });
@@ -1402,9 +1443,16 @@
         clearTimeout(typeTimer);
         typeTimer = setTimeout(() => {
           state.q = e.target.value;
-          state.view = { screen: "list" };
+          leaveDetail();
           render(); announce();
         }, 120);
+      });
+
+      window.addEventListener("popstate", () => {
+        // While loading (or after a failed load), load() reads the URL when it finishes.
+        if (state.view.screen === "loading" || state.view.screen === "error") return;
+        state.view = viewFromUrl();
+        render(); focusView();
       });
 
       load();
