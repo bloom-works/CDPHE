@@ -5,7 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDPHE data explorer · prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
   <style>
+    /* Gray-scale prototype palette, plus one darkened green accent (7.5:1 on white). */
     :root {
       --surface-1: #ffffff;
       --surface-2: #F4F6F7;
@@ -18,17 +23,18 @@
       --slate: #6B7477;
       --on-charcoal-muted: #C7CBCD;
       --neutral-tint: #EDEFF0;
-      --success: #2F6B45;
-      --success-tint: #E5EEE8;
-      --warning: #6E561A;
+      --accent: #24603A;
+      --warning: #7A5F1C;
       --warning-tint: #F7F1DE;
       --danger: #A03E3E;
       --danger-tint: #F5E7E7;
-      --radius: 8px;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius: 4px;
+      --font: "Open Sans", "Trebuchet MS", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
@@ -40,45 +46,30 @@
 
     body {
       background: var(--surface-2);
-      font-family: 'Trebuchet MS', var(--font-sans);
-      font-size: 14px;
       color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
-    button {
-      font-family: inherit;
-      font-size: 13px;
-      height: 38px;
-      padding: 0 14px;
-      border-radius: var(--radius);
-      border: 0.5px solid var(--border-strong);
-      background: var(--surface-1);
-      color: var(--text-primary);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+    a {
+      color: var(--accent);
+      text-underline-offset: 2px;
     }
 
-    button:hover {
-      background: var(--surface-2);
-    }
-
+    button,
     input {
       font-family: inherit;
-      color: var(--text-primary);
+      color: inherit;
     }
 
-    a {
-      color: var(--charcoal);
+    button {
+      cursor: pointer;
     }
 
-    button:focus-visible,
-    input:focus-visible,
-    a:focus-visible,
-    [tabindex="-1"]:focus-visible {
-      outline: 2px solid var(--charcoal);
+    :focus-visible {
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
@@ -94,14 +85,8 @@
       border: 0;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
-
     .page {
-      max-width: 960px;
+      max-width: 1080px;
       margin: 24px auto;
       padding: 0 16px 40px;
     }
@@ -113,16 +98,11 @@
       margin-bottom: 10px;
     }
 
-    .card-title-link {
-      font-size: 14.5px;
-      font-weight: bold;
-    }
-
     /* Masthead — matches Prototype 1 */
     .masthead {
       background: var(--charcoal);
-      border-radius: 12px 12px 0 0;
-      padding: 14px 18px;
+      border-radius: 8px 8px 0 0;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -150,204 +130,270 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 0;
-      height: 0;
       border-left: 13px solid transparent;
       border-right: 13px solid transparent;
       border-bottom: 11px solid var(--charcoal);
     }
 
     .wordmark {
-      line-height: 1.05;
+      line-height: 1.1;
     }
 
     .wordmark .state {
       color: #fff;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 15px;
       letter-spacing: 0.5px;
     }
 
     .wordmark .dept {
       color: var(--on-charcoal-muted);
-      font-size: 11px;
+      font-size: 12px;
     }
 
-    .masthead .tag {
+    .masthead .proto {
       margin-left: auto;
       color: var(--on-charcoal-muted);
       font-size: 14px;
     }
 
-    .masthead .tag .dim {
-      opacity: 0.75;
-    }
-
     .shell {
       background: var(--surface-2);
-      border: 0.5px solid var(--border);
+      border: 1px solid var(--border);
       border-top: none;
-      border-radius: 0 0 12px 12px;
-      padding: 16px 18px 20px;
+      border-radius: 0 0 8px 8px;
+      padding: 28px 28px 32px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .hint {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 14px;
     }
 
     /* Search */
     .searchbar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      border: 0.5px solid var(--border-strong);
-      border-radius: var(--radius);
-      padding: 0 14px;
-      height: 42px;
+      gap: 10px;
+      height: 54px;
+      padding: 0 8px 0 20px;
       background: var(--surface-1);
-      margin-bottom: 6px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
     }
 
     .searchbar:focus-within {
-      outline: 2px solid var(--charcoal);
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
+      border-color: var(--accent);
+    }
+
+    .searchbar svg {
+      color: var(--text-secondary);
     }
 
     .searchbar input {
+      flex: 1;
+      min-width: 0;
+      height: 52px;
       border: none;
       outline: none;
       background: transparent;
-      flex: 1;
-      font-size: 15px;
-      height: 40px;
-      min-width: 0;
+      font-size: 16px;
     }
 
-    .hint {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
+    .searchbar input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .clear-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clear-btn:hover {
+      background: var(--neutral-tint);
+    }
+
+    .clear-btn[hidden] {
+      display: none;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 18px;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 28px;
     }
 
-    @media (max-width:680px) {
-      .layout {
-        grid-template-columns: 1fr;
+    @media (max-width: 760px) {
+      .shell {
+        padding: 22px 16px 26px;
       }
 
-      .masthead .tag {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .masthead .proto {
         margin-left: 0;
       }
     }
 
     /* Filters */
+    .filters {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      align-self: start;
+    }
+
     .filters-title {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: var(--text-secondary);
-      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .facets-loading {
+      padding: 14px 16px;
     }
 
     fieldset.facet {
       border: none;
-      margin: 0 0 14px;
-      padding: 0;
+      margin: 0;
       min-width: 0;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--border);
     }
 
-    fieldset.facet legend {
+    fieldset.facet:last-child {
+      border-bottom: none;
+    }
+
+    fieldset.facet>legend {
+      float: left;
+      width: 100%;
       font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 5px;
+      font-weight: 600;
+      color: var(--text-primary);
       padding: 0;
+      margin: 0 0 6px;
+    }
+
+    fieldset.facet>legend+* {
+      clear: both;
     }
 
     .facet label {
       display: flex;
       align-items: flex-start;
-      gap: 7px;
-      font-size: 13px;
-      padding: 3px 0;
+      gap: 9px;
+      min-height: 30px;
+      padding: 4px 0;
+      font-size: 14px;
+      line-height: 1.35;
       cursor: pointer;
-      line-height: 1.3;
+    }
+
+    .facet input[type=checkbox] {
+      accent-color: var(--charcoal);
+      width: 17px;
+      height: 17px;
+      margin: 1px 0 0;
+      flex: none;
+    }
+
+    .facet .count {
+      margin-left: auto;
+      padding-left: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
     .facet label.zero {
       color: var(--text-muted);
     }
 
-    .facet input[type=checkbox] {
-      accent-color: var(--charcoal);
-      width: 15px;
-      height: 15px;
-      margin: 0;
-      flex: none;
-    }
-
-    .facet .count {
-      margin-left: auto;
-      color: var(--text-muted);
-      font-size: 14px;
-      padding-left: 6px;
-    }
-
     fieldset.facet-group {
       border: none;
       border-left: 2px solid var(--border);
-      margin: 0 0 10px;
-      padding: 0 0 0 9px;
+      margin: 4px 0 12px;
+      padding: 0 0 0 10px;
       min-width: 0;
     }
 
+    fieldset.facet-group:last-child {
+      margin-bottom: 2px;
+    }
+
     fieldset.facet-group legend {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--text-secondary);
-      margin-bottom: 3px;
       padding: 0;
+      margin-bottom: 2px;
     }
 
     .link-btn {
-      height: auto;
-      padding: 3px 0;
       border: none;
       background: none;
-      color: var(--charcoal);
+      padding: 4px 0;
+      color: var(--accent);
       text-decoration: underline;
+      text-underline-offset: 2px;
       font-size: 14px;
+      text-align: left;
     }
 
-    .link-btn:hover {
-      background: none;
-    }
-
-    /* Results */
+    /* Results header */
     .results-meta {
       display: flex;
       align-items: center;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 8px 10px;
       font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 9px;
+      color: var(--text-secondary);
+      min-height: 32px;
+      margin-bottom: 12px;
+    }
+
+    .results-meta strong {
+      color: var(--text-primary);
+      font-weight: 700;
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      height: auto;
-      font-size: 14px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      background: var(--neutral-tint);
-      border: none;
-      color: var(--text-primary);
+      gap: 6px;
+      min-height: 30px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-1);
+      font-size: 13px;
     }
 
     .chip:hover {
-      background: #E1E4E5;
+      background: var(--neutral-tint);
     }
 
     ul.results {
@@ -356,214 +402,150 @@
       padding: 0;
     }
 
+    /* Result card: sections divided by rules */
     .result {
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 13px 15px;
-      margin-bottom: 10px;
       background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
     }
 
-    .result-top {
+    .result>* {
+      padding: 12px 18px;
+    }
+
+    .result>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .r-head {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
-      justify-content: space-between;
+      gap: 10px;
+      padding-top: 14px;
+      padding-bottom: 12px;
     }
 
-    .result h3 {
-      font-weight: 500;
-      font-size: 14px;
+    .type-icon {
+      color: var(--text-secondary);
+      margin-top: 2px;
+      flex: none;
+    }
+
+    .r-head h3 {
       margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
-    .card-title-link {
-      height: auto;
-      padding: 0;
+    .short-name {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .title-btn {
       border: none;
-      display: inline;
       background: none;
-      color: inherit;
+      padding: 0;
       text-align: left;
-      cursor: pointer;
+      font: inherit;
+      color: var(--text-primary);
     }
 
-    .card-title-link:hover {
-      background: none;
+    .title-btn:hover {
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .result .desc {
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--neutral-tint);
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .desc {
+      margin: 0;
       font-size: 14px;
       color: var(--text-secondary);
-      margin: 4px 0 8px;
-      line-height: 1.5;
+      line-height: 1.6;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    .badge {
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
-      background: var(--neutral-tint);
-      color: var(--text-primary);
-      flex: none;
-    }
-
-    .meta-row {
+    .r-topics {
       display: flex;
-      gap: 6px 16px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .meta-row>span {
-      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 13px;
     }
 
-    .tags {
+    .r-topics .label {
+      color: var(--text-muted);
+    }
+
+    ul.tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
-      gap: 5px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      gap: 6px;
     }
 
     .tag-pill {
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      border: 0.5px solid var(--border-strong);
+      display: inline-block;
+      font-size: 12.5px;
+      line-height: 1.4;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: var(--surface-1);
+    }
+
+    .more-topics {
       color: var(--text-secondary);
-      background: var(--surface-1);
+      font-size: 13px;
     }
 
-    .actions {
+    .r-foot {
       display: flex;
-      gap: 8px;
-      margin-top: 11px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .btn-sm {
-      font-size: 14px;
-      padding: 5px 12px;
-      height: auto;
-      border-color: var(--charcoal);
-      color: var(--charcoal);
-    }
-
-    .btn-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      border-radius: var(--radius);
-      border: 0.5px solid var(--charcoal);
-      color: var(--charcoal);
-      background: var(--surface-1);
-      text-decoration: none;
-    }
-
-    .btn-link.sm {
-      font-size: 14px;
-      padding: 5px 12px;
-    }
-
-    .btn-link.md {
-      height: 38px;
-      padding: 0 14px;
-      font-size: 13.5px;
-    }
-
-    .btn-link.primary {
-      background: var(--charcoal);
-      color: #fff;
-    }
-
-    .btn-link.disabled {
-      border-color: var(--border);
-      border-style: dashed;
-      color: var(--text-muted);
-      background: transparent;
-      cursor: default;
-    }
-
-    /* Page footer */
-    .page-footer {
-      display: flex;
+      align-items: flex-end;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px 20px;
       flex-wrap: wrap;
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 0.5px solid var(--border);
-      font-size: 14px;
+      gap: 14px 24px;
+      padding-top: 12px;
+      padding-bottom: 14px;
+    }
+
+    dl.facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 32px;
+      margin: 0;
+    }
+
+    dl.facts dt {
+      font-size: 12px;
       color: var(--text-muted);
+      margin-bottom: 1px;
     }
 
-    .page-footer .link-btn {
+    dl.facts dd {
+      margin: 0;
       font-size: 14px;
-    }
-
-    /* Request-data modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(28, 31, 32, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 1000;
-    }
-
-    .modal-overlay[hidden] {
-      display: none;
-    }
-
-    .modal {
-      background: var(--surface-1);
-      border-radius: 12px;
-      width: 100%;
-      max-width: 380px;
-      padding: 20px 22px 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .modal h2 {
-      font-size: 15px;
-      font-weight: 500;
-      margin: 0 0 8px;
-    }
-
-    .modal p {
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--text-secondary);
-      margin: 0 0 18px;
-    }
-
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .btn-primary {
-      background: var(--charcoal);
-      color: #fff;
-      border-color: var(--charcoal);
-    }
-
-    .btn-primary:hover {
-      background: #262a2b;
     }
 
     /* Missing metadata — grayed, but still AA contrast */
@@ -572,207 +554,278 @@
       font-style: italic;
     }
 
-    /* Detail view */
-    .detail {
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface-1);
-      overflow: hidden;
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .detail-head {
-      background: var(--charcoal);
-      padding: 12px 16px;
-      display: flex;
+    .btn {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--charcoal);
+      background: var(--surface-1);
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--surface-2);
+    }
+
+    .btn.primary {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #262a2b;
+    }
+
+    .btn.small {
+      min-height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .btn.disabled {
+      border-color: var(--border-strong);
+      border-style: dashed;
+      color: var(--text-muted);
+      background: transparent;
+      cursor: default;
+      font-weight: 400;
+    }
+
+    /* Detail view: same panel style as the cards */
+    .detail {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .detail>* {
+      padding: 16px 20px;
+    }
+
+    .detail>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .d-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px 14px;
       flex-wrap: wrap;
     }
 
-    .detail-head button {
-      font-size: 14px;
-      padding: 3px 9px;
-      height: auto;
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.4);
+    .d-head .btn {
+      flex: none;
     }
 
-    .detail-head h2 {
-      color: #fff;
-      font-weight: 500;
-      font-size: 14px;
-      margin: 0;
-      flex: 1;
-      min-width: 200px;
+    .d-head .type-icon {
+      display: none;
     }
 
-    .detail-head h2:focus-visible {
-      outline-color: #fff;
-    }
-
-    .detail-head .badge {
-      background: rgba(255, 255, 255, 0.14);
-      color: #fff;
-    }
-
-    .detail-body {
-      padding: 15px 16px;
-    }
-
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    .d-title {
+      display: flex;
       gap: 10px;
-      margin: 0 0 14px;
+      flex: 1;
+      min-width: 240px;
+      padding-top: 5px;
     }
 
-    .tile {
-      background: var(--surface-2);
-      border-radius: 8px;
-      padding: 9px 11px;
-      border: 0.5px solid transparent;
+    .d-title h2 {
       margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.35;
     }
 
-    /* The contact tile spans two columns and has a copy button on the right. */
-    .tile.wide {
+    .d-title h2:focus-visible {
+      outline-offset: 4px;
+    }
+
+    .d-facts-wrap {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    dl.d-facts {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+
+    .fact {
+      padding: 12px 20px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 0 -1px -1px 0;
+    }
+
+    .fact.wide {
       grid-column: span 2;
     }
 
-    .tile.has-copy {
-      position: relative;
-      padding-right: 80px;
+    .contact-dd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .tile.wide dd {
-      overflow-wrap: anywhere;
+    .contact-dd .btn {
+      margin-top: -20px;
     }
 
-    .tile .copy-btn {
-      position: absolute;
-      right: 11px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--surface-1);
-    }
-
-    @media (max-width:340px) {
-      .tile.wide {
+    @media (max-width: 420px) {
+      .fact.wide {
         grid-column: 1 / -1;
       }
     }
 
-    /* "No longer updated" stands out from the other tiles. */
-    .tile.is-warning {
-      background: var(--warning-tint);
-      border-color: var(--warning);
+    .fact dt {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
     }
 
-    .tile.is-warning dt,
-    .tile.is-warning dd {
+    .fact dd {
+      margin: 0;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .fact dt svg {
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    /* "No longer updated" stands out from the other facts. */
+    .fact.is-warning {
+      background: var(--warning-tint);
+    }
+
+    .fact.is-warning dt,
+    .fact.is-warning dd {
       color: var(--warning);
     }
 
-    .tile.is-unknown {
-      background: transparent;
-      border: 0.5px dashed var(--border-strong);
+    .fact.is-warning dd {
+      font-weight: 600;
     }
 
-    .tile dt {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 3px;
+    .successor {
       display: flex;
-      align-items: center;
-      gap: 4px;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--neutral-tint);
+      box-shadow: inset 4px 0 0 var(--charcoal);
+      font-size: 15px;
+      line-height: 1.5;
     }
 
-    .tile dd {
-      font-size: 14px;
-      line-height: 1.35;
+    .successor svg {
+      margin-top: 3px;
+    }
+
+    .successor p {
       margin: 0;
     }
 
-    .detail .description {
-      font-size: 13.5px;
-      line-height: 1.6;
-      margin: 0 0 14px;
+    .successor .link-btn {
+      padding: 0;
+      font-size: inherit;
     }
 
-    .section-label {
+    .description {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    .d-sec h3 {
+      margin: 0 0 8px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-secondary);
-      margin: 0 0 5px;
     }
 
-    .section {
-      margin-bottom: 14px;
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .section ul {
+    .d-sec ul.links {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
     }
 
-    .section .link-btn {
+    .d-sec .link-btn {
       padding: 0;
-      text-align: left;
+    }
+
+    .d-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     /* States */
     .msg {
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       background: var(--surface-1);
       padding: 26px 20px;
       text-align: center;
       color: var(--text-secondary);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.6;
     }
 
     .msg strong {
       color: var(--text-primary);
-      font-weight: 500;
+      font-weight: 600;
       display: block;
-      font-size: 14px;
+      font-size: 15px;
       margin-bottom: 4px;
+    }
+
+    .msg .btn {
+      margin-top: 8px;
     }
 
     .callout {
       display: flex;
       gap: 9px;
       padding: 10px 12px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       font-size: 14px;
       line-height: 1.5;
       margin-bottom: 12px;
       text-align: left;
     }
 
+    .callout svg {
+      margin-top: 2px;
+    }
+
     .callout.warning {
       background: var(--warning-tint);
       color: var(--warning);
-    }
-
-    .callout.info {
-      background: var(--neutral-tint);
-      color: var(--text-primary);
-      border-left: 3px solid var(--charcoal);
-    }
-
-    .callout .link-btn {
-      padding: 0;
-      font-size: inherit;
-      text-align: left;
     }
 
     .callout.danger {
@@ -781,12 +834,12 @@
     }
 
     .skeleton {
-      height: 92px;
-      border-radius: 12px;
+      height: 180px;
+      border-radius: var(--radius);
       background: linear-gradient(90deg, #EDEFF0 0%, #F7F8F8 50%, #EDEFF0 100%);
       background-size: 200% 100%;
       animation: shimmer 1.4s infinite;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     @keyframes shimmer {
@@ -799,17 +852,69 @@
       }
     }
 
-    @media (prefers-reduced-motion:reduce) {
+    @media (prefers-reduced-motion: reduce) {
       .skeleton {
         animation: none;
       }
     }
 
     code {
-      font-size: 14px;
+      font-size: 13px;
       background: var(--neutral-tint);
       padding: 1px 5px;
       border-radius: 4px;
+    }
+
+    /* Page footer */
+    .page-footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Request-data modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(28, 31, 32, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay[hidden] {
+      display: none;
+    }
+
+    .modal {
+      background: var(--surface-1);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 400px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .modal p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0 0 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
     }
   </style>
 </head>
@@ -826,28 +931,34 @@
           <div class="dept">Department of Public Health &amp; Environment</div>
         </div>
       </div>
-      <div class="tag"><span class="dim">prototype</span></div>
+      <div class="proto">prototype</div>
     </header>
 
     <main class="shell">
       <h1>Find Colorado public health data</h1>
 
-      <div class="hint" id="hint">Search by keyword or phrase, like "cancer by county" or "overdose."</div>
+      <p class="hint" id="hint">Search by keyword or phrase, like "cancer by county" or "overdose."</p>
       <form role="search" id="searchForm" onsubmit="return false;">
         <div class="searchbar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="2"
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true">
             <circle cx="10" cy="10" r="7"></circle>
             <line x1="21" y1="21" x2="15" y2="15"></line>
           </svg>
           <label for="q" class="sr-only">Search public health data</label>
           <input id="q" type="search" autocomplete="off" aria-describedby="hint" disabled />
+          <button type="button" class="clear-btn" id="clearQ" aria-label="Clear search" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </form>
-      <br />
 
       <div class="layout">
-        <aside aria-labelledby="filters-h">
+        <aside class="filters" aria-labelledby="filters-h">
           <h2 class="filters-title" id="filters-h">Filter results</h2>
           <div id="facets"></div>
         </aside>
@@ -862,8 +973,8 @@
     </main>
 
     <footer class="page-footer">
-      <div>Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more
-          data</button></div>
+      Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more
+        data</button>
     </footer>
   </div>
 
@@ -872,11 +983,11 @@
       aria-describedby="requestModalDesc" tabindex="-1">
       <h2 id="requestModalTitle">Data requests are coming soon</h2>
       <p id="requestModalDesc">
-        In the future, you&rsquo;ll be able request more data or different data formats. This feature isn&rsquo;t ready
-        yet.
+        In the future, you&rsquo;ll be able to request more data or different data formats. This feature isn&rsquo;t
+        ready yet.
       </p>
       <div class="modal-actions">
-        <button type="button" class="btn-primary" id="requestModalClose">Close</button>
+        <button type="button" class="btn primary" id="requestModalClose">Close</button>
       </div>
     </div>
   </div>
@@ -972,7 +1083,11 @@
         "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
         x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
         link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
-        mail: '<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path>'
+        mail: '<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path>',
+        // Data product type icons, keyed by product key.
+        dataset: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9.5" x2="21" y2="9.5"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="9.5" x2="9" y2="20"></line>',
+        dashboard: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="8" y1="16" x2="8" y2="12"></line><line x1="12" y1="16" x2="12" y2="8"></line><line x1="16" y1="16" x2="16" y2="10"></line>',
+        summary_report: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><polyline points="14 3 14 8 19 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line>'
       };
       function ic(name, size, va) {
         return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;${va ? " vertical-align:" + va + ";" : ""}" aria-hidden="true">${ICON_PATHS[name]}</svg>`;
@@ -983,6 +1098,7 @@
       const cap = s => { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
       const isBlank = v => v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
       const safeUrl = u => typeof u === "string" && /^https?:\/\//i.test(u.trim()) ? u.trim() : null;
+      const isEmail = s => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(String(s).trim());
       const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
       const productByKey = Object.fromEntries(CONFIG.products.map(p => [p.key, p]));
       const fieldLabel = f => (CONFIG.fields[f] && CONFIG.fields[f].label) || cap(f.replace(/_/g, " "));
@@ -1173,7 +1289,7 @@
       /* ---------- Rendering ---------- */
       function renderFacets(base) {
         const el = $("facets");
-        if (state.view.screen === "loading" || state.view.screen === "error") { el.innerHTML = state.view.screen === "loading" ? `<div class="unknown">Loading filters…</div>` : ""; return; }
+        if (state.view.screen === "loading" || state.view.screen === "error") { el.innerHTML = state.view.screen === "loading" ? `<div class="facets-loading unknown">Loading filters…</div>` : ""; return; }
         const focusedId = document.activeElement && el.contains(document.activeElement) ? document.activeElement.id : null;
         const counts = facetCounts(base);
         // A list of checkbox options with an optional "show all" toggle. `key` identifies the list
@@ -1218,7 +1334,7 @@
           } else {
             body = optionList(f, opts, f.field, f.label.toLowerCase());
           }
-          return `<fieldset class="facet"><legend>${esc(f.label)}</legend>${body || `<div class="unknown">No values</div>`}</fieldset>`;
+          return `<fieldset class="facet"><legend>${esc(f.label)}</legend><div>${body || `<span class="unknown">No values</span>`}</div></fieldset>`;
         }).join("");
         el.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", e => {
           const { fk, fv } = e.target.dataset;
@@ -1232,27 +1348,31 @@
         if (focusedId && $(focusedId)) $(focusedId).focus();
       }
 
-      function metaItem(rec, field) {
-        const f = CONFIG.fields[field] || {}, text = fmt(rec, field);
-        return `<span>${f.icon ? ic(f.icon, 14) : ""}<span class="sr-only">${esc(fieldLabel(field))}: </span>${valueHtml(text)}</span>`;
-      }
-
       function card(rec) {
         const allowed = schemaFields(rec);
         const topics = Array.isArray(rec.topics) ? rec.topics : [];
         const url = safeUrl(rec.link);
         const name = rec.name || UNKNOWN;
+        const topicsId = `t-${slug(rec._key)}`;
+        const facts = CONFIG.cardFields.filter(f => allowed.has(f))
+          .map(f => `<div><dt>${esc(fieldLabel(f))}</dt><dd>${valueHtml(fmt(rec, f))}</dd></div>`).join("");
         return `<li class="result">
-      <div class="result-top">
-        <h3><button type="button" class="card-title-link" data-open="${esc(rec._key)}">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</button>${rec.short_name && allowed.has("short_name") ? ` <span style="color:var(--text-muted); font-weight:400;">(${esc(rec.short_name)})</span>` : ""}</h3>
-        <span class="badge">${esc(rec._product.label)}</span>
+      <div class="r-head">
+        <span class="type-icon">${ic(rec._product.key, 18)}</span>
+        <h3><button type="button" class="title-btn" data-open="${esc(rec._key)}">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</button>${rec.short_name && allowed.has("short_name") ? ` <span class="short-name">(${esc(rec.short_name)})</span>` : ""}<span class="badge">${esc(rec._product.label)}</span></h3>
       </div>
-      <p class="desc">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p>
-      <div class="meta-row">${CONFIG.cardFields.filter(f => allowed.has(f)).map(f => metaItem(rec, f)).join("")}</div>
-      ${topics.length ? `<div class="tags"><span class="sr-only">Topics: </span>${topics.slice(0, 3).map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}${topics.length > 3 ? `<span class="tag-pill">+${topics.length - 3} more</span>` : ""}</div>` : ""}
-      <div class="actions">
-        <button type="button" class="btn-sm" data-open="${esc(rec._key)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
-        ${url ? `<a class="btn-link sm" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)}</span></a>` : ""}
+      <div><p class="desc">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${topics.length ? `<div class="r-topics">
+        <span class="label" id="${topicsId}">Topics</span>
+        <ul class="tags" aria-labelledby="${topicsId}">${topics.slice(0, 3).map(t => `<li class="tag-pill">${esc(cap(t))}</li>`).join("")}</ul>
+        ${topics.length > 3 ? `<span class="more-topics">and ${topics.length - 3} more</span>` : ""}
+      </div>` : ""}
+      <div class="r-foot">
+        <dl class="facts">${facts}</dl>
+        <div class="actions">
+          <button type="button" class="btn small" data-open="${esc(rec._key)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
+          ${url ? `<a class="btn small" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)}</span></a>` : ""}
+        </div>
       </div>
     </li>`;
       }
@@ -1260,15 +1380,15 @@
       function detail(rec) {
         const allowed = schemaFields(rec);
         const url = safeUrl(rec.link), docUrl = safeUrl(rec.documentation);
-        const tiles = CONFIG.detailTiles.filter(f => allowed.has(f)).map(f => {
-          const text = fmt(rec, f), meta = CONFIG.fields[f] || {};
-          const isContact = f === "contact" && text != null;
+        const facts = CONFIG.detailTiles.filter(f => allowed.has(f)).map(f => {
+          const text = fmt(rec, f);
           const isWarning = f === "update_frequency" && rec.update_frequency === "discontinued";
-          const value = isContact
-            ? `<a href="#">${esc(text)}</a><button type="button" class="btn-sm copy-btn" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`
-            : valueHtml(text);
-          const icon = isWarning ? "alert-triangle" : meta.icon;
-          return `<div class="tile${text == null ? " is-unknown" : ""}${isWarning ? " is-warning" : ""}${f === "contact" ? " wide" : ""}${isContact ? " has-copy" : ""}"><dt>${icon ? ic(icon, 13) : ""} ${esc(fieldLabel(f))}</dt><dd>${value}</dd></div>`;
+          const label = `${isWarning ? ic("alert-triangle", 14) : ""}${esc(fieldLabel(f))}`;
+          // The contact fact spans two columns and has a copy button on the right.
+          if (f === "contact") {
+            return `<div class="fact wide"><dt>${label}</dt><dd class="contact-dd">${text == null ? valueHtml(text) : (isEmail(text) ? `<a href="mailto:${esc(text.trim())}">${esc(text)}</a>` : esc(text))}${text == null ? "" : `<button type="button" class="btn small" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`}</dd></div>`;
+          }
+          return `<div class="fact${isWarning ? " is-warning" : ""}"><dt>${label}</dt><dd>${valueHtml(text)}</dd></div>`;
         }).join("");
 
         // Newer data: successor_id points to the next edition or a replacement, of any product type.
@@ -1276,14 +1396,14 @@
         const succ = succId ? state.byId.get(succId) : null;
         const succLink = succ ? `<button type="button" class="link-btn" data-open="${esc(succ._key)}">${esc(succ.name || succId)}</button>` : "";
         const banner = succ
-          ? `<div class="callout info">${ic("arrow-right", 16)}<div>${esc(fieldLabel("successor_id"))} is available: ${succLink}</div></div>`
+          ? `<div class="successor">${ic("arrow-right", 16)}<p>${esc(fieldLabel("successor_id"))} is available: ${succLink}</p></div>`
           : "";
         const topics = Array.isArray(rec.topics) ? rec.topics : [];
 
         const sections = [];
-        if (allowed.has("topics")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("topics"))}</h3>${topics.length ? `<div class="tags" style="margin-top:0;">${topics.map(t => `<span class="tag-pill">${esc(cap(t))}</span>`).join("")}</div>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
-        if (allowed.has("documentation")) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("documentation"))}</h3>${docUrl ? `${ic("book", 13, "-2px")} ${extLink(docUrl, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
-        if (succId) sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel("successor_id"))}</h3><ul><li>${succLink || `<span class="unknown">${esc(succId)} (not in this catalog)</span>`}</li></ul></div>`);
+        if (allowed.has("topics")) sections.push(`<div class="d-sec"><h3 id="dt-topics">${esc(fieldLabel("topics"))}</h3>${topics.length ? `<ul class="tags" aria-labelledby="dt-topics">${topics.map(t => `<li class="tag-pill">${esc(cap(t))}</li>`).join("")}</ul>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        if (allowed.has("documentation")) sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("documentation"))}</h3>${docUrl ? `${ic("book", 13, "-2px")} ${extLink(docUrl, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        if (succId) sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("successor_id"))}</h3>${succLink || `<span class="unknown">${esc(succId)} (not in this catalog)</span>`}</div>`);
         CONFIG.relatedFields.filter(f => allowed.has(f)).forEach(f => {
           const ids = Array.isArray(rec[f]) ? rec[f] : [];
           const target = productByKey[(CONFIG.fields[f] || {}).target];
@@ -1293,26 +1413,26 @@
               ? `<li><button type="button" class="link-btn" data-open="${esc(other._key)}">${esc(other.name || id)}</button></li>`
               : `<li><span class="unknown">${esc(id)} (not in this catalog)</span></li>`;
           }).join("");
-          sections.push(`<div class="section"><h3 class="section-label">${esc(fieldLabel(f))}</h3>${items ? `<ul>${items}</ul>` : `<span class="unknown">None listed</span>`}</div>`);
+          sections.push(`<div class="d-sec"><h3>${esc(fieldLabel(f))}</h3>${items ? `<ul class="links">${items}</ul>` : `<span class="unknown">None listed</span>`}</div>`);
         });
 
         return `<article class="detail" aria-labelledby="detail-h">
-      <div class="detail-head">
+      <div class="d-head">
         ${backButton()}
-        <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}${rec.short_name && allowed.has("short_name") ? ` (${esc(rec.short_name)})` : ""}</h2>
-        <span class="badge">${esc(rec._product.label)}</span>
-      </div>
-      <div class="detail-body">
-        ${banner}
-        <dl class="tiles">${tiles}</dl>
-        <p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p>
-        ${sections.join("")}
-        <div class="actions">
-          ${url
-            ? `<a class="btn-link md primary" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}</a>`
-            : `<span class="btn-link md disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
-          <button type="button" class="link-btn" data-request="1" style="margin-left:auto;">Request more data</button>
+        <div class="d-title">
+          <span class="type-icon">${ic(rec._product.key, 20)}</span>
+          <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}${rec.short_name && allowed.has("short_name") ? ` (${esc(rec.short_name)})` : ""}<span class="badge">${esc(rec._product.label)}</span></h2>
         </div>
+      </div>
+      ${banner}
+      <div class="d-facts-wrap"><dl class="d-facts">${facts}</dl></div>
+      <div><p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${sections.join("")}
+      <div class="d-foot">
+        ${url
+            ? `<a class="btn primary" href="${esc(url)}">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}</a>`
+            : `<span class="btn disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
+        <button type="button" class="link-btn" data-request="1">Request more data</button>
       </div>
     </article>`;
       }
@@ -1334,8 +1454,8 @@
         return key ? { screen: "detail", key, depth: (history.state && history.state.depth) || 1 } : { screen: "list" };
       }
 
-      function backButton(cls) {
-        return `<button type="button" data-back="1"${cls ? ` class="${cls}"` : ""}>${ic("arrow-left", 13, "-2px")} ${state.view.depth > 1 ? "Back" : "Back to results"}</button>`;
+      function backButton() {
+        return `<button type="button" class="btn small" data-back="1">${ic("arrow-left", 14)} ${state.view.depth > 1 ? "Back" : "Back to results"}</button>`;
       }
 
       // Leaving a detail page by searching or filtering adds a results entry, so back returns to the detail page.
@@ -1375,7 +1495,7 @@
           renderFacets([]);
           panel.innerHTML = `<div class="msg" role="alert">
         <div class="callout danger">${ic("alert-triangle", 16)}<div><strong style="color:inherit; display:inline; font-size:inherit;">The catalog couldn't be loaded.</strong> ${esc(state.view.message)}${state.view.fileHint}</div></div>
-        <button type="button" data-retry="1" class="btn-sm">Try again</button></div>`;
+        <button type="button" data-retry="1" class="btn small">Try again</button></div>`;
           panel.querySelector("[data-retry]").onclick = load;
           return;
         }
@@ -1387,13 +1507,13 @@
 
         if (state.view.screen === "detail") {
           const rec = state.byKey.get(state.view.key);
-          panel.innerHTML = rec ? detail(rec) : `<div class="msg"><strong>That record is no longer in the catalog.</strong>${backButton("btn-sm")}</div>`;
+          panel.innerHTML = rec ? detail(rec) : `<div class="msg"><strong>That record is no longer in the catalog.</strong>${backButton()}</div>`;
         } else {
           const chips = activeChips();
           const body = list.length
             ? `<ul class="results">${list.map(card).join("")}</ul>`
             : `<div class="msg"><strong>No results</strong>${state.records.length ? "Try fewer words, check spelling, or remove a filter." : "The catalog has no records yet."}</div>`;
-          panel.innerHTML = `<div class="results-meta"><span>${plural(list.length, "result")} · ${ranked ? "sorted by relevance" : "sorted by name"}</span>${chips}</div>${body}`;
+          panel.innerHTML = `<div class="results-meta"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, ${ranked ? "sorted by relevance" : "sorted alphabetically"}</span>${chips}</div>${body}`;
         }
         bind();
       }
@@ -1484,12 +1604,19 @@
 
       let typeTimer;
       $("q").addEventListener("input", e => {
+        $("clearQ").hidden = !e.target.value;
         clearTimeout(typeTimer);
         typeTimer = setTimeout(() => {
           state.q = e.target.value;
           leaveDetail();
           render(); announce();
         }, 120);
+      });
+
+      $("clearQ").addEventListener("click", () => {
+        $("q").value = "";
+        $("q").dispatchEvent(new Event("input"));
+        $("q").focus();
       });
 
       window.addEventListener("popstate", () => {
