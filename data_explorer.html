@@ -676,10 +676,17 @@
 
     .fact.wide {
       grid-column: span 2;
+    }
+
+    .contact-dd {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+    }
+
+    .contact-dd .btn {
+      margin-top: -20px;
     }
 
     @media (max-width: 420px) {
@@ -1379,7 +1386,7 @@
           const label = `${isWarning ? ic("alert-triangle", 14) : ""}${esc(fieldLabel(f))}`;
           // The contact fact spans two columns and has a copy button on the right.
           if (f === "contact") {
-            return `<div class="fact wide"><div><dt>${label}</dt><dd>${text == null ? valueHtml(text) : (isEmail(text) ? `<a href="mailto:${esc(text.trim())}">${esc(text)}</a>` : esc(text))}</dd></div>${text == null ? "" : `<button type="button" class="btn small" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`}</div>`;
+            return `<div class="fact wide"><dt>${label}</dt><dd class="contact-dd">${text == null ? valueHtml(text) : (isEmail(text) ? `<a href="mailto:${esc(text.trim())}">${esc(text)}</a>` : esc(text))}${text == null ? "" : `<button type="button" class="btn small" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`}</dd></div>`;
           }
           return `<div class="fact${isWarning ? " is-warning" : ""}"><dt>${label}</dt><dd>${valueHtml(text)}</dd></div>`;
         }).join("");
