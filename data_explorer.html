@@ -1243,11 +1243,47 @@
       }
 
       /* ---------- Search + filter ---------- */
+      // Swaps the year in a title for a placeholder, so titles that differ only by year share a key.
+      // Titles with more than one year (like "2014–2016") are left out of series entirely.
+      // "Baby & You 2024 birth cohort, survey 1 estimates by geography"
+      //   → { base: "baby & you {year} birth cohort, survey 1 estimates by geography", year: 2024 }
+      // "Foodborne illness cases by disease and sex, 2014"
+      //   → { base: "foodborne illness cases by disease and sex, {year}", year: 2014 }
+      function splitYear(name) {
+        const s = String(name || "");
+        const matches = [...s.matchAll(/\b(?:19|20)\d{2}\b/g)];
+        if (matches.length !== 1) return { base: null, year: null };
+        const m = matches[0];
+        return {
+          base: (s.slice(0, m.index) + "{year}" + s.slice(m.index + 4)).toLowerCase(),
+          year: Number(m[0])
+        };
+      }
+
+      // A–Z, except titles that differ only by a trailing year go newest first.
+      function byName(a, b) {
+        const A = splitYear(a.name), B = splitYear(b.name);
+        if (A.base !== null && A.base === B.base) return B.year - A.year;
+        return String(a.name || "").localeCompare(String(b.name || ""));
+      }
+
+      // Keeps relevance order, but gathers each yearly series at the spot of its
+      // best-ranked member, newest first.
+      function groupSeries(list) {
+        const groups = new Map();
+        for (const r of list) {
+          const key = splitYear(r.name).base ?? r; // unnumbered records stay on their own
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(r);
+        }
+        return [...groups.values()].flatMap(g => g.sort(byName));
+      }
+
       function searched() {
         const terms = state.q.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(t => t && !STOP.has(t));
-        if (!terms.length) return { list: [...state.records].sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""))), ranked: false };
+        if (!terms.length) return { list: [...state.records].sort(byName), ranked: false };
         const hits = state.mini.search(state.q);
-        return { list: hits.map(h => state.byKey.get(h.id)).filter(Boolean), ranked: true };
+        return { list: groupSeries(hits.map(h => state.byKey.get(h.id)).filter(Boolean)), ranked: true };
       }
       function passes(rec, exceptField) {
         return CONFIG.filters.every(f => {
@@ -1285,6 +1321,8 @@
         });
         return out;
       }
+
+
 
       /* ---------- Rendering ---------- */
       function renderFacets(base) {
