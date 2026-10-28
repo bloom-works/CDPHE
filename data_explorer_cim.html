@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDPHE data explorer (CIM) · prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Gray-scale prototype palette, plus one darkened green accent (7.5:1 on white). */
+    :root {
+      --surface-1: #ffffff;
+      --surface-2: #F4F6F7;
+      --text-primary: #1C1F20;
+      --text-secondary: #4e5758;
+      --text-muted: #5a6366;
+      --border: #DDE1E2;
+      --border-strong: #B7BEC0;
+      --charcoal: #33383A;
+      --slate: #6B7477;
+      --on-charcoal-muted: #C7CBCD;
+      --neutral-tint: #EDEFF0;
+      --accent: #24603A;
+      --warning: #7A5F1C;
+      --warning-tint: #F7F1DE;
+      --danger: #A03E3E;
+      --danger-tint: #F5E7E7;
+      --radius: 4px;
+      --font: "Open Sans", "Trebuchet MS", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 2px;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    /* Masthead — matches Prototype 1 */
+    .masthead {
+      background: var(--charcoal);
+      border-radius: 8px 8px 0 0;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 30px;
+      background: var(--slate);
+      border-radius: 0 0 13px 13px;
+      position: relative;
+      flex: none;
+    }
+
+    .logo-mark::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom: 11px solid var(--charcoal);
+    }
+
+    .wordmark {
+      line-height: 1.1;
+    }
+
+    .wordmark .state {
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .wordmark .dept {
+      color: var(--on-charcoal-muted);
+      font-size: 12px;
+    }
+
+    .masthead .proto {
+      margin-left: auto;
+      color: var(--on-charcoal-muted);
+      font-size: 14px;
+    }
+
+    .shell {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 28px 28px 32px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .hint {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 14px;
+    }
+
+    /* Search */
+    .searchbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 54px;
+      padding: 0 8px 0 20px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+    }
+
+    .searchbar:focus-within {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-color: var(--accent);
+    }
+
+    .searchbar svg {
+      color: var(--text-secondary);
+    }
+
+    .searchbar input {
+      flex: 1;
+      min-width: 0;
+      height: 52px;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+    }
+
+    .searchbar input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .clear-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clear-btn:hover {
+      background: var(--neutral-tint);
+    }
+
+    .clear-btn[hidden] {
+      display: none;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding: 22px 16px 26px;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .masthead .proto {
+        margin-left: 0;
+      }
+    }
+
+    /* Filters */
+    .filters {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      align-self: start;
+    }
+
+    .filters-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .facets-loading {
+      padding: 14px 16px;
+    }
+
+    fieldset.facet {
+      border: none;
+      margin: 0;
+      min-width: 0;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    fieldset.facet:last-child {
+      border-bottom: none;
+    }
+
+    fieldset.facet>legend {
+      float: left;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0;
+      margin: 0 0 6px;
+    }
+
+    fieldset.facet>legend+* {
+      clear: both;
+    }
+
+    .facet label {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      min-height: 30px;
+      padding: 4px 0;
+      font-size: 14px;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .facet input[type=checkbox] {
+      accent-color: var(--charcoal);
+      width: 17px;
+      height: 17px;
+      margin: 1px 0 0;
+      flex: none;
+    }
+
+    .facet .count {
+      margin-left: auto;
+      padding-left: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .facet label.zero {
+      color: var(--text-muted);
+    }
+
+    fieldset.facet-group {
+      border: none;
+      border-left: 2px solid var(--border);
+      margin: 4px 0 12px;
+      padding: 0 0 0 10px;
+      min-width: 0;
+    }
+
+    fieldset.facet-group:last-child {
+      margin-bottom: 2px;
+    }
+
+    fieldset.facet-group legend {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0;
+      margin-bottom: 2px;
+    }
+
+    .link-btn {
+      border: none;
+      background: none;
+      padding: 4px 0;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    /* Results header */
+    .results-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      min-height: 32px;
+      margin-bottom: 12px;
+    }
+
+    .results-meta strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-1);
+      font-size: 13px;
+    }
+
+    .chip:hover {
+      background: var(--neutral-tint);
+    }
+
+    ul.results {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Result card: sections divided by rules */
+    .result {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    .result>* {
+      padding: 12px 18px;
+    }
+
+    .result>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .r-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 14px;
+      padding-bottom: 12px;
+    }
+
+    .type-icon {
+      color: var(--text-secondary);
+      margin-top: 2px;
+      flex: none;
+    }
+
+    .r-head h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .short-name {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .title-btn {
+      border: none;
+      background: none;
+      padding: 0;
+      text-align: left;
+      font: inherit;
+      color: var(--text-primary);
+    }
+
+    .title-btn:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--neutral-tint);
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .r-topics {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 13px;
+    }
+
+    .r-topics .label {
+      color: var(--text-muted);
+    }
+
+    ul.tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      font-size: 12.5px;
+      line-height: 1.4;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: var(--surface-1);
+    }
+
+    .more-topics {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .r-foot {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      padding-top: 12px;
+      padding-bottom: 14px;
+    }
+
+    dl.facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 32px;
+      margin: 0;
+    }
+
+    dl.facts dt {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 1px;
+    }
+
+    dl.facts dd {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Missing metadata — grayed, but still AA contrast */
+    .unknown {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--charcoal);
+      background: var(--surface-1);
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--surface-2);
+    }
+
+    .btn.primary {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #262a2b;
+    }
+
+    .btn.small {
+      min-height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .btn.disabled {
+      border-color: var(--border-strong);
+      border-style: dashed;
+      color: var(--text-muted);
+      background: transparent;
+      cursor: default;
+      font-weight: 400;
+    }
+
+    /* Detail view: same panel style as the cards */
+    .detail {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .detail>* {
+      padding: 16px 20px;
+    }
+
+    .detail>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .d-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px 14px;
+      flex-wrap: wrap;
+    }
+
+    .d-head .btn {
+      flex: none;
+    }
+
+    .d-head .type-icon {
+      display: none;
+    }
+
+    .d-title {
+      display: flex;
+      gap: 10px;
+      flex: 1;
+      min-width: 240px;
+      padding-top: 5px;
+    }
+
+    .d-title h2 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .d-title h2:focus-visible {
+      outline-offset: 4px;
+    }
+
+    .d-facts-wrap {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    dl.d-facts {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+
+    .fact {
+      padding: 12px 20px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 0 -1px -1px 0;
+    }
+
+    .fact.wide {
+      grid-column: span 2;
+    }
+
+    .contact-dd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .contact-dd .btn {
+      margin-top: -20px;
+    }
+
+    @media (max-width: 420px) {
+      .fact.wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .fact dt {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .fact dd {
+      margin: 0;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .fact dt svg {
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    /* "No longer updated" stands out from the other facts. */
+    .fact.is-warning {
+      background: var(--warning-tint);
+    }
+
+    .fact.is-warning dt,
+    .fact.is-warning dd {
+      color: var(--warning);
+    }
+
+    .fact.is-warning dd {
+      font-weight: 600;
+    }
+
+    .successor {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--neutral-tint);
+      box-shadow: inset 4px 0 0 var(--charcoal);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .successor svg {
+      margin-top: 3px;
+    }
+
+    .successor p {
+      margin: 0;
+    }
+
+    .successor .link-btn {
+      padding: 0;
+      font-size: inherit;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    .d-sec h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .d-sec ul.links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .d-sec .link-btn {
+      padding: 0;
+    }
+
+    .d-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* States */
+    .msg {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-1);
+      padding: 26px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .msg strong {
+      color: var(--text-primary);
+      font-weight: 600;
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .msg .btn {
+      margin-top: 8px;
+    }
+
+    .callout {
+      display: flex;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .callout svg {
+      margin-top: 2px;
+    }
+
+    .callout.warning {
+      background: var(--warning-tint);
+      color: var(--warning);
+    }
+
+    .callout.danger {
+      background: var(--danger-tint);
+      color: var(--danger);
+    }
+
+    .skeleton {
+      height: 180px;
+      border-radius: var(--radius);
+      background: linear-gradient(90deg, #EDEFF0 0%, #F7F8F8 50%, #EDEFF0 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: 200% 0;
+      }
+
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton {
+        animation: none;
+      }
+    }
+
+    code {
+      font-size: 13px;
+      background: var(--neutral-tint);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* Page footer */
+    .page-footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Request-data modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(28, 31, 32, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay[hidden] {
+      display: none;
+    }
+
+    .modal {
+      background: var(--surface-1);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 400px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .modal p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0 0 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ---------- CIM version: inert search and filters ---------- */
+    .inert-note {
+      margin: 0;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .facet label.inert {
+      color: var(--text-muted);
+      cursor: default;
+    }
+
+    .facet label.inert input {
+      cursor: default;
+    }
+
+    button.btn.disabled[disabled] {
+      cursor: default;
+    }
+
+    .r-head h3 .title-text {
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; All prototypes</a>
+
+    <header class="masthead">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="wordmark">
+          <div class="state">COLORADO</div>
+          <div class="dept">Department of Public Health &amp; Environment</div>
+        </div>
+      </div>
+      <div class="proto">prototype</div>
+    </header>
+
+    <main class="shell">
+      <h1>Find Colorado public health data</h1>
+
+      <p class="hint" id="hint">Showing datasets from the Colorado Information Marketplace. Search and filters aren&rsquo;t
+        connected yet.</p>
+      <form role="search" id="searchForm" onsubmit="return false;">
+        <div class="searchbar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true">
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+          <label for="q" class="sr-only">Search public health data (not available yet)</label>
+          <!-- Inert for now: stays disabled after loading. -->
+          <input id="q" type="search" autocomplete="off" aria-describedby="hint" disabled />
+        </div>
+      </form>
+
+      <div class="layout">
+        <aside class="filters" aria-labelledby="filters-h">
+          <h2 class="filters-title" id="filters-h">Filter results</h2>
+          <div id="facets"></div>
+        </aside>
+        <section aria-labelledby="results-h">
+          <h2 class="sr-only" id="results-h">Results</h2>
+          <div id="warnings"></div>
+          <div id="panel"></div>
+        </section>
+      </div>
+      <!-- Announces result counts to assistive tech. -->
+      <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+    </main>
+
+    <footer class="page-footer">
+      Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more
+        data</button>
+    </footer>
+  </div>
+
+  <div class="modal-overlay" id="requestModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle"
+      aria-describedby="requestModalDesc" tabindex="-1">
+      <h2 id="requestModalTitle">Data requests are coming soon</h2>
+      <p id="requestModalDesc">
+        In the future, you&rsquo;ll be able to request more data or different data formats. This feature isn&rsquo;t
+        ready yet.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn primary" id="requestModalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      CDPHE data explorer, Colorado Information Marketplace (CIM) version.
+
+      Reads dataset metadata from /api/datasets, served by server.py, which calls Socrata
+      with the credentials in .env. No credentials ever reach this page.
+
+      Run `python3 server.py` in this folder, then open
+      http://localhost:8000/data_explorer_cim.html
+    */
+    (function () {
+      /* ------------------------------------------------------------------
+         Configuration
+         ------------------------------------------------------------------ */
+      const CONFIG = {
+        // Served by server.py. The dataset IDs and Socrata domain are set in .env.
+        apiUrl: "/api/datasets",
+
+        // Socrata asset types we recognize. Anything else is shown as a dataset.
+        products: {
+          dataset: { key: "dataset", label: "Dataset", linkLabel: "View data" },
+          story: { key: "summary_report", label: "Summary report", linkLabel: "Open report" },
+          href: { key: "dashboard", label: "External link", linkLabel: "Open link" }
+        },
+
+        // Where each of our fields lives in Socrata's custom metadata, as [fieldset name, field name].
+        // Leave as null until those custom fields exist on the domain; the page shows "Unknown" meanwhile.
+        // The browser console lists the custom fields each dataset actually has, to help fill these in.
+        customFields: {
+          geographic_level: null,
+          population: null,
+          years_covered: null,
+          update_frequency: null
+        },
+
+        // Shown in the filter panel, in order. Inert for now.
+        filters: [
+          { field: "product", label: "Data product" },
+          { field: "geographic_level", label: "Geographic level" },
+          { field: "population", label: "Population" },
+          { field: "years_covered", label: "Years covered" },
+          { field: "topics", label: "Topic" }
+        ],
+
+        fieldLabels: {
+          geographic_level: "Geographic level",
+          population: "Population",
+          years_covered: "Years covered",
+          update_frequency: "Update frequency",
+          last_updated: "Last updated"
+        },
+        cardFields: ["geographic_level", "update_frequency", "last_updated"],
+
+        fetchTimeoutMs: 15000
+      };
+
+      const UNKNOWN = "Unknown";
+
+      /* ---------- Icons (same set and style as the original explorer) ---------- */
+      const ICON_PATHS = {
+        "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
+        "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
+        dataset: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9.5" x2="21" y2="9.5"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="9.5" x2="9" y2="20"></line>',
+        dashboard: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="8" y1="16" x2="8" y2="12"></line><line x1="12" y1="16" x2="12" y2="8"></line><line x1="16" y1="16" x2="16" y2="10"></line>',
+        summary_report: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><polyline points="14 3 14 8 19 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line>'
+      };
+      function ic(name, size, va) {
+        return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;${va ? " vertical-align:" + va + ";" : ""}" aria-hidden="true">${ICON_PATHS[name]}</svg>`;
+      }
+
+      /* ---------- Helpers ---------- */
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      const cap = s => { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
+      const isBlank = v => v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
+      const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+      const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const $ = id => document.getElementById(id);
+
+      // Socrata timestamps are seconds since 1970.
+      function fmtEpoch(sec) {
+        if (typeof sec !== "number") return null;
+        return new Date(sec * 1000).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+      }
+      function fieldText(rec, field) {
+        const v = rec[field];
+        if (isBlank(v)) return null;
+        return Array.isArray(v) ? v.map(cap).join(", ") : cap(v);
+      }
+      const valueHtml = text => text == null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);
+
+      /* ---------- State ---------- */
+      const state = { records: [], warnings: [], screen: "loading", message: "", hint: "" };
+
+      /* ---------- Data ---------- */
+      async function fetchCatalog() {
+        const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), CONFIG.fetchTimeoutMs);
+        let res;
+        try {
+          res = await fetch(CONFIG.apiUrl, { signal: ctrl.signal, cache: "no-store" });
+        } catch (e) {
+          if (e.name === "AbortError") throw new Error("The data took too long to load.");
+          throw new Error("The local server isn't responding. Check that server.py is still running.");
+        } finally { clearTimeout(t); }
+        if (res.status === 404) throw new Error(`${CONFIG.apiUrl} wasn't found. Start the page with python3 server.py rather than python3 -m http.server.`);
+        if (!res.ok) throw new Error(`${CONFIG.apiUrl} returned HTTP ${res.status}.`);
+        const data = await res.json();
+        if (!data || !Array.isArray(data.datasets)) throw new Error(`${CONFIG.apiUrl} returned data in an unexpected format.`);
+        return data;
+      }
+
+      function customValue(view, path) {
+        if (!path) return null;
+        const fields = view.custom_fields;
+        const v = fields && fields[path[0]] && fields[path[0]][path[1]];
+        return isBlank(v) ? null : v;
+      }
+
+      function toRecord(view, domain) {
+        const product = CONFIG.products[view.assetType] || CONFIG.products.dataset;
+        const rec = {
+          id: view.id,
+          name: view.name,
+          description: view.description,
+          topics: Array.isArray(view.tags) ? view.tags : [],
+          category: view.category,
+          attribution: view.attribution,
+          last_updated: fmtEpoch(view.rowsUpdatedAt || view.viewLastModified),
+          link: `https://${domain}/d/${view.id}`,
+          _product: product
+        };
+        Object.entries(CONFIG.customFields).forEach(([field, path]) => { rec[field] = customValue(view, path); });
+        return rec;
+      }
+
+      // Logs what each dataset actually carries, to help map custom fields during the spike.
+      function logMetadata(views) {
+        console.groupCollapsed(`CIM metadata for ${plural(views.length, "dataset")}`);
+        views.forEach(v => {
+          console.log(`${v.id}: ${v.name}`, v);
+          const cf = v.custom_fields || {};
+          const rows = Object.entries(cf).flatMap(([set, fields]) => Object.entries(fields || {}).map(([field, value]) => ({ fieldset: set, field, value })));
+          if (rows.length) console.table(rows); else console.log("  No custom metadata fields.");
+        });
+        console.groupEnd();
+      }
+
+      /* ---------- Loading ---------- */
+      async function load() {
+        state.screen = "loading"; state.warnings = []; render();
+
+        if (location.protocol === "file:") {
+          return fail("This page loads its data from a local server, which doesn't run when the page is opened directly from disk.",
+            `Run <code>python3 server.py</code> in the project folder and open <code>http://localhost:8000/data_explorer_cim.html</code>.`);
+        }
+
+        let data;
+        try { data = await fetchCatalog(); }
+        catch (e) { return fail(e.message); }
+
+        const errors = Array.isArray(data.errors) ? data.errors : [];
+        errors.forEach(e => state.warnings.push(`Dataset ${e.id} couldn't be loaded: ${e.message}.`));
+        if (!data.datasets.length && errors.length) {
+          return fail(`None of the datasets could be loaded. The first error was: ${cap(errors[0].message)}.`);
+        }
+
+        logMetadata(data.datasets);
+        state.records = data.datasets.map(v => toRecord(v, data.domain || "data.colorado.gov"))
+          .sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "en", { sensitivity: "base" }));
+        state.screen = "list";
+        render(); announce();
+      }
+
+      function fail(message, hint) {
+        state.screen = "error"; state.message = message; state.hint = hint || "";
+        render();
+        $("live").textContent = "The catalog couldn't be loaded.";
+      }
+
+      /* ---------- Filters (inert) ---------- */
+      function valuesOf(rec, field) {
+        if (field === "product") return [rec._product.label];
+        const v = rec[field];
+        if (isBlank(v)) return [UNKNOWN];
+        return (Array.isArray(v) ? v : [v]).map(x => cap(String(x)));
+      }
+
+      function renderFacets() {
+        const el = $("facets");
+        if (state.screen === "loading") { el.innerHTML = `<div class="facets-loading unknown">Loading filters…</div>`; return; }
+        if (state.screen === "error") { el.innerHTML = ""; return; }
+
+        const note = `<p class="inert-note">Filters aren&rsquo;t connected yet.</p>`;
+        el.innerHTML = note + CONFIG.filters.map(f => {
+          const counts = new Map();
+          state.records.forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
+          const opts = [...counts.entries()].sort((a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN) || b[1] - a[1] || a[0].localeCompare(b[0]));
+          const body = opts.map(([v, n]) => {
+            const id = `f-${slug(f.field)}-${slug(v)}`;
+            return `<label for="${id}" class="inert"><input type="checkbox" id="${id}" disabled><span>${esc(v)}</span><span class="count">${n}</span></label>`;
+          }).join("");
+          return `<fieldset class="facet"><legend>${esc(f.label)}</legend><div>${body || `<span class="unknown">No values</span>`}</div></fieldset>`;
+        }).join("");
+      }
+
+      /* ---------- Rendering ---------- */
+      function card(rec) {
+        const name = rec.name || "Untitled";
+        const topicsId = `t-${slug(rec.id)}`;
+        const facts = CONFIG.cardFields
+          .map(f => `<div><dt>${esc(CONFIG.fieldLabels[f])}</dt><dd>${valueHtml(fieldText(rec, f))}</dd></div>`).join("");
+        return `<li class="result">
+      <div class="r-head">
+        <span class="type-icon">${ic(rec._product.key, 18)}</span>
+        <h3><span class="title-text">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</span><span class="badge">${esc(rec._product.label)}</span></h3>
+      </div>
+      <div><p class="desc">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${rec.topics.length ? `<div class="r-topics">
+        <span class="label" id="${topicsId}">Topics</span>
+        <ul class="tags" aria-labelledby="${topicsId}">${rec.topics.slice(0, 3).map(t => `<li class="tag-pill">${esc(cap(t))}</li>`).join("")}</ul>
+        ${rec.topics.length > 3 ? `<span class="more-topics">and ${rec.topics.length - 3} more</span>` : ""}
+      </div>` : ""}
+      <div class="r-foot">
+        <dl class="facts">${facts}</dl>
+        <div class="actions">
+          <button type="button" class="btn small disabled" disabled>View details<span class="sr-only"> for ${esc(name)} (not available yet)</span></button>
+          <a class="btn small" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>
+        </div>
+      </div>
+    </li>`;
+      }
+
+      function render() {
+        const panel = $("panel");
+        $("warnings").innerHTML = state.warnings.map(w => `<div class="callout warning">${ic("alert-triangle", 16)}<div>${esc(w)}</div></div>`).join("");
+        renderFacets();
+
+        if (state.screen === "loading") {
+          panel.innerHTML = `<div role="status"><span class="sr-only">Loading datasets from the Colorado Information Marketplace…</span><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div></div>`;
+          return;
+        }
+        if (state.screen === "error") {
+          panel.innerHTML = `<div class="msg" role="alert">
+        <div class="callout danger">${ic("alert-triangle", 16)}<div><strong style="color:inherit; display:inline; font-size:inherit;">The catalog couldn't be loaded.</strong> ${esc(state.message)}${state.hint ? ` <br>${state.hint}` : ""}</div></div>
+        <button type="button" data-retry="1" class="btn small">Try again</button></div>`;
+          panel.querySelector("[data-retry]").onclick = load;
+          return;
+        }
+
+        const list = state.records;
+        const body = list.length
+          ? `<ul class="results">${list.map(card).join("")}</ul>`
+          : `<div class="msg"><strong>No datasets to show</strong>Add dataset IDs to <code>CIM_DATASET_IDS</code> in <code>.env</code> and restart <code>server.py</code>.</div>`;
+        panel.innerHTML = `<div class="results-meta"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, sorted alphabetically</span></div>${body}`;
+      }
+
+      function announce() {
+        $("live").textContent = `${plural(state.records.length, "result")}.`;
+      }
+
+      /* ---------- Request-data modal (same as the original explorer) ---------- */
+      function focusableIn(el) {
+        return [...el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+          .filter(e => !e.disabled && e.offsetParent !== null);
+      }
+      function modalKeydown(e) {
+        if (e.key === "Escape") { e.preventDefault(); closeRequestModal(); return; }
+        if (e.key !== "Tab") return;
+        const items = focusableIn($("requestModal"));
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      let modalReturnFocus = null;
+      function openRequestModal(trigger) {
+        modalReturnFocus = trigger;
+        document.body.style.overflow = "hidden";
+        $("requestModal").hidden = false;
+        document.addEventListener("keydown", modalKeydown, true);
+        $("requestModalClose").focus();
+      }
+      function closeRequestModal() {
+        $("requestModal").hidden = true;
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", modalKeydown, true);
+        if (modalReturnFocus && document.contains(modalReturnFocus)) modalReturnFocus.focus();
+        modalReturnFocus = null;
+      }
+      $("requestModalClose").addEventListener("click", closeRequestModal);
+      $("requestModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeRequestModal(); });
+      $("footerRequest").addEventListener("click", () => openRequestModal($("footerRequest")));
+
+      load();
+    })();
+  </script>
+</body>
+
+</html>
