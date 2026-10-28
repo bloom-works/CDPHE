@@ -25,9 +25,11 @@ A narrower prototype focused only on the **search and filter** experience, linke
 A version of Prototype 2 that pulls catalog records from the **Colorado Information Marketplace (CIM)**, a Socrata (Data & Insights) site at `data.colorado.gov`, instead of local JSON. It is part of a technical spike testing whether Socrata could be the backend data store for a custom search frontend.
 
 - **Reads a small set of private datasets** (listed in `.env` as `CIM_DATASET_IDS`) through the Socrata API. It reads dataset **metadata** (name, description, tags, custom metadata fields, last updated), not the rows.
-- **Uses a local server, `server.py`.** Socrata won't accept authenticated requests straight from a browser (CORS), and the API key must never reach the browser anyway. `server.py` serves the project folder and exposes one endpoint, `GET /api/datasets`, which calls Socrata with the credentials from `.env` and returns trimmed metadata to the page.
-- **Search and filters are inert for now.** The page lists results; the search bar, filter checkboxes, and "View details" are shown but disabled.
-- **Fields without a Socrata equivalent** (geographic level, population, years covered, update frequency) are mapped to Socrata custom metadata fields in the page's `CONFIG.customFields`, and show "Unknown" until mapped.
+- **Uses a local server, `server.py`.** Socrata won't accept authenticated requests straight from a browser (CORS), and the API key must never reach the browser anyway. `server.py` serves the project folder and exposes one endpoint, `GET /api/datasets`, which calls Socrata with the credentials from `.env` and returns trimmed metadata to the page. A second endpoint, `GET /api/raw/<dataset-id>`, returns Socrata's full, untrimmed response for one dataset, for inspecting what the API sends. It can include people's names and emails, so it is for local debugging only and must not be deployed.
+- **Filters work; search and "View details" are inert for now** (shown but disabled).
+- **Filters come from prefixed Socrata tags**, `prefix-value`: `type-` (data product: dataset, dashboard, summary report), `geo-` (state, region, county, census tract), `population-` (infants, children, adults, older adults) and `topic-` (one per topic). Tags without a known prefix are kept as keywords. Allowed values and their display labels live in the page's `CONFIG.fields`; values not in that list still show, and are listed in the browser console so typos are easy to catch.
+- **Other fields come from Socrata custom metadata**, matched by field name in `CONFIG.customFields`: years covered from "Oldest Record in Dataset" and "Newest Record in Dataset", and update frequency from "Expected Update Frequency". Contradictory or missing values show as "Unknown" and are listed in the console.
+- **The "Open" button** goes to the CIM page for hosted data, and to the external link for link-only assets.
 
 ## What this is NOT
 

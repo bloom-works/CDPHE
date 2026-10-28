@@ -2,9 +2,12 @@
 """
 Local development server for data_explorer_cim.html.
 
-Serves this folder and adds one endpoint, GET /api/datasets, which reads dataset
-metadata from Socrata with the credentials in .env. The browser never sees the
-credentials, and because the page and the endpoint share an origin, there's no CORS.
+Serves this folder and adds two endpoints that call Socrata with the credentials in .env.
+The browser never sees the credentials, and because the page and the endpoints share an
+origin, there's no CORS.
+
+    GET /api/datasets       Trimmed metadata for the datasets in CIM_DATASET_IDS (used by the page)
+    GET /api/raw/<id>       Socrata's full, untrimmed response for one dataset, for inspection
 
 LOCAL DEMO ONLY. Python standard library only; nothing to install.
 
@@ -26,11 +29,12 @@ ROOT = Path(__file__).resolve().parent
 ENV_FILE = ROOT / ".env"
 TIMEOUT_SECONDS = 15
 DATASET_ID = re.compile(r"^[a-z0-9]{4}-[a-z0-9]{4}$")
+RAW_ROUTE = re.compile(r"^/api/raw/([^/]+)/?$")
 
 # Socrata metadata fields passed to the page. Everything else (such as sharing
 # grants, which can include people's email addresses) stays on the server.
 VIEW_FIELDS = ["id", "name", "description", "category", "attribution", "tags",
-               "assetType", "rowsUpdatedAt", "viewLastModified"]
+               "assetType", "attributionLink", "rowsUpdatedAt", "viewLastModified"]
 
 
 def load_env(path):
@@ -77,9 +81,12 @@ if ENV.get("SOCRATA_APP_TOKEN"):
 
 def trim(view):
     out = {k: view[k] for k in VIEW_FIELDS if k in view}
-    custom = (view.get("metadata") or {}).get("custom_fields")
-    if custom:
-        out["custom_fields"] = custom
+    metadata = view.get("metadata") or {}
+    if metadata.get("custom_fields"):
+        out["custom_fields"] = metadata["custom_fields"]
+    # Where an external-link asset points.
+    if metadata.get("accessPoints"):
+        out["access_points"] = metadata["accessPoints"]
     return out
 
 
@@ -101,6 +108,24 @@ def fetch_view(dataset_id):
         return "error", {"id": dataset_id, "status": None, "message": f"couldn't reach {DOMAIN} ({reason})"}
 
 
+def fetch_raw(dataset_id):
+    """Returns (HTTP status, parsed JSON) exactly as Socrata sent them, untrimmed."""
+    url = f"https://{DOMAIN}/api/views/{dataset_id}.json"
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=TIMEOUT_SECONDS) as res:
+            status, body = res.status, res.read()
+    except urllib.error.HTTPError as e:
+        status, body = e.code, (e.read() if e.fp else b"")
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        reason = getattr(e, "reason", None) or e
+        return 502, {"error": f"couldn't reach {DOMAIN} ({reason})"}
+    try:
+        return status, json.loads(body)
+    except ValueError:
+        # Socrata sent something that isn't JSON; show it as text.
+        return status, {"status": status, "body": body.decode("utf-8", "replace")}
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -111,8 +136,12 @@ class Handler(SimpleHTTPRequestHandler):
         return any(part.startswith(".") for part in path.split("/") if part)
 
     def do_GET(self):
-        if urlsplit(self.path).path == "/api/datasets":
+        path = urlsplit(self.path).path
+        if path == "/api/datasets":
             return self.send_datasets()
+        raw = RAW_ROUTE.match(path)
+        if raw:
+            return self.send_raw(unquote(raw.group(1)))
         if self.is_hidden():
             return self.send_error(404, "File not found")
         super().do_GET()
@@ -122,20 +151,32 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_error(404, "File not found")
         super().do_HEAD()
 
-    def send_datasets(self):
-        with ThreadPoolExecutor(max_workers=8) as pool:
-            results = list(pool.map(fetch_view, DATASET_IDS))
-        body = json.dumps({
-            "domain": DOMAIN,
-            "datasets": [r for status, r in results if status == "ok"],
-            "errors": [r for status, r in results if status == "error"],
-        }).encode("utf-8")
-        self.send_response(200)
+    def send_json(self, status, data, indent=None):
+        body = json.dumps(data, indent=indent, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def send_datasets(self):
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(fetch_view, DATASET_IDS))
+        self.send_json(200, {
+            "domain": DOMAIN,
+            "datasets": [r for status, r in results if status == "ok"],
+            "errors": [r for status, r in results if status == "error"],
+        })
+
+    def send_raw(self, dataset_id):
+        # Any dataset your API key can see, not just CIM_DATASET_IDS. Untrimmed, so it can
+        # include people's names and emails (owners, sharing grants): fine locally, but
+        # never deploy this route.
+        if not DATASET_ID.match(dataset_id):
+            return self.send_json(400, {"error": f"'{dataset_id}' isn't a Socrata dataset ID (xxxx-xxxx)."}, indent=2)
+        status, data = fetch_raw(dataset_id)
+        self.send_json(status, data, indent=2)
 
 
 def main():
@@ -147,6 +188,7 @@ def main():
     # 127.0.0.1 only: this server uses your credentials, so don't expose it to the network.
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"Open http://localhost:{port}/data_explorer_cim.html  (Ctrl+C to stop)")
+    print(f"Raw Socrata metadata: http://localhost:{port}/api/raw/<dataset-id>")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
