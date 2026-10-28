@@ -947,7 +947,7 @@
     <main class="shell">
       <h1>Find Colorado public health data</h1>
 
-      <p class="hint" id="hint">Showing datasets from the Colorado Information Marketplace. Search isn&rsquo;t connected yet.</p>
+      <p class="hint" id="hint">Search dataset names and descriptions, like &ldquo;deaths by county&rdquo; or &ldquo;marriage.&rdquo;</p>
       <form role="search" id="searchForm" onsubmit="return false;">
         <div class="searchbar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -955,9 +955,16 @@
             <circle cx="10" cy="10" r="7"></circle>
             <line x1="21" y1="21" x2="15" y2="15"></line>
           </svg>
-          <label for="q" class="sr-only">Search public health data (not available yet)</label>
-          <!-- Inert for now: stays disabled after loading. -->
+          <label for="q" class="sr-only">Search public health data</label>
+          <!-- Enabled once the datasets have loaded. -->
           <input id="q" type="search" autocomplete="off" aria-describedby="hint" disabled />
+          <button type="button" class="clear-btn" id="clearQ" aria-label="Clear search" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </form>
 
@@ -996,12 +1003,17 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.js"
+    integrity="sha384-KuHy7eg9MqWBVrMXJC0WN6q4d3+KBquZ3Htgex79A4REptrDvGOXfAgZ0VOJ1Mdx"
+    crossorigin="anonymous"></script>
   <script>
     /*
       CDPHE data explorer, Colorado Information Marketplace (CIM) version.
 
       Reads dataset metadata from /api/datasets, served by server.py, which calls Socrata
       with the credentials in .env. No credentials ever reach this page.
+
+      Search runs in the browser over the records already loaded, so typing never calls the API.
 
       Run `python3 server.py` in this folder, then open
       http://localhost:8000/data_explorer_cim.html
@@ -1013,6 +1025,16 @@
       const CONFIG = {
         // Served by server.py. The dataset IDs and Socrata domain are set in .env.
         apiUrl: "/api/datasets",
+
+        // MiniSearch options. See https://lucaong.github.io/minisearch/
+        search: {
+          fields: ["name", "description"],
+          boost: { name: 3 },                           // a match in the name ranks higher
+          prefix: true,                                 // "marr" matches "marriage"
+          fuzzy: term => term.length > 4 ? 0.2 : false, // tolerate small typos on longer words
+          combineWith: "AND",                           // every meaningful word must match
+          stopWords: ["a", "an", "and", "the", "of", "for", "in", "on", "by", "to", "with", "or", "data", "about", "what", "is", "are", "how", "colorado"]
+        },
 
         // Tags shaped "prefix-value" (like "geo-county") fill these fields.
         // Tags without a known prefix are kept as keywords and don't appear in filters.
@@ -1085,6 +1107,7 @@
       const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
       const uniq = arr => [...new Set(arr)];
       const $ = id => document.getElementById(id);
+      const STOP = new Set(CONFIG.search.stopWords);
       const fieldLabel = f => (CONFIG.fields[f] && CONFIG.fields[f].label) || cap(f.replace(/_/g, " "));
 
       // [2007,2008,2009,2012] → "2007–2009, 2012" so gaps stay visible.
@@ -1104,7 +1127,7 @@
 
       /* ---------- State ---------- */
       const state = {
-        records: [], warnings: [], screen: "loading", message: "", hint: "",
+        records: [], warnings: [], screen: "loading", message: "", hint: "", q: "", mini: null,
         active: Object.fromEntries(CONFIG.filters.map(f => [f.field, new Set()])),
         expanded: {}, issues: []
       };
@@ -1252,8 +1275,37 @@
         state.records = data.datasets.map(v => toRecord(v, data.domain || "data.colorado.gov"))
           .sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "en", { sensitivity: "base" }));
         logMetadata(data.datasets);
+        buildIndex();
         state.screen = "list";
         render(); announce();
+      }
+
+      /* ---------- Search ---------- */
+      // Indexes the loaded records once. If the search library didn't load, the list still works.
+      function buildIndex() {
+        if (typeof MiniSearch === "undefined") {
+          state.mini = null;
+          state.warnings.push("Search isn't available because the search library couldn't be loaded. Check your network connection and reload the page.");
+          return;
+        }
+        state.mini = new MiniSearch({
+          idField: "id",
+          fields: CONFIG.search.fields,
+          processTerm: term => { const t = term.toLowerCase(); return STOP.has(t) ? null : t; },
+          searchOptions: { boost: CONFIG.search.boost, prefix: CONFIG.search.prefix, fuzzy: CONFIG.search.fuzzy, combineWith: CONFIG.search.combineWith }
+        });
+        // MiniSearch requires unique ids; skip duplicates rather than failing.
+        const seen = new Set();
+        state.mini.addAll(state.records.filter(r => !seen.has(r.id) && seen.add(r.id)));
+        $("q").disabled = false;
+      }
+
+      // Records matching the search, by relevance; all records, A to Z, when there's no search.
+      function searched() {
+        const terms = state.q.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(t => t && !STOP.has(t));
+        if (!terms.length || !state.mini) return { list: state.records, ranked: false };
+        const byId = new Map(state.records.map(r => [r.id, r]));
+        return { list: state.mini.search(state.q).map(h => byId.get(h.id)).filter(Boolean), ranked: true };
       }
 
       function fail(message, hint) {
@@ -1279,15 +1331,15 @@
         });
       }
 
-      // Counts for each filter reflect every *other* filter, so options show how many results
-      // you'd get by adding them. A `matchAll` filter also counts its own selections, since
+      // Counts for each filter reflect the search plus every *other* filter, so options show how
+      // many results you'd get by adding them. A `matchAll` filter also counts its own selections, since
       // adding an option there narrows the results.
-      function facetCounts() {
+      function facetCounts(base) {
         const out = {};
         CONFIG.filters.forEach(f => {
           const counts = new Map();
           if (f.field === "product") CONFIG.products.forEach(p => counts.set(p.label, 0));
-          state.records.filter(r => passes(r, f.matchAll ? null : f.field))
+          base.filter(r => passes(r, f.matchAll ? null : f.field))
             .forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
           state.records.forEach(r => valuesOf(r, f.field).forEach(v => { if (!counts.has(v)) counts.set(v, 0); }));
           state.active[f.field].forEach(v => { if (!counts.has(v)) counts.set(v, 0); });
@@ -1311,13 +1363,13 @@
         return out;
       }
 
-      function renderFacets() {
+      function renderFacets(base) {
         const el = $("facets");
         if (state.screen === "loading") { el.innerHTML = `<div class="facets-loading unknown">Loading filters…</div>`; return; }
         if (state.screen === "error") { el.innerHTML = ""; return; }
 
         const focusedId = document.activeElement && el.contains(document.activeElement) ? document.activeElement.id : null;
-        const counts = facetCounts();
+        const counts = facetCounts(base);
 
         el.innerHTML = CONFIG.filters.map(f => {
           const opts = counts[f.field];
@@ -1385,7 +1437,8 @@
       function render() {
         const panel = $("panel");
         $("warnings").innerHTML = state.warnings.map(w => `<div class="callout warning">${ic("alert-triangle", 16)}<div>${esc(w)}</div></div>`).join("");
-        renderFacets();
+        const { list: base, ranked } = state.screen === "list" ? searched() : { list: [], ranked: false };
+        renderFacets(base);
 
         if (state.screen === "loading") {
           panel.innerHTML = `<div role="status"><span class="sr-only">Loading datasets from the Colorado Information Marketplace…</span><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div></div>`;
@@ -1399,22 +1452,24 @@
           return;
         }
 
-        const list = state.records.filter(r => passes(r));
+        const list = base.filter(r => passes(r));
         state.lastCount = list.length;
         const body = list.length
           ? `<ul class="results">${list.map(card).join("")}</ul>`
           : state.records.length
-            ? `<div class="msg"><strong>No results</strong>No datasets match all of these filters. Remove a filter to see more.</div>`
+            ? `<div class="msg"><strong>No results</strong>Try fewer words, check spelling, or remove a filter.</div>`
             : `<div class="msg"><strong>No datasets to show</strong>Add dataset IDs to <code>CIM_DATASET_IDS</code> in <code>.env</code> and restart <code>server.py</code>.</div>`;
-        panel.innerHTML = `<div class="results-meta" id="results-meta" tabindex="-1"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, sorted alphabetically</span>${activeChips()}</div>${body}`;
+        panel.innerHTML = `<div class="results-meta" id="results-meta" tabindex="-1"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, ${ranked ? "sorted by relevance" : "sorted alphabetically"}</span>${activeChips()}</div>${body}`;
 
         panel.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
-          state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); $("results-meta").focus();
+          state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); focusAfterChip();
         });
         panel.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => {
-          Object.values(state.active).forEach(s => s.clear()); render(); announce(); $("results-meta").focus();
+          Object.values(state.active).forEach(s => s.clear()); render(); announce(); focusAfterChip();
         });
       }
+
+      function focusAfterChip() { ($("q").disabled ? $("results-meta") : $("q")).focus(); }
 
       // Debounced so screen readers hear the settled count, not every click.
       let liveTimer;
@@ -1422,8 +1477,9 @@
         clearTimeout(liveTimer);
         liveTimer = setTimeout(() => {
           const nFilters = Object.values(state.active).reduce((a, s) => a + s.size, 0);
-          $("live").textContent = `${plural(state.lastCount || 0, "result")}${nFilters ? `, ${plural(nFilters, "filter")} applied` : ""}.`;
-        }, 400);
+          const q = state.q.trim();
+          $("live").textContent = `${plural(state.lastCount || 0, "result")}${q ? ` for “${q}”` : ""}${nFilters ? `, ${plural(nFilters, "filter")} applied` : ""}.`;
+        }, 600);
       }
 
       /* ---------- Request-data modal (same as the original explorer) ---------- */
@@ -1458,6 +1514,21 @@
       $("requestModalClose").addEventListener("click", closeRequestModal);
       $("requestModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeRequestModal(); });
       $("footerRequest").addEventListener("click", () => openRequestModal($("footerRequest")));
+
+      let typeTimer;
+      $("q").addEventListener("input", e => {
+        $("clearQ").hidden = !e.target.value;
+        clearTimeout(typeTimer);
+        typeTimer = setTimeout(() => {
+          state.q = e.target.value;
+          if (state.screen === "list") { render(); announce(); }
+        }, 120);
+      });
+      $("clearQ").addEventListener("click", () => {
+        $("q").value = "";
+        $("q").dispatchEvent(new Event("input"));
+        $("q").focus();
+      });
 
       load();
     })();
