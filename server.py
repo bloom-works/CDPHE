@@ -31,8 +31,8 @@ TIMEOUT_SECONDS = 15
 DATASET_ID = re.compile(r"^[a-z0-9]{4}-[a-z0-9]{4}$")
 RAW_ROUTE = re.compile(r"^/api/raw/([^/]+)/?$")
 
-# Socrata metadata fields passed to the page. Everything else (such as sharing
-# grants, which can include people's email addresses) stays on the server.
+# Socrata metadata passed to the page: these top-level fields, plus all public and private
+# custom fields (see trim). Sharing and permission details stay on the server.
 VIEW_FIELDS = ["id", "name", "description", "category", "attribution", "tags",
                "assetType", "attributionLink", "rowsUpdatedAt", "viewLastModified"]
 
@@ -87,6 +87,13 @@ def trim(view):
     # Where an external-link asset points.
     if metadata.get("accessPoints"):
         out["access_points"] = metadata["accessPoints"]
+    # Private fields are only in the response because the API key can see them. The page can
+    # use them locally, but a public deployment should pass only the ones meant to be public.
+    private = view.get("privateMetadata") or {}
+    if private.get("custom_fields"):
+        out["private_custom_fields"] = private["custom_fields"]
+    if private.get("contactEmail"):
+        out["private_contact_email"] = private["contactEmail"]
     return out
 
 

@@ -1047,12 +1047,18 @@
           { tag: "summary report", key: "summary_report", label: "Summary report", linkLabel: "Open report" }
         ],
 
-        // Fields read from Socrata custom metadata, matched by field name in any fieldset.
-        // Case doesn't matter. The browser console lists every custom field each dataset has.
+        // Fields read from Socrata custom metadata, matched by field name in any fieldset, public
+        // fields first, then private ones. Case doesn't matter. The browser console lists every
+        // custom field each dataset has, and whether it's public or private.
         customFields: {
           update_frequency: "Expected Update Frequency",
           oldest_record: "Oldest Record in Dataset",
-          newest_record: "Newest Record in Dataset"
+          newest_record: "Newest Record in Dataset",
+          contact_name: "Contact Name",
+          contact_email: "Contact Email",
+          documentation: "Technical Documentation",
+          related_ids: "Related Datasets",   // private in the Marketplace
+          privacy: "Privacy and Confidentiality" // private in the Marketplace
         },
 
         // Filters, in display order. Within a filter, options combine with OR (or with AND when
@@ -1073,12 +1079,18 @@
           geographic_level: { label: "Geographic level", values: { state: "State", region: "Region", county: "County", "census tract": "Census tract" } },
           population: { label: "Population", values: { infants: "Infants", children: "Children", adults: "Adults", "older adults": "Older adults" } },
           years_covered: { label: "Years covered" },
+          last_updated: { label: "Last updated" },
+          contact: { label: "Contact" },
+          documentation: { label: "Documentation" },
+          related_ids: { label: "Related data" },
+          privacy: { label: "Privacy and confidentiality" },
           update_frequency: {
             label: "Update frequency",
             values: { weekly: "Weekly", monthly: "Monthly", quarterly: "Quarterly", annually: "Every year", never: "One-time release" }
           }
         },
         cardFields: ["geographic_level", "years_covered", "update_frequency"],
+        detailTiles: ["population", "geographic_level", "years_covered", "last_updated", "update_frequency", "contact"],
 
         fetchTimeoutMs: 15000
       };
@@ -1090,6 +1102,9 @@
         "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
         "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
         x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
+        "arrow-left": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
+        book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
+        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
         dataset: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9.5" x2="21" y2="9.5"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="9.5" x2="9" y2="20"></line>',
         dashboard: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="8" y1="16" x2="8" y2="12"></line><line x1="12" y1="16" x2="12" y2="8"></line><line x1="16" y1="16" x2="16" y2="10"></line>',
         summary_report: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><polyline points="14 3 14 8 19 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line>'
@@ -1118,16 +1133,27 @@
         return runs.map(([a, b]) => a === b ? String(a) : `${a}–${b}`).join(", ");
       }
       function fieldText(rec, field) {
+        if (field === "contact") return rec.contact_email || null;
         const v = rec[field];
         if (isBlank(v)) return null;
         if (field === "years_covered") return fmtYears(v) || null;
         return Array.isArray(v) ? v.join(", ") : String(v);
       }
       const valueHtml = text => text == null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);
+      const isEmail = s => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(String(s).trim());
+      function extLink(url, label) {
+        return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ${ic("external-link", 12, "-1px")}<span class="sr-only"> (opens in a new window)</span></a>`;
+      }
+      // Socrata timestamps are seconds since 1970.
+      function fmtEpoch(sec) {
+        if (typeof sec !== "number" || !sec) return null;
+        return new Date(sec * 1000).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+      }
 
       /* ---------- State ---------- */
       const state = {
         records: [], warnings: [], screen: "loading", message: "", hint: "", q: "", mini: null,
+        view: null, returnFocus: null, // view is { id, depth } while a detail page is open
         active: Object.fromEntries(CONFIG.filters.map(f => [f.field, new Set()])),
         expanded: {}, issues: []
       };
@@ -1149,13 +1175,15 @@
         return data;
       }
 
-      // Finds a custom metadata field by name in any fieldset.
+      // Finds a custom metadata field by name in any fieldset, checking public fields before private ones.
       function customValue(view, name) {
         if (!name) return null;
         const want = name.toLowerCase();
-        for (const set of Object.values(view.custom_fields || {})) {
-          for (const [k, v] of Object.entries(set || {})) {
-            if (k.toLowerCase() === want && !isBlank(v)) return v;
+        for (const fieldsets of [view.custom_fields, view.private_custom_fields]) {
+          for (const set of Object.values(fieldsets || {})) {
+            for (const [k, v] of Object.entries(set || {})) {
+              if (k.toLowerCase() === want && !isBlank(v)) return v;
+            }
           }
         }
         return null;
@@ -1211,6 +1239,18 @@
         return apUrls.map(safeUrl).find(Boolean) || safeUrl(view.attributionLink) || cimPage;
       }
 
+      // "rnx5-t58z, 2q5a-45yw, rnx5-t58z" → ["rnx5-t58z", "2q5a-45yw"], skipping the record itself.
+      function parseIds(value, selfId) {
+        const ids = String(value || "").toLowerCase().match(/[a-z0-9]{4}-[a-z0-9]{4}/g) || [];
+        return uniq(ids).filter(id => id !== selfId);
+      }
+
+      function contactFor(view) {
+        const email = customValue(view, CONFIG.customFields.contact_email);
+        if (email) return { contact_name: customValue(view, CONFIG.customFields.contact_name), contact_email: email };
+        return { contact_name: null, contact_email: view.private_contact_email || null };
+      }
+
       function toRecord(view, domain) {
         const name = view.name || view.id;
         const tags = parseTags(view.tags);
@@ -1232,6 +1272,12 @@
           keywords: tags.keywords,
           years_covered: yearsBetween(customValue(view, CONFIG.customFields.oldest_record), customValue(view, CONFIG.customFields.newest_record), name),
           update_frequency: freq ? displayValues("update_frequency", [freq], name)[0] : null,
+          last_updated: fmtEpoch(view.rowsUpdatedAt || view.viewLastModified),
+          // The Point of Contact; if it has no email, the dataset's private contact email.
+          ...contactFor(view),
+          privacy: customValue(view, CONFIG.customFields.privacy),
+          documentation: safeUrl(customValue(view, CONFIG.customFields.documentation)),
+          related_ids: parseIds(customValue(view, CONFIG.customFields.related_ids), view.id),
           link: linkFor(view, domain),
           _product: product
         };
@@ -1242,8 +1288,9 @@
         console.groupCollapsed(`CIM metadata for ${plural(views.length, "dataset")}`);
         views.forEach(v => {
           console.log(`${v.id}: ${v.name}`, v);
-          const rows = Object.entries(v.custom_fields || {}).flatMap(([set, fields]) =>
-            Object.entries(fields || {}).map(([field, value]) => ({ fieldset: set, field, value })));
+          const rows = [["public", v.custom_fields], ["private", v.private_custom_fields]].flatMap(([visibility, fieldsets]) =>
+            Object.entries(fieldsets || {}).flatMap(([set, fields]) =>
+              Object.entries(fields || {}).map(([field, value]) => ({ visibility, fieldset: set, field, value }))));
           if (rows.length) console.table(rows); else console.log("  No custom metadata fields.");
         });
         console.groupEnd();
@@ -1277,7 +1324,15 @@
         logMetadata(data.datasets);
         buildIndex();
         state.screen = "list";
+        // A pasted or bookmarked detail link gets a results entry behind it, so "Back to results" stays in the app.
+        if (idFromHash() && !(history.state && history.state.depth)) {
+          const hash = location.hash;
+          history.replaceState(null, "", location.pathname + location.search);
+          history.pushState({ depth: 1 }, "", hash);
+        }
+        state.view = viewFromUrl();
         render(); announce();
+        if (state.view) focusView();
       }
 
       /* ---------- Search ---------- */
@@ -1392,6 +1447,7 @@
         el.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", e => {
           const { fk, fv } = e.target.dataset;
           e.target.checked ? state.active[fk].add(fv) : state.active[fk].delete(fv);
+          leaveDetail();
           render(); announce();
         }));
         el.querySelectorAll("[data-more]").forEach(b => b.addEventListener("click", () => {
@@ -1416,7 +1472,7 @@
         return `<li class="result">
       <div class="r-head">
         <span class="type-icon">${ic(rec._product.key, 18)}</span>
-        <h3><span class="title-text">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</span><span class="badge">${esc(rec._product.label)}</span></h3>
+        <h3><button type="button" class="title-btn" data-open="${esc(rec.id)}">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</button><span class="badge">${esc(rec._product.label)}</span></h3>
       </div>
       <div><p class="desc">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
       ${rec.topics.length ? `<div class="r-topics">
@@ -1427,11 +1483,87 @@
       <div class="r-foot">
         <dl class="facts">${facts}</dl>
         <div class="actions">
-          <button type="button" class="btn small disabled" disabled>View details<span class="sr-only"> for ${esc(name)} (not available yet)</span></button>
+          <button type="button" class="btn small" data-open="${esc(rec.id)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
           <a class="btn small" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>
         </div>
       </div>
     </li>`;
+      }
+
+      function detail(rec) {
+        const byId = new Map(state.records.map(r => [r.id, r]));
+        const facts = CONFIG.detailTiles.map(f => {
+          const text = fieldText(rec, f);
+          const label = esc(fieldLabel(f));
+          // The contact fact spans two columns and has a copy button on the right.
+          if (f === "contact") {
+            const who = rec.contact_name ? `${esc(rec.contact_name)}<br>` : "";
+            const email = text == null ? valueHtml(text) : (isEmail(text) ? `<a href="mailto:${esc(text.trim())}">${esc(text)}</a>` : esc(text));
+            return `<div class="fact wide"><dt>${label}</dt><dd class="contact-dd"><span>${who}${email}</span>${text == null ? "" : `<button type="button" class="btn small" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`}</dd></div>`;
+          }
+          return `<div class="fact"><dt>${label}</dt><dd>${valueHtml(text)}</dd></div>`;
+        }).join("");
+
+        const sections = [];
+        sections.push(`<div class="d-sec"><h3 id="dt-topics">Topics</h3>${rec.topics.length ? `<ul class="tags" aria-labelledby="dt-topics">${rec.topics.map(t => `<li class="tag-pill">${esc(t)}</li>`).join("")}</ul>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("documentation"))}</h3>${rec.documentation ? `${ic("book", 13, "-2px")} ${extLink(rec.documentation, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        const related = rec.related_ids.map(id => {
+          const other = byId.get(id);
+          return other
+            ? `<li><button type="button" class="link-btn" data-open="${esc(other.id)}">${esc(other.name || id)}</button></li>`
+            : `<li><span class="unknown">${esc(id)} (not in this catalog)</span></li>`;
+        }).join("");
+        sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("related_ids"))}</h3>${related ? `<ul class="links">${related}</ul>` : `<span class="unknown">None listed</span>`}</div>`);
+        if (rec.privacy) sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("privacy"))}</h3><p class="description">${esc(rec.privacy)}</p></div>`);
+
+        return `<article class="detail" aria-labelledby="detail-h">
+      <div class="d-head">
+        ${backButton()}
+        <div class="d-title">
+          <span class="type-icon">${ic(rec._product.key, 20)}</span>
+          <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}<span class="badge">${esc(rec._product.label)}</span></h2>
+        </div>
+      </div>
+      <div class="d-facts-wrap"><dl class="d-facts">${facts}</dl></div>
+      <div><p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${sections.join("")}
+      <div class="d-foot">
+        ${rec.link
+            ? `<a class="btn primary" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}<span class="sr-only"> (opens in a new window)</span></a>`
+            : `<span class="btn disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
+        <button type="button" class="link-btn" data-request="1">Request more data</button>
+      </div>
+    </article>`;
+      }
+
+      // Each detail page gets its own history entry at #/d/<dataset-id>, so the browser back button
+      // steps through them. `depth` counts detail pages since the results list, which sets the back label.
+      const hashFor = id => `#/d/${encodeURIComponent(id)}`;
+      function idFromHash() {
+        const m = location.hash.match(/^#\/d\/([^/]+)$/);
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+      function viewFromUrl() {
+        const id = idFromHash();
+        return id ? { id, depth: (history.state && history.state.depth) || 1 } : null;
+      }
+      function backButton() {
+        return `<button type="button" class="btn small" data-back="1">${ic("arrow-left", 14)} ${state.view && state.view.depth > 1 ? "Back" : "Back to results"}</button>`;
+      }
+      // Leaving a detail page by searching or filtering adds a results entry, so back returns to the detail page.
+      function leaveDetail() {
+        if (state.view) history.pushState(null, "", location.pathname + location.search);
+        state.view = null;
+      }
+      function focusView() {
+        if (state.view) {
+          const h = $("detail-h");
+          if (h) h.focus();
+          window.scrollTo({ top: $("panel").getBoundingClientRect().top + window.scrollY - 24 });
+        } else {
+          const btn = state.returnFocus && $("panel").querySelector(`.actions [data-open="${CSS.escape(state.returnFocus)}"]`);
+          (btn || ($("q").disabled ? $("results-meta") : $("q"))).focus();
+        }
       }
 
       function render() {
@@ -1454,6 +1586,14 @@
 
         const list = base.filter(r => passes(r));
         state.lastCount = list.length;
+
+        if (state.view) {
+          const rec = state.records.find(r => r.id === state.view.id);
+          panel.innerHTML = rec ? detail(rec) : `<div class="msg"><strong>That dataset isn't in this catalog.</strong>${backButton()}</div>`;
+          bind();
+          return;
+        }
+
         const body = list.length
           ? `<ul class="results">${list.map(card).join("")}</ul>`
           : state.records.length
@@ -1461,12 +1601,48 @@
             : `<div class="msg"><strong>No datasets to show</strong>Add dataset IDs to <code>CIM_DATASET_IDS</code> in <code>.env</code> and restart <code>server.py</code>.</div>`;
         panel.innerHTML = `<div class="results-meta" id="results-meta" tabindex="-1"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, ${ranked ? "sorted by relevance" : "sorted alphabetically"}</span>${activeChips()}</div>${body}`;
 
-        panel.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
+        bind();
+      }
+
+      function bind() {
+        const p = $("panel");
+        p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+          if (!state.view) state.returnFocus = b.dataset.open;
+          const depth = state.view ? state.view.depth + 1 : 1;
+          history.pushState({ depth }, "", hashFor(b.dataset.open));
+          state.view = { id: b.dataset.open, depth };
+          render(); focusView();
+        });
+        p.querySelectorAll("[data-back]").forEach(b => b.onclick = () => history.back());
+        p.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
           state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); focusAfterChip();
         });
-        panel.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => {
+        p.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => {
           Object.values(state.active).forEach(s => s.clear()); render(); announce(); focusAfterChip();
         });
+        p.querySelectorAll("[data-request]").forEach(b => b.onclick = () => openRequestModal(b));
+        p.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => copyText(b));
+      }
+
+      // Copies a button's `data-copy` value, briefly shows "Copied", and tells screen readers.
+      async function copyText(btn) {
+        let ok = false;
+        try {
+          // Time out so a stalled clipboard request falls back instead of doing nothing.
+          await Promise.race([navigator.clipboard.writeText(btn.dataset.copy), new Promise((_, no) => setTimeout(no, 1000))]);
+          ok = true;
+        } catch (e) {
+          // Fallback for browsers that block or stall the async clipboard API.
+          const ta = document.createElement("textarea");
+          ta.value = btn.dataset.copy; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+          ta.remove(); btn.focus();
+        }
+        btn.textContent = ok ? "Copied" : "Couldn't copy";
+        $("live").textContent = ok ? "Email address copied." : "Couldn't copy the email address. Select it and copy it instead.";
+        clearTimeout(btn._reset);
+        btn._reset = setTimeout(() => { btn.textContent = "Copy"; }, 2000);
       }
 
       function focusAfterChip() { ($("q").disabled ? $("results-meta") : $("q")).focus(); }
@@ -1521,13 +1697,20 @@
         clearTimeout(typeTimer);
         typeTimer = setTimeout(() => {
           state.q = e.target.value;
-          if (state.screen === "list") { render(); announce(); }
+          if (state.screen === "list") { leaveDetail(); render(); announce(); }
         }, 120);
       });
       $("clearQ").addEventListener("click", () => {
         $("q").value = "";
         $("q").dispatchEvent(new Event("input"));
         $("q").focus();
+      });
+
+      window.addEventListener("popstate", () => {
+        // While loading (or after a failed load), load() reads the URL when it finishes.
+        if (state.screen !== "list") return;
+        state.view = viewFromUrl();
+        render(); focusView();
       });
 
       load();
