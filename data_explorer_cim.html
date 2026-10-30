@@ -1102,6 +1102,7 @@
         "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
         "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
         x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
+        download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>',
         "arrow-left": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
         book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
         link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
@@ -1279,6 +1280,9 @@
           documentation: safeUrl(customValue(view, CONFIG.customFields.documentation)),
           related_ids: parseIds(customValue(view, CONFIG.customFields.related_ids), view.id),
           link: linkFor(view, domain),
+          // Hosted data (rows stored in Socrata) downloads as a CSV through server.py.
+          download: view.assetType === "dataset" ? `/api/csv/${encodeURIComponent(view.id)}` : null,
+          downloadName: `${slug(name) || view.id}.csv`,
           _product: product
         };
       }
@@ -1464,6 +1468,15 @@
       }
 
       /* ---------- Rendering ---------- */
+      // Hosted data downloads as a CSV; everything else links out.
+      function primaryAction(rec, cls, iconSize) {
+        const name = rec.name || "Untitled";
+        if (rec.download) {
+          return `<a class="${cls}" href="${esc(rec.download)}" download="${esc(rec.downloadName)}">Download CSV ${ic("download", iconSize)}<span class="sr-only"> of ${esc(name)}</span></a>`;
+        }
+        return `<a class="${cls}" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", iconSize)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>`;
+      }
+
       function card(rec) {
         const name = rec.name || "Untitled";
         const topicsId = `t-${slug(rec.id)}`;
@@ -1484,7 +1497,7 @@
         <dl class="facts">${facts}</dl>
         <div class="actions">
           <button type="button" class="btn small" data-open="${esc(rec.id)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
-          <a class="btn small" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 13)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>
+          ${primaryAction(rec, "btn small", 13)}
         </div>
       </div>
     </li>`;
@@ -1528,8 +1541,8 @@
       <div><p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
       ${sections.join("")}
       <div class="d-foot">
-        ${rec.link
-            ? `<a class="btn primary" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", 14)}<span class="sr-only"> (opens in a new window)</span></a>`
+        ${rec.download || rec.link
+            ? primaryAction(rec, "btn primary", 14)
             : `<span class="btn disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
         <button type="button" class="link-btn" data-request="1">Request more data</button>
       </div>

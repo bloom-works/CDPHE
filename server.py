@@ -8,6 +8,7 @@ origin, there's no CORS.
 
     GET /api/datasets       Trimmed metadata for the datasets in CIM_DATASET_IDS (used by the page)
     GET /api/raw/<id>       Socrata's full, untrimmed response for one dataset, for inspection
+    GET /api/csv/<id>       The rows of one dataset in CIM_DATASET_IDS, as a CSV download
 
 LOCAL DEMO ONLY. Python standard library only; nothing to install.
 
@@ -30,6 +31,10 @@ ENV_FILE = ROOT / ".env"
 TIMEOUT_SECONDS = 15
 DATASET_ID = re.compile(r"^[a-z0-9]{4}-[a-z0-9]{4}$")
 RAW_ROUTE = re.compile(r"^/api/raw/([^/]+)/?$")
+CSV_ROUTE = re.compile(r"^/api/csv/([^/]+)/?$")
+CSV_TIMEOUT_SECONDS = 120   # exports of large datasets take a while
+CHUNK = 64 * 1024
+UTF8_BOM = b"\xef\xbb\xbf"  # lets Excel read characters like en dashes correctly
 
 # Socrata metadata passed to the page: these top-level fields, plus all public and private
 # custom fields (see trim). Sharing and permission details stay on the server.
@@ -133,6 +138,22 @@ def fetch_raw(dataset_id):
         return status, {"status": status, "body": body.decode("utf-8", "replace")}
 
 
+def open_export(dataset_id):
+    """Opens Socrata's CSV export for a dataset. Returns the open response, or raises HTTPError/URLError.
+
+    Tries the SODA3 export endpoint first, then the older rows.csv endpoint if SODA3 rejects the request.
+    """
+    headers = {**HEADERS, "Accept": "text/csv"}
+    urls = [f"https://{DOMAIN}/api/v3/views/{dataset_id}/export.csv",
+            f"https://{DOMAIN}/api/views/{dataset_id}/rows.csv?accessType=DOWNLOAD"]
+    for i, url in enumerate(urls):
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=CSV_TIMEOUT_SECONDS)
+        except urllib.error.HTTPError as e:
+            if i == len(urls) - 1 or e.code not in (400, 404, 405):
+                raise
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -149,6 +170,9 @@ class Handler(SimpleHTTPRequestHandler):
         raw = RAW_ROUTE.match(path)
         if raw:
             return self.send_raw(unquote(raw.group(1)))
+        csv = CSV_ROUTE.match(path)
+        if csv:
+            return self.send_csv(unquote(csv.group(1)))
         if self.is_hidden():
             return self.send_error(404, "File not found")
         super().do_GET()
@@ -184,6 +208,34 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json(400, {"error": f"'{dataset_id}' isn't a Socrata dataset ID (xxxx-xxxx)."}, indent=2)
         status, data = fetch_raw(dataset_id)
         self.send_json(status, data, indent=2)
+
+    def send_csv(self, dataset_id):
+        # Only the datasets this explorer lists, not everything the API key can see.
+        if dataset_id not in DATASET_IDS:
+            return self.send_json(404, {"error": f"'{dataset_id}' isn't one of the datasets in CIM_DATASET_IDS."}, indent=2)
+        try:
+            res = open_export(dataset_id)
+        except urllib.error.HTTPError as e:
+            return self.send_json(e.code if e.code in (401, 403, 404) else 502,
+                                  {"error": f"{DOMAIN} returned HTTP {e.code} for the export of {dataset_id}."}, indent=2)
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            reason = getattr(e, "reason", None) or e
+            return self.send_json(502, {"error": f"couldn't reach {DOMAIN} ({reason})"}, indent=2)
+
+        # Stream the file through rather than holding it all in memory.
+        with res:
+            chunk = res.read(CHUNK)
+            self.send_response(200)
+            self.send_header("Content-Type", "text/csv; charset=utf-8")
+            # No filename here, so the page's download="…" attribute names the file.
+            self.send_header("Content-Disposition", "attachment")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            if not chunk.startswith(UTF8_BOM):
+                self.wfile.write(UTF8_BOM)
+            while chunk:
+                self.wfile.write(chunk)
+                chunk = res.read(CHUNK)
 
 
 def main():
