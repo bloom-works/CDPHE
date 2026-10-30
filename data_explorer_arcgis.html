@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDPHE data explorer (ArcGIS) · prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Gray-scale prototype palette, plus one darkened green accent (7.5:1 on white). */
+    :root {
+      --surface-1: #ffffff;
+      --surface-2: #F4F6F7;
+      --text-primary: #1C1F20;
+      --text-secondary: #4e5758;
+      --text-muted: #5a6366;
+      --border: #DDE1E2;
+      --border-strong: #B7BEC0;
+      --charcoal: #33383A;
+      --slate: #6B7477;
+      --on-charcoal-muted: #C7CBCD;
+      --neutral-tint: #EDEFF0;
+      --accent: #24603A;
+      --warning: #7A5F1C;
+      --warning-tint: #F7F1DE;
+      --danger: #A03E3E;
+      --danger-tint: #F5E7E7;
+      --radius: 4px;
+      --font: "Open Sans", "Trebuchet MS", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 2px;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    /* Masthead — matches Prototype 1 */
+    .masthead {
+      background: var(--charcoal);
+      border-radius: 8px 8px 0 0;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 30px;
+      background: var(--slate);
+      border-radius: 0 0 13px 13px;
+      position: relative;
+      flex: none;
+    }
+
+    .logo-mark::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom: 11px solid var(--charcoal);
+    }
+
+    .wordmark {
+      line-height: 1.1;
+    }
+
+    .wordmark .state {
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .wordmark .dept {
+      color: var(--on-charcoal-muted);
+      font-size: 12px;
+    }
+
+    .masthead .proto {
+      margin-left: auto;
+      color: var(--on-charcoal-muted);
+      font-size: 14px;
+    }
+
+    .shell {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 28px 28px 32px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 6px;
+      letter-spacing: -0.2px;
+    }
+
+    .hint {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 14px;
+    }
+
+    /* Search */
+    .searchbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 54px;
+      padding: 0 8px 0 20px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+    }
+
+    .searchbar:focus-within {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-color: var(--accent);
+    }
+
+    .searchbar svg {
+      color: var(--text-secondary);
+    }
+
+    .searchbar input {
+      flex: 1;
+      min-width: 0;
+      height: 52px;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+    }
+
+    .searchbar input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .clear-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clear-btn:hover {
+      background: var(--neutral-tint);
+    }
+
+    .clear-btn[hidden] {
+      display: none;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding: 22px 16px 26px;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .masthead .proto {
+        margin-left: 0;
+      }
+    }
+
+    /* Filters */
+    .filters {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      align-self: start;
+    }
+
+    .filters-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .facets-loading {
+      padding: 14px 16px;
+    }
+
+    fieldset.facet {
+      border: none;
+      margin: 0;
+      min-width: 0;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    fieldset.facet:last-child {
+      border-bottom: none;
+    }
+
+    fieldset.facet>legend {
+      float: left;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0;
+      margin: 0 0 6px;
+    }
+
+    fieldset.facet>legend+* {
+      clear: both;
+    }
+
+    .facet label {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      min-height: 30px;
+      padding: 4px 0;
+      font-size: 14px;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .facet input[type=checkbox] {
+      accent-color: var(--charcoal);
+      width: 17px;
+      height: 17px;
+      margin: 1px 0 0;
+      flex: none;
+    }
+
+    .facet .count {
+      margin-left: auto;
+      padding-left: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .facet label.zero {
+      color: var(--text-muted);
+    }
+
+    fieldset.facet-group {
+      border: none;
+      border-left: 2px solid var(--border);
+      margin: 4px 0 12px;
+      padding: 0 0 0 10px;
+      min-width: 0;
+    }
+
+    fieldset.facet-group:last-child {
+      margin-bottom: 2px;
+    }
+
+    fieldset.facet-group legend {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0;
+      margin-bottom: 2px;
+    }
+
+    .link-btn {
+      border: none;
+      background: none;
+      padding: 4px 0;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    /* Results header */
+    .results-meta {
+      outline-offset: 4px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      min-height: 32px;
+      margin-bottom: 12px;
+    }
+
+    .results-meta strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface-1);
+      font-size: 13px;
+    }
+
+    .chip:hover {
+      background: var(--neutral-tint);
+    }
+
+    ul.results {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Result card: sections divided by rules */
+    .result {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    .result>* {
+      padding: 12px 18px;
+    }
+
+    .result>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .r-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 14px;
+      padding-bottom: 12px;
+    }
+
+    .type-icon {
+      color: var(--text-secondary);
+      margin-top: 2px;
+      flex: none;
+    }
+
+    .r-head h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .short-name {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .title-btn {
+      border: none;
+      background: none;
+      padding: 0;
+      text-align: left;
+      font: inherit;
+      color: var(--text-primary);
+    }
+
+    .title-btn:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      vertical-align: 2px;
+      margin-left: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--neutral-tint);
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .r-topics {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 13px;
+    }
+
+    .r-topics .label {
+      color: var(--text-muted);
+    }
+
+    ul.tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      font-size: 12.5px;
+      line-height: 1.4;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: var(--surface-1);
+    }
+
+    .more-topics {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .r-foot {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      padding-top: 12px;
+      padding-bottom: 14px;
+    }
+
+    dl.facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 32px;
+      margin: 0;
+    }
+
+    dl.facts dt {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 1px;
+    }
+
+    dl.facts dd {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Missing metadata — grayed, but still AA contrast */
+    .unknown {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--charcoal);
+      background: var(--surface-1);
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--surface-2);
+    }
+
+    .btn.primary {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #262a2b;
+    }
+
+    .btn.small {
+      min-height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    .btn.disabled {
+      border-color: var(--border-strong);
+      border-style: dashed;
+      color: var(--text-muted);
+      background: transparent;
+      cursor: default;
+      font-weight: 400;
+    }
+
+    /* Detail view: same panel style as the cards */
+    .detail {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .detail>* {
+      padding: 16px 20px;
+    }
+
+    .detail>*+* {
+      border-top: 1px solid var(--border);
+    }
+
+    .d-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px 14px;
+      flex-wrap: wrap;
+    }
+
+    .d-head .btn {
+      flex: none;
+    }
+
+    .d-head .type-icon {
+      display: none;
+    }
+
+    .d-title {
+      display: flex;
+      gap: 10px;
+      flex: 1;
+      min-width: 240px;
+      padding-top: 5px;
+    }
+
+    .d-title h2 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .d-title h2:focus-visible {
+      outline-offset: 4px;
+    }
+
+    .d-facts-wrap {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    dl.d-facts {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+
+    .fact {
+      padding: 12px 20px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 0 -1px -1px 0;
+    }
+
+    .fact.wide {
+      grid-column: span 2;
+    }
+
+    .contact-dd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .contact-dd .btn {
+      margin-top: -20px;
+    }
+
+    @media (max-width: 420px) {
+      .fact.wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .fact dt {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .fact dd {
+      margin: 0;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .fact dt svg {
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    /* "No longer updated" stands out from the other facts. */
+    .fact.is-warning {
+      background: var(--warning-tint);
+    }
+
+    .fact.is-warning dt,
+    .fact.is-warning dd {
+      color: var(--warning);
+    }
+
+    .fact.is-warning dd {
+      font-weight: 600;
+    }
+
+    .successor {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--neutral-tint);
+      box-shadow: inset 4px 0 0 var(--charcoal);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .successor svg {
+      margin-top: 3px;
+    }
+
+    .successor p {
+      margin: 0;
+    }
+
+    .successor .link-btn {
+      padding: 0;
+      font-size: inherit;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 68ch;
+    }
+
+    .d-sec h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .d-sec ul.links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .d-sec .link-btn {
+      padding: 0;
+    }
+
+    .d-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* States */
+    .msg {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-1);
+      padding: 26px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .msg strong {
+      color: var(--text-primary);
+      font-weight: 600;
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .msg .btn {
+      margin-top: 8px;
+    }
+
+    .callout {
+      display: flex;
+      gap: 9px;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .callout svg {
+      margin-top: 2px;
+    }
+
+    .callout.warning {
+      background: var(--warning-tint);
+      color: var(--warning);
+    }
+
+    .callout.danger {
+      background: var(--danger-tint);
+      color: var(--danger);
+    }
+
+    .skeleton {
+      height: 180px;
+      border-radius: var(--radius);
+      background: linear-gradient(90deg, #EDEFF0 0%, #F7F8F8 50%, #EDEFF0 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: 200% 0;
+      }
+
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton {
+        animation: none;
+      }
+    }
+
+    code {
+      font-size: 13px;
+      background: var(--neutral-tint);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* Page footer */
+    .page-footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Request-data modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(28, 31, 32, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay[hidden] {
+      display: none;
+    }
+
+    .modal {
+      background: var(--surface-1);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 400px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .modal p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0 0 18px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ---------- CIM and ArcGIS versions ---------- */
+    button.btn.disabled[disabled] {
+      cursor: default;
+    }
+
+    .r-head h3 .title-text {
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; All prototypes</a>
+
+    <header class="masthead">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="wordmark">
+          <div class="state">COLORADO</div>
+          <div class="dept">Department of Public Health &amp; Environment</div>
+        </div>
+      </div>
+      <div class="proto">prototype</div>
+    </header>
+
+    <main class="shell">
+      <h1>Find Colorado public health data</h1>
+
+      <p class="hint" id="hint">Search dataset names and descriptions, like &ldquo;deaths by county&rdquo; or &ldquo;marriage.&rdquo;</p>
+      <form role="search" id="searchForm" onsubmit="return false;">
+        <div class="searchbar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true">
+            <circle cx="10" cy="10" r="7"></circle>
+            <line x1="21" y1="21" x2="15" y2="15"></line>
+          </svg>
+          <label for="q" class="sr-only">Search public health data</label>
+          <!-- Enabled once the items have loaded. -->
+          <input id="q" type="search" autocomplete="off" aria-describedby="hint" disabled />
+          <button type="button" class="clear-btn" id="clearQ" aria-label="Clear search" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="layout">
+        <aside class="filters" aria-labelledby="filters-h">
+          <h2 class="filters-title" id="filters-h">Filter results</h2>
+          <div id="facets"></div>
+        </aside>
+        <section aria-labelledby="results-h">
+          <h2 class="sr-only" id="results-h">Results</h2>
+          <div id="warnings"></div>
+          <div id="panel"></div>
+        </section>
+      </div>
+      <!-- Announces result counts to assistive tech. -->
+      <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+    </main>
+
+    <footer class="page-footer">
+      Can&rsquo;t find the data you need? <button type="button" class="link-btn" id="footerRequest">Request more
+        data</button>
+    </footer>
+  </div>
+
+  <div class="modal-overlay" id="requestModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle"
+      aria-describedby="requestModalDesc" tabindex="-1">
+      <h2 id="requestModalTitle">Data requests are coming soon</h2>
+      <p id="requestModalDesc">
+        In the future, you&rsquo;ll be able to request more data or different data formats. This feature isn&rsquo;t
+        ready yet.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn primary" id="requestModalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.js"
+    integrity="sha384-KuHy7eg9MqWBVrMXJC0WN6q4d3+KBquZ3Htgex79A4REptrDvGOXfAgZ0VOJ1Mdx"
+    crossorigin="anonymous"></script>
+  <script>
+    /*
+      CDPHE data explorer, ArcGIS version.
+
+      Reads item metadata from /api/arcgis/items, served by server.py, which calls ArcGIS Online
+      with a token it gets from the username and password in .env. No credentials or tokens
+      ever reach this page.
+
+      Search runs in the browser over the records already loaded, so typing never calls the API.
+
+      Run `python3 server.py` in this folder, then open
+      http://localhost:8000/data_explorer_arcgis.html
+    */
+    (function () {
+      /* ------------------------------------------------------------------
+         Configuration
+         ------------------------------------------------------------------ */
+      const CONFIG = {
+        // Served by server.py. The item IDs are set in .env as ARCGIS_ITEM_IDS.
+        apiUrl: "/api/arcgis/items",
+
+        // MiniSearch options. See https://lucaong.github.io/minisearch/
+        search: {
+          fields: ["name", "summary", "description"],
+          boost: { name: 3 },                           // a match in the name ranks higher
+          prefix: true,                                 // "marr" matches "marriage"
+          fuzzy: term => term.length > 4 ? 0.2 : false, // tolerate small typos on longer words
+          combineWith: "AND",                           // every meaningful word must match
+          stopWords: ["a", "an", "and", "the", "of", "for", "in", "on", "by", "to", "with", "or", "data", "about", "what", "is", "are", "how", "colorado"]
+        },
+
+        // Tags shaped "prefix-value" (like "geo-county") fill these fields.
+        // Tags without a known prefix are kept as keywords and don't appear in filters.
+        tagPrefixes: { topic: "topics", population: "population", geo: "geographic_level", type: "product" },
+
+        // Data products, keyed by the value of a record's "type-" tag, in display order.
+        products: [
+          { tag: "dataset", key: "dataset", label: "Dataset", linkLabel: "View data" },
+          { tag: "dashboard", key: "dashboard", label: "Dashboard", linkLabel: "Open dashboard" },
+          { tag: "summary report", key: "summary_report", label: "Summary report", linkLabel: "Open report" }
+        ],
+
+        // ArcGIS item types whose data is hosted in ArcGIS and downloads as a CSV through server.py.
+        // Every other type links out to the item's URL.
+        hostedTypes: ["Feature Service"],
+
+        // Filters, in display order. Within a filter, options combine with OR (or with AND when
+        // `matchAll` is set); across filters, with AND. `limit` shows the top N with a "show all" toggle.
+        // `fixedOrder` lists options in the order of the field's `values` map; `newestFirst` lists
+        // years newest first; `maxYear` hides later years; `alphabetical` lists options A to Z.
+        filters: [
+          { field: "product", label: "Data product", fixedOrder: true },
+          { field: "geographic_level", label: "Geographic level", fixedOrder: true },
+          { field: "population", label: "Population", matchAll: true, fixedOrder: true },
+          { field: "years_covered", label: "Years covered", limit: 5, matchAll: true, newestFirst: true, maxYear: new Date().getFullYear() },
+          { field: "topics", label: "Topic", limit: 8, alphabetical: true }
+        ],
+
+        // `values` maps stored values (lowercase) to the value shown and filtered on, in display order.
+        // Values not in the map are shown as-is and listed in the console, so typos are easy to spot.
+        fields: {
+          geographic_level: { label: "Geographic level", values: { state: "State", region: "Region", county: "County", "census tract": "Census tract" } },
+          population: { label: "Population", values: { infants: "Infants", children: "Children", adults: "Adults", "older adults": "Older adults" } },
+          years_covered: { label: "Years covered" },
+          last_updated: { label: "Last updated" },
+          contact: { label: "Contact" },
+          documentation: { label: "Documentation" },
+          privacy: { label: "Privacy and confidentiality" },
+          update_frequency: {
+            label: "Update frequency",
+            values: { weekly: "Weekly", monthly: "Monthly", quarterly: "Quarterly", annually: "Every year", never: "One-time release" }
+          }
+        },
+        cardFields: ["geographic_level", "years_covered", "update_frequency"],
+        detailTiles: ["population", "geographic_level", "years_covered", "last_updated", "update_frequency", "contact"],
+
+        fetchTimeoutMs: 15000
+      };
+
+      const UNKNOWN = "Unknown";
+
+      /* ---------- Icons (same set and style as the original explorer) ---------- */
+      const ICON_PATHS = {
+        "external-link": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>',
+        "alert-triangle": '<path d="M12 3l10 18H2L12 3z"></path><line x1="12" y1="9" x2="12" y2="14"></line><line x1="12" y1="17.5" x2="12" y2="17.51"></line>',
+        x: '<line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line>',
+        download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line>',
+        "arrow-left": '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="11 6 5 12 11 18"></polyline>',
+        book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8.5" y1="7" x2="16" y2="7"></line><line x1="8.5" y1="11" x2="16" y2="11"></line>',
+        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path>',
+        dataset: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9.5" x2="21" y2="9.5"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="9.5" x2="9" y2="20"></line>',
+        dashboard: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="8" y1="16" x2="8" y2="12"></line><line x1="12" y1="16" x2="12" y2="8"></line><line x1="16" y1="16" x2="16" y2="10"></line>',
+        summary_report: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><polyline points="14 3 14 8 19 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line>'
+      };
+      function ic(name, size, va) {
+        return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;${va ? " vertical-align:" + va + ";" : ""}" aria-hidden="true">${ICON_PATHS[name]}</svg>`;
+      }
+
+      /* ---------- Helpers ---------- */
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      const cap = s => { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
+      const isBlank = v => v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && v.length === 0);
+      const safeUrl = u => typeof u === "string" && /^https?:\/\//i.test(u.trim()) ? u.trim() : null;
+      const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+      const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const uniq = arr => [...new Set(arr)];
+      const $ = id => document.getElementById(id);
+      const STOP = new Set(CONFIG.search.stopWords);
+      const fieldLabel = f => (CONFIG.fields[f] && CONFIG.fields[f].label) || cap(f.replace(/_/g, " "));
+
+      // [2007,2008,2009,2012] → "2007–2009, 2012" so gaps stay visible.
+      function fmtYears(arr) {
+        const ys = uniq(arr.map(Number).filter(Number.isInteger)).sort((a, b) => a - b);
+        const runs = [];
+        ys.forEach(y => { const r = runs[runs.length - 1]; if (r && y === r[1] + 1) r[1] = y; else runs.push([y, y]); });
+        return runs.map(([a, b]) => a === b ? String(a) : `${a}–${b}`).join(", ");
+      }
+      function fieldText(rec, field) {
+        if (field === "contact") return rec.contact_email || null;
+        const v = rec[field];
+        if (isBlank(v)) return null;
+        if (field === "years_covered") return fmtYears(v) || null;
+        return Array.isArray(v) ? v.join(", ") : String(v);
+      }
+      const valueHtml = text => text == null ? `<span class="unknown">${UNKNOWN}</span>` : esc(text);
+      const isEmail = s => /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(String(s).trim());
+      function extLink(url, label) {
+        return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ${ic("external-link", 12, "-1px")}<span class="sr-only"> (opens in a new window)</span></a>`;
+      }
+      // ArcGIS timestamps are milliseconds since 1970.
+      function fmtEpoch(ms) {
+        if (typeof ms !== "number" || !ms) return null;
+        return new Date(ms).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+      }
+
+      /* ---------- State ---------- */
+      const state = {
+        records: [], warnings: [], screen: "loading", message: "", hint: "", q: "", mini: null,
+        view: null, returnFocus: null, // view is { id, depth } while a detail page is open
+        active: Object.fromEntries(CONFIG.filters.map(f => [f.field, new Set()])),
+        expanded: {}, issues: []
+      };
+
+      /* ---------- Data ---------- */
+      async function fetchCatalog() {
+        const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), CONFIG.fetchTimeoutMs);
+        let res;
+        try {
+          res = await fetch(CONFIG.apiUrl, { signal: ctrl.signal, cache: "no-store" });
+        } catch (e) {
+          if (e.name === "AbortError") throw new Error("The data took too long to load.");
+          throw new Error("The local server isn't responding. Check that server.py is still running.");
+        } finally { clearTimeout(t); }
+        if (res.status === 404) throw new Error(`${CONFIG.apiUrl} wasn't found. Start the page with python3 server.py rather than python3 -m http.server.`);
+        if (!res.ok) {
+          // server.py explains problems like missing credentials in an "error" field.
+          let detail = "";
+          try { detail = (await res.json()).error || ""; } catch (e) { /* not JSON */ }
+          throw new Error(detail || `${CONFIG.apiUrl} returned HTTP ${res.status}.`);
+        }
+        const data = await res.json();
+        if (!data || !Array.isArray(data.items)) throw new Error(`${CONFIG.apiUrl} returned data in an unexpected format.`);
+        return data;
+      }
+
+      // Splits "prefix-value" tags into fields.
+      function parseTags(tags) {
+        const out = { keywords: [] };
+        Object.values(CONFIG.tagPrefixes).forEach(f => { out[f] = []; });
+        (Array.isArray(tags) ? tags : []).forEach(tag => {
+          const t = String(tag).trim().toLowerCase();
+          const m = t.match(/^([a-z]+)-(.+)$/);
+          const field = m && CONFIG.tagPrefixes[m[1]];
+          if (field) out[field].push(m[2].trim()); else if (t) out.keywords.push(t);
+        });
+        return out;
+      }
+
+      // Maps raw values through a field's `values`, noting any that aren't in the map.
+      function displayValues(field, raw, recName) {
+        const map = (CONFIG.fields[field] || {}).values;
+        return uniq(raw.map(v => {
+          const key = String(v).trim().toLowerCase();
+          if (!map) return cap(key);
+          if (map[key]) return map[key];
+          state.issues.push({ dataset: recName, field, value: v });
+          return cap(key);
+        }));
+      }
+
+      // Temporal keywords → years. "2000–2025" (or "2000-2025", "2000 to 2025") is a range;
+      // any other keyword contributes the years written in it, like "2019, 2021".
+      // A range written backwards, or a keyword with no years, shows as Unknown and is listed in the console.
+      function yearsFromKeywords(keywords, recName) {
+        const out = [];
+        keywords.forEach(k => {
+          const ys = (String(k).match(/\b\d{4}\b/g) || []).map(Number);
+          if (ys.length === 2 && /\d{4}\s*(?:[-–—]|to)\s*\d{4}/.test(k)) {
+            const [lo, hi] = ys;
+            if (lo > hi) { state.issues.push({ dataset: recName, field: "years_covered", value: `range ${k} runs backwards` }); return; }
+            for (let y = lo; y <= hi && out.length < 200; y++) out.push(y);
+          } else if (ys.length) {
+            out.push(...ys);
+          } else {
+            state.issues.push({ dataset: recName, field: "years_covered", value: `no years in temporal keyword "${k}"` });
+          }
+        });
+        return uniq(out);
+      }
+
+      // Hosted data downloads as a CSV; everything else links to the item's URL, or to its
+      // ArcGIS item page if it has none.
+      function linkFor(item, host) {
+        return safeUrl(item.url) || `https://${host}/home/item.html?id=${encodeURIComponent(item.id)}`;
+      }
+
+      function toRecord(item, host) {
+        const name = item.title || item.id;
+        const tags = parseTags(item.tags);
+        const typeTag = tags.product[0];
+        let product = CONFIG.products.find(p => p.tag === typeTag);
+        if (!product) {
+          if (typeTag) state.issues.push({ dataset: name, field: "product", value: typeTag });
+          product = typeTag ? { key: "dataset", label: cap(typeTag), linkLabel: "Open" } : CONFIG.products[0];
+        }
+        const hosted = CONFIG.hostedTypes.includes(item.type);
+        // Fields from the item's metadata (filled in with the Metadata editor), read by server.py.
+        const meta = item.metadata || {};
+        return {
+          id: item.id,
+          name: item.title,
+          // The summary is plain text, so cards use it. The description is HTML and is shown as-is.
+          summary: item.snippet,
+          description: item.description,
+          product: [product.label],
+          topics: displayValues("topics", tags.topics, name),
+          population: displayValues("population", tags.population, name),
+          geographic_level: displayValues("geographic_level", tags.geographic_level, name),
+          keywords: tags.keywords,
+          years_covered: yearsFromKeywords(meta.temporal_keywords || [], name),
+          update_frequency: meta.update_frequency ? displayValues("update_frequency", [meta.update_frequency], name)[0] : null,
+          contact_name: meta.contact_name || null,
+          contact_email: meta.contact_email || null,
+          // The item's terms of use. It's HTML and is shown as-is, like the description.
+          privacy: item.licenseInfo || null,
+          last_updated: fmtEpoch(item.modified),
+          documentation: safeUrl(item.documentation),
+          link: linkFor(item, host),
+          // Hosted data downloads the CSV it was published from, through server.py.
+          download: hosted ? `/api/arcgis/csv/${encodeURIComponent(item.id)}` : null,
+          downloadName: `${slug(name) || item.id}.csv`,
+          _product: product
+        };
+      }
+
+      // Logs what each item carries, to help with mapping during the spike.
+      function logMetadata(items) {
+        console.groupCollapsed(`ArcGIS metadata for ${plural(items.length, "item")}`);
+        items.forEach(item => {
+          console.log(`${item.id}: ${item.title} (${item.type})`, item);
+          console.log("  Read from its metadata:", item.metadata && Object.keys(item.metadata).length ? item.metadata : "nothing (no metadata, or none of the fields used here)");
+        });
+        console.groupEnd();
+        if (state.issues.length) {
+          console.warn("Metadata problems: values the explorer doesn't recognize (check for typos, or add them to CONFIG.fields) and values that contradict each other:");
+          console.table(state.issues);
+        }
+      }
+
+      /* ---------- Loading ---------- */
+      async function load() {
+        state.screen = "loading"; state.warnings = []; state.issues = []; render();
+
+        if (location.protocol === "file:") {
+          return fail("This page loads its data from a local server, which doesn't run when the page is opened directly from disk.",
+            `Run <code>python3 server.py</code> in the project folder and open <code>http://localhost:8000/data_explorer_arcgis.html</code>.`);
+        }
+
+        let data;
+        try { data = await fetchCatalog(); }
+        catch (e) { return fail(e.message); }
+
+        const errors = Array.isArray(data.errors) ? data.errors : [];
+        errors.forEach(e => state.warnings.push(`Item ${e.id} couldn't be loaded: ${e.message}.`));
+        if (!data.items.length && errors.length) {
+          return fail(`None of the items could be loaded. The first error was: ${cap(errors[0].message)}.`);
+        }
+
+        state.records = data.items.map(item => toRecord(item, data.host || "www.arcgis.com"))
+          .sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "en", { sensitivity: "base" }));
+        logMetadata(data.items);
+        buildIndex();
+        state.screen = "list";
+        // A pasted or bookmarked detail link gets a results entry behind it, so "Back to results" stays in the app.
+        if (idFromHash() && !(history.state && history.state.depth)) {
+          const hash = location.hash;
+          history.replaceState(null, "", location.pathname + location.search);
+          history.pushState({ depth: 1 }, "", hash);
+        }
+        state.view = viewFromUrl();
+        render(); announce();
+        if (state.view) focusView();
+      }
+
+      /* ---------- Search ---------- */
+      // Indexes the loaded records once. If the search library didn't load, the list still works.
+      function buildIndex() {
+        if (typeof MiniSearch === "undefined") {
+          state.mini = null;
+          state.warnings.push("Search isn't available because the search library couldn't be loaded. Check your network connection and reload the page.");
+          return;
+        }
+        state.mini = new MiniSearch({
+          idField: "id",
+          fields: CONFIG.search.fields,
+          processTerm: term => { const t = term.toLowerCase(); return STOP.has(t) ? null : t; },
+          searchOptions: { boost: CONFIG.search.boost, prefix: CONFIG.search.prefix, fuzzy: CONFIG.search.fuzzy, combineWith: CONFIG.search.combineWith }
+        });
+        // MiniSearch requires unique ids; skip duplicates rather than failing.
+        const seen = new Set();
+        state.mini.addAll(state.records.filter(r => !seen.has(r.id) && seen.add(r.id)));
+        $("q").disabled = false;
+      }
+
+      // Records matching the search, by relevance; all records, A to Z, when there's no search.
+      function searched() {
+        const terms = state.q.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(t => t && !STOP.has(t));
+        if (!terms.length || !state.mini) return { list: state.records, ranked: false };
+        const byId = new Map(state.records.map(r => [r.id, r]));
+        return { list: state.mini.search(state.q).map(h => byId.get(h.id)).filter(Boolean), ranked: true };
+      }
+
+      function fail(message, hint) {
+        state.screen = "error"; state.message = message; state.hint = hint || "";
+        render();
+        $("live").textContent = "The catalog couldn't be loaded.";
+      }
+
+      /* ---------- Filters ---------- */
+      function valuesOf(rec, field) {
+        const v = rec[field];
+        if (isBlank(v)) return [UNKNOWN];
+        return (Array.isArray(v) ? v : [v]).map(String);
+      }
+
+      function passes(rec, exceptField) {
+        return CONFIG.filters.every(f => {
+          if (f.field === exceptField) return true;
+          const sel = state.active[f.field];
+          if (!sel.size) return true;
+          const vals = valuesOf(rec, f.field);
+          return f.matchAll ? [...sel].every(v => vals.includes(v)) : vals.some(v => sel.has(v));
+        });
+      }
+
+      // Counts for each filter reflect the search plus every *other* filter, so options show how
+      // many results you'd get by adding them. A `matchAll` filter also counts its own selections, since
+      // adding an option there narrows the results.
+      function facetCounts(base) {
+        const out = {};
+        CONFIG.filters.forEach(f => {
+          const counts = new Map();
+          if (f.field === "product") CONFIG.products.forEach(p => counts.set(p.label, 0));
+          base.filter(r => passes(r, f.matchAll ? null : f.field))
+            .forEach(r => valuesOf(r, f.field).forEach(v => counts.set(v, (counts.get(v) || 0) + 1)));
+          state.records.forEach(r => valuesOf(r, f.field).forEach(v => { if (!counts.has(v)) counts.set(v, 0); }));
+          state.active[f.field].forEach(v => { if (!counts.has(v)) counts.set(v, 0); });
+
+          let opts = [...counts.entries()];
+          const unknownLast = (a, b) => (a[0] === UNKNOWN) - (b[0] === UNKNOWN);
+          if (f.maxYear) opts = opts.filter(([v]) => v === UNKNOWN || Number(v) <= f.maxYear);
+          if (f.newestFirst) {
+            opts.sort((a, b) => unknownLast(a, b) || Number(b[0]) - Number(a[0]));
+          } else if (f.fixedOrder) {
+            const order = f.field === "product" ? CONFIG.products.map(p => p.label) : Object.values(CONFIG.fields[f.field].values);
+            const rank = v => order.includes(v) ? order.indexOf(v) : order.length;
+            opts.sort((a, b) => unknownLast(a, b) || rank(a[0]) - rank(b[0]) || a[0].localeCompare(b[0]));
+          } else if (f.alphabetical) {
+            opts.sort((a, b) => unknownLast(a, b) || a[0].localeCompare(b[0], undefined, { sensitivity: "base" }));
+          } else {
+            opts.sort((a, b) => unknownLast(a, b) || b[1] - a[1] || a[0].localeCompare(b[0]));
+          }
+          out[f.field] = opts;
+        });
+        return out;
+      }
+
+      function renderFacets(base) {
+        const el = $("facets");
+        if (state.screen === "loading") { el.innerHTML = `<div class="facets-loading unknown">Loading filters…</div>`; return; }
+        if (state.screen === "error") { el.innerHTML = ""; return; }
+
+        const focusedId = document.activeElement && el.contains(document.activeElement) ? document.activeElement.id : null;
+        const counts = facetCounts(base);
+
+        el.innerHTML = CONFIG.filters.map(f => {
+          const opts = counts[f.field];
+          const limit = f.limit && !state.expanded[f.field] ? f.limit : Infinity;
+          // Always keep checked options visible, even past the limit.
+          const shown = opts.filter((o, i) => i < limit || state.active[f.field].has(o[0]));
+          const items = shown.map(([v, n]) => {
+            const id = `f-${slug(f.field)}-${slug(v) || "x"}`;
+            const on = state.active[f.field].has(v);
+            return `<label for="${id}" class="${n === 0 && !on ? "zero" : ""}">
+          <input type="checkbox" id="${id}" data-fk="${esc(f.field)}" data-fv="${esc(v)}" ${on ? "checked" : ""} />
+          <span>${esc(v)}</span><span class="count" aria-hidden="true">${n}</span><span class="sr-only">, ${plural(n, "result")}</span></label>`;
+          }).join("");
+          const toggle = f.limit && opts.length > f.limit
+            ? `<button type="button" class="link-btn" id="more-${slug(f.field)}" data-more="${esc(f.field)}" aria-expanded="${!!state.expanded[f.field]}">${state.expanded[f.field] ? "Show fewer" : `Show all ${opts.length}`}<span class="sr-only"> ${esc(f.label.toLowerCase())} options</span></button>`
+            : "";
+          return `<fieldset class="facet"><legend>${esc(f.label)}</legend><div>${items + toggle || `<span class="unknown">No values</span>`}</div></fieldset>`;
+        }).join("");
+
+        el.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", e => {
+          const { fk, fv } = e.target.dataset;
+          e.target.checked ? state.active[fk].add(fv) : state.active[fk].delete(fv);
+          leaveDetail();
+          render(); announce();
+        }));
+        el.querySelectorAll("[data-more]").forEach(b => b.addEventListener("click", () => {
+          state.expanded[b.dataset.more] = !state.expanded[b.dataset.more]; render();
+        }));
+        if (focusedId && $(focusedId)) $(focusedId).focus();
+      }
+
+      function activeChips() {
+        const chips = [];
+        CONFIG.filters.forEach(f => state.active[f.field].forEach(v => chips.push(
+          `<button type="button" class="chip" data-unset="${esc(f.field)}" data-val="${esc(v)}"><span class="sr-only">Remove filter </span>${esc(f.label)}: ${esc(v)} ${ic("x", 11)}</button>`)));
+        return chips.length ? chips.join("") + `<button type="button" class="link-btn" data-clear="1">Clear all filters</button>` : "";
+      }
+
+      /* ---------- Rendering ---------- */
+      // Hosted data downloads as a CSV; everything else links out.
+      function primaryAction(rec, cls, iconSize) {
+        const name = rec.name || "Untitled";
+        if (rec.download) {
+          return `<a class="${cls}" href="${esc(rec.download)}" download="${esc(rec.downloadName)}">Download CSV ${ic("download", iconSize)}<span class="sr-only"> of ${esc(name)}</span></a>`;
+        }
+        return `<a class="${cls}" href="${esc(rec.link)}" target="_blank" rel="noopener noreferrer">${esc(rec._product.linkLabel)} ${ic("external-link", iconSize)}<span class="sr-only"> for ${esc(name)} (opens in a new window)</span></a>`;
+      }
+
+      function card(rec) {
+        const name = rec.name || "Untitled";
+        const topicsId = `t-${slug(rec.id)}`;
+        const facts = CONFIG.cardFields
+          .map(f => `<div><dt>${esc(fieldLabel(f))}</dt><dd>${valueHtml(fieldText(rec, f))}</dd></div>`).join("");
+        return `<li class="result">
+      <div class="r-head">
+        <span class="type-icon">${ic(rec._product.key, 18)}</span>
+        <h3><button type="button" class="title-btn" data-open="${esc(rec.id)}">${rec.name ? esc(rec.name) : `<span class="unknown">Untitled</span>`}</button><span class="badge">${esc(rec._product.label)}</span></h3>
+      </div>
+      <div><p class="desc">${rec.summary || rec.description ? esc(rec.summary || rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${rec.topics.length ? `<div class="r-topics">
+        <span class="label" id="${topicsId}">Topics</span>
+        <ul class="tags" aria-labelledby="${topicsId}">${rec.topics.slice(0, 3).map(t => `<li class="tag-pill">${esc(t)}</li>`).join("")}</ul>
+        ${rec.topics.length > 3 ? `<span class="more-topics">and ${rec.topics.length - 3} more</span>` : ""}
+      </div>` : ""}
+      <div class="r-foot">
+        <dl class="facts">${facts}</dl>
+        <div class="actions">
+          <button type="button" class="btn small" data-open="${esc(rec.id)}">View details<span class="sr-only"> for ${esc(name)}</span></button>
+          ${primaryAction(rec, "btn small", 13)}
+        </div>
+      </div>
+    </li>`;
+      }
+
+      function detail(rec) {
+        const facts = CONFIG.detailTiles.map(f => {
+          const text = fieldText(rec, f);
+          const label = esc(fieldLabel(f));
+          // The contact fact spans two columns and has a copy button on the right.
+          if (f === "contact") {
+            const who = rec.contact_name ? `${esc(rec.contact_name)}<br>` : "";
+            const email = text == null ? valueHtml(text) : (isEmail(text) ? `<a href="mailto:${esc(text.trim())}">${esc(text)}</a>` : esc(text));
+            return `<div class="fact wide"><dt>${label}</dt><dd class="contact-dd"><span>${who}${email}</span>${text == null ? "" : `<button type="button" class="btn small" data-copy="${esc(text)}" aria-label="Copy email address">Copy</button>`}</dd></div>`;
+          }
+          return `<div class="fact"><dt>${label}</dt><dd>${valueHtml(text)}</dd></div>`;
+        }).join("");
+
+        const sections = [];
+        sections.push(`<div class="d-sec"><h3 id="dt-topics">Topics</h3>${rec.topics.length ? `<ul class="tags" aria-labelledby="dt-topics">${rec.topics.map(t => `<li class="tag-pill">${esc(t)}</li>`).join("")}</ul>` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("documentation"))}</h3>${rec.documentation ? `${ic("book", 13, "-2px")} ${extLink(rec.documentation, "Documentation and methodology")}` : `<span class="unknown">${UNKNOWN}</span>`}</div>`);
+        if (rec.privacy) sections.push(`<div class="d-sec"><h3>${esc(fieldLabel("privacy"))}</h3><p class="description">${esc(rec.privacy)}</p></div>`);
+
+        return `<article class="detail" aria-labelledby="detail-h">
+      <div class="d-head">
+        ${backButton()}
+        <div class="d-title">
+          <span class="type-icon">${ic(rec._product.key, 20)}</span>
+          <h2 id="detail-h" tabindex="-1">${rec.name ? esc(rec.name) : "Untitled"}<span class="badge">${esc(rec._product.label)}</span></h2>
+        </div>
+      </div>
+      <div class="d-facts-wrap"><dl class="d-facts">${facts}</dl></div>
+      <div><p class="description">${rec.description ? esc(rec.description) : `<span class="unknown">No description</span>`}</p></div>
+      ${sections.join("")}
+      <div class="d-foot">
+        ${rec.download || rec.link
+            ? primaryAction(rec, "btn primary", 14)
+            : `<span class="btn disabled" aria-disabled="true">${ic("link", 14)} Link unknown</span>`}
+        <button type="button" class="link-btn" data-request="1">Request more data</button>
+      </div>
+    </article>`;
+      }
+
+      // Each detail page gets its own history entry at #/d/<dataset-id>, so the browser back button
+      // steps through them. `depth` counts detail pages since the results list, which sets the back label.
+      const hashFor = id => `#/d/${encodeURIComponent(id)}`;
+      function idFromHash() {
+        const m = location.hash.match(/^#\/d\/([^/]+)$/);
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+      function viewFromUrl() {
+        const id = idFromHash();
+        return id ? { id, depth: (history.state && history.state.depth) || 1 } : null;
+      }
+      function backButton() {
+        return `<button type="button" class="btn small" data-back="1">${ic("arrow-left", 14)} ${state.view && state.view.depth > 1 ? "Back" : "Back to results"}</button>`;
+      }
+      // Leaving a detail page by searching or filtering adds a results entry, so back returns to the detail page.
+      function leaveDetail() {
+        if (state.view) history.pushState(null, "", location.pathname + location.search);
+        state.view = null;
+      }
+      function focusView() {
+        if (state.view) {
+          const h = $("detail-h");
+          if (h) h.focus();
+          window.scrollTo({ top: $("panel").getBoundingClientRect().top + window.scrollY - 24 });
+        } else {
+          const btn = state.returnFocus && $("panel").querySelector(`.actions [data-open="${CSS.escape(state.returnFocus)}"]`);
+          (btn || ($("q").disabled ? $("results-meta") : $("q"))).focus();
+        }
+      }
+
+      function render() {
+        const panel = $("panel");
+        $("warnings").innerHTML = state.warnings.map(w => `<div class="callout warning">${ic("alert-triangle", 16)}<div>${esc(w)}</div></div>`).join("");
+        const { list: base, ranked } = state.screen === "list" ? searched() : { list: [], ranked: false };
+        renderFacets(base);
+
+        if (state.screen === "loading") {
+          panel.innerHTML = `<div role="status"><span class="sr-only">Loading items from ArcGIS…</span><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div><div class="skeleton" aria-hidden="true"></div></div>`;
+          return;
+        }
+        if (state.screen === "error") {
+          panel.innerHTML = `<div class="msg" role="alert">
+        <div class="callout danger">${ic("alert-triangle", 16)}<div><strong style="color:inherit; display:inline; font-size:inherit;">The catalog couldn't be loaded.</strong> ${esc(state.message)}${state.hint ? ` <br>${state.hint}` : ""}</div></div>
+        <button type="button" data-retry="1" class="btn small">Try again</button></div>`;
+          panel.querySelector("[data-retry]").onclick = load;
+          return;
+        }
+
+        const list = base.filter(r => passes(r));
+        state.lastCount = list.length;
+
+        if (state.view) {
+          const rec = state.records.find(r => r.id === state.view.id);
+          panel.innerHTML = rec ? detail(rec) : `<div class="msg"><strong>That item isn't in this catalog.</strong>${backButton()}</div>`;
+          bind();
+          return;
+        }
+
+        const body = list.length
+          ? `<ul class="results">${list.map(card).join("")}</ul>`
+          : state.records.length
+            ? `<div class="msg"><strong>No results</strong>Try fewer words, check spelling, or remove a filter.</div>`
+            : `<div class="msg"><strong>No items to show</strong>Add item IDs to <code>ARCGIS_ITEM_IDS</code> in <code>.env</code> and restart <code>server.py</code>.</div>`;
+        panel.innerHTML = `<div class="results-meta" id="results-meta" tabindex="-1"><span><strong>${list.length}</strong> result${list.length === 1 ? "" : "s"}, ${ranked ? "sorted by relevance" : "sorted alphabetically"}</span>${activeChips()}</div>${body}`;
+
+        bind();
+      }
+
+      function bind() {
+        const p = $("panel");
+        p.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+          if (!state.view) state.returnFocus = b.dataset.open;
+          const depth = state.view ? state.view.depth + 1 : 1;
+          history.pushState({ depth }, "", hashFor(b.dataset.open));
+          state.view = { id: b.dataset.open, depth };
+          render(); focusView();
+        });
+        p.querySelectorAll("[data-back]").forEach(b => b.onclick = () => history.back());
+        p.querySelectorAll("[data-unset]").forEach(b => b.onclick = () => {
+          state.active[b.dataset.unset].delete(b.dataset.val); render(); announce(); focusAfterChip();
+        });
+        p.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => {
+          Object.values(state.active).forEach(s => s.clear()); render(); announce(); focusAfterChip();
+        });
+        p.querySelectorAll("[data-request]").forEach(b => b.onclick = () => openRequestModal(b));
+        p.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => copyText(b));
+      }
+
+      // Copies a button's `data-copy` value, briefly shows "Copied", and tells screen readers.
+      async function copyText(btn) {
+        let ok = false;
+        try {
+          // Time out so a stalled clipboard request falls back instead of doing nothing.
+          await Promise.race([navigator.clipboard.writeText(btn.dataset.copy), new Promise((_, no) => setTimeout(no, 1000))]);
+          ok = true;
+        } catch (e) {
+          // Fallback for browsers that block or stall the async clipboard API.
+          const ta = document.createElement("textarea");
+          ta.value = btn.dataset.copy; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+          ta.remove(); btn.focus();
+        }
+        btn.textContent = ok ? "Copied" : "Couldn't copy";
+        $("live").textContent = ok ? "Email address copied." : "Couldn't copy the email address. Select it and copy it instead.";
+        clearTimeout(btn._reset);
+        btn._reset = setTimeout(() => { btn.textContent = "Copy"; }, 2000);
+      }
+
+      function focusAfterChip() { ($("q").disabled ? $("results-meta") : $("q")).focus(); }
+
+      // Debounced so screen readers hear the settled count, not every click.
+      let liveTimer;
+      function announce() {
+        clearTimeout(liveTimer);
+        liveTimer = setTimeout(() => {
+          const nFilters = Object.values(state.active).reduce((a, s) => a + s.size, 0);
+          const q = state.q.trim();
+          $("live").textContent = `${plural(state.lastCount || 0, "result")}${q ? ` for “${q}”` : ""}${nFilters ? `, ${plural(nFilters, "filter")} applied` : ""}.`;
+        }, 600);
+      }
+
+      /* ---------- Request-data modal (same as the original explorer) ---------- */
+      function focusableIn(el) {
+        return [...el.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+          .filter(e => !e.disabled && e.offsetParent !== null);
+      }
+      function modalKeydown(e) {
+        if (e.key === "Escape") { e.preventDefault(); closeRequestModal(); return; }
+        if (e.key !== "Tab") return;
+        const items = focusableIn($("requestModal"));
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      let modalReturnFocus = null;
+      function openRequestModal(trigger) {
+        modalReturnFocus = trigger;
+        document.body.style.overflow = "hidden";
+        $("requestModal").hidden = false;
+        document.addEventListener("keydown", modalKeydown, true);
+        $("requestModalClose").focus();
+      }
+      function closeRequestModal() {
+        $("requestModal").hidden = true;
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", modalKeydown, true);
+        if (modalReturnFocus && document.contains(modalReturnFocus)) modalReturnFocus.focus();
+        modalReturnFocus = null;
+      }
+      $("requestModalClose").addEventListener("click", closeRequestModal);
+      $("requestModal").addEventListener("click", e => { if (e.target === e.currentTarget) closeRequestModal(); });
+      $("footerRequest").addEventListener("click", () => openRequestModal($("footerRequest")));
+
+      let typeTimer;
+      $("q").addEventListener("input", e => {
+        $("clearQ").hidden = !e.target.value;
+        clearTimeout(typeTimer);
+        typeTimer = setTimeout(() => {
+          state.q = e.target.value;
+          if (state.screen === "list") { leaveDetail(); render(); announce(); }
+        }, 120);
+      });
+      $("clearQ").addEventListener("click", () => {
+        $("q").value = "";
+        $("q").dispatchEvent(new Event("input"));
+        $("q").focus();
+      });
+
+      window.addEventListener("popstate", () => {
+        // While loading (or after a failed load), load() reads the URL when it finishes.
+        if (state.screen !== "list") return;
+        state.view = viewFromUrl();
+        render(); focusView();
+      });
+
+      load();
+    })();
+  </script>
+</body>
+
+</html>
+
