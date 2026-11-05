@@ -93,7 +93,7 @@ missing = [k for k in ("SOCRATA_API_KEY_ID", "SOCRATA_API_KEY_SECRET") if not EN
 if missing:
     sys.exit(f".env is missing {' and '.join(missing)}.")
 
-DOMAIN = ENV.get("SOCRATA_DOMAIN") or "data.colorado.gov"
+SOCRATA_DOMAIN = "data.colorado.gov"
 DATASET_IDS = [i.strip() for i in ENV.get("CIM_DATASET_IDS", "").split(",") if i.strip()]
 bad_ids = [i for i in DATASET_IDS if not DATASET_ID.match(i)]
 if bad_ids:
@@ -139,7 +139,7 @@ def trim(view):
 
 def fetch_view(dataset_id):
     """Returns ("ok", trimmed view) or ("error", {id, status, message})."""
-    url = f"https://{DOMAIN}/api/views/{dataset_id}.json"
+    url = f"https://{SOCRATA_DOMAIN}/api/views/{dataset_id}.json"
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=TIMEOUT_SECONDS) as res:
             return "ok", trim(json.load(res))
@@ -148,16 +148,16 @@ def fetch_view(dataset_id):
             401: "access was denied (HTTP 401). Check the API key ID and secret in .env",
             403: "access was denied (HTTP 403). Check that your account can see this dataset",
             404: "no dataset with this ID was found",
-        }.get(e.code, f"{DOMAIN} returned HTTP {e.code}")
+        }.get(e.code, f"{SOCRATA_DOMAIN} returned HTTP {e.code}")
         return "error", {"id": dataset_id, "status": e.code, "message": message}
     except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
         reason = getattr(e, "reason", None) or e
-        return "error", {"id": dataset_id, "status": None, "message": f"couldn't reach {DOMAIN} ({reason})"}
+        return "error", {"id": dataset_id, "status": None, "message": f"couldn't reach {SOCRATA_DOMAIN} ({reason})"}
 
 
 def fetch_raw(dataset_id):
     """Returns (HTTP status, parsed JSON) exactly as Socrata sent them, untrimmed."""
-    url = f"https://{DOMAIN}/api/views/{dataset_id}.json"
+    url = f"https://{SOCRATA_DOMAIN}/api/views/{dataset_id}.json"
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers=HEADERS), timeout=TIMEOUT_SECONDS) as res:
             status, body = res.status, res.read()
@@ -165,7 +165,7 @@ def fetch_raw(dataset_id):
         status, body = e.code, (e.read() if e.fp else b"")
     except (urllib.error.URLError, TimeoutError, OSError) as e:
         reason = getattr(e, "reason", None) or e
-        return 502, {"error": f"couldn't reach {DOMAIN} ({reason})"}
+        return 502, {"error": f"couldn't reach {SOCRATA_DOMAIN} ({reason})"}
     try:
         return status, json.loads(body)
     except ValueError:
@@ -179,8 +179,8 @@ def open_export(dataset_id):
     Tries the SODA3 export endpoint first, then the older rows.csv endpoint if SODA3 rejects the request.
     """
     headers = {**HEADERS, "Accept": "text/csv"}
-    urls = [f"https://{DOMAIN}/api/v3/views/{dataset_id}/export.csv",
-            f"https://{DOMAIN}/api/views/{dataset_id}/rows.csv?accessType=DOWNLOAD"]
+    urls = [f"https://{SOCRATA_DOMAIN}/api/v3/views/{dataset_id}/export.csv",
+            f"https://{SOCRATA_DOMAIN}/api/views/{dataset_id}/rows.csv?accessType=DOWNLOAD"]
     for i, url in enumerate(urls):
         try:
             return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=CSV_TIMEOUT_SECONDS)
@@ -414,7 +414,7 @@ class Handler(SimpleHTTPRequestHandler):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(fetch_view, DATASET_IDS))
         self.send_json(200, {
-            "domain": DOMAIN,
+            "domain": SOCRATA_DOMAIN,
             "datasets": [r for status, r in results if status == "ok"],
             "errors": [r for status, r in results if status == "error"],
         })
@@ -436,10 +436,10 @@ class Handler(SimpleHTTPRequestHandler):
             res = open_export(dataset_id)
         except urllib.error.HTTPError as e:
             return self.send_json(e.code if e.code in (401, 403, 404) else 502,
-                                  {"error": f"{DOMAIN} returned HTTP {e.code} for the export of {dataset_id}."}, indent=2)
+                                  {"error": f"{SOCRATA_DOMAIN} returned HTTP {e.code} for the export of {dataset_id}."}, indent=2)
         except (urllib.error.URLError, TimeoutError, OSError) as e:
             reason = getattr(e, "reason", None) or e
-            return self.send_json(502, {"error": f"couldn't reach {DOMAIN} ({reason})"}, indent=2)
+            return self.send_json(502, {"error": f"couldn't reach {SOCRATA_DOMAIN} ({reason})"}, indent=2)
 
         # Stream the file through rather than holding it all in memory.
         with res:
@@ -539,7 +539,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
-    print(f"Socrata domain: {DOMAIN}")
+    print(f"Socrata domain: {SOCRATA_DOMAIN}")
     print(f"Datasets: {', '.join(DATASET_IDS) if DATASET_IDS else 'none (set CIM_DATASET_IDS in .env)'}")
     if not ENV.get("SOCRATA_APP_TOKEN"):
         print("Warning: no SOCRATA_APP_TOKEN in .env, so requests share Socrata's lower anonymous rate limit.")
