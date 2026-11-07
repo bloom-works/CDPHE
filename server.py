@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Local development server for data_explorer_cim.html.
+Local development server for the prototypes.
 
-Serves this folder and adds endpoints that call Socrata and ArcGIS with the credentials in
+Serves this folder, so every page works (index.html, both prototypes, and the CIM and ArcGIS
+versions), and adds endpoints that call Socrata and ArcGIS with the credentials in
 .env. The browser never sees the credentials, and because the page and the endpoints share
 an origin, there's no CORS.
 
@@ -13,9 +14,13 @@ an origin, there's no CORS.
     GET /api/arcgis/raw/<id>     ArcGIS's full, untrimmed response for one item, for inspection
     GET /api/arcgis/csv/<id>     The CSV a feature service in ARCGIS_ITEM_IDS was published from, as a download
 
+Credentials are optional. Without Socrata or ArcGIS credentials in .env, the static pages still
+work, and the API routes (and the CIM and ArcGIS pages) explain what's missing.
+
 LOCAL DEMO ONLY. Python standard library only; nothing to install.
 
-    python3 server.py          # http://localhost:8000/data_explorer_cim.html
+    python3 server.py          # http://localhost:8000/
+                               # http://localhost:8000/data_explorer_cim.html
                                # http://localhost:8000/data_explorer_arcgis.html
     python3 server.py 8080     # another port
 """
@@ -67,9 +72,10 @@ VIEW_FIELDS = ["id", "name", "description", "category", "attribution", "tags",
 
 
 def load_env(path):
-    """Reads KEY=VALUE lines. Ignores blank lines and # comments; strips surrounding quotes."""
+    """Reads KEY=VALUE lines. Ignores blank lines and # comments; strips surrounding quotes.
+    A missing file is fine: the server still runs, just without the Socrata and ArcGIS routes."""
     if not path.exists():
-        sys.exit(f"No .env file at {path}.\nCopy .env.example to .env and fill it in.")
+        return {}
     env = {}
     for line in path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
@@ -89,21 +95,20 @@ def load_env(path):
 
 ENV = load_env(ENV_FILE)
 
-missing = [k for k in ("SOCRATA_API_KEY_ID", "SOCRATA_API_KEY_SECRET") if not ENV.get(k)]
-if missing:
-    sys.exit(f".env is missing {' and '.join(missing)}.")
-
+# Socrata is optional: without an API key ID and secret, the static pages still work, and the
+# Socrata routes explain what's missing.
+SOCRATA_MISSING = [k for k in ("SOCRATA_API_KEY_ID", "SOCRATA_API_KEY_SECRET") if not ENV.get(k)]
+SOCRATA_ENABLED = not SOCRATA_MISSING
 SOCRATA_DOMAIN = "data.colorado.gov"
 DATASET_IDS = [i.strip() for i in ENV.get("CIM_DATASET_IDS", "").split(",") if i.strip()]
 bad_ids = [i for i in DATASET_IDS if not DATASET_ID.match(i)]
 if bad_ids:
     sys.exit(f"CIM_DATASET_IDS has IDs that don't look like Socrata IDs (xxxx-xxxx): {', '.join(bad_ids)}")
 
-HEADERS = {
-    "Accept": "application/json",
-    "Authorization": "Basic " + base64.b64encode(
-        f"{ENV['SOCRATA_API_KEY_ID']}:{ENV['SOCRATA_API_KEY_SECRET']}".encode("utf-8")).decode("ascii"),
-}
+HEADERS = {"Accept": "application/json"}
+if SOCRATA_ENABLED:
+    HEADERS["Authorization"] = "Basic " + base64.b64encode(
+        f"{ENV['SOCRATA_API_KEY_ID']}:{ENV['SOCRATA_API_KEY_SECRET']}".encode("utf-8")).decode("ascii")
 if ENV.get("SOCRATA_APP_TOKEN"):
     HEADERS["X-App-Token"] = ENV["SOCRATA_APP_TOKEN"]
 
@@ -410,7 +415,15 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def socrata_off(self):
+        where = "to .env" if ENV_FILE.exists() else "to a .env file (copy .env.example)"
+        return self.send_json(503, {"error": f"The Colorado Information Marketplace connection is off. "
+                                             f"Add {' and '.join(SOCRATA_MISSING)} {where} and restart server.py."},
+                              indent=2)
+
     def send_datasets(self):
+        if not SOCRATA_ENABLED:
+            return self.socrata_off()
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(fetch_view, DATASET_IDS))
         self.send_json(200, {
@@ -423,6 +436,8 @@ class Handler(SimpleHTTPRequestHandler):
         # Any dataset your API key can see, not just CIM_DATASET_IDS. Untrimmed, so it can
         # include people's names and emails (owners, sharing grants): fine locally, but
         # never deploy this route.
+        if not SOCRATA_ENABLED:
+            return self.socrata_off()
         if not DATASET_ID.match(dataset_id):
             return self.send_json(400, {"error": f"'{dataset_id}' isn't a Socrata dataset ID (xxxx-xxxx)."}, indent=2)
         status, data = fetch_raw(dataset_id)
@@ -430,6 +445,8 @@ class Handler(SimpleHTTPRequestHandler):
 
     def send_csv(self, dataset_id):
         # Only the datasets this explorer lists, not everything the API key can see.
+        if not SOCRATA_ENABLED:
+            return self.socrata_off()
         if dataset_id not in DATASET_IDS:
             return self.send_json(404, {"error": f"'{dataset_id}' isn't one of the datasets in CIM_DATASET_IDS."}, indent=2)
         try:
@@ -457,8 +474,9 @@ class Handler(SimpleHTTPRequestHandler):
                 chunk = res.read(CHUNK)
 
     def arcgis_off(self):
-        return self.send_json(503, {"error": "ArcGIS is off. Add ARCGIS_USERNAME and ARCGIS_PASSWORD to .env "
-                                             "and restart server.py."}, indent=2)
+        where = "to .env" if ENV_FILE.exists() else "to a .env file (copy .env.example)"
+        return self.send_json(503, {"error": f"The ArcGIS connection is off. Add ARCGIS_USERNAME and "
+                                             f"ARCGIS_PASSWORD {where} and restart server.py."}, indent=2)
 
     def send_arcgis_items(self):
         if not ARCGIS_ENABLED:
@@ -539,10 +557,16 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
-    print(f"Socrata domain: {SOCRATA_DOMAIN}")
-    print(f"Datasets: {', '.join(DATASET_IDS) if DATASET_IDS else 'none (set CIM_DATASET_IDS in .env)'}")
-    if not ENV.get("SOCRATA_APP_TOKEN"):
-        print("Warning: no SOCRATA_APP_TOKEN in .env, so requests share Socrata's lower anonymous rate limit.")
+    if not ENV_FILE.exists():
+        print(f"No .env file at {ENV_FILE}, so the CIM and ArcGIS connections are off. "
+              "Copy .env.example to .env to turn them on.")
+    if SOCRATA_ENABLED:
+        print(f"Socrata domain: {SOCRATA_DOMAIN}")
+        print(f"Datasets: {', '.join(DATASET_IDS) if DATASET_IDS else 'none (set CIM_DATASET_IDS in .env)'}")
+        if not ENV.get("SOCRATA_APP_TOKEN"):
+            print("Warning: no SOCRATA_APP_TOKEN in .env, so requests share Socrata's lower anonymous rate limit.")
+    else:
+        print(f"Socrata: off (add {' and '.join(SOCRATA_MISSING)} to .env to turn it on)")
     if ARCGIS_ENABLED:
         # A fresh token on every start, so bad credentials show up now rather than on the first request.
         print(f"ArcGIS: {ENV['ARCGIS_USERNAME']} on {ARCGIS_HOST}")
@@ -557,10 +581,11 @@ def main():
         print("ArcGIS: off (add ARCGIS_USERNAME and ARCGIS_PASSWORD to .env to turn it on)")
     # 127.0.0.1 only: this server uses your credentials, so don't expose it to the network.
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Open http://localhost:{port}/data_explorer_cim.html  (Ctrl+C to stop)")
-    if ARCGIS_ENABLED:
-        print(f"ArcGIS version: http://localhost:{port}/data_explorer_arcgis.html")
-    print(f"Raw Socrata metadata: http://localhost:{port}/api/raw/<dataset-id>")
+    print(f"Open http://localhost:{port}/  (Ctrl+C to stop)")
+    print(f"CIM version: http://localhost:{port}/data_explorer_cim.html")
+    print(f"ArcGIS version: http://localhost:{port}/data_explorer_arcgis.html")
+    if SOCRATA_ENABLED:
+        print(f"Raw Socrata metadata: http://localhost:{port}/api/raw/<dataset-id>")
     if ARCGIS_ENABLED:
         print(f"Raw ArcGIS item: http://localhost:{port}/api/arcgis/raw/<item-id>")
         for item_id in ARCGIS_ITEM_IDS:

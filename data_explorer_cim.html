@@ -1170,7 +1170,12 @@
           throw new Error("The local server isn't responding. Check that server.py is still running.");
         } finally { clearTimeout(t); }
         if (res.status === 404) throw new Error(`${CONFIG.apiUrl} wasn't found. Start the page with python3 server.py rather than python3 -m http.server.`);
-        if (!res.ok) throw new Error(`${CONFIG.apiUrl} returned HTTP ${res.status}.`);
+        if (!res.ok) {
+          // server.py explains problems like missing credentials in an "error" field.
+          let detail = "";
+          try { detail = (await res.json()).error || ""; } catch (e) { /* not JSON */ }
+          throw new Error(detail || `${CONFIG.apiUrl} returned HTTP ${res.status}.`);
+        }
         const data = await res.json();
         if (!data || !Array.isArray(data.datasets)) throw new Error(`${CONFIG.apiUrl} returned data in an unexpected format.`);
         return data;

@@ -55,7 +55,9 @@ Homepages:
 
 ### Environment variables
 
-Colorado Information Marketplace. `server.py` won't start without the API key ID and secret.
+`server.py` runs without any of these. Each version needs its own variables, and explains what's missing if they aren't set.
+
+Colorado Information Marketplace, for `data_explorer_cim.html`:
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
@@ -64,7 +66,7 @@ Colorado Information Marketplace. `server.py` won't start without the API key ID
 | `SOCRATA_APP_TOKEN` | No | App token, used for rate limits |
 | `CIM_DATASET_IDS` | Yes | Comma-separated dataset IDs (`xxxx-xxxx`) to show |
 
-CDPHE Open Data Portal. Optional: without these, the CIM page still works, and the ArcGIS page explains what's missing.
+CDPHE Open Data Portal, for `data_explorer_arcgis.html`:
 
 | Variable | Purpose |
 | --- | --- |
