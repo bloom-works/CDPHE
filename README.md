@@ -20,6 +20,13 @@ open chronic_disease_data_catalog_prototype.html
 
 Homepage: `chronic_disease_data_catalog_prototype.html`
 
+<details>
+<summary>Screenshot of Prototype 1: Data catalog</summary>
+
+![Prototype 1, the data catalog](screenshots/p1.png)
+
+</details>
+
 ## Prototype 2: Data explorer
 
 A data explorer with working search and filters over a catalog of public CDPHE data sources.
@@ -31,6 +38,13 @@ python3 -m http.server
 ```
 
 Homepage: <http://localhost:8000/data_explorer.html> (or <http://localhost:8000/> for the index)
+
+<details>
+<summary>Screenshot of Prototype 2: Data explorer</summary>
+
+![Prototype 2, the data explorer](screenshots/p2.png)
+
+</details>
 
 ## Prototypes 2.5: CIM and ArcGIS
 
@@ -52,6 +66,20 @@ Homepages:
 
 - <http://localhost:8000/data_explorer_cim.html>
 - <http://localhost:8000/data_explorer_arcgis.html>
+
+<details>
+<summary>Screenshot of Prototype 2.5: CIM</summary>
+
+![The CIM version of the data explorer, showing search results and filters](screenshots/p3.png)
+
+</details>
+
+<details>
+<summary>Screenshot of Prototype 2.5: ArcGIS</summary>
+
+![The ArcGIS version of the data explorer, showing search results and filters](screenshots/p4.png)
+
+</details>
 
 ### Environment variables
 
