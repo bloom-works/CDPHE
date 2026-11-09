@@ -7,6 +7,7 @@ versions), and adds endpoints that call Socrata and ArcGIS with the credentials 
 .env. The browser never sees the credentials, and because the page and the endpoints share
 an origin, there's no CORS.
 
+    GET /api/status              Which API-connected versions are set up (used by index.html)
     GET /api/datasets            Trimmed metadata for the datasets in CIM_DATASET_IDS (used by the page)
     GET /api/raw/<id>            Socrata's full, untrimmed response for one dataset, for inspection
     GET /api/csv/<id>            The rows of one dataset in CIM_DATASET_IDS, as a CSV download
@@ -381,6 +382,8 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
+        if path == "/api/status":
+            return self.send_status()
         if path == "/api/datasets":
             return self.send_datasets()
         raw = RAW_ROUTE.match(path)
@@ -414,6 +417,14 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def send_status(self):
+        # Configuration only, no API calls, so the index page loads fast. A version counts as
+        # available when it has credentials and at least one record to show.
+        self.send_json(200, {
+            "cim": {"available": SOCRATA_ENABLED and bool(DATASET_IDS), "records": len(DATASET_IDS)},
+            "arcgis": {"available": ARCGIS_ENABLED and bool(ARCGIS_ITEM_IDS), "records": len(ARCGIS_ITEM_IDS)},
+        })
 
     def socrata_off(self):
         where = "to .env" if ENV_FILE.exists() else "to a .env file (copy .env.example)"

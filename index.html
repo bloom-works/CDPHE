@@ -335,6 +335,9 @@
       border: 1px solid var(--charcoal);
       border-radius: 12px;
       padding: 28px 32px;
+    }
+
+    .featured-main {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
@@ -371,9 +374,106 @@
       flex: none;
     }
 
+    /* API-connected versions: shown only when server.py reports them as set up */
+    .api-versions {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .api-versions[hidden] {
+      display: none;
+    }
+
+    .api-versions h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 0 4px;
+    }
+
+    .api-versions>p {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin: 0 0 16px;
+      max-width: 560px;
+    }
+
+    .api-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .api-list li {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      flex-wrap: wrap;
+    }
+
+    .api-list li[hidden] {
+      display: none;
+    }
+
+    .api-text {
+      flex: 1 1 320px;
+    }
+
+    .api-text h4 {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 0 4px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 10px;
+    }
+
+    .api-text h4 .badge {
+      background: var(--neutral-tint);
+      color: var(--neutral-tint-text);
+      font-weight: 400;
+    }
+
+    .api-text p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 0 0 6px;
+    }
+
+    .api-text .host {
+      font-size: 13px;
+    }
+
+    .ext-icon {
+      vertical-align: -1px;
+      margin-left: 2px;
+    }
+
+    .api-list .btn {
+      background: var(--surface);
+      flex: none;
+    }
+
     @media (max-width:560px) {
       section.featured {
         padding: 22px 20px;
+      }
+
+      .api-list li {
+        padding: 14px 16px;
+      }
+
+      .api-list .btn {
+        width: 100%;
+        text-align: center;
       }
 
       .btn.btn-lg {
@@ -450,15 +550,48 @@
     </div>
 
     <section class="featured" aria-labelledby="explorer-h">
-      <div class="featured-text">
-        <h2 id="explorer-h">Data explorer</h2>
-        <div class="cohort">Comprehensive results &middot; working search and filters</div>
-        <p class="desc">
-          Search and filter CDPHE datasets, dashboards, and summary reports, with links out
-          to the public sources.
-        </p>
+      <div class="featured-main">
+        <div class="featured-text">
+          <h2 id="explorer-h">Data explorer</h2>
+          <div class="cohort">Comprehensive results &middot; working search and filters</div>
+          <p class="desc">
+            Search and filter CDPHE datasets, dashboards, and summary reports, with links out
+            to the public sources.
+          </p>
+        </div>
+        <a class="btn primary btn-lg" href="data_explorer.html">Open data explorer</a>
       </div>
-      <a class="btn primary btn-lg" href="data_explorer.html">Open data explorer</a>
+
+      <!-- Shown only when server.py is running with credentials for at least one version
+           (see showApiVersions below). Everywhere else this stays hidden. -->
+      <div class="api-versions" id="api-versions" hidden>
+        <h3>API-connected data explorer prototypes</h3>
+        <p>
+          The same explorer, reading a few test records from each platform's API. Part of the
+          <a href="https://docs.google.com/document/d/1ekRPq65XTKJUcCbxHtr5JtknvSVxsrBsZk20v3_AOzM/edit"
+            target="_blank" rel="noopener noreferrer">data platform spike<svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg><span class="sr-only"> (opens in a new window)</span></a>.
+        </p>
+        <ul class="api-list">
+          <li id="api-cim" hidden>
+            <div class="api-text">
+              <h4>Colorado Information Marketplace version <span class="badge" data-records></span></h4>
+              <p>Private Socrata datasets. Hosted datasets download as CSV.</p>
+              <a class="host" href="https://data.colorado.gov/" target="_blank"
+                rel="noopener noreferrer">data.colorado.gov<svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg><span class="sr-only"> (opens in a new window)</span></a>
+            </div>
+            <a class="btn" href="data_explorer_cim.html">Open Marketplace version</a>
+          </li>
+          <li id="api-arcgis" hidden>
+            <div class="api-text">
+              <h4>ArcGIS Online version <span class="badge" data-records></span></h4>
+              <p>Items in CDPHE's ArcGIS Online. Hosted tables download as CSV.</p>
+              <a class="host" href="https://www.arcgis.com/" target="_blank"
+                rel="noopener noreferrer">arcgis.com<svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg><span class="sr-only"> (opens in a new window)</span></a>
+            </div>
+            <a class="btn" href="data_explorer_arcgis.html">Open ArcGIS version</a>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="others" aria-labelledby="others-h">
@@ -503,6 +636,34 @@
           </div>
         </div> -->
   </main>
+
+  <script>
+    // Shows the API-connected versions that server.py says are set up. Anywhere else (Netlify,
+    // python3 -m http.server, opened from disk) /api/status is missing, so the request fails
+    // and the page stays as it is.
+    (async function showApiVersions() {
+      if (location.protocol === "file:") return;
+      let status;
+      try {
+        const res = await fetch("/api/status", { cache: "no-store" });
+        if (!res.ok) return;
+        status = await res.json();
+      } catch (e) {
+        return;
+      }
+      let shown = 0;
+      [["cim", "api-cim"], ["arcgis", "api-arcgis"]].forEach(([key, id]) => {
+        const info = status && status[key];
+        if (!info || info.available !== true) return;
+        const n = Math.round(Number(info.records)) || 0;
+        const item = document.getElementById(id);
+        item.querySelector("[data-records]").textContent = `${n} test record${n === 1 ? "" : "s"}`;
+        item.hidden = false;
+        shown++;
+      });
+      if (shown) document.getElementById("api-versions").hidden = false;
+    })();
+  </script>
 
   <footer>
     CDPHE Data Modernization Initiative &middot; discovery-phase prototypes &middot; all data shown is illustrative, not
